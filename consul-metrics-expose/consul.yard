@@ -1,0 +1,16 @@
+Title = "Learn how to expose public endpoints for services with Consul Service Mesh"
+Author = "Erik Veld"
+Slug = "consul-expose"
+
+// Shown in the command output when yard apply is run
+Intro = <<EOF
+  Blah blah you see this when you run `yard apply`
+  
+  Open your browser at `http://localhost:8070` to access the tutorial
+EOF
+
+// After apply runs the following browser windows are opened
+BrowserTabs = [
+  'http://localhost:8080',
+  'http://localhost:9090',
+]
