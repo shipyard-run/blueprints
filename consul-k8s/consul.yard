@@ -11,5 +11,5 @@ EOF
 
 // After apply runs the following browser windows are opened (does not open them if run with --headless)
 BrowserTabs = [
-  "http://localhost:8500",
+  "http://localhost:18500",
 ]
