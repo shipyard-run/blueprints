@@ -1,0 +1,15 @@
+Title = "Consul Service Mesh on Kubernetes"
+Author = "Nic Jackson"
+Slug = "consul-k8s"
+
+// Shown in the command output when yard apply is run
+Intro = <<EOF
+  export KUBECONFIG="$HOME/.shipyard/blah/blah"
+
+  Open your browser at `http://localhost:8500` to access the Consul UI
+EOF
+
+// After apply runs the following browser windows are opened (does not open them if run with --headless)
+BrowserTabs = [
+  'http://localhost:8500',
+]
