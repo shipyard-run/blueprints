@@ -1,0 +1,24 @@
+---
+global:
+  image: "docker.pkg.github.com/nicholasjackson/demo-vault/vault:1.3.1"
+
+server:
+  dataStorage:
+    size: 512Mb
+  dev:
+    enabled: true
+  standalone:
+    enabled: true
+  authDelegator:
+    enabled: true
+ui:
+  enabled: true
+
+injector:
+  enabled: true
+  image: "docker.pkg.github.com/nicholasjackson/demo-vault/vault-k8s:0.1.0"
+  tls:
+    caBundle: ""
+    secretName: ""
+    certName: cert.pem
+    keyName: key.pem
