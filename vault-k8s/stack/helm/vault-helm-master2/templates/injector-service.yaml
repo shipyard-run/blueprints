@@ -1,0 +1,22 @@
+# Mutating Webhook Config
+{{ template "vault.mode" . }}
+{{- if and (ne .mode "") (and ((eq (.Values.global.enabled | toString) "true") (eq (.Values.injector.enabled | toString) "true")))}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "vault.fullname" . }}-agent-injector-svc
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "vault.name" . }}
+    chart: {{ template "vault.chart" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  ports:
+  - port: 443
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: {{ include "vault.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    component: injector
+{{- end }}
