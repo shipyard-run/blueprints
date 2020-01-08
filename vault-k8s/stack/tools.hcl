@@ -26,7 +26,7 @@ container "tools" {
   
   env {
     key = "KUBECONFIG"
-    value = "/root/.shipyard/config/k3s/kubeconfig/kubeconfig-docker.yaml"
+    value = "/root/.shipyard/config/k3s/kubeconfig-docker.yaml"
   }
   
   env {
