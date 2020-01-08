@@ -13,8 +13,8 @@ container "tools" {
 
   # Shipyard config for Kube 
   volume {
-    source      = "${env("HOME")}/.shipyard/config/k3s/kubeconfig-docker.yaml"
-    destination = "/root/.kube/config"
+    source      = "${env("HOME")}/.shipyard"
+    destination = "/root/.shipyard"
   }
 
   network = "network.cloud"
@@ -22,6 +22,11 @@ container "tools" {
   env {
     key = "VAULT_TOKEN"
     value = "root"
+  }
+  
+  env {
+    key = "KUBECONFIG"
+    value = "/root/.shipyard/config/k3s/kubeconfig/kubeconfig-docker.yaml"
   }
   
   env {

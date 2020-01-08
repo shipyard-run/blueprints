@@ -1,5 +1,5 @@
 module.exports = {
     docs: {
-      Docusaurus: ['index'],
+      Vault: ['index'],
     },
   };
