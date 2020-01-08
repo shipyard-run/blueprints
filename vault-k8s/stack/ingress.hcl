@@ -8,3 +8,15 @@ ingress "vault-http" {
     host   = 18200
   }
 }
+
+ingress "k8s-dashboard" {
+  target = "cluster.k3s"
+  service = "svc/kubernetes-dashboard"
+  namespace = "kubernetes-dashboard"
+
+  port {
+    local = 8443
+    remote = 8443
+    host = 18443
+  }
+}
