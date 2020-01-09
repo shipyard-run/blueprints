@@ -5,8 +5,9 @@ slug = "consul-k8s"
 // Shown in the command output when yard apply is run
 intro = <<EOF
   export KUBECONFIG="$HOME/.shipyard/blah/blah"
+  export CONSUL_HTTP_ADDR="http://localhost:18500"
 
-  Open your browser at `http://localhost:8500` to access the Consul UI
+  Open your browser at `http://localhost:18500` to access the Consul UI
 EOF
 
 // After apply runs the following browser windows are opened (does not open them if run with --headless)

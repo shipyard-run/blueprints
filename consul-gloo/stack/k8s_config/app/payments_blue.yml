@@ -1,0 +1,35 @@
+---
+# API service version 1
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-deployment-blue
+  labels:
+    app: payment-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-blue
+  template:
+    metadata:
+      labels:
+        app: payment-blue
+      annotations:
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/service-meta-version": "1"
+        "consul.hashicorp.com/service-tags": "v1"
+        "consul.hashicorp.com/connect-service-upstreams": "currency:9091"
+    spec:
+      containers:
+      - name: payment
+        image: nicholasjackson/broken-service:v1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: "TRACING_ZIPKIN"
+          value: "http://jaeger:9411"
+        - name: "CURRENCY_ADDR"
+          value: "http://localhost:9091"

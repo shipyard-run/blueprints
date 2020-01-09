@@ -1,0 +1,80 @@
+---
+# Jaeger tracing
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  labels:
+    app: jaeger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+      - name: jaeger
+        image: jaegertracing/all-in-one:1.13
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: "COLLECTOR_ZIPKIN_HTTP_PORT"
+          value: "9411"
+        ports:
+        - containerPort: 5775
+          protocol: UDP
+        - containerPort: 6831
+          protocol: UDP
+        - containerPort: 6832
+          protocol: UDP
+        - containerPort: 5778
+          protocol: TCP
+        - containerPort: 16686
+          protocol: TCP
+        - containerPort: 14268
+          protocol: TCP
+        - containerPort: 9411
+          protocol: TCP
+---
+# Service to expose web frontend
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger
+spec:
+  selector:
+    app: jaeger
+  ports:
+  - protocol: UDP
+    port: 5775
+    targetPort: 5775
+    name: "port-5775-udp"
+  - protocol: UDP
+    port: 6831
+    targetPort: 6831
+    name: "port-6831-udp"
+  - protocol: UDP
+    port: 6832
+    targetPort: 6832
+    name: "port-6832-udp"
+  - protocol: TCP
+    port: 5778
+    targetPort: 5778
+    name: "port-5778-tcp"
+  - protocol: TCP
+    port: 16686
+    targetPort: 16686
+    name: "port-16686-tcp"
+  - protocol: TCP
+    port: 14268
+    targetPort: 14268
+    name: "port-14268-tcp"
+  - protocol: TCP
+    port: 9411
+    targetPort: 9411
+    name: "port-9411-tcp"

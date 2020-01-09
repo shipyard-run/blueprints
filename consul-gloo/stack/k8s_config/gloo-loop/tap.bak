@@ -1,0 +1,7 @@
+apiVersion: loop.solo.io/v1
+kind: TapConfig
+metadata:
+  name: gloo
+  namespace: loop-system
+spec:
+  match: responseHeaders[":status"] == prefix("5")

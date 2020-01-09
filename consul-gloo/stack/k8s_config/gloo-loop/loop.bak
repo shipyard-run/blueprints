@@ -1,0 +1,181 @@
+---
+# Source: loop/templates/0-namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: loop-system
+  labels:
+    app: loop
+  annotations:
+    "helm.sh/hook": pre-install
+---
+# Source: loop/templates/6-controlplane-configmap.yaml
+# configmap
+# File must end with newline
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: loop-config
+  namespace: loop-system
+  labels:
+    app: loop
+    loop: control-plane
+data:
+  config.yaml: |
+    sink_address: loop.loop-system.svc.cluster.local:5678
+    watch_namespaces:
+    - loop-system
+
+---
+# Source: loop/templates/5-controlplane-service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: loop
+    loop: control-plane
+  name: loop
+  namespace: loop-system
+---
+# Source: loop/templates/100-loop-crds.yaml
+
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: tapconfigs.loop.solo.io
+  annotations:
+    "helm.sh/hook": crd-install
+  labels:
+    app: loop
+spec:
+  group: loop.solo.io
+  names:
+    kind: TapConfig
+    listKind: TapConfigList
+    plural: tapconfigs
+    shortNames:
+      - tc
+  scope: Namespaced
+  version: v1
+---
+# Source: loop/templates/22-clusterrole-loop.yaml
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: loop-tap-manager-role
+  labels:
+    app: loop
+    loop: rbac
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"] # Watch pods for correlations
+- apiGroups: ["loop.solo.io"]
+  resources: ["tapconfigs"]
+  verbs: ["get", "watch", "list", "update"] # all but create\delete
+---
+# Source: loop/templates/23-clusterrolebinding-loop.yaml
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: loop-role-binding
+  labels:
+    app: loop
+    loop: rbac
+subjects:
+- kind: ServiceAccount
+  name: loop
+  namespace: loop-system
+roleRef:
+  kind: ClusterRole
+  name: loop-tap-manager-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Source: loop/templates/4-controlplane-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: loop
+    loop: control-plane
+  name: loop
+  namespace: loop-system
+spec:
+  ports:
+  - name: grpc-xds
+    port: 5678
+    protocol: TCP
+  selector:
+    app: loop
+    loop: control-plane
+  type: NodePort
+
+---
+# Source: loop/templates/3-controlplane-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: loop
+    loop: control-plane
+  name: loop
+  namespace: loop-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loop
+      loop: control-plane
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+      labels:
+        app: loop
+        loop: control-plane
+    spec:
+      serviceAccountName: loop
+      volumes:
+        - name: config
+          configMap:
+            name: loop-config
+      containers:
+      - image: "quay.io/solo-io/loop:kubecon2019-workshop"
+        imagePullPolicy: Always
+        name: loop
+        ports:
+        - containerPort: 5678
+        env:
+          - name: PORT
+            value: "5678"
+        volumeMounts:
+        - name: config
+          mountPath: /etc/loop
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 10101
+          capabilities:
+            drop:
+            - ALL
+---
+# Source: loop/templates/30-ingress-loop.yaml
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  labels:
+    app: gloo
+    gloo: loop
+  name: loop
+  namespace: gloo-system
+spec:
+  upstreamSpec:
+    kube:
+      serviceName: loop
+      serviceNamespace: loop-system
+      servicePort:  5678
+      serviceSpec:
+        grpc: {}

@@ -1,0 +1,42 @@
+---
+# API service version 2
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment-v1
+  labels:
+    app: api-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-v1
+  template:
+    metadata:
+      labels:
+        app: api-v1
+      annotations:
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/service-meta-version": "1"
+        "consul.hashicorp.com/service-tags": "v1"
+        "consul.hashicorp.com/connect-service-upstreams": "payment:9091"
+    spec:
+      containers:
+      - name: api
+        image: nicholasjackson/fake-service:v0.7.8
+        ports:
+        - containerPort: 9090
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:9090"
+        - name: "NAME"
+          value: "api-v1"
+        - name: "MESSAGE"
+          value: "Response from API v1"
+        - name: "TRACING_ZIPKIN"
+          value: "http://jaeger:9411"
+        - name: "UPSTREAM_URIS"
+          value: "http://localhost:9091"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "5s"

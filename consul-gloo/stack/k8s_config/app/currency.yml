@@ -1,0 +1,37 @@
+---
+# API service version 2
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency-deployment
+  labels:
+    app: currency
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: currency
+  template:
+    metadata:
+      labels:
+        app: currency
+      annotations:
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/service-meta-version": "1"
+        "consul.hashicorp.com/service-tags": "v1"
+    spec:
+      containers:
+      - name: currency
+        image: nicholasjackson/fake-service:v0.7.8
+        ports:
+        - containerPort: 9090
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:9090"
+        - name: "NAME"
+          value: "currency-v1"
+        - name: "MESSAGE"
+          value: "Exchange rate GBP -> USD 10"
+        - name: "TRACING_ZIPKIN"
+          value: "http://jaeger:9411"
