@@ -1,5 +1,5 @@
 module.exports = {
     docs: {
-      Vault: ['index'],
+      Vault: ['index', 'db', 'auth', 'secrets'],
     },
   };
