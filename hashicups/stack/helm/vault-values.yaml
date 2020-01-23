@@ -1,0 +1,12 @@
+---
+server:
+  dataStorage:
+    size: 512Mb
+  dev:
+    enabled: true
+  standalone:
+    enabled: true
+  authDelegator:
+    enabled: true
+ui:
+  enabled: true

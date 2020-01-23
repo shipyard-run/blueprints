@@ -1,0 +1,77 @@
+---
+# Service to expose web frontend
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-api-service
+spec:
+  selector:
+    app: products-api
+  ports:
+    - name: http
+      protocol: TCP
+      port: 9090
+      targetPort: 9090
+
+---
+# Service account to allow pod access to Vault via K8s auth
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: products-api
+automountServiceAccountToken: true
+
+---
+# Web frontend
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-api-deployment
+  labels:
+    app: products-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products-api
+  template:
+    metadata:
+      labels:
+        app: products-api
+      annotations:
+        prometheus.io/scrape: "true"
+        consul.hashicorp.com/connect-inject: "true"
+        consul.hashicorp.com/connect-service-upstreams: "postgres:5432"
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-secret-db-creds: "database/creds/db-products"
+        vault.hashicorp.com/agent-inject-template-db-creds: |
+          {
+          {{ with secret "database/creds/db-products" -}}
+            "db_connection": "host=localhost port=5432 user={{ .Data.username }} password={{ .Data.password }} dbname=products sslmode=disable",
+            "bind_address": ":9090",
+            "metrics_address": ":9103"
+          {{- end }}
+          }
+        vault.hashicorp.com/role: "products-api"
+    spec:
+      serviceAccountName: products-api
+      containers:
+        - name: products-api
+          image: hashicorpdemoapp/product-api:v0.0.11
+          ports:
+            - containerPort: 9090
+            - containerPort: 9102
+          env:
+            - name: "CONFIG_FILE"
+              value: "/vault/secrets/db-creds"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 10
+            failureThreshold: 30
