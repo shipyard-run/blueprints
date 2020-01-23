@@ -22,6 +22,8 @@ ingress "consul-k8s-http" {
     local  = 8302
     remote = 8302
   }
+
+  ip_address = "10.5.0.200"
 }
 
 ingress "consul-nomad-http" {
@@ -128,5 +130,17 @@ ingress "jaeger" {
     local  = 9411
     remote = 9411
     host   = 19411
+  }
+}
+
+ingress "k8s-dashboard" {
+  target = "cluster.k3s"
+  service = "svc/kubernetes-dashboard"
+  namespace = "kubernetes-dashboard"
+
+  port {
+    local = 8443
+    remote = 8443
+    host = 18443
   }
 }

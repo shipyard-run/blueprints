@@ -37,4 +37,5 @@ browser_windows = [
   "http://localhost:10080",
   "http://localhost:13000",
   "http://localhost:18085",
+  "http://localhost:18443",
 ]

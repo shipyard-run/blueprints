@@ -105,8 +105,11 @@ server:
 
   # extraConfig is a raw string of extra configuration to set with the
   # server. This should be JSON.
+  # Set the advertise address wan to the loadbalancer ip
   extraConfig: |
-    {}
+    {
+      "advertise_addr_wan": "10.5.0.200"
+    }
 
   # extraVolumes is a list of extra volumes to mount. These will be exposed
   # to Consul in the path `/consul/userconfig/<name>/`. The value below is
