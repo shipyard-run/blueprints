@@ -19,7 +19,7 @@ k8s_config "dashboard" {
 k8s_config "web-app" {
     cluster = "cluster.k8s"
     paths = [
-        "./k8s_config/web.yml"
+        "./k8s_config/web.yml",
         "./k8s_config/api.yml"
     ]
   
