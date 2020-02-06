@@ -41,7 +41,7 @@ container "tools" {
   }
   
   env {
-    key = "CONSUL_ADDR"
+    key = "CONSUL_HTTP_ADDR"
     value = "http://consul-k8s-http.cloud.shipyard:8500"
   }
   

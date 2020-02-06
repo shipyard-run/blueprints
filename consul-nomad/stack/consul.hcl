@@ -1,8 +1,8 @@
 container "consul" {
-  image {
+  image   {
     name = "consul:1.6.2"
   }
-  
+
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
 
   volume {
@@ -10,6 +10,6 @@ container "consul" {
     destination = "/config"
   }
 
-  network    = "network.onprem"
-  ip_address = "10.5.0.2" // optional
+  network    = "network.cloud"
+  ip_address = "10.15.0.2" // optional
 }
