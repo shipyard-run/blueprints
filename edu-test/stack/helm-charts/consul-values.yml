@@ -1,0 +1,15 @@
+server:
+  replicas: 1
+  bootstrapExpect: 1
+  storage: 64Mi
+  storageClass: local-path
+
+client:
+  enabled: true
+  grpc: true
+
+ui:
+  enabled: true
+
+connectInject:
+  enabled: true
