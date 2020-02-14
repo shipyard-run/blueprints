@@ -1,5 +1,10 @@
 ingress "consul-http" {
-  target = "cluster.k3s"
+  target = "k8s_cluster.k3s"
+
+  network {
+    name = "network.cloud"
+  }
+
   service  = "svc/consul-consul-server"
 
   port {
