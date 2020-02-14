@@ -1,5 +1,5 @@
 helm "consul" {
-  cluster = "cluster.k8s"
+  cluster = "k8s_cluster.k8s"
   chart = "./helm-charts/consul-helm-0.16.2"
   values = "./helm-charts/consul-values.yml"
 

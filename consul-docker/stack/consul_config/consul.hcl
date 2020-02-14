@@ -11,6 +11,7 @@ ui = true
 
 bind_addr = "0.0.0.0"
 client_addr = "0.0.0.0"
+advertise_addr = "{{GetInterfaceIP \"eth1\"}}"
 
 ports {
   grpc = 8502

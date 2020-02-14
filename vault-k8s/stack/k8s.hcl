@@ -1,4 +1,4 @@
-cluster "k3s" {
+k8s_cluster "k3s" {
   driver  = "k3s" // default
   version = "v1.0.0"
 
@@ -20,5 +20,7 @@ cluster "k3s" {
   }
 */
 
-  network = "network.cloud"
+  network {
+    name = "network.cloud"
+  }
 }

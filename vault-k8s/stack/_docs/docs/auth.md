@@ -14,7 +14,7 @@ The first step is to enable the Kubernetes authentication backend in Vault.
 vault auth enable kubernetes
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 Like the database backend, authentication backends also need to be configured, let’s look at the parameters required for this configuration.
 
@@ -37,7 +37,7 @@ kubectl exec $(kubectl get pods --selector "app.kubernetes.io/instance=vault,com
 
 This configuration is only necessary when setting up a new Kubernetes cluster to work with Vault and only needs to be completed once.
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 ## Policy - Creating policy to allow access to secrets
 
@@ -59,7 +59,7 @@ If you have checked out the example code, this policy can be found at `./config/
 vault policy write web ./config/web-policy.hcl
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 ### Assigning Vault policy to Kubernetes Service Accounts 
 
@@ -87,4 +87,4 @@ vault write auth/kubernetes/role/web \
     ttl=1h
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />

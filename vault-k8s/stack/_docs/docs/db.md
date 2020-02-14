@@ -12,7 +12,7 @@ Let's deploy the database using the example from the examples repo and create a 
 kubectl apply -f config/postgres.yml
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 While this example focuses on the configuration for PostgreSQL, the workflow for configuration, creating roles, and generating credentials applies to any database.
 
@@ -24,7 +24,7 @@ Before configuring connections and roles, first you need to enable the database 
 vault secrets enable database
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 Once the secrets engine has been enabled you can start to create roles.
 
@@ -86,7 +86,7 @@ vault write database/roles/db-app \
     max_ttl="24h"
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 ### Creating database connections
 
@@ -115,7 +115,7 @@ vault write database/config/wizard \
     password="password"
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 ### Rotating the root credentials
 
@@ -152,4 +152,4 @@ vault read database/creds/db-app
 
 If you look at the output from this command, you see a randomly generated `username` and `password`and a `lease` equal to the `default_ttl` you configured when creating the role.
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />

@@ -10,6 +10,8 @@ container "consul" {
     destination = "/config"
   }
 
-  network    = "network.onprem"
-  ip_address = "10.5.0.2" // optional
+  network { 
+    name = "network.onprem"
+    ip_address = "10.5.0.2"
+  }
 }

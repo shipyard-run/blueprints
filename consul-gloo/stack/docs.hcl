@@ -7,6 +7,10 @@ container "tools" {
   image   {
     name = "shipyardrun/tools:solo"
   }
+  
+  network {
+    name = "network.cloud"
+  }
 
   command = ["tail", "-f", "/dev/null"]
 
@@ -22,8 +26,6 @@ container "tools" {
     destination = "/root/.shipyard"
   }
 
-  network = "network.cloud"
-
   env {
     key = "VAULT_TOKEN"
     value = "root"
@@ -36,6 +38,6 @@ container "tools" {
   
   env {
     key = "VAULT_ADDR"
-    value = "http://vault-http.cloud.shipyard:8200"
+    value = "http://vault-http.ingress.shipyard:8200"
   }
 }

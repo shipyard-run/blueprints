@@ -1,6 +1,10 @@
 ingress "consul-http" {
-  target = "cluster.k3s"
+  target = "k8s_cluster.k3s"
   service  = "svc/consul-consul-server"
+
+  network {
+    name = "network.cloud"
+  }
 
   port {
     local  = 8500
@@ -10,9 +14,13 @@ ingress "consul-http" {
 }
 
 ingress "k8s-dashboard" {
-  target = "cluster.k3s"
+  target = "k8s_cluster.k3s"
   service = "svc/kubernetes-dashboard"
   namespace = "kubernetes-dashboard"
+  
+  network {
+    name = "network.cloud"
+  }
 
   port {
     local = 8443
@@ -22,8 +30,12 @@ ingress "k8s-dashboard" {
 }
 
 ingress "jaeger" {
-  target = "cluster.k3s"
+  target = "k8s_cluster.k3s"
   service = "svc/jaeger"
+  
+  network {
+    name = "network.cloud"
+  }
 
   port {
     local = 16686
@@ -33,9 +45,13 @@ ingress "jaeger" {
 }
 
 ingress "gloo" {
-  target = "cluster.k3s"
+  target = "k8s_cluster.k3s"
   service = "svc/gateway-proxy-v2"
   namespace = "gloo-system"
+  
+  network {
+    name = "network.cloud"
+  }
 
   port {
     local = 80

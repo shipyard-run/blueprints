@@ -16,7 +16,7 @@ We should see various CRDs, services and deployments installed into the cluster.
 kubectl get po -n gloo-system
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 Gloo routes to an abstraction called an `upstream` which can be a Kubernetes service, or a service defined in Consul, or even a cloud function like an AWS Lambda. Gloo has a function discovery component (cleverly called `discovery`) in the control plane that will automatically discover these services or functions. Let's list the `upstreams` Gloo discovered and verify that our `web` service is there.
 
@@ -26,7 +26,7 @@ Gloo routes to an abstraction called an `upstream` which can be a Kubernetes ser
 glooctl get upstream | grep web
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 Gloo exposes APIs and services through the proxy using an API called the `VirtualService` resource. Let's create a `default` `VirtualService` and add a route to Gloo's routing table which takes traffic from the edge of the cluster and routes to the `web` service.
 
@@ -36,7 +36,7 @@ Gloo exposes APIs and services through the proxy using an API called the `Virtua
 glooctl create vs default
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 ### Create a route in Gloo to the web service
 
@@ -44,14 +44,14 @@ glooctl create vs default
 glooctl add route --path-prefix / --dest-name default-web-9090
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
 
 From within the VSCode terminal, we should be able to call the service through the Gloo API Gateway.
 
 ### Calling the API Gateway
 
 ```shell
-curl -v http://gloo.cloud.shipyard
+curl -v http://gloo.ingress.shipyard
 ```
 
-<Terminal target="tools.cloud.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />

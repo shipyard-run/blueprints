@@ -1,7 +1,11 @@
 ingress "k8s-dashboard" {
-    target = "cluster.k8s"
+    target = "k8s_cluster.k8s"
     service = "svc/kubernetes-dashboard"
     namespace = "kubernetes-dashboard"
+
+    network  {
+      name = "network.local"
+    }
 
     port {
         remote = 8443
@@ -11,8 +15,12 @@ ingress "k8s-dashboard" {
 }
 
 ingress "consul-http" {
-  target = "cluster.k8s"
+  target = "k8s_cluster.k8s"
   service  = "svc/consul-consul-server"
+    
+  network  {
+    name = "network.local"
+  }
 
   port {
     local  = 8500
@@ -22,8 +30,12 @@ ingress "consul-http" {
 }
 
 ingress "web-api" {
-    target = "cluster.k8s"
+    target = "k8s_cluster.k8s"
     service = "svc/web"
+    
+    network  {
+      name = "network.local"
+    }
 
     port {
         local = 9090
