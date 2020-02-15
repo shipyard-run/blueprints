@@ -1,5 +1,9 @@
-ingress "consul-nomad-http" {
+ingress "consul" {
   target = "container.consul"
+
+  network {
+    name = "network.cloud"
+  }
 
   port {
     local  = 8500
@@ -24,7 +28,11 @@ ingress "consul-nomad-http" {
 }
 
 ingress "nomad-http" {
-  target  = "clusters.nomad"
+  target  = "nomad_cluster.nomad"
+  
+  network {
+    name = "network.cloud"
+  }
 
   port {
     local  = 4646

@@ -11,10 +11,12 @@ container "tools" {
     destination = "/files/nomad"
   }
 
-  network = "network.cloud"
+  network {
+    name = "network.cloud"
+  }
   
   env {
     key = "NOMAD_ADDR"
-    value = "http://nomad-http.cloud.shipyard:4646"
+    value = "http://nomad-http.ingress.shipyard:4646"
   }
 }

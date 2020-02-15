@@ -10,6 +10,11 @@ container "consul" {
     destination = "/config"
   }
 
-  network    = "network.cloud"
-  ip_address = "10.15.0.2" // optional
+  network {
+    name = "network.cloud"
+    # If manually setting IP addresses work from the back of 
+    # the block to avoid conflicts.
+    # Docker always assigns from the begining of the block
+    # ip_address = "10.15.0.200"
+  }
 }

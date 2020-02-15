@@ -1,10 +1,11 @@
-cluster "nomad" {
-  driver  = "nomad" // default
+nomad_cluster "nomad" {
   version = "v0.10.2"
 
   nodes = 1 // default
 
-  network = "network.cloud"
+  network {
+    name = "network.cloud"
+  }
 
   image {
     name = "consul:1.6.1"
@@ -12,7 +13,7 @@ cluster "nomad" {
 
   env {
     key = "CONSUL_SERVER"
-    value = "consul.cloud.shipyard"
+    value = "consul.container.shipyard"
   }
   
   env {
