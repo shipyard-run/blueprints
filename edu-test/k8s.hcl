@@ -7,6 +7,18 @@ k8s_cluster "k8s" {
   network  {
     name = "network.local"
   }
+
+  image {
+    name = "coredns/coredns:1.6.3"
+  }
+  
+  image {
+    name = "rancher/local-path-provisioner:v0.0.11"
+  }
+  
+  image {
+    name = "rancher/metrics-server:v0.3.6"
+  }
 }
 
 k8s_config "dashboard" {

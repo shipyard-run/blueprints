@@ -1,3 +1,3 @@
 network "cloud" {
-  subnet = "10.5.0.0/16"
+  subnet = "10.7.0.0/16"
 }
