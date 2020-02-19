@@ -4,7 +4,7 @@ helm "vault" {
   values = "./helm/vault-values.yaml"
 
   health_check {
-    timeout = "30s"
+    timeout = "120s"
     pods = ["app.kubernetes.io/name=vault"]
   }
 }
