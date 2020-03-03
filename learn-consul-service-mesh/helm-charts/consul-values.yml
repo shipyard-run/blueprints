@@ -1,0 +1,20 @@
+global:
+  domain: consul
+  datacenter: hashidc1
+  image: "consul:1.7.0"
+
+server:
+  replicas: 1
+  bootstrapExpect: 1
+  storage: 64Mi
+  storageClass: local-path
+
+client:
+  enabled: true
+  grpc: true
+
+ui:
+  enabled: true
+
+connectInject:
+  enabled: true
