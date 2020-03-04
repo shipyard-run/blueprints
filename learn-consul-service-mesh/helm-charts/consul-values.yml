@@ -1,7 +1,7 @@
 global:
   domain: consul
   datacenter: hashidc1
-  image: "consul:1.7.0"
+  image: "consul:1.7.1"
 
 server:
   replicas: 1
@@ -18,3 +18,4 @@ ui:
 
 connectInject:
   enabled: true
+  imageEnvoy: envoyproxy/envoy:v1.13.1
