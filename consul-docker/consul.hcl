@@ -1,6 +1,6 @@
 container "consul" {
   image {
-    name = "consul:1.6.2"
+    name = "consul:1.7.1"
   }
   
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
@@ -12,6 +12,5 @@ container "consul" {
 
   network { 
     name = "network.onprem"
-    ip_address = "10.5.0.2"
   }
 }
