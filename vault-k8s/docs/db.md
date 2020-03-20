@@ -12,7 +12,7 @@ Let's deploy the database using the example from the examples repo and create a 
 kubectl apply -f config/postgres.yml
 ```
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" expanded/>
 
 While this example focuses on the configuration for PostgreSQL, the workflow for configuration, creating roles, and generating credentials applies to any database.
 
