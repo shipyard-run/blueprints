@@ -8,6 +8,8 @@ k8s_cluster "k8s" {
     name = "network.local"
   }
 
+  ## Using the image block the images defined will be cached for the next Sypyard deploy.
+
   image {
     name = "coredns/coredns:1.6.3"
   }
@@ -22,6 +24,7 @@ k8s_cluster "k8s" {
 
 }
 
+## Deploy k8s dashboard
 k8s_config "dashboard" {
     cluster = "k8s_cluster.k8s"
 
@@ -31,6 +34,9 @@ k8s_config "dashboard" {
   
     wait_until_ready = true
 }
+
+
+## Deploy two-tier webapp
 
 #k8s_config "web-app" {
 #    depends_on = ["helm.consul"]
