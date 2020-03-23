@@ -10,4 +10,5 @@ EOF
 // After apply runs the following browser windows are opened (does not open them if run with --headless)
 browser_windows = [
   "http://localhost:18500",
+  "http://localhost:18080",
 ]

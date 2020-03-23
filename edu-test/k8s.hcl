@@ -1,23 +1,11 @@
 k8s_cluster "k8s" {
   driver  = "k3s" // default
-  version = "v1.0.0"
+  version = "v1.0.1"
 
   nodes = 1 // default
 
   network  {
     name = "network.local"
-  }
-
-  image {
-    name = "coredns/coredns:1.6.3"
-  }
-  
-  image {
-    name = "rancher/local-path-provisioner:v0.0.11"
-  }
-  
-  image {
-    name = "rancher/metrics-server:v0.3.6"
   }
 }
 
