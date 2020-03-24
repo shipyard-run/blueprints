@@ -2,22 +2,42 @@
 
 This blueprint helps you deploy Consul Connect service mesh in a Kubernetes (k8s) cluster.
 
+## Prerequisites
+
+- [Docker](https://docs.docker.com/) installed in your test machine.
+- [helm](https://helm.sh/docs/using_helm/) to deploy your Consul Connect instance
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to interact with your Kubernetes cluster and deploy services
+- [Consul binary](https://learn.hashicorp.com/consul/getting-started/install) to interact with the Consul Connect-enabled datacenter you are deploying.
+
 ## Run the blueprint
 
 1. [Install Shipyard](https://shipyard.run/docs/install/)
 1. Clone the blueprints repository.
-```
+```shell
 git clone https://github.com/shipyard-run/blueprints.git
 cd blueprints
 ```
 1. Run the blueprint.
-```
+```shell
 shipyard run ./learn-consul-service-mesh
 ```
 
-In the default configuration the blueprint will only deploy a k8s cluster and a k8s dashboard. The ingress to access the dashboard will be automatically created on port `18443`. Once deploy is completed you will be able to access the dashboard at `http://localhost:18443`.
+In the default configuration the blueprint will deploy a k8s cluster and a k8s dashboard. The ingress to access the dashboard will be automatically created on port `18443`. Once deploy is completed you will be able to access the dashboard at `http://localhost:18443`.
 
-**Security Note:** The dashboard is deployed with authentication disabled to speed up testing. 
+**Security Note:** The dashboard is deployed with authentication disabled to speed up testing.
+
+## Deploy Consul Connect service mesh with Helm
+
+```shell
+cd ./blueprints/learn-consul-service-mesh
+helm install hashicorp ./helm-charts/consul-helm-0.16.2 -f ./helm-charts/consul-values.yml
+```
+
+Setup ingress for Consul UI:
+
+```shell
+shipyard run ./ingresses/consul-ui.hcl
+```
 
 ## Files and configuration
 

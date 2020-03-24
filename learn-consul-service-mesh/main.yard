@@ -1,31 +1,47 @@
 title = "Education Lab"
-author = "Daniele"
+author = "github.com/danielehc"
 slug = "learn-consul-service-mesh"
 
 // Shown in the command output when yard apply is run
 intro = <<EOF
-   Set the following environment variables to interact with this blueprint.
 
-   export KUBECONFIG="$HOME/.shipyard/config/k8s/kubeconfig.yaml"
-   export CONSUL_HTTP_ADDR="http://localhost:18500"
+   ## Setup kubectl
+      Set the following environment variables to interact with this blueprint.
+
+      export KUBECONFIG="$HOME/.shipyard/config/k8s/kubeconfig.yaml"
+
+   ## Kubernetes dashboard
+
+      To access the Kubernetes dashboard visit the following location in your browser:    
+      http://localhost:18443
+
+      Note: authentication is disabled, press "Skip" when prompted
+
+   ## Consul
+      Set the following environment variables to interact with Consul datacenter 
+
+      export CONSUL_HTTP_ADDR="http://localhost:18500"
+
+      Note: By default Consul is not deployed. You can deploy it with:
+
+      helm install hashicorp ./helm-charts/consul-helm-0.16.2 -f ./helm-charts/consul-values.yml
 
    ## Consul UI
 
-   To access the Consul UI visit the following location in your browser:
-   http://localhost:18500
-   
-   ## Kubernetes dashboard
+      To access the Consul UI visit the following location in your browser:
+      http://localhost:18500
 
-   To access the Kubernetes dashboard visit the following location in your browser. Note 
-   authentication is disabled, press "Skip" when prompted: 
-   http://localhost:18443
-  
+      Note: by default Consul UI service is not accessible externally. To enable access:
+
+      shipyard run ./ingresses/consul-ui.hcl
+   
   ## Cleanup
 
-     Run `shipyard delete` to cleanup all resources
+     Run `shipyard destroy` to cleanup all resources
 EOF
 
-// After apply runs the following browser windows are opened (does not open them if run with --headless)
+// After apply runs, the following browser windows are opened (does not open them if run with --headless)
+// Uncomment the block to have windows opened.
 // browser_windows = [
 //   "http://localhost:18443",
 //   "http://localhost:18500",

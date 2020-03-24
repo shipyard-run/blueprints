@@ -1,3 +1,6 @@
+# To access the services running in your k8s cluster externally you need to define an ingress.
+
+## Access k8s dashboard on http://localhost:18443
 ingress "k8s-dashboard" {
     target = "k8s_cluster.k8s"
     service = "svc/kubernetes-dashboard"
@@ -14,6 +17,9 @@ ingress "k8s-dashboard" {
     }
 }
 
+
+## Access Consul UI on http://localhost:18500
+
 # ingress "consul-http" {
 #   target = "k8s_cluster.k8s"
 #   service  = "svc/hashicorp-consul-server"
@@ -29,20 +35,8 @@ ingress "k8s-dashboard" {
 #   }
 # }
 
-# ingress "consul-http_1" {
-#   target = "k8s_cluster.k8s"
-#   service  = "svc/hashicorp-consul-ui"
-    
-#   network  {
-#     name = "network.local"
-#   }
 
-#   port {
-#     local  = 80
-#     remote = 80
-#     host   = 18501
-#   }
-# }
+## Access webapp ui on http://localhost:9090
 
 #ingress "web-api" {
 #    target = "k8s_cluster.k8s"
