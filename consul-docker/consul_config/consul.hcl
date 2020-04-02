@@ -13,6 +13,8 @@ bind_addr = "0.0.0.0"
 client_addr = "0.0.0.0"
 advertise_addr = "{{GetInterfaceIP \"eth1\"}}"
 
+retry_join = ["consul.container.shipyard", "consul_2.container.shipyard", "consul_3.container.shipyard"]
+
 ports {
   grpc = 8502
 }
