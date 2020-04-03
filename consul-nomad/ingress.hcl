@@ -1,4 +1,4 @@
-ingress "consul" {
+container_ingress "consul" {
   target = "container.consul"
 
   network {
@@ -27,8 +27,11 @@ ingress "consul" {
   }
 }
 
-ingress "nomad-http" {
-  target  = "nomad_cluster.nomad"
+nomad_ingress "nomad-http" {
+  cluster  = "nomad_cluster.dev"
+  job = ""
+  group = ""
+  task = ""
   
   network {
     name = "network.cloud"

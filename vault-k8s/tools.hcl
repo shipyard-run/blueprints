@@ -33,6 +33,6 @@ container "tools" {
   
   env {
     key = "VAULT_ADDR"
-    value = "http://vault-http.ingress.shipyard:8200"
+    value = "http://vault-http.ingress.shipyard.run:8200"
   }
 }

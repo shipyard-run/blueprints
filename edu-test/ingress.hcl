@@ -1,6 +1,6 @@
-ingress "k8s-dashboard" {
-    target = "k8s_cluster.k8s"
-    service = "svc/kubernetes-dashboard"
+k8s_ingress "k8s-dashboard" {
+    cluster = "k8s_cluster.k8s"
+    service = "kubernetes-dashboard"
     namespace = "kubernetes-dashboard"
 
     network  {
@@ -14,9 +14,9 @@ ingress "k8s-dashboard" {
     }
 }
 
-ingress "consul-http" {
-  target = "k8s_cluster.k8s"
-  service  = "svc/consul-consul-server"
+k8s_ingress "consul-http" {
+  cluster = "k8s_cluster.k8s"
+  service  = "consul-consul-server"
     
   network  {
     name = "network.local"
@@ -29,9 +29,9 @@ ingress "consul-http" {
   }
 }
 
-ingress "web-api" {
-    target = "k8s_cluster.k8s"
-    service = "svc/web"
+k8s_ingress "web-api" {
+    cluster = "k8s_cluster.k8s"
+    service = "web"
     
     network  {
       name = "network.local"

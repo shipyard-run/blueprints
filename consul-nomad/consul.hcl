@@ -1,6 +1,6 @@
 container "consul" {
   image   {
-    name = "consul:1.6.2"
+    name = "consul:1.7.2"
   }
 
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
@@ -12,9 +12,5 @@ container "consul" {
 
   network {
     name = "network.cloud"
-    # If manually setting IP addresses work from the back of 
-    # the block to avoid conflicts.
-    # Docker always assigns from the begining of the block
-    # ip_address = "10.15.0.200"
   }
 }
