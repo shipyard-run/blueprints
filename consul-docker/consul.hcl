@@ -1,4 +1,4 @@
-container "consul" {
+container "consul_1" {
   image {
     name = "consul:1.7.1"
   }

@@ -36,12 +36,12 @@ shipyard run $HOME/github.com/shipyard-run/blueprints/consul-docker
 
 Terminals embedded in docs can be expaned like:
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" expanded />
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" expanded />
 <p></p>
 
 Or closed by default
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root"/>
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root"/>
 <p></p>
 
 The terminal container contains the Consul CLI and the files at path /files are mounted from the blueprint ./files folder. You can copy commands and pasted direct into the terminal
@@ -50,26 +50,26 @@ The terminal container contains the Consul CLI and the files at path /files are 
 consul members
 ```
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" expanded/>
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" expanded/>
 <p></p>
 
-Every container you create with Shipyard has a FQDN for example, the API container can be accessed using `<name>.<type>.shipyard` `api_1.container.shipyard`.
+Every container you create with Shipyard has a FQDN for example, the API container can be accessed using `<name>.<type>.shipyard.run` `api-1.container.shipyard.run`.
 
 ```shell
-curl api_1.container.shipyard:9090
+curl api-1.container.shipyard.run:9090
 ```
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" expanded/>
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" expanded/>
 <p></p>
 
-The embdedded terminal can target any resource in Shipyard, the target is the fully qualified name `<name>.<type>.shipyard`. The following example would 
+The embdedded terminal can target any resource in Shipyard, the target is the fully qualified name `<name>.<type>.shipyard.run`. The following example would 
 create a terminal element which is running in the Consul server.
 
 ```html
-<Terminal target="consul.container.shipyard" shell="/bin/sh" workdir="/config" user="root" expanded/>
+<Terminal target="consul-1.container.shipyard.run" shell="/bin/sh" workdir="/config" user="root" expanded/>
 ```
 
-<Terminal target="consul.container.shipyard" shell="/bin/sh" workdir="/config" user="root" expanded/>
+<Terminal target="consul-1.container.shipyard.run" shell="/bin/sh" workdir="/config" user="root" expanded/>
 <p></p>
 
 # Authoring New Documentation pages
