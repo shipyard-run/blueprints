@@ -1,8 +1,8 @@
 ---
-title: HashiCorp Vault and Kubernetes 
-author: Nic Jackson
-slug: vault_k8s
-browser_windows: http://localhost:18200,http://localhost:18443,http://localhost:18080
+title: "HashiCorp Vault and Kubernetes"
+author: "Nic Jackson"
+slug: "vault_k8s"
+browser_windows: "http://vault-http.ingress.shipyard.run:18200,http://k8s-dashboard.ingress.shipyard.run:18443,http://docs.docs.shipyard.run:18080"
 ---
 
 This blueprint creates a Kubernetes cluster with Vault Helm chart installed
@@ -21,14 +21,14 @@ export VAULT_TOKEN="root"
 ## Vault UI
 To access the Vault UI point your browser at:
 
-`http://localhost:18200`
+`http://vault-http.ingress.shipyard.run:18200`
 
 The token `root` can be used to authenticate
 
 ## Kubernetes Dashboard
 The Kubernetes dashboard is automatically installed and can be accessed at:
 
-`http://localhost:18443`
+`http://k8s-dashboard.shipyard.run:18443`
 
 When prompted press skip to ignore the authentication request
 
@@ -37,7 +37,7 @@ To view the interactive documentation and walk through of using Vault Dynmamic s
 please check out the docs at:
 
 
-`http://localhost:18080`
+`http://docs.docs.shipyard.run:18080`
   
 ## Cleanup
 

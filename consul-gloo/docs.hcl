@@ -26,7 +26,7 @@ container "tools" {
 
   # Shipyard config for Kube 
   volume {
-    source      = "${env("HOME")}/.shipyard"
+    source      = "${shipyard()}"
     destination = "/root/.shipyard"
   }
 
