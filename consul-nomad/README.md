@@ -2,7 +2,6 @@
 title: "Consul and Nomad"
 author: "Anubhav Mishra"
 slug: "consul-nomad"
-browser_windows: "http://localhost:14646,http://localhost:18600"
 ---
 
 This blueprint comprises of Consul and Nomad
