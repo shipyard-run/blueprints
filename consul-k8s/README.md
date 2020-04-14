@@ -4,6 +4,7 @@ author: "Nic Jackson"
 slug: "consul-k8s"
 browser_windows: "http://localhost:18500"
 ---
+
 This blueprint runs Kubernetes using Rancher K3s and installs Consul Service Mesh
 using the Consul Helm chart.
 

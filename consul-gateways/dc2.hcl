@@ -64,12 +64,12 @@ container "consul_gateway_dc2" {
   # direct with the server 
   env {
     key = "CONSUL_HTTP_ADDR"
-    value = "consul_dc2.container.shipyard:8500"
+    value = "consul-dc2.container.shipyard.run:8500"
   }
   
   env {
     key = "CONSUL_GRPC_ADDR"
-    value = "consul_dc2.container.shipyard:8502"
+    value = "consul-dc2.container.shipyard.run:8502"
   }
 }
 
@@ -106,7 +106,7 @@ container "api_dc2" {
 
   env {
     key = "CONSUL_SERVER"
-    value = "consul_dc2.container.shipyard"
+    value = "consul-dc2.container.shipyard.run"
   }
 
   env {

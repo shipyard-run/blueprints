@@ -1,6 +1,6 @@
-ingress "vault-http" {
-  target = "k8s_cluster.k3s"
-  service  = "svc/vault"
+k8s_ingress "vault-http" {
+  cluster = "k8s_cluster.k3s"
+  service  = "vault"
   
   network {
     name = "network.cloud"
@@ -13,14 +13,14 @@ ingress "vault-http" {
   }
 }
 
-ingress "k8s-dashboard" {
-  target = "k8s_cluster.k3s"
+k8s_ingress "k8s-dashboard" {
+  cluster = "k8s_cluster.k3s"
   
   network {
     name = "network.cloud"
   }
 
-  service = "svc/kubernetes-dashboard"
+  service = "kubernetes-dashboard"
   namespace = "kubernetes-dashboard"
 
   port {

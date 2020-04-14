@@ -19,7 +19,7 @@ cd blueprints
 ```
 1. Run the blueprint.
 ```shell
-shipyard run ./learn-consul-service-mesh
+shipyard run ./learn-consul-service-mesh/blueprint
 ```
 
 In the default configuration the blueprint will deploy a k8s cluster and a k8s dashboard. The ingress to access the dashboard will be automatically created on port `18443`. Once deploy is completed you will be able to access the dashboard at `http://localhost:18443`.
@@ -36,7 +36,7 @@ helm install hashicorp ./helm-charts/consul-helm-0.16.2 -f ./helm-charts/consul-
 Setup ingress for Consul UI:
 
 ```shell
-shipyard run ./ingresses/consul-ui.hcl
+shipyard run ./blueprint/ingresses/consul-ui.hcl
 ```
 
 ## Files and configuration
@@ -61,6 +61,3 @@ The files in the blueprint come with many commented sections to help you automat
 - `k8s_config` - Contains k8s configuration files. Files in this folder can either be deployed automatically by adding (or uncommenting) sections in the `k8s.hcl` file or manually using `kubectl apply`. The blueprint provides some examples to help you familiarize with the syntax.
 - `ingresses` - Contains ingress configurations for services to be deployed in the k8s cluster. You can apply the configs in this flder using `shipyard run`. The blueprint provides some examples to help you familiarize with the syntax.
 - `helm-charts` - Contains helm charts to be deployed into the k8s cluster. Files in this folder can either be deployed automatically by adding (or uncommenting) sections in the `helm.hcl` file or manually using `helm install`. The blueprint provides the official [HashiCorp Consul Helm chart](https://github.com/hashicorp/consul-helm) for installing and configuring Consul on Kubernetes. A basic example configuration for the chart is also provided at `./helm-charts/consul-values.yml`.
-
-
-

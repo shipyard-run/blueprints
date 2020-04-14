@@ -1,5 +1,5 @@
-ingress "consul-http" {
-  target  = "container.consul"
+container_ingress "consul-http" {
+  target  = "container.consul_1"
 
   network {
     name = "network.onprem"
@@ -12,7 +12,7 @@ ingress "consul-http" {
   }
 }
 
-ingress "app" {
+container_ingress "app" {
   target  = "container.api_1"
 
   network {

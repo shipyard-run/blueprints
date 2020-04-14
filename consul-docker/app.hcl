@@ -14,7 +14,7 @@ container "api_1" {
 
   env {
     key = "CONSUL_SERVER"
-    value = "consul.container.shipyard"
+    value = "consul-1.container.shipyard.run"
   }
 
   env {
@@ -59,7 +59,7 @@ container "backend" {
   
   env {
     key = "CONSUL_SERVER"
-    value = "consul.container.shipyard"
+    value = "consul-1.container.shipyard.run"
   }
   
   env {

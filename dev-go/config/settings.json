@@ -1,0 +1,9 @@
+{
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "workbench.colorTheme": "Nord",
+    "terminal.integrated.fontSize": 16,
+    "editor.fontSize": 16,
+    "debug.console.fontSize": 16,
+    "markdown.preview.fontSize": 16
+}

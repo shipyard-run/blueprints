@@ -1,6 +1,6 @@
-ingress "consul-http" {
-  target = "k8s_cluster.k3s"
-  service  = "svc/consul-consul-server"
+k8s_ingress "consul-http" {
+  cluster = "k8s_cluster.k3s"
+  service  = "consul-consul-server"
 
   network {
     name = "network.cloud"
@@ -13,9 +13,9 @@ ingress "consul-http" {
   }
 }
 
-ingress "k8s-dashboard" {
-  target = "k8s_cluster.k3s"
-  service = "svc/kubernetes-dashboard"
+k8s_ingress "k8s-dashboard" {
+  cluster = "k8s_cluster.k3s"
+  service = "kubernetes-dashboard"
   namespace = "kubernetes-dashboard"
   
   network {
@@ -29,9 +29,9 @@ ingress "k8s-dashboard" {
   }
 }
 
-ingress "jaeger" {
-  target = "k8s_cluster.k3s"
-  service = "svc/jaeger"
+k8s_ingress "jaeger" {
+  cluster = "k8s_cluster.k3s"
+  service = "jaeger"
   
   network {
     name = "network.cloud"
@@ -44,9 +44,9 @@ ingress "jaeger" {
   }
 }
 
-ingress "gloo" {
-  target = "k8s_cluster.k3s"
-  service = "svc/gateway-proxy-v2"
+k8s_ingress "gloo" {
+  cluster = "k8s_cluster.k3s"
+  service = "gateway-proxy-v2"
   namespace = "gloo-system"
   
   network {

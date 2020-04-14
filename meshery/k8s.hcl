@@ -5,6 +5,6 @@ k8s_cluster "k3s" {
   nodes = 1 // default
 
   network {
-    name = "network.cloud"
+    name = "network.local"
   }
 }

@@ -1,4 +1,4 @@
-nomad_cluster "nomad" {
+nomad_cluster "dev" {
   version = "v0.10.2"
 
   nodes = 1 // default
@@ -7,13 +7,9 @@ nomad_cluster "nomad" {
     name = "network.cloud"
   }
 
-  image {
-    name = "consul:1.6.1"
-  }
-
   env {
     key = "CONSUL_SERVER"
-    value = "consul.container.shipyard"
+    value = "consul.container.shipyard.run"
   }
   
   env {

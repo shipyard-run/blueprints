@@ -32,6 +32,6 @@ container "tools" {
 
   env {
     key = "CONSUL_HTTP_ADDR"
-    value = "http://consul.container.shipyard:8500"
+    value = "http://consul-1.container.shipyard.run:8500"
   }
 }

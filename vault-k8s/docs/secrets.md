@@ -109,7 +109,7 @@ This can then be deployed in the usual Kubernetes way.
 kubectl apply -f ./config/web.yml
 ```
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" />
 
 The injector automatically modifies your deployment, adding a `vault-agent` container which has been configured to authenticate with the Vault, and to write the secrets into a shared volume.
 
@@ -121,7 +121,7 @@ kubectl exec -it \
   -c web cat /vault/secrets/db-creds
 ```
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" />
 
 Since the deployment contains two pods, you can also run the following command to look at the second pod; you will see that each pod has been allocated unique database credentials.
 
@@ -131,4 +131,4 @@ $(kubectl get pods --selector "app=web" -o jsonpath="{.items[1].metadata.name}")
 -c web cat /vault/secrets/db-creds
 ```
 
-<Terminal target="tools.container.shipyard" shell="/bin/bash" workdir="/files" user="root" />
+<Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" />
