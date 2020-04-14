@@ -17,3 +17,8 @@ nomad_job "postgres" {
     cluster = "nomad_cluster.nomad"
     paths = ["./nomad_config/postgres.hcl"]
 }
+
+nomad_job "currency" {
+    cluster = "nomad_cluster.nomad"
+    paths = ["./nomad_config/currency.hcl"]
+}

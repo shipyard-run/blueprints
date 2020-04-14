@@ -1,7 +1,8 @@
 job "web" {
   datacenters = ["dc1"]
+  type = "service"
 
-  group "proxy" {
+  group "web" {
     count = 1
 
     network {
@@ -9,61 +10,21 @@ job "web" {
 
         port "http" {
             static = 80
-            to = 80
-        }
-
-        port "ui" {
-            static = 1936
-            to = 1936
-        }
-
-        port "exporter" {
-            static = 9101
-            to = 9101
+            to = 9090
         }
     }
 
     service {
-        name = "haproxy"
-        port = "ui"
+       name = "web"
+       port = "80"
 
-        check {
-          name     = "haproxy alive"
-          type     = "http"
-          path     = "/"
-          interval = "10s"
-          timeout  = "2s"
-        }
-    }
-
-    service {
-        name = "exporter"
-        port = "exporter"
-
-        check {
-          name     = "haproxy_exporter port alive"
-          type     = "http"
-          path     = "/metrics"
-          interval = "10s"
-          timeout  = "2s"
-        }
-
-        connect {
-            sidecar_service {}
-        }
-    }
-
-    service {
-        name = "web"
-        port = "http"
-
-        connect {
+       connect {
             sidecar_service {
                 proxy {
                     config {
-                        envoy_dogstatsd_url = "udp://10.5.0.2:9125" 
+                        envoy_dogstatsd_url = "udp://10.5.0.2:9125"
                     }
-
+                    
                     upstreams {
                         destination_name = "api"
                         local_bind_port = 9091
@@ -73,72 +34,24 @@ job "web" {
         }
     }
 
-    task "haproxy" {
+    task "web" {
       driver = "docker"
 
       config {
-        image = "haproxy:2.0"
-
-        volumes = [
-          "local/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg",
-        ]
+        image = "nicholasjackson/fake-service:v0.9.0"
       }
 
-      template {
-        data = <<EOF
-defaults
-   mode http
-
-frontend stats
-   bind *:1936
-   stats uri /
-   stats show-legends
-   no log
-
-frontend http_front
-   bind 0.0.0.0:80
-   default_backend http_back
-
-backend http_back
-    balance roundrobin
-    default-server check
-    server api localhost:9091
-EOF
-
-        destination = "local/haproxy.cfg"
-        change_mode = "restart"
-      }
-
-      resources {
-        cpu    = 100
-        memory = 512
-
-        network {
-          mbits = 10
-        }
-      }
-    }
-
-    task "haproxy_prometheus" {
-      driver = "docker"
-
-      config {
-        image = "prom/haproxy-exporter"
-
-        args = ["--haproxy.scrape-uri", "http://localhost:${NOMAD_PORT_ui}/?stats;csv"]
-
-        port_map {
-          http = 9101
-        }
+      env {
+          NAME = "web"
+          MESSAGE = "ok"
+          UPSTREAM_URIS = "http://localhost:9091"
+          TIMING_VARIANCE = "25"
+          HTTP_CLIENT_KEEP_ALIVES = "false"
       }
 
       resources {
         cpu    = 100
         memory = 128
-
-        network {
-          mbits = 10
-        }
       }
     }
   }

@@ -12,7 +12,6 @@ job "api" {
     service {
        name = "api"
        port = "9090"
-       tags = ["scrape"]
 
        connect {
             sidecar_service {
@@ -42,11 +41,12 @@ job "api" {
           MESSAGE = "ok"
           UPSTREAM_URIS = "http://localhost:9091"
           TIMING_VARIANCE = "25"
+          HTTP_CLIENT_KEEP_ALIVES = "false"
       }
 
       resources {
-        cpu    = 50
-        memory = 64
+        cpu    = 100
+        memory = 128
       }
     }
   }

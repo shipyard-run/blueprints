@@ -5,23 +5,8 @@ nomad_cluster "nomad" {
 
   network {
     name = "network.cloud"
+    ip_address = "10.5.0.2"
   }
-
-//   image {
-//       name = "haproxy:2.0"
-//   }
-
-//   image {
-//       name = "nicholasjackson/fake-service:v0.9.0"
-//   }
-
-//   image {
-//       name = "prom/prometheus:latest"
-//   }
-
-//   image {
-//       name = "grafana/grafana"
-//   }
 
   volume {
       source = "./consul_config"

@@ -12,13 +12,13 @@ job "api" {
 
         policy {
             source = "prometheus"
-            query  = "scalar(avg((haproxy_server_current_sessions{backend=\"http_back\"}) and (haproxy_server_up{backend=\"http_back\"} == 1)))"
+            query  = "scalar(ceil(avg(avg_over_time(envoy_listener_downstream_cx_active{local_cluster=\"api\",envoy_listener_address!=\"127.0.0.1_9091\"}[30s]) != 0)))"
 
             strategy = {
                 name = "target-value"
 
                 config = {
-                    target = 20
+                    target = 10
                 }
             }
         }
@@ -35,14 +35,13 @@ job "api" {
        connect {
             sidecar_service {
                 proxy {
-                    upstreams {
-                        destination_name = "redis"
-                        local_bind_port = 9091
+                    config {
+                        envoy_dogstatsd_url = "udp://10.5.0.2:9125"
                     }
-
+                    
                     upstreams {
                         destination_name = "payments"
-                        local_bind_port = 9092
+                        local_bind_port = 9091
                     }
                 }
             }
@@ -59,13 +58,14 @@ job "api" {
       env {
           NAME = "api"
           MESSAGE = "ok"
-          UPSTREAM_URIS = "http://localhost:9091,http://localhost:9092"
+          UPSTREAM_URIS = "http://localhost:9091"
           TIMING_VARIANCE = "25"
+          HTTP_CLIENT_KEEP_ALIVES = "false"
       }
 
       resources {
         cpu    = 100
-        memory = 64
+        memory = 128
       }
     }
   }

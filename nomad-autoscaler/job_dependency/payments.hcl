@@ -5,25 +5,6 @@ job "payments" {
   group "payments" {
     count = 1
 
-    scaling {
-        enabled = true
-        min     = 1
-        max     = 3
-
-        policy {
-            source = "prometheus"
-            query  = "haproxy_backend_http_response_time_average_seconds{backend=\"http_back\"}"
-
-            strategy = {
-                name = "target-value"
-
-                config = {
-                    target = 0.9
-                }
-            }
-        }
-    }
-
     network {
         mode = "bridge"
     }
@@ -35,12 +16,41 @@ job "payments" {
        connect {
             sidecar_service {
                 proxy {
+                    config {
+                        envoy_dogstatsd_url = "udp://10.5.0.2:9125"
+                    }
+
                     upstreams {
                         destination_name = "postgres"
                         local_bind_port = 9091
                     }
+
+                    upstreams {
+                        destination_name = "currency"
+                        local_bind_port = 9092
+                    }
                 }
             }
+        }
+    }
+
+    task "wait-for-database" {
+        driver = "docker"
+
+        config {
+            image        = "busybox:1.28"
+            command      = "sh"
+            args         = ["-c", "echo -n 'Waiting for the database to be up '; until nslookup postgres.service.consul 10.5.0.2:8600 2>&1 >/dev/null; do echo '.'; sleep 2; done"]
+        }
+
+        resources {
+            cpu    = 50
+            memory = 64
+        }
+
+        lifecycle {
+            hook    = "prestart"
+            sidecar = false
         }
     }
 
