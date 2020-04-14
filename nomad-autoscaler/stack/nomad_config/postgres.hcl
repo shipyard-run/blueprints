@@ -12,7 +12,7 @@ job "database" {
     service {
        name = "postgres"
        port = "5432"
-
+       
        connect {
          sidecar_service {
              proxy {
@@ -39,11 +39,12 @@ job "database" {
           TIMING_90_PERCENTILE = "300ms"
           TIMING_99_PERCENTILE = "1s"
           TIMING_VARIANCE = "25"
+          HTTP_CLIENT_KEEP_ALIVES = "false"
       }
 
       resources {
-        cpu    = 50
-        memory = 64
+        cpu    = 100
+        memory = 128
       }
     }
   }

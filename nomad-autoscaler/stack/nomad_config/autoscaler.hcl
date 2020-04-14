@@ -15,13 +15,13 @@ plugin_dir = "./plugins"
 scan_interval = "5s"
 
 nomad {
-    address = "http://{{range $index, $service := service "nomad-client" }}{{if eq $index 0}}{{$service.Address}}:{{$service.Port}}{{end}}{{end}}"
+    address = "http://10.5.0.2:4646"
 }
 
 apm "prometheus" {
     driver = "prometheus"
     config = {
-        address = "http://{{range $index, $service := service "prometheus" }}{{if eq $index 0}}{{$service.Address}}:{{$service.Port}}{{end}}{{end}}"
+        address = "http://10.5.0.2:9090"
     }
 }
 
