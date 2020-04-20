@@ -1,0 +1,30 @@
+data_dir = "/tmp/"
+log_level = "DEBUG"
+
+datacenter = "cloud"
+primary_datacenter = "onprem"
+
+server = true
+
+bootstrap_expect = 1
+ui = true
+
+bind_addr = "0.0.0.0"
+client_addr = "0.0.0.0"
+
+advertise_addr = "10.10.0.100"
+advertise_addr_wan = "192.168.10.100"
+
+ports {
+  grpc = 8502
+}
+
+connect {
+  enabled = true
+}
+
+telemetry {
+    prometheus_retention_time = "30s"
+}
+
+enable_central_service_config = true
