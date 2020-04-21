@@ -23,3 +23,22 @@ nomad_cluster "cloud" {
       destination = "/config"
   }
 }
+
+exec_remote "federation" {
+    depends_on = ["nomad_cluster.cloud"]
+    cmd = "nomad"
+    args = ["server", "join", "192.168.5.100:4648"]
+
+    image {
+        name = "shipyardrun/tools:v0.0.16"
+    }
+
+    env {
+        key = "NOMAD_ADDR"
+        value = "http://10.10.0.100:4646"
+    }
+    
+    network {
+        name = "network.cloud"
+    }
+}

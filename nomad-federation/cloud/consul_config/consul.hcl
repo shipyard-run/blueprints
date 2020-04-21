@@ -15,6 +15,8 @@ client_addr = "0.0.0.0"
 advertise_addr = "10.10.0.100"
 advertise_addr_wan = "192.168.10.100"
 
+retry_join_wan = ["192.168.5.100"]
+
 ports {
   grpc = 8502
 }
