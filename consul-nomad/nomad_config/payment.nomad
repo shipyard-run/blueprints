@@ -54,7 +54,7 @@ job "payment" {
         proxy {
           upstreams {
               destination_name = "currency"
-              local_bind_port = 9091
+              local_bind_port = 9093
           }
         }
        }
@@ -66,7 +66,7 @@ job "payment" {
 
       env {
         LISTEN_ADDR = "0.0.0.0:9092"
-        UPSTREAM_URIS = "http://localhost:9091"
+        UPSTREAM_URIS = "http://localhost:9093"
         MESSAGE = "Hello World"
         NAME = "Payment"
         SERVER_TYPE = "http"
