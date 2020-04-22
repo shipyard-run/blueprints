@@ -30,3 +30,21 @@ telemetry {
 }
 
 enable_central_service_config = true
+
+config_entries {
+  # We are using gateways and L7 config set the 
+  # default protocol to HTTP
+  bootstrap 
+    {
+      kind = "proxy-defaults"
+      name = "global"
+
+      config {
+        protocol = "http"
+      }
+
+      mesh_gateway = {
+        mode = "local"
+      }
+    }
+}

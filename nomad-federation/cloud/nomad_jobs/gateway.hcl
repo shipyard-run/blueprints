@@ -25,8 +25,8 @@ job "gateway-cloud" {
             driver = "docker"
 
             env {
-                CONSUL_HTTP_ADDR="10.10.0.100:8500"
-                CONSUL_GRPC_ADDR="10.10.0.100:8502"
+                CONSUL_HTTP_ADDR="${attr.unique.network.ip-address}:8500"
+                CONSUL_GRPC_ADDR="${attr.unique.network.ip-address}:8502"
             }
 
             config {

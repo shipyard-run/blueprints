@@ -30,14 +30,38 @@ nomad_ingress "consul-onprem" {
     remote = 8500
     host   = 8500
   }
+}
 
-  port {
-    local  = 8300
-    remote = 8300
+nomad_ingress "prometheus" {
+  cluster  = "nomad_cluster.onprem"
+  job = ""
+  group = ""
+  task = ""
+  
+  network {
+    name = "network.wan"
   }
 
   port {
-    local  = 8302
-    remote = 8302
+    local  = 9090
+    remote = 9090
+    host   = 9090
+  }
+}
+
+nomad_ingress "web" {
+  cluster  = "nomad_cluster.onprem"
+  job = ""
+  group = ""
+  task = ""
+  
+  network {
+    name = "network.wan"
+  }
+
+  port {
+    local  = 80
+    remote = 80
+    host   = 80
   }
 }
