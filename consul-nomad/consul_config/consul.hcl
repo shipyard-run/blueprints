@@ -22,6 +22,11 @@ connect {
 config_entries {
   bootstrap = [
     {
+      kind = "service-defaults"
+      name = "global"
+      protocol = "http"
+    },
+    {
       kind = "proxy-defaults"
       name = "global"
       
