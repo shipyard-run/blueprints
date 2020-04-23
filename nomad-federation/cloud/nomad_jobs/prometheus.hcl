@@ -1,16 +1,71 @@
 job "monitoring" {
-    datacenters = ["onprem"]
-    region = "onprem"
+    datacenters = ["cloud"]
+    region = "cloud"
 
     group "prometheus" {
         count = 1
 
         network {
             mode = "bridge"
+        }
 
-            port "http" {
-                static = 9090
-                to = 9090
+        task "service-defaults" {
+            driver = "docker"
+
+            template {
+                destination   = "local/central-config.sh"
+                data = <<EOH
+consul config write - <<EOF
+kind="service-defaults"
+name="prometheus"
+protocol="http"
+EOF
+
+consul config write - <<EOF
+kind="service-defaults"
+name="prometheus-onprem"
+protocol="http"
+EOF
+
+consul config write - <<EOF
+kind="service-defaults"
+name="prometheus-cloud"
+protocol="http"
+EOF
+
+consul config write - <<EOF
+kind = "service-resolver"
+name = "prometheus-onprem"
+redirect {
+  service    = "prometheus"
+  datacenter = "onprem"
+}
+EOF
+
+consul config write - <<EOF
+kind = "service-resolver"
+name = "prometheus-cloud"
+redirect {
+  service    = "prometheus"
+  datacenter = "cloud"
+}
+EOF
+EOH
+            }
+
+            lifecycle {
+                hook = "prestart"
+            }
+
+            config {
+                image = "consul:1.7.2"
+                command = "sh"
+                args = ["/central-config.sh"]
+                volumes = ["local/central-config.sh:/central-config.sh"]
+            }
+
+            env {
+                CONSUL_HTTP_ADDR="${attr.unique.network.ip-address}:8500"
             }
         }
 
@@ -22,7 +77,7 @@ job "monitoring" {
                 sidecar_service {
                     proxy {
                         upstreams {
-                            destination_name = "prometheus-cloud"
+                            destination_name = "prometheus-onprem"
                             local_bind_port = 9091
                         }
                     }
@@ -51,7 +106,7 @@ scrape_configs:
     params:
       'match[]':
       - '{job="exporter"}'
-      - '{datacenter="cloud"}'
+      - '{datacenter="onprem"}'
     static_configs:
     - targets:
       - 'localhost:9091'

@@ -34,4 +34,12 @@ nomad_cluster "onprem" {
   image {
       name = "nicholasjackson/consul-envoy:v1.7.2-v0.14.1"
   }
+
+  image {
+      name = "prom/prometheus:latest"
+  }
+
+  image {
+      name = "prom/statsd-exporter"
+  }
 }

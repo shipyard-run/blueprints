@@ -8,11 +8,15 @@ job "autoscaler" {
 
         network {
             mode = "bridge"
+
+            port "http" {
+                to = "8080"
+            }
         }
 
         service {
             name = "autoscaler"
-            port = "8080"
+            port = "http"
 
             connect {
                 sidecar_service {

@@ -8,34 +8,44 @@ job "api" {
 
         network {
             mode = "bridge"
+
+            // port "http" {
+            //     to = "9090"
+            // }
+
+            // port "statsd" {
+            //     to = "9125"
+            // }
+
+            port "prometheus" {
+                to = "9102"
+            }
         }
 
         service {
-            name = "api"
-            port = "9090"
-
-            meta {
-                datacenter = "onprem"
-            }
+            name = "exporter"
+            port = "prometheus"
 
             connect {
-                sidecar_service {
-                    proxy {
-                        config {
-                            envoy_dogstatsd_url = "udp://127.0.0.1:9125"
-                        }
-                        
-                        upstreams {
-                            destination_name = "database"
-                            local_bind_port = 5432
-                        }
+                sidecar_service {}
+            }
+        }
 
-                        upstreams {
-                            destination_name = "exporter-statsd"
-                            local_bind_port = 9125
-                        }
-                    }
-                }
+        task "exporter" {
+            driver = "docker"
+
+            config {
+                image = "prom/statsd-exporter"
+            }
+
+            resources {
+                cpu    = 50
+                memory = 64
+            }
+
+            lifecycle {
+                hook = "prestart"
+                sidecar = true
             }
         }
 
@@ -49,61 +59,6 @@ consul config write - <<EOF
 kind = "service-defaults"
 name = "api"
 protocol="http"
-EOF
-
-consul config write - <<EOF
-kind="service-defaults"
-name="api-onprem"
-protocol="http"
-EOF
-
-consul config write - <<EOF
-kind="service-defaults"
-name="api-cloud"
-protocol="http"
-EOF
-
-consul config write - <<EOF
-kind = "service-resolver"
-name = "api"
-failover = {
-  "*" = {
-    datacenters = ["onprem", "cloud"]
-  }
-}
-EOF
-
-consul config write - <<EOF
-kind = "service-resolver"
-name = "api-onprem"
-redirect {
-  service    = "api"
-  datacenter = "onprem"
-}
-EOF
-
-consul config write - <<EOF
-kind = "service-resolver"
-name = "api-cloud"
-redirect {
-  service    = "api"
-  datacenter = "cloud"
-}
-EOF
-
-consul config write - <<EOF
-kind = "service-splitter"
-name = "api"
-splits = [
-  {
-    weight = 50
-    service = "api-onprem"
-  },
-  {
-    weight = 50
-    service = "api-cloud"
-  },
-]
 EOF
 EOH
             }
@@ -121,6 +76,27 @@ EOH
 
             env {
                 CONSUL_HTTP_ADDR="${attr.unique.network.ip-address}:8500"
+            }
+        }
+
+        service {
+            name = "api"
+            port = "9090"
+
+            connect {
+                sidecar_service {
+                    proxy {
+                        config {
+                            envoy_dogstatsd_url = "udp://127.0.0.1:9125"
+                            envoy_stats_tags = ["datacenter=onprem"]
+                        }
+                        
+                        upstreams {
+                            destination_name = "database"
+                            local_bind_port = 5432
+                        }
+                    }
+                }
             }
         }
 

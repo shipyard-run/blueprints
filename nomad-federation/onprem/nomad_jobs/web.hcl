@@ -13,6 +13,37 @@ job "web" {
             static = 80
             to = 80
         }
+
+        port "prometheus" {
+            to = "9102"
+        }
+    }
+
+    service {
+        name = "exporter"
+        port = "prometheus"
+
+        connect {
+            sidecar_service {}
+        }
+    }
+
+    task "exporter" {
+        driver = "docker"
+
+        config {
+            image = "prom/statsd-exporter"
+        }
+
+        resources {
+            cpu    = 50
+            memory = 64
+        }
+
+        lifecycle {
+            hook = "prestart"
+            sidecar = true
+        }
     }
 
     service {
@@ -24,16 +55,12 @@ job "web" {
                 proxy {
                     config {
                         envoy_dogstatsd_url = "udp://127.0.0.1:9125"
+                        envoy_stats_tags = ["datacenter=onprem"]
                     }
                     
                     upstreams {
                         destination_name = "api"
                         local_bind_port = 9090
-                    }
-
-                    upstreams {
-                        destination_name = "exporter-statsd"
-                        local_bind_port = 9125
                     }
                 }
             }

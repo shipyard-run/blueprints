@@ -38,6 +38,14 @@ nomad_cluster "cloud" {
   image {
       name = "hashicorp/nomad-autoscaler:0.0.1-techpreview2"
   }
+
+  image {
+      name = "prom/prometheus:latest"
+  }
+
+  image {
+      name = "prom/statsd-exporter"
+  }
 }
 
 exec_remote "federation" {

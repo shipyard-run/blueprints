@@ -8,6 +8,45 @@ job "database" {
 
         network {
             mode = "bridge"
+
+            // port "postgres" {
+            //     to = "5432"
+            // }
+
+            // port "statsd" {
+            //     to = "9125"
+            // }
+
+            port "prometheus" {
+                to = "9102"
+            }
+        }
+
+        service {
+            name = "exporter"
+            port = "prometheus"
+
+            connect {
+                sidecar_service {}
+            }
+        }
+
+        task "exporter" {
+            driver = "docker"
+
+            config {
+                image = "prom/statsd-exporter"
+            }
+
+            resources {
+                cpu    = 50
+                memory = 64
+            }
+
+            lifecycle {
+                hook = "prestart"
+                sidecar = true
+            }
         }
 
         service {
@@ -19,11 +58,7 @@ job "database" {
                     proxy {
                         config {
                             envoy_dogstatsd_url = "udp://127.0.0.1:9125"
-                        }
-                        
-                        upstreams {
-                            destination_name = "exporter-statsd"
-                            local_bind_port = 9125
+                            envoy_stats_tags = ["datacenter=onprem"]
                         }
                     }
                 }
