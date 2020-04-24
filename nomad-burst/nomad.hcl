@@ -45,6 +45,7 @@ nomad_cluster "onprem" {
 }
 
 nomad_cluster "cloud" {
+  depends_on = ["nomad_cluster.onprem"]
   version = "v0.11.0"
 
   nodes = 1 // default
