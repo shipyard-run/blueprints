@@ -21,6 +21,7 @@ resource "kubernetes_manifest" "web-service" {
         "app.kubernetes.io/managed-by" = "Terraform"
       }
       "name"      = "web-service"
+      "namespace" = "default"
     }
     "spec" = {
       "ports" = [
