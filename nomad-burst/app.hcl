@@ -1,19 +1,19 @@
-nomad_job "web-onprem" {
+nomad_job "nginx-onprem" {
     cluster = "nomad_cluster.onprem"
-    paths = ["./nomad_jobs/onprem/web.hcl"]
+    paths = ["./nomad_jobs/onprem/nginx.hcl"]
 }
 
-nomad_job "api-onprem" {
+nomad_job "unicorn-onprem" {
     cluster = "nomad_cluster.onprem"
-    paths = ["./nomad_jobs/onprem/api.hcl"]
+    paths = ["./nomad_jobs/onprem/unicorn.hcl"]
+}
+
+nomad_job "cache-onprem" {
+    cluster = "nomad_cluster.onprem"
+    paths = ["./nomad_jobs/onprem/cache.hcl"]
 }
 
 nomad_job "database-onprem" {
     cluster = "nomad_cluster.onprem"
     paths = ["./nomad_jobs/onprem/database.hcl"]
-}
-
-nomad_job "api-cloud" {
-    cluster = "nomad_cluster.cloud"
-    paths = ["./nomad_jobs/cloud/api.hcl"]
 }

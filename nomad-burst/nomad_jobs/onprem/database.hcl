@@ -9,14 +9,6 @@ job "database" {
         network {
             mode = "bridge"
 
-            // port "postgres" {
-            //     to = "5432"
-            // }
-
-            // port "statsd" {
-            //     to = "9125"
-            // }
-
             port "prometheus" {
                 to = "9102"
             }
@@ -72,12 +64,6 @@ job "database" {
                 destination   = "local/central-config.sh"
                 data = <<EOH
 consul config write - <<EOF
-kind = "service-defaults"
-name = "database"
-protocol="http"
-EOF
-
-consul config write - <<EOF
 kind = "service-resolver"
 name = "database"
 redirect {
@@ -104,7 +90,7 @@ EOH
             }
         }
 
-        task "postgres" {
+        task "database" {
             driver = "docker"
 
             config {
@@ -112,16 +98,16 @@ EOH
             }
 
             env {
-                NAME = "postgres"
+                NAME = "database (onprem)"
                 MESSAGE = "25 rows returned"
                 LISTEN_ADDR = "0.0.0.0:5432"
                 TIMING_VARIANCE = "25"
-                HTTP_CLIENT_KEEP_ALIVES = "false"
+                HTTP_CLIENT_KEEP_ALIVES = "true"
             }
 
             resources {
-                cpu    = 100
-                memory = 256
+                cpu    = 50
+                memory = 64
             }
         }
     }
