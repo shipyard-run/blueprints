@@ -5,13 +5,38 @@ sidebar_label: Ingress
 ---
 # Application infrastructure
 
-The currently running application has the following components.
+The example application has two services, `Web` and `API` these services are registered with Consul and part of the Service Mesh but are not exposed externally. 
 
-![](https://raw.githubusercontent.com/shipyard-run/blueprints/master/consul-ingress/docs/images/infa.png)
+To expose the services externaly a Consul [Ingress Gateway](https://www.consul.io/docs/connect/ingress_gateway) has been configured. It exposes port `443` publically
+and routes traffic to the upstream services using Host header matching.
+
+![](https://raw.githubusercontent.com/shipyard-run/blueprints/master/consul-ingress/docs/images/arch.png)
+
+# Running a gateway
+
+To run an Ingress gateway the following command can be used, this command will generate the bootstrap information for the Envoy proxy and start it.
+
+### Parameters
+
+* **gateway** - type of gateway to run (ingress, terminating, mesh)
+* **register** - register the gateway with the Consul server 
+* **service** - name of the service, must match L7 config in Consul 
+* **address** - address of the service used by Consul HTTP health checks
+
+```shell
+consul connect envoy \
+  -gateway=ingress \
+  -register \ 
+  -service=ingress-service \
+  -address=10.5.0.200:8080
+```
 
 # Write the config
 
-Before using ingress gateways you need to configure them,  
+The Ingress Gateway needs to be configured before it can be used, the following config file configures the gateway.
+In this configuration example `TLS` is enabled, when `TLS` is enabled Consul will generate and configure the Gateway to use a TLS certificate. To
+configure routing to upstream services a `Listeners` block is defined, each item in the block defines a `Port` which is used as a public listener
+and `Services` which relate to the upstream services that will be called. A terminating Gateway can have multiple listeners.
 
 ```javascript
 Kind = "ingress-gateway"
@@ -39,6 +64,8 @@ Listeners = [
 ]
 ```
 
+You can apply the configuration using the following command.
+
 ```
 consul config write ./ingress.hcl
 ```
@@ -49,6 +76,9 @@ consul config write ./ingress.hcl
 
 # Fetch root cert
 
+The public endpoint for the Gateway has been configured to use a `TLS` certificate. In order to validate the requests
+you need to obtain the `root` certicicate. This can be retrieved from Consul using the following API call.
+
 ```
 curl -s http://127.0.0.1:8500/v1/connect/ca/roots | jq -r '.Roots[0].RootCert' > root.cert
 ```
@@ -58,7 +88,10 @@ curl -s http://127.0.0.1:8500/v1/connect/ca/roots | jq -r '.Roots[0].RootCert' >
 </p>
 
 
-# Show client certificate for gateway
+# Gateway Client Certificate
+
+You can inspect the client certificate which has been configured on the Gateway using the following command. If you look at the
+`X509v3 Subject Alternative Name` section you will see that Consul has added the `Hosts` defined in the Listener configuration.
 
 ```shell
 echo | openssl s_client -showcerts -servername web.ingress.container.shipyard.run -connect web.ingress.container.shipyard.run 2>/dev/null | openssl x509 -inform pem -noout -text  
@@ -107,8 +140,34 @@ Certificate:
          22:d2:28:ba:a2:d2:46:a9:bd:1d:64:9c:e5:75:7d:57:1f
 ```
 
-# Call gateway using root from consul
+# Testing the setup
 
+The example application has the DNS names `web.ingress.container.shipyard.run` and `api.ingress.container.shipyard.run` set to point to the 
+ingress container `ingres.container.shipyard.run`.
+
+```shell
+/files # nslookup ingress.container.shipyard.run
+
+Name:      ingress.container.shipyard.run
+Address 1: 10.5.0.200 ingress.container.shipyard.run.onprem
+/files # nslookup web.ingress.container.shipyard.run
+
+Name:      web.ingress.container.shipyard.run
+Address 1: 10.5.0.200 ingress.container.shipyard.run.onprem
+/files # nslookup api.ingress.container.shipyard.run
+
+Name:      api.ingress.container.shipyard.run
+Address 1: 10.5.0.200 ingress.container.shipyard.run.onprem
+```
+
+The ingress will use Host header matching to determine which upstream should be routed. You can test the setup using the following commands:
+
+## Web
+```
+curl -v --cacert ./root.cert  https://web.ingress.container.shipyard.run
+```
+
+## API
 ```
 curl -v --cacert ./root.cert  https://web.ingress.container.shipyard.run
 ```
