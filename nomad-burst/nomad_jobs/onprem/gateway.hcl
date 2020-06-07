@@ -41,6 +41,11 @@ job "gateway-onprem" {
                     "-l", "debug"
                 ]
             }
+
+            resources {
+                cpu    = 50
+                memory = 64
+            }
         }
     }
 }

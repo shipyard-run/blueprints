@@ -52,6 +52,7 @@ scrape_configs:
       'match[]':
       - '{job="exporter"}'
       - '{datacenter="cloud"}'
+      - '{host="server.cloud"}'
     static_configs:
     - targets:
       - 'localhost:9091'

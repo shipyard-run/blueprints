@@ -107,6 +107,7 @@ scrape_configs:
       'match[]':
       - '{job="exporter"}'
       - '{datacenter="onprem"}'
+      - '{host="server.onprem"}'
     static_configs:
     - targets:
       - 'localhost:9091'

@@ -93,6 +93,10 @@ nomad_cluster "cloud" {
   image {
       name = "prom/statsd-exporter"
   }
+
+  image {
+      name = "curlimages/curl"
+  }
 }
 
 exec_remote "federation" {

@@ -49,7 +49,24 @@ nomad_ingress "prometheus-onprem" {
   }
 }
 
-nomad_ingress "web-onprem" {
+nomad_ingress "grafana-onprem" {
+  cluster  = "nomad_cluster.onprem"
+  job = ""
+  group = ""
+  task = ""
+  
+  network {
+    name = "network.wan"
+  }
+
+  port {
+    local  = 3000
+    remote = 3000
+    host   = 3000
+  }
+}
+
+nomad_ingress "nginx-onprem" {
   cluster  = "nomad_cluster.onprem"
   job = ""
   group = ""
