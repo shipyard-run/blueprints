@@ -1,0 +1,23 @@
+---
+title: "Consul Ingress Gateways example"
+author: "Nic Jackson"
+slug: "ingress-gateways"
+browser_windows: "http://localhost:8500,http://localhost:18080"
+---
+
+This example shows how to use the new Consul Ingress gateways to expose services in consul 
+service mesh publically.
+
+# Accessing Consul
+
+## In your browser
+
+Open your browser at `http://localhost:8500` to access the Consul UI
+
+## Shell
+
+You can use Shipyard to enter an interactive terminal for the Consul server
+
+```
+shipyard shell container.consul
+```
