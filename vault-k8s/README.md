@@ -2,21 +2,14 @@
 title: "HashiCorp Vault and Kubernetes"
 author: "Nic Jackson"
 slug: "vault_k8s"
-browser_windows: "http://vault-http.ingress.shipyard.run:18200,http://k8s-dashboard.ingress.shipyard.run:18443,http://docs.docs.shipyard.run:18080"
+browser_windows: "http://k8s-dashboard.ingress.shipyard.run:18443,http://docs.docs.shipyard.run:18080"
+env:
+  - KUBECONFIG=$HOME/.shipyard/config/k3s/kubeconfig.yaml
+  - VAULT_ADDR=http://localhost:18200
+  - VAULT_TOKEN=root
 ---
 
 This blueprint creates a Kubernetes cluster with Vault Helm chart installed
-
-## Environment Variables 
-
-To interact with the setup from your local machine you will need `kubectl` the Vault CLI
-and the following environment variables need to be set.
-
-```shell
-export KUBECONFIG="$HOME/.shipyard/config/k3s/kubeconfig.yaml"
-export VAULT_ADDR="http://localhost:18200"
-export VAULT_TOKEN="root"
-```
 
 ## Vault UI
 To access the Vault UI point your browser at:

@@ -1,0 +1,925 @@
+2020/05/27 13:22:07 [INFO] Terraform version: 0.12.25  
+2020/05/27 13:22:07 [INFO] Go runtime version: go1.12.13
+2020/05/27 13:22:07 [INFO] CLI args: []string{"/usr/tools/terraform", "apply"}
+2020/05/27 13:22:07 [DEBUG] Attempting to open CLI config file: /root/.terraformrc
+2020/05/27 13:22:07 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/05/27 13:22:07 [DEBUG] checking for credentials in "/root/.terraform.d/plugins"
+2020/05/27 13:22:07 [INFO] CLI command args: []string{"apply"}
+2020/05/27 13:22:07 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2020/05/27 13:22:07 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2020/05/27 13:22:07 [DEBUG] New state was assigned lineage "8af8da8f-8237-91a0-5c80-6aa275a9d2de"
+2020/05/27 13:22:07 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2020/05/27 13:22:07 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2020/05/27 13:22:07 [DEBUG] checking for provider in "."
+2020/05/27 13:22:07 [DEBUG] checking for provider in "/usr/tools"
+2020/05/27 13:22:07 [DEBUG] checking for provider in ".terraform/plugins/linux_amd64"
+2020/05/27 13:22:07 [DEBUG] checking for provider in "/root/.terraform.d/plugins"
+2020/05/27 13:22:07 [WARN] found legacy provider "terraform-provider-kubernetes-alpha"
+2020/05/27 13:22:07 [DEBUG] found valid plugin: "kubernetes-alpha", "0.0.0", "/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"
+2020/05/27 13:22:07 [DEBUG] checking for provisioner in "."
+2020/05/27 13:22:07 [DEBUG] checking for provisioner in "/usr/tools"
+2020/05/27 13:22:07 [DEBUG] checking for provisioner in ".terraform/plugins/linux_amd64"
+2020/05/27 13:22:07 [DEBUG] checking for provisioner in "/root/.terraform.d/plugins"
+2020/05/27 13:22:07 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2020/05/27 13:22:07 [INFO] backend/local: starting Apply operation
+2020/05/27 13:22:07 [TRACE] backend/local: requesting state manager for workspace "default"
+2020/05/27 13:22:07 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2020/05/27 13:22:07 [TRACE] backend/local: requesting state lock for workspace "default"
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: preparing to manage state snapshots at terraform.tfstate
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: existing snapshot has lineage "439bfd81-6297-c7f7-dd74-7474aea9c262" serial 1
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: locking terraform.tfstate using fcntl flock
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: writing lock metadata to .terraform.tfstate.lock.info
+2020/05/27 13:22:07 [TRACE] backend/local: reading remote state for workspace "default"
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: read snapshot with lineage "439bfd81-6297-c7f7-dd74-7474aea9c262" serial 1
+2020/05/27 13:22:07 [TRACE] backend/local: retrieving local state snapshot for workspace "default"
+2020/05/27 13:22:07 [TRACE] backend/local: building context for current working directory
+2020/05/27 13:22:07 [TRACE] terraform.NewContext: starting
+2020/05/27 13:22:07 [TRACE] terraform.NewContext: resolving provider version selections
+2020/05/27 13:22:07 [TRACE] terraform.NewContext: loading provider schemas
+2020/05/27 13:22:07 [TRACE] LoadSchemas: retrieving schema for provider type "kubernetes-alpha"
+2020-05-27T13:22:07.308Z [INFO]  plugin: configuring client automatic mTLS
+2020-05-27T13:22:07.328Z [DEBUG] plugin: starting plugin: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha args=[/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha]
+2020-05-27T13:22:07.328Z [DEBUG] plugin: plugin started: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=199
+2020-05-27T13:22:07.329Z [DEBUG] plugin: waiting for RPC address: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha
+2020-05-27T13:22:07.341Z [INFO]  plugin.terraform-provider-kubernetes-alpha: configuring server automatic mTLS: timestamp=2020-05-27T13:22:07.341Z
+2020-05-27T13:22:07.364Z [DEBUG] plugin.terraform-provider-kubernetes-alpha: plugin address: address=/tmp/plugin109428950 network=unix timestamp=2020-05-27T13:22:07.364Z
+2020-05-27T13:22:07.364Z [DEBUG] plugin: using plugin: version=5
+2020/05/27 13:22:07 [TRACE] GRPCProvider: GetSchema
+2020/05/27 13:22:07 [TRACE] GRPCProvider: Close
+2020-05-27T13:22:07.412Z [DEBUG] plugin: plugin process exited: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=199
+2020-05-27T13:22:07.412Z [DEBUG] plugin: plugin exited
+2020/05/27 13:22:07 [TRACE] terraform.NewContext: complete
+2020/05/27 13:22:07 [TRACE] backend/local: finished building terraform.Context
+2020/05/27 13:22:07 [TRACE] backend/local: requesting interactive input, if necessary
+2020/05/27 13:22:07 [TRACE] Context.Input: Prompting for provider arguments
+2020/05/27 13:22:07 [TRACE] Context.Input: Provider provider.kubernetes-alpha declared at k8s_deployment.tf:7,1-28
+2020/05/27 13:22:07 [TRACE] Context.Input: Input for provider.kubernetes-alpha: map[string]cty.Value{}
+2020/05/27 13:22:07 [TRACE] backend/local: running validation operation
+2020/05/27 13:22:07 [INFO] terraform: building graph: GraphTypeValidate
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2020/05/27 13:22:07 [TRACE] ConfigTransformer: Starting for path: 
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.LocalTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OutputTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceTransformer
+2020/05/27 13:22:07 [TRACE] OrphanResourceInstanceTransformer: adding single-instance orphan node for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.StateTransformer
+2020/05/27 13:22:07 [TRACE] StateTransformer: creating nodes for deposed instance objects only
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.StateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2020/05/27 13:22:07 [TRACE] AttachResourceConfigTransformer: attaching to "kubernetes_manifest.nginx" (*terraform.NodeValidatableResource) config from k8s_deployment.tf:42,1-39
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootVariableTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.MissingProvisionerTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.MissingProvisionerTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ProvisionerTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ProvisionerTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2020/05/27 13:22:07 [TRACE] ProviderConfigTransformer: attaching to "provider.kubernetes-alpha" provider configuration from k8s_deployment.tf:7,1-28
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: kubernetes_manifest.nginx is provided by provider.kubernetes-alpha or inherited equivalent
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: kubernetes_manifest.web-service is provided by provider.kubernetes-alpha exactly
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: exact match for provider.kubernetes-alpha serving kubernetes_manifest.nginx
+2020/05/27 13:22:07 [DEBUG] ProviderTransformer: "kubernetes_manifest.nginx" (*terraform.NodeValidatableResource) needs provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: exact match for provider.kubernetes-alpha serving kubernetes_manifest.web-service
+2020/05/27 13:22:07 [DEBUG] ProviderTransformer: "kubernetes_manifest.web-service" (*terraform.NodeAbstractResourceInstance) needs provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ParentProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ParentProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching resource schema to kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching resource schema to kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.nginx" references: [var.replicas]
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.web-service" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "var.replicas" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "provider.kubernetes-alpha" references: []
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ReferenceTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CountBoundaryTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CountBoundaryTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CloseProvisionerTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CloseProvisionerTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  root - terraform.graphNodeRoot
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodeValidatableResource
+    kubernetes_manifest.web-service - *terraform.NodeAbstractResourceInstance
+  root - terraform.graphNodeRoot
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [DEBUG] Starting graph walk: walkValidate
+2020/05/27 13:22:07 [TRACE] dag/walk: updating graph
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "meta.count-boundary (EachMode fixup)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "root"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "provider.kubernetes-alpha (close)" waiting on "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "root" waiting on "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "root" waiting on "meta.count-boundary (EachMode fixup)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "meta.count-boundary (EachMode fixup)" waiting on "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.nginx" waiting on "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.nginx" waiting on "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.web-service" waiting on "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "meta.count-boundary (EachMode fixup)" waiting on "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "provider.kubernetes-alpha (close)" waiting on "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "provider.kubernetes-alpha (close)", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "root", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "meta.count-boundary (EachMode fixup)", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "kubernetes_manifest.nginx", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "kubernetes_manifest.web-service", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": starting visit (*terraform.NodeApplyableProvider)
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": starting visit (*terraform.NodeRootVariable)
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": evaluating
+2020/05/27 13:22:07 [TRACE] [walkValidate] Entering eval tree: var.replicas
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] [walkValidate] Exiting eval tree: var.replicas
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": visit complete
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": evaluating
+2020/05/27 13:22:07 [TRACE] [walkValidate] Entering eval tree: provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalInitProvider
+2020-05-27T13:22:07.414Z [INFO]  plugin: configuring client automatic mTLS
+2020-05-27T13:22:07.437Z [DEBUG] plugin: starting plugin: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha args=[/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha]
+2020-05-27T13:22:07.437Z [DEBUG] plugin: plugin started: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=218
+2020-05-27T13:22:07.437Z [DEBUG] plugin: waiting for RPC address: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha
+2020-05-27T13:22:07.445Z [INFO]  plugin.terraform-provider-kubernetes-alpha: configuring server automatic mTLS: timestamp=2020-05-27T13:22:07.445Z
+2020-05-27T13:22:07.467Z [DEBUG] plugin.terraform-provider-kubernetes-alpha: plugin address: network=unix address=/tmp/plugin206749473 timestamp=2020-05-27T13:22:07.467Z
+2020-05-27T13:22:07.467Z [DEBUG] plugin: using plugin: version=5
+2020/05/27 13:22:07 [TRACE] BuiltinEvalContext: Initialized "kubernetes-alpha" provider for provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalOpFilter
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalValidateProvider
+2020/05/27 13:22:07 [TRACE] buildProviderConfig for provider.kubernetes-alpha: using explicit config only
+2020/05/27 13:22:07 [TRACE] GRPCProvider: GetSchema
+2020/05/27 13:22:07 [TRACE] GRPCProvider: PrepareProviderConfig
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] [walkValidate] Exiting eval tree: provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": starting visit (*terraform.NodeValidatableResource)
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": evaluating
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service": starting visit (*terraform.NodeAbstractResourceInstance)
+2020/05/27 13:22:07 [TRACE] [walkValidate] Entering eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service": visit complete
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalValidateResource
+2020/05/27 13:22:07 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2020/05/27 13:22:07 [TRACE] [walkValidate] Exiting eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": starting visit (*terraform.graphNodeCloseProvider)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": evaluating
+2020/05/27 13:22:07 [TRACE] [walkValidate] Entering eval tree: provider.kubernetes-alpha (close)
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCloseProvider
+2020/05/27 13:22:07 [TRACE] GRPCProvider: Close
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "meta.count-boundary (EachMode fixup)"
+2020/05/27 13:22:07 [TRACE] vertex "meta.count-boundary (EachMode fixup)": starting visit (*terraform.NodeCountBoundary)
+2020/05/27 13:22:07 [TRACE] vertex "meta.count-boundary (EachMode fixup)": evaluating
+2020/05/27 13:22:07 [TRACE] [walkValidate] Entering eval tree: meta.count-boundary (EachMode fixup)
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2020/05/27 13:22:07 [WARN] Not fixing up EachModes for kubernetes_manifest.web-service because it has no config
+2020/05/27 13:22:07 [TRACE] [walkValidate] Exiting eval tree: meta.count-boundary (EachMode fixup)
+2020/05/27 13:22:07 [TRACE] vertex "meta.count-boundary (EachMode fixup)": visit complete
+2020-05-27T13:22:07.517Z [DEBUG] plugin: plugin process exited: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=218
+2020-05-27T13:22:07.517Z [DEBUG] plugin: plugin exited
+2020/05/27 13:22:07 [TRACE] [walkValidate] Exiting eval tree: provider.kubernetes-alpha (close)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "root"
+2020/05/27 13:22:07 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2020/05/27 13:22:07 [TRACE] vertex "root": visit complete
+2020/05/27 13:22:07 [INFO] backend/local: apply calling Refresh
+2020/05/27 13:22:07 [INFO] terraform: building graph: GraphTypeRefresh
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2020/05/27 13:22:07 [TRACE] ConfigTransformer: Starting for path: 
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2020/05/27 13:22:07 [TRACE] ConfigTransformer: Starting for path: 
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ConfigTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceTransformer
+2020/05/27 13:22:07 [TRACE] OrphanResourceInstanceTransformer: adding single-instance orphan node for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.StateTransformer
+2020/05/27 13:22:07 [TRACE] StateTransformer: creating nodes for deposed instance objects only
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.StateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2020/05/27 13:22:07 [TRACE] AttachResourceConfigTransformer: attaching to "kubernetes_manifest.nginx" (*terraform.NodeRefreshableManagedResource) config from k8s_deployment.tf:42,1-39
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootVariableTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.LocalTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OutputTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2020/05/27 13:22:07 [TRACE] ProviderConfigTransformer: attaching to "provider.kubernetes-alpha" provider configuration from k8s_deployment.tf:7,1-28
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: kubernetes_manifest.nginx is provided by provider.kubernetes-alpha or inherited equivalent
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: kubernetes_manifest.web-service is provided by provider.kubernetes-alpha exactly
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: exact match for provider.kubernetes-alpha serving kubernetes_manifest.nginx
+2020/05/27 13:22:07 [DEBUG] ProviderTransformer: "kubernetes_manifest.nginx" (*terraform.NodeRefreshableManagedResource) needs provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: exact match for provider.kubernetes-alpha serving kubernetes_manifest.web-service
+2020/05/27 13:22:07 [DEBUG] ProviderTransformer: "kubernetes_manifest.web-service" (*terraform.NodeRefreshableManagedResourceInstance) needs provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ParentProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ParentProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching resource schema to kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching resource schema to kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.web-service" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "var.replicas" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "provider.kubernetes-alpha" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.nginx" references: [var.replicas]
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ReferenceTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachDependenciesTransformer
+2020/05/27 13:22:07 [TRACE] AttachDependenciesTransformer: kubernetes_manifest.nginx depends on []
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachDependenciesTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResource
+    kubernetes_manifest.web-service - *terraform.NodeRefreshableManagedResourceInstance
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [DEBUG] Starting graph walk: walkRefresh
+2020/05/27 13:22:07 [TRACE] dag/walk: updating graph
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.nginx" waiting on "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.web-service" waiting on "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.nginx" waiting on "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "provider.kubernetes-alpha (close)" waiting on "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "provider.kubernetes-alpha (close)" waiting on "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "kubernetes_manifest.nginx", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "kubernetes_manifest.web-service", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "provider.kubernetes-alpha (close)", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "var.replicas"
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": starting visit (*terraform.NodeRootVariable)
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": evaluating
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Entering eval tree: var.replicas
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Exiting eval tree: var.replicas
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": visit complete
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": starting visit (*terraform.NodeApplyableProvider)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": evaluating
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Entering eval tree: provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalInitProvider
+2020-05-27T13:22:07.518Z [INFO]  plugin: configuring client automatic mTLS
+2020-05-27T13:22:07.540Z [DEBUG] plugin: starting plugin: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha args=[/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha]
+2020-05-27T13:22:07.540Z [DEBUG] plugin: plugin started: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=234
+2020-05-27T13:22:07.541Z [DEBUG] plugin: waiting for RPC address: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha
+2020-05-27T13:22:07.549Z [INFO]  plugin.terraform-provider-kubernetes-alpha: configuring server automatic mTLS: timestamp=2020-05-27T13:22:07.549Z
+2020-05-27T13:22:07.572Z [DEBUG] plugin.terraform-provider-kubernetes-alpha: plugin address: address=/tmp/plugin361194957 network=unix timestamp=2020-05-27T13:22:07.572Z
+2020-05-27T13:22:07.572Z [DEBUG] plugin: using plugin: version=5
+2020/05/27 13:22:07 [TRACE] BuiltinEvalContext: Initialized "kubernetes-alpha" provider for provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalOpFilter
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalOpFilter
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalConfigProvider
+2020/05/27 13:22:07 [TRACE] buildProviderConfig for provider.kubernetes-alpha: using explicit config only
+2020/05/27 13:22:07 [TRACE] GRPCProvider: GetSchema
+2020/05/27 13:22:07 [TRACE] GRPCProvider: Configure
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Exiting eval tree: provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": starting visit (*terraform.NodeRefreshableManagedResource)
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.web-service"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service": starting visit (*terraform.NodeRefreshableManagedResourceInstance)
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": expanding dynamic subgraph
+2020/05/27 13:22:07 [TRACE] NodeRefreshableManagedResourceInstance: kubernetes_manifest.web-service will be refreshed
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service": evaluating
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Entering eval tree: kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalReadState
+2020/05/27 13:22:07 [TRACE] EvalReadState: reading state for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ResourceCountTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ResourceCountTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodeRefreshableManagedResourceInstance
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanResourceCountTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanResourceCountTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.nginx" references: []
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": entering dynamic subgraph
+2020/05/27 13:22:07 [TRACE] dag/walk: updating graph
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": starting visit (*terraform.NodeRefreshableManagedResourceInstance)
+2020/05/27 13:22:07 [TRACE] NodeRefreshableManagedResourceInstance: kubernetes_manifest.nginx will be refreshed
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": evaluating
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Entering eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalReadState
+2020/05/27 13:22:07 [TRACE] EvalReadState: reading state for kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] UpgradeResourceState: schema version of kubernetes_manifest.nginx is still 1; calling provider "registry.terraform.io/-/kubernetes" for any other minor fixups
+2020/05/27 13:22:07 [TRACE] GRPCProvider: UpgradeResourceState
+2020/05/27 13:22:07 [TRACE] UpgradeResourceState: schema version of kubernetes_manifest.web-service is still 1; calling provider "registry.terraform.io/-/kubernetes" for any other minor fixups
+2020/05/27 13:22:07 [TRACE] GRPCProvider: UpgradeResourceState
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalRefreshDependencies
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalRefresh
+2020/05/27 13:22:07 [TRACE] GRPCProvider: ReadResource
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalRefreshDependencies
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalRefresh
+2020/05/27 13:22:07 [TRACE] GRPCProvider: ReadResource
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteState
+2020/05/27 13:22:07 [TRACE] EvalWriteState: recording 0 dependencies for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] EvalWriteState: writing current state object for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteState
+2020/05/27 13:22:07 [TRACE] EvalWriteState: recording 0 dependencies for kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] EvalWriteState: writing current state object for kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Exiting eval tree: kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service": visit complete
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Exiting eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": visit complete
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": dynamic subgraph completed successfully
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": starting visit (*terraform.graphNodeCloseProvider)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": evaluating
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Entering eval tree: provider.kubernetes-alpha (close)
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCloseProvider
+2020/05/27 13:22:07 [TRACE] GRPCProvider: Close
+2020-05-27T13:22:07.656Z [DEBUG] plugin: plugin process exited: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=234
+2020-05-27T13:22:07.656Z [DEBUG] plugin: plugin exited
+2020/05/27 13:22:07 [TRACE] [walkRefresh] Exiting eval tree: provider.kubernetes-alpha (close)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": visit complete
+2020/05/27 13:22:07 [INFO] backend/local: apply calling Plan
+2020/05/27 13:22:07 [INFO] terraform: building graph: GraphTypePlan
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2020/05/27 13:22:07 [TRACE] ConfigTransformer: Starting for path: 
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.LocalTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OutputTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceTransformer
+2020/05/27 13:22:07 [TRACE] OrphanResourceInstanceTransformer: adding single-instance orphan node for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.StateTransformer
+2020/05/27 13:22:07 [TRACE] StateTransformer: creating nodes for deposed instance objects only
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.StateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2020/05/27 13:22:07 [TRACE] AttachResourceConfigTransformer: attaching to "kubernetes_manifest.nginx" (*terraform.NodePlannableResource) config from k8s_deployment.tf:42,1-39
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootVariableTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.MissingProvisionerTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.MissingProvisionerTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ProvisionerTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ProvisionerTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2020/05/27 13:22:07 [TRACE] ProviderConfigTransformer: attaching to "provider.kubernetes-alpha" provider configuration from k8s_deployment.tf:7,1-28
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: kubernetes_manifest.web-service (orphan) is provided by provider.kubernetes-alpha exactly
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: kubernetes_manifest.nginx is provided by provider.kubernetes-alpha or inherited equivalent
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: exact match for provider.kubernetes-alpha serving kubernetes_manifest.web-service (orphan)
+2020/05/27 13:22:07 [DEBUG] ProviderTransformer: "kubernetes_manifest.web-service (orphan)" (*terraform.NodePlannableResourceInstanceOrphan) needs provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] ProviderTransformer: exact match for provider.kubernetes-alpha serving kubernetes_manifest.nginx
+2020/05/27 13:22:07 [DEBUG] ProviderTransformer: "kubernetes_manifest.nginx" (*terraform.NodePlannableResource) needs provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ParentProviderTransformer
+2020/05/27 13:22:07 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ParentProviderTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching resource schema to kubernetes_manifest.web-service (orphan)
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] AttachSchemaTransformer: attaching resource schema to kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.nginx" references: [var.replicas]
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.web-service (orphan)" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "var.replicas" references: []
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "provider.kubernetes-alpha" references: []
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ReferenceTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CountBoundaryTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CountBoundaryTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2020/05/27 13:22:07 [TRACE] ForcedCBDTransformer: "kubernetes_manifest.nginx" (*terraform.NodePlannableResource) has no CBD descendent, so skipping
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.CloseProvisionerTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.CloseProvisionerTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  root - terraform.graphNodeRoot
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+    var.replicas - *terraform.NodeRootVariable
+  kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+    provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+  provider.kubernetes-alpha - *terraform.NodeApplyableProvider
+  provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+    kubernetes_manifest.nginx - *terraform.NodePlannableResource
+    kubernetes_manifest.web-service (orphan) - *terraform.NodePlannableResourceInstanceOrphan
+  root - terraform.graphNodeRoot
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider.kubernetes-alpha (close) - *terraform.graphNodeCloseProvider
+  var.replicas - *terraform.NodeRootVariable
+  ------
+2020/05/27 13:22:07 [DEBUG] Starting graph walk: walkPlan
+2020/05/27 13:22:07 [TRACE] dag/walk: updating graph
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "meta.count-boundary (EachMode fixup)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "root"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.web-service (orphan)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "provider.kubernetes-alpha (close)" waiting on "kubernetes_manifest.web-service (orphan)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "meta.count-boundary (EachMode fixup)" waiting on "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "meta.count-boundary (EachMode fixup)" waiting on "kubernetes_manifest.web-service (orphan)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "provider.kubernetes-alpha (close)" waiting on "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "root" waiting on "meta.count-boundary (EachMode fixup)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "root" waiting on "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.nginx" waiting on "var.replicas"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.web-service (orphan)" waiting on "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: added edge: "kubernetes_manifest.nginx" waiting on "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "kubernetes_manifest.web-service (orphan)", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "provider.kubernetes-alpha (close)", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "meta.count-boundary (EachMode fixup)", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "root", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: dependencies changed for "kubernetes_manifest.nginx", sending new deps
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "var.replicas"
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": starting visit (*terraform.NodeRootVariable)
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": evaluating
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: var.replicas
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: var.replicas
+2020/05/27 13:22:07 [TRACE] vertex "var.replicas": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "provider.kubernetes-alpha"
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": starting visit (*terraform.NodeApplyableProvider)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": evaluating
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalInitProvider
+2020-05-27T13:22:07.657Z [INFO]  plugin: configuring client automatic mTLS
+2020-05-27T13:22:07.679Z [DEBUG] plugin: starting plugin: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha args=[/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha]
+2020-05-27T13:22:07.679Z [DEBUG] plugin: plugin started: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=251
+2020-05-27T13:22:07.679Z [DEBUG] plugin: waiting for RPC address: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha
+2020-05-27T13:22:07.687Z [INFO]  plugin.terraform-provider-kubernetes-alpha: configuring server automatic mTLS: timestamp=2020-05-27T13:22:07.687Z
+2020-05-27T13:22:07.710Z [DEBUG] plugin.terraform-provider-kubernetes-alpha: plugin address: address=/tmp/plugin814834514 network=unix timestamp=2020-05-27T13:22:07.710Z
+2020-05-27T13:22:07.710Z [DEBUG] plugin: using plugin: version=5
+2020/05/27 13:22:07 [TRACE] BuiltinEvalContext: Initialized "kubernetes-alpha" provider for provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] <root>: eval: terraform.EvalNoop
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalOpFilter
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalOpFilter
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalConfigProvider
+2020/05/27 13:22:07 [TRACE] buildProviderConfig for provider.kubernetes-alpha: using explicit config only
+2020/05/27 13:22:07 [TRACE] GRPCProvider: GetSchema
+2020/05/27 13:22:07 [TRACE] GRPCProvider: Configure
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: provider.kubernetes-alpha
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.web-service (orphan)"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service (orphan)": starting visit (*terraform.NodePlannableResourceInstanceOrphan)
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service (orphan)": evaluating
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": starting visit (*terraform.NodePlannableResource)
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: kubernetes_manifest.web-service (orphan)
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": evaluating
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalReadState
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteResourceState
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": expanding dynamic subgraph
+2020/05/27 13:22:07 [TRACE] EvalReadState: reading state for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ResourceCountTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ResourceCountTransformer with new graph:
+  kubernetes_manifest.nginx - *terraform.NodePlannableResourceInstance
+  ------
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.OrphanResourceCountTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.OrphanResourceCountTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2020/05/27 13:22:07 [DEBUG] ReferenceTransformer: "kubernetes_manifest.nginx" references: []
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] Executing graph transform *terraform.RootTransformer
+2020/05/27 13:22:07 [TRACE] Completed graph transform *terraform.RootTransformer (no changes)
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": entering dynamic subgraph
+2020/05/27 13:22:07 [TRACE] dag/walk: updating graph
+2020/05/27 13:22:07 [TRACE] UpgradeResourceState: schema version of kubernetes_manifest.web-service is still 1; calling provider "registry.terraform.io/-/kubernetes" for any other minor fixups
+2020/05/27 13:22:07 [TRACE] dag/walk: added new vertex: "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] GRPCProvider: UpgradeResourceState
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": starting visit (*terraform.NodePlannableResourceInstance)
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": evaluating
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalSequence
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalGetProvider
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalReadState
+2020/05/27 13:22:07 [TRACE] EvalReadState: reading state for kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] UpgradeResourceState: schema version of kubernetes_manifest.nginx is still 1; calling provider "registry.terraform.io/-/kubernetes" for any other minor fixups
+2020/05/27 13:22:07 [TRACE] GRPCProvider: UpgradeResourceState
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalDiffDestroy
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCheckPreventDestroy
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteDiff
+2020/05/27 13:22:07 [TRACE] EvalWriteDiff: recorded Delete change for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteState
+2020/05/27 13:22:07 [TRACE] EvalWriteState: removing state object for kubernetes_manifest.web-service
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: kubernetes_manifest.web-service (orphan)
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.web-service (orphan)": visit complete
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalValidateSelfRef
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalDiff
+2020/05/27 13:22:07 [TRACE] Re-validating config for "kubernetes_manifest.nginx"
+2020/05/27 13:22:07 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2020/05/27 13:22:07 [TRACE] GRPCProvider: PlanResourceChange
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCheckPreventDestroy
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteState
+2020/05/27 13:22:07 [TRACE] EvalWriteState: writing current state object for kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalWriteDiff
+2020/05/27 13:22:07 [TRACE] EvalWriteDiff: recorded Update change for kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: kubernetes_manifest.nginx
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": visit complete
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": dynamic subgraph completed successfully
+2020/05/27 13:22:07 [TRACE] vertex "kubernetes_manifest.nginx": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "meta.count-boundary (EachMode fixup)"
+2020/05/27 13:22:07 [TRACE] vertex "meta.count-boundary (EachMode fixup)": starting visit (*terraform.NodeCountBoundary)
+2020/05/27 13:22:07 [TRACE] vertex "meta.count-boundary (EachMode fixup)": evaluating
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: meta.count-boundary (EachMode fixup)
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "provider.kubernetes-alpha (close)"
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": starting visit (*terraform.graphNodeCloseProvider)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": evaluating
+2020/05/27 13:22:07 [TRACE] [walkPlan] Entering eval tree: provider.kubernetes-alpha (close)
+2020/05/27 13:22:07 [TRACE] <root>: eval: *terraform.EvalCloseProvider
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: meta.count-boundary (EachMode fixup)
+2020/05/27 13:22:07 [TRACE] GRPCProvider: Close
+2020/05/27 13:22:07 [TRACE] vertex "meta.count-boundary (EachMode fixup)": visit complete
+2020-05-27T13:22:07.796Z [DEBUG] plugin: plugin process exited: path=/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha pid=251
+2020-05-27T13:22:07.796Z [DEBUG] plugin: plugin exited
+2020/05/27 13:22:07 [TRACE] [walkPlan] Exiting eval tree: provider.kubernetes-alpha (close)
+2020/05/27 13:22:07 [TRACE] vertex "provider.kubernetes-alpha (close)": visit complete
+2020/05/27 13:22:07 [TRACE] dag/walk: visiting "root"
+2020/05/27 13:22:07 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2020/05/27 13:22:07 [TRACE] vertex "root": visit complete
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2020/05/27 13:22:07 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+panic: interface conversion: interface {} is *cty.unknownType, not bool
+
+goroutine 42 [running]:
+github.com/zclconf/go-cty/cty.Value.True(0x243a680, 0xc0000d0381, 0x1bca460, 0x36483c0, 0x243a780)
+	/opt/teamcity-agent/work/9e329aa031982669/pkg/mod/github.com/zclconf/go-cty@v1.2.1/cty/value_ops.go:355 +0x12c
+github.com/hashicorp/terraform/command/format.ctyEqualWithUnknown(0x243a780, 0xc00000e788, 0x1baf900, 0xc000483ce0, 0x243a780, 0xc0000ba108, 0x1baf900, 0xc00023e2a0, 0x243a780)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/command/format/diff.go:1123 +0x10b
+github.com/hashicorp/terraform/command/format.(*blockBodyDiffPrinter).writeAttrDiff(0xc0007a5868, 0xc000042238, 0x6, 0xc0000aabd0, 0x243a780, 0xc00000e788, 0x1baf900, 0xc000483ce0, 0x243a780, 0xc0000ba108, ...)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/command/format/diff.go:220 +0x5d0
+github.com/hashicorp/terraform/command/format.(*blockBodyDiffPrinter).writeBlockBodyDiff(0xc0007a5868, 0xc0002ec790, 0x243a780, 0xc0000ba128, 0x1baf900, 0xc00023e360, 0x243a780, 0xc0000ba130, 0x1baf900, 0xc00023e3c0, ...)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/command/format/diff.go:181 +0x693
+github.com/hashicorp/terraform/command/format.ResourceChange(0xc0007a9b00, 0x0, 0xc0002ec790, 0xc000153120, 0x4d, 0xc0004e4420)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/command/format/diff.go:125 +0x626
+github.com/hashicorp/terraform/backend/local.RenderPlan(0xc0001ec2a0, 0xc0000ba0d8, 0xc000153e50, 0x244e520, 0xc00000c440, 0xc000153120)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/backend/local/backend_plan.go:290 +0x6d9
+github.com/hashicorp/terraform/backend/local.(*Local).renderPlan(0xc00027de10, 0xc0001ec2a0, 0xc0000ba0d8, 0xc000153e50)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/backend/local/backend_plan.go:198 +0x68
+github.com/hashicorp/terraform/backend/local.(*Local).opApply(0xc00027de10, 0x2438bc0, 0xc0004bcfc0, 0x2438bc0, 0xc0004bd000, 0xc0003c6460, 0xc0004bcf80)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/backend/local/backend_apply.go:111 +0x15b8
+github.com/hashicorp/terraform/backend/local.(*Local).Operation.func1(0xc000153460, 0xc000153470, 0xc000153480, 0xc0003c6460, 0xc00027de10, 0xc0004bcf80, 0xc000153450, 0x2438bc0, 0xc0004bcfc0, 0x2438bc0, ...)
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/backend/local/backend.go:350 +0x135
+created by github.com/hashicorp/terraform/backend/local.(*Local).Operation
+	/opt/teamcity-agent/work/9e329aa031982669/src/github.com/hashicorp/terraform/backend/local/backend.go:334 +0x36b

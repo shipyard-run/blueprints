@@ -13,19 +13,32 @@ k8s_ingress "vault-http" {
   }
 }
 
-k8s_ingress "k8s-dashboard" {
+k8s_ingress "web" {
   cluster = "k8s_cluster.k3s"
+  service  = "web"
   
   network {
     name = "network.cloud"
   }
 
-  service = "kubernetes-dashboard"
-  namespace = "kubernetes-dashboard"
+  port {
+    local  = 9090
+    remote = 9090
+    host   = 9090
+  }
+}
+
+k8s_ingress "postgres" {
+  cluster = "k8s_cluster.k3s"
+  service  = "postgres"
+  
+  network {
+    name = "network.cloud"
+  }
 
   port {
-    local = 8443
-    remote = 8443
-    host = 18443
+    local  = 5432
+    remote = 5432
+    host   = 15432
   }
 }

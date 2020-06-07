@@ -5,9 +5,13 @@ docs "docs" {
   index_title = "Vault"
   index_pages = [ 
     "index",
-    "db",
     "auth",
-    "secrets"
+    "static",
+    "db",
+    "secrets",
+    "x509",
+    "transit"
+
   ]
 
   network {

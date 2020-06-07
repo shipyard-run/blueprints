@@ -1,0 +1,2769 @@
+RAW provider 2020/05/27 13:10:11 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:10:11 Finished
+RAW provider 2020/05/27 13:10:12 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:10:12 Finished
+RAW provider 2020/05/27 13:10:12 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:10:12 Finished
+RAW provider 2020/05/27 13:10:14 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Request][PlannedState]
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=2) {
+    (string) (len=8) "manifest": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=2) {
+          (string) (len=5) "ports": (cty.Type) {
+           typeImpl: (cty.typeTuple) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            ElemTypes: ([]cty.Type) (len=1 cap=1) {
+             (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=3) {
+                (string) (len=8) "protocol": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=10) "targetPort": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=4) "port": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 78
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=28) "app.kubernetes.io/managed-by": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    (string) (len=6) "object": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=28) "app.kubernetes.io/managed-by": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=4) {
+          (string) (len=5) "ports": (cty.Type) {
+           typeImpl: (cty.typeTuple) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            ElemTypes: ([]cty.Type) (len=1 cap=1) {
+             (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=3) {
+                (string) (len=4) "port": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 78
+                 }
+                },
+                (string) (len=8) "protocol": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=10) "targetPort": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=15) "sessionAffinity": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=4) "type": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ v: (map[string]interface {}) (len=2) {
+  (string) (len=6) "object": (map[string]interface {}) (len=4) {
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=4) "name": (string) (len=11) "web-service",
+    (string) (len=9) "namespace": (string) (len=7) "default",
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=28) "app.kubernetes.io/managed-by": (string) (len=9) "Terraform"
+    }
+   },
+   (string) (len=4) "spec": (map[string]interface {}) (len=4) {
+    (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+     (map[string]interface {}) (len=3) {
+      (string) (len=4) "port": (*big.Float)(0xc0005136b0)(443),
+      (string) (len=8) "protocol": (string) (len=3) "TCP",
+      (string) (len=10) "targetPort": (string) (len=4) "http"
+     }
+    },
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    },
+    (string) (len=15) "sessionAffinity": (string) (len=4) "None",
+    (string) (len=4) "type": (string) (len=9) "ClusterIP"
+   },
+   (string) (len=10) "apiVersion": (string) (len=2) "v1",
+   (string) (len=4) "kind": (string) (len=7) "Service"
+  },
+  (string) (len=8) "manifest": (map[string]interface {}) (len=4) {
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=28) "app.kubernetes.io/managed-by": (string) (len=9) "Terraform"
+    },
+    (string) (len=4) "name": (string) (len=11) "web-service",
+    (string) (len=9) "namespace": (string) (len=7) "default"
+   },
+   (string) (len=4) "spec": (map[string]interface {}) (len=2) {
+    (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+     (map[string]interface {}) (len=3) {
+      (string) (len=10) "targetPort": (string) (len=4) "http",
+      (string) (len=4) "port": (*big.Float)(0xc000512360)(443),
+      (string) (len=8) "protocol": (string) (len=3) "TCP"
+     }
+    },
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    }
+   },
+   (string) (len=10) "apiVersion": (string) (len=2) "v1",
+   (string) (len=4) "kind": (string) (len=7) "Service"
+  }
+ }
+}
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Request][PriorState]
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=2) {
+    (string) (len=8) "manifest": (cty.Type) {
+     typeImpl: (cty.pseudoTypeDynamic) {
+      typeImplSigil: (cty.typeImplSigil) {
+      }
+     }
+    },
+    (string) (len=6) "object": (cty.Type) {
+     typeImpl: (cty.pseudoTypeDynamic) {
+      typeImplSigil: (cty.typeImplSigil) {
+      }
+     }
+    }
+   }
+  }
+ },
+ v: (interface {}) <nil>
+}
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Request][PlannedPrivate]
+([]uint8) <nil>
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Request][PlannedState]
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=2) {
+    (string) (len=6) "object": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       },
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=6) {
+          (string) (len=23) "progressDeadlineSeconds": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=8) "replicas": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=20) "revisionHistoryLimit": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=11) "matchLabels": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=3) "app": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "strategy": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=13) "rollingUpdate": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=2) {
+                (string) (len=8) "maxSurge": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=14) "maxUnavailable": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             },
+             (string) (len=4) "type": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "template": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=4) "spec": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=6) {
+                (string) (len=13) "schedulerName": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=15) "securityContext": (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) {
+                  }
+                 }
+                },
+                (string) (len=29) "terminationGracePeriodSeconds": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 78
+                 }
+                },
+                (string) (len=10) "containers": (cty.Type) {
+                 typeImpl: (cty.typeTuple) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                   (cty.Type) {
+                    typeImpl: (cty.typeObject) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     AttrTypes: (map[string]cty.Type) (len=7) {
+                      (string) (len=5) "ports": (cty.Type) {
+                       typeImpl: (cty.typeTuple) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                         (cty.Type) {
+                          typeImpl: (cty.typeObject) {
+                           typeImplSigil: (cty.typeImplSigil) {
+                           },
+                           AttrTypes: (map[string]cty.Type) (len=2) {
+                            (string) (len=8) "protocol": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 83
+                             }
+                            },
+                            (string) (len=13) "containerPort": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 78
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      },
+                      (string) (len=9) "resources": (cty.Type) {
+                       typeImpl: (cty.typeObject) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        AttrTypes: (map[string]cty.Type) {
+                        }
+                       }
+                      },
+                      (string) (len=22) "terminationMessagePath": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=24) "terminationMessagePolicy": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=5) "image": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=15) "imagePullPolicy": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=4) "name": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                },
+                (string) (len=9) "dnsPolicy": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=13) "restartPolicy": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             },
+             (string) (len=8) "metadata": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=2) {
+                (string) (len=17) "creationTimestamp": (cty.Type) {
+                 typeImpl: (cty.pseudoTypeDynamic) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  }
+                 }
+                },
+                (string) (len=6) "labels": (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) (len=1) {
+                   (string) (len=3) "app": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    },
+    (string) (len=8) "manifest": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=8) "replicas": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=11) "matchLabels": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=3) "app": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "template": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=4) "spec": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=10) "containers": (cty.Type) {
+                 typeImpl: (cty.typeTuple) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                   (cty.Type) {
+                    typeImpl: (cty.typeObject) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     AttrTypes: (map[string]cty.Type) (len=3) {
+                      (string) (len=5) "image": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=4) "name": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=5) "ports": (cty.Type) {
+                       typeImpl: (cty.typeTuple) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                         (cty.Type) {
+                          typeImpl: (cty.typeObject) {
+                           typeImplSigil: (cty.typeImplSigil) {
+                           },
+                           AttrTypes: (map[string]cty.Type) (len=2) {
+                            (string) (len=13) "containerPort": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 78
+                             }
+                            },
+                            (string) (len=8) "protocol": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 83
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             },
+             (string) (len=8) "metadata": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=6) "labels": (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) (len=1) {
+                   (string) (len=3) "app": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ v: (map[string]interface {}) (len=2) {
+  (string) (len=6) "object": (map[string]interface {}) (len=4) {
+   (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+   (string) (len=4) "kind": (string) (len=10) "Deployment",
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    },
+    (string) (len=4) "name": (string) (len=16) "nginx-deployment",
+    (string) (len=9) "namespace": (string) (len=7) "default"
+   },
+   (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+    (string) (len=23) "progressDeadlineSeconds": (*big.Float)(0xc0000c3e60)(600),
+    (string) (len=8) "replicas": (*big.Float)(0xc0000c3e90)(3),
+    (string) (len=20) "revisionHistoryLimit": (*big.Float)(0xc0000c3ec0)(10),
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=11) "matchLabels": (map[string]interface {}) (len=1) {
+      (string) (len=3) "app": (string) (len=5) "nginx"
+     }
+    },
+    (string) (len=8) "strategy": (map[string]interface {}) (len=2) {
+     (string) (len=13) "rollingUpdate": (map[string]interface {}) (len=2) {
+      (string) (len=8) "maxSurge": (string) (len=3) "25%",
+      (string) (len=14) "maxUnavailable": (string) (len=3) "25%"
+     },
+     (string) (len=4) "type": (string) (len=13) "RollingUpdate"
+    },
+    (string) (len=8) "template": (map[string]interface {}) (len=2) {
+     (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+      (string) (len=15) "securityContext": (map[string]interface {}) {
+      },
+      (string) (len=29) "terminationGracePeriodSeconds": (*big.Float)(0xc000414390)(30),
+      (string) (len=10) "containers": ([]interface {}) (len=1 cap=1) {
+       (map[string]interface {}) (len=7) {
+        (string) (len=4) "name": (string) (len=5) "nginx",
+        (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+         (map[string]interface {}) (len=2) {
+          (string) (len=13) "containerPort": (*big.Float)(0xc0004141e0)(80),
+          (string) (len=8) "protocol": (string) (len=3) "TCP"
+         }
+        },
+        (string) (len=9) "resources": (map[string]interface {}) {
+        },
+        (string) (len=22) "terminationMessagePath": (string) (len=20) "/dev/termination-log",
+        (string) (len=24) "terminationMessagePolicy": (string) (len=4) "File",
+        (string) (len=5) "image": (string) (len=12) "nginx:1.14.2",
+        (string) (len=15) "imagePullPolicy": (string) (len=12) "IfNotPresent"
+       }
+      },
+      (string) (len=9) "dnsPolicy": (string) (len=12) "ClusterFirst",
+      (string) (len=13) "restartPolicy": (string) (len=6) "Always",
+      (string) (len=13) "schedulerName": (string) (len=17) "default-scheduler"
+     },
+     (string) (len=8) "metadata": (map[string]interface {}) (len=2) {
+      (string) (len=17) "creationTimestamp": (interface {}) <nil>,
+      (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+       (string) (len=3) "app": (string) (len=5) "nginx"
+      }
+     }
+    }
+   }
+  },
+  (string) (len=8) "manifest": (map[string]interface {}) (len=4) {
+   (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+   (string) (len=4) "kind": (string) (len=10) "Deployment",
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    },
+    (string) (len=4) "name": (string) (len=16) "nginx-deployment",
+    (string) (len=9) "namespace": (string) (len=7) "default"
+   },
+   (string) (len=4) "spec": (map[string]interface {}) (len=3) {
+    (string) (len=8) "template": (map[string]interface {}) (len=2) {
+     (string) (len=4) "spec": (map[string]interface {}) (len=1) {
+      (string) (len=10) "containers": ([]interface {}) (len=1 cap=1) {
+       (map[string]interface {}) (len=3) {
+        (string) (len=4) "name": (string) (len=5) "nginx",
+        (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+         (map[string]interface {}) (len=2) {
+          (string) (len=13) "containerPort": (*big.Float)(0xc0000c2690)(80),
+          (string) (len=8) "protocol": (string) (len=3) "TCP"
+         }
+        },
+        (string) (len=5) "image": (string) (len=12) "nginx:1.14.2"
+       }
+      }
+     },
+     (string) (len=8) "metadata": (map[string]interface {}) (len=1) {
+      (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+       (string) (len=3) "app": (string) (len=5) "nginx"
+      }
+     }
+    },
+    (string) (len=8) "replicas": (*big.Float)(0xc0000c2360)(3),
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=11) "matchLabels": (map[string]interface {}) (len=1) {
+      (string) (len=3) "app": (string) (len=5) "nginx"
+     }
+    }
+   }
+  }
+ }
+}
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Request][PriorState]
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=2) {
+    (string) (len=6) "object": (cty.Type) {
+     typeImpl: (cty.pseudoTypeDynamic) {
+      typeImplSigil: (cty.typeImplSigil) {
+      }
+     }
+    },
+    (string) (len=8) "manifest": (cty.Type) {
+     typeImpl: (cty.pseudoTypeDynamic) {
+      typeImplSigil: (cty.typeImplSigil) {
+      }
+     }
+    }
+   }
+  }
+ },
+ v: (interface {}) <nil>
+}
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Request][PlannedPrivate]
+([]uint8) <nil>
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Create] API response:
+(*unstructured.Unstructured)(0xc0006d2000)({
+ Object: (map[string]interface {}) (len=5) {
+  (string) (len=4) "kind": (string) (len=10) "Deployment",
+  (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+  (string) (len=8) "metadata": (map[string]interface {}) (len=9) {
+   (string) (len=9) "namespace": (string) (len=7) "default",
+   (string) (len=3) "uid": (string) (len=36) "ee5e692f-c63e-45f0-8519-6703b0a51aff",
+   (string) (len=10) "generation": (int64) 1,
+   (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+    (string) (len=3) "app": (string) (len=5) "nginx"
+   },
+   (string) (len=4) "name": (string) (len=16) "nginx-deployment",
+   (string) (len=8) "selfLink": (string) (len=61) "/apis/apps/v1/namespaces/default/deployments/nginx-deployment",
+   (string) (len=15) "resourceVersion": (string) (len=3) "437",
+   (string) (len=17) "creationTimestamp": (string) (len=20) "2020-05-27T13:10:15Z",
+   (string) (len=13) "managedFields": ([]interface {}) (len=2 cap=2) {
+    (map[string]interface {}) (len=6) {
+     (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+     (string) (len=4) "time": (string) (len=20) "2020-05-27T13:10:15Z",
+     (string) (len=10) "fieldsType": (string) (len=8) "FieldsV1",
+     (string) (len=8) "fieldsV1": (map[string]interface {}) (len=2) {
+      (string) (len=10) "f:metadata": (map[string]interface {}) (len=1) {
+       (string) (len=8) "f:labels": (map[string]interface {}) (len=1) {
+        (string) (len=5) "f:app": (map[string]interface {}) {
+        }
+       }
+      },
+      (string) (len=6) "f:spec": (map[string]interface {}) (len=6) {
+       (string) (len=25) "f:progressDeadlineSeconds": (map[string]interface {}) {
+       },
+       (string) (len=10) "f:replicas": (map[string]interface {}) {
+       },
+       (string) (len=22) "f:revisionHistoryLimit": (map[string]interface {}) {
+       },
+       (string) (len=10) "f:selector": (map[string]interface {}) (len=1) {
+        (string) (len=13) "f:matchLabels": (map[string]interface {}) (len=1) {
+         (string) (len=5) "f:app": (map[string]interface {}) {
+         }
+        }
+       },
+       (string) (len=10) "f:strategy": (map[string]interface {}) (len=2) {
+        (string) (len=15) "f:rollingUpdate": (map[string]interface {}) (len=2) {
+         (string) (len=10) "f:maxSurge": (map[string]interface {}) {
+         },
+         (string) (len=16) "f:maxUnavailable": (map[string]interface {}) {
+         }
+        },
+        (string) (len=6) "f:type": (map[string]interface {}) {
+        }
+       },
+       (string) (len=10) "f:template": (map[string]interface {}) (len=2) {
+        (string) (len=10) "f:metadata": (map[string]interface {}) (len=2) {
+         (string) (len=19) "f:creationTimestamp": (map[string]interface {}) {
+         },
+         (string) (len=8) "f:labels": (map[string]interface {}) (len=1) {
+          (string) (len=5) "f:app": (map[string]interface {}) {
+          }
+         }
+        },
+        (string) (len=6) "f:spec": (map[string]interface {}) (len=5) {
+         (string) (len=12) "f:containers": (map[string]interface {}) (len=1) {
+          (string) (len=18) "k:{\"name\":\"nginx\"}": (map[string]interface {}) (len=7) {
+           (string) (len=1) ".": (map[string]interface {}) {
+           },
+           (string) (len=7) "f:image": (map[string]interface {}) {
+           },
+           (string) (len=17) "f:imagePullPolicy": (map[string]interface {}) {
+           },
+           (string) (len=6) "f:name": (map[string]interface {}) {
+           },
+           (string) (len=7) "f:ports": (map[string]interface {}) (len=1) {
+            (string) (len=39) "k:{\"containerPort\":80,\"protocol\":\"TCP\"}": (map[string]interface {}) (len=3) {
+             (string) (len=1) ".": (map[string]interface {}) {
+             },
+             (string) (len=15) "f:containerPort": (map[string]interface {}) {
+             },
+             (string) (len=10) "f:protocol": (map[string]interface {}) {
+             }
+            }
+           },
+           (string) (len=24) "f:terminationMessagePath": (map[string]interface {}) {
+           },
+           (string) (len=26) "f:terminationMessagePolicy": (map[string]interface {}) {
+           }
+          }
+         },
+         (string) (len=11) "f:dnsPolicy": (map[string]interface {}) {
+         },
+         (string) (len=15) "f:restartPolicy": (map[string]interface {}) {
+         },
+         (string) (len=15) "f:schedulerName": (map[string]interface {}) {
+         },
+         (string) (len=31) "f:terminationGracePeriodSeconds": (map[string]interface {}) {
+         }
+        }
+       }
+      }
+     },
+     (string) (len=7) "manager": (string) (len=9) "Terraform",
+     (string) (len=9) "operation": (string) (len=5) "Apply"
+    },
+    (map[string]interface {}) (len=5) {
+     (string) (len=10) "fieldsType": (string) (len=8) "FieldsV1",
+     (string) (len=8) "fieldsV1": (map[string]interface {}) (len=1) {
+      (string) (len=6) "f:spec": (map[string]interface {}) (len=1) {
+       (string) (len=10) "f:template": (map[string]interface {}) (len=1) {
+        (string) (len=10) "f:metadata": (map[string]interface {}) (len=1) {
+         (string) (len=19) "f:creationTimestamp": (map[string]interface {}) {
+         }
+        }
+       }
+      }
+     },
+     (string) (len=7) "manager": (string) (len=18) "before-first-apply",
+     (string) (len=9) "operation": (string) (len=6) "Update",
+     (string) (len=10) "apiVersion": (string) (len=7) "apps/v1"
+    }
+   }
+  },
+  (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+   (string) (len=8) "replicas": (int64) 3,
+   (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+    (string) (len=11) "matchLabels": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    }
+   },
+   (string) (len=8) "template": (map[string]interface {}) (len=2) {
+    (string) (len=8) "metadata": (map[string]interface {}) (len=2) {
+     (string) (len=17) "creationTimestamp": (interface {}) <nil>,
+     (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+      (string) (len=3) "app": (string) (len=5) "nginx"
+     }
+    },
+    (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+     (string) (len=9) "dnsPolicy": (string) (len=12) "ClusterFirst",
+     (string) (len=15) "securityContext": (map[string]interface {}) {
+     },
+     (string) (len=13) "schedulerName": (string) (len=17) "default-scheduler",
+     (string) (len=10) "containers": ([]interface {}) (len=1 cap=1) {
+      (map[string]interface {}) (len=7) {
+       (string) (len=22) "terminationMessagePath": (string) (len=20) "/dev/termination-log",
+       (string) (len=24) "terminationMessagePolicy": (string) (len=4) "File",
+       (string) (len=15) "imagePullPolicy": (string) (len=12) "IfNotPresent",
+       (string) (len=4) "name": (string) (len=5) "nginx",
+       (string) (len=5) "image": (string) (len=12) "nginx:1.14.2",
+       (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+        (map[string]interface {}) (len=2) {
+         (string) (len=13) "containerPort": (int64) 80,
+         (string) (len=8) "protocol": (string) (len=3) "TCP"
+        }
+       },
+       (string) (len=9) "resources": (map[string]interface {}) {
+       }
+      }
+     },
+     (string) (len=13) "restartPolicy": (string) (len=6) "Always",
+     (string) (len=29) "terminationGracePeriodSeconds": (int64) 30
+    }
+   },
+   (string) (len=8) "strategy": (map[string]interface {}) (len=2) {
+    (string) (len=4) "type": (string) (len=13) "RollingUpdate",
+    (string) (len=13) "rollingUpdate": (map[string]interface {}) (len=2) {
+     (string) (len=14) "maxUnavailable": (string) (len=3) "25%",
+     (string) (len=8) "maxSurge": (string) (len=3) "25%"
+    }
+   },
+   (string) (len=20) "revisionHistoryLimit": (int64) 10,
+   (string) (len=23) "progressDeadlineSeconds": (int64) 600
+  },
+  (string) (len=6) "status": (map[string]interface {}) {
+  }
+ }
+})
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Create] transformed response:
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=4) {
+    (string) (len=4) "kind": (cty.Type) {
+     typeImpl: (cty.primitiveType) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      Kind: (cty.primitiveTypeKind) 83
+     }
+    },
+    (string) (len=8) "metadata": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=3) {
+       (string) (len=6) "labels": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=1) {
+          (string) (len=3) "app": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       },
+       (string) (len=4) "name": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=9) "namespace": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    },
+    (string) (len=4) "spec": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=6) {
+       (string) (len=8) "replicas": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 78
+        }
+       },
+       (string) (len=20) "revisionHistoryLimit": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 78
+        }
+       },
+       (string) (len=8) "selector": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=1) {
+          (string) (len=11) "matchLabels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=8) "strategy": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=2) {
+          (string) (len=4) "type": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=13) "rollingUpdate": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=8) "maxSurge": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             },
+             (string) (len=14) "maxUnavailable": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=8) "template": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=2) {
+          (string) (len=8) "metadata": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=17) "creationTimestamp": (cty.Type) {
+              typeImpl: (cty.pseudoTypeDynamic) {
+               typeImplSigil: (cty.typeImplSigil) {
+               }
+              }
+             },
+             (string) (len=6) "labels": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=3) "app": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=4) "spec": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=6) {
+             (string) (len=10) "containers": (cty.Type) {
+              typeImpl: (cty.typeTuple) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) (len=7) {
+                   (string) (len=9) "resources": (cty.Type) {
+                    typeImpl: (cty.typeObject) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     AttrTypes: (map[string]cty.Type) {
+                     }
+                    }
+                   },
+                   (string) (len=22) "terminationMessagePath": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   },
+                   (string) (len=24) "terminationMessagePolicy": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   },
+                   (string) (len=5) "image": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   },
+                   (string) (len=15) "imagePullPolicy": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   },
+                   (string) (len=4) "name": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   },
+                   (string) (len=5) "ports": (cty.Type) {
+                    typeImpl: (cty.typeTuple) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                      (cty.Type) {
+                       typeImpl: (cty.typeObject) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        AttrTypes: (map[string]cty.Type) (len=2) {
+                         (string) (len=13) "containerPort": (cty.Type) {
+                          typeImpl: (cty.primitiveType) {
+                           typeImplSigil: (cty.typeImplSigil) {
+                           },
+                           Kind: (cty.primitiveTypeKind) 78
+                          }
+                         },
+                         (string) (len=8) "protocol": (cty.Type) {
+                          typeImpl: (cty.primitiveType) {
+                           typeImplSigil: (cty.typeImplSigil) {
+                           },
+                           Kind: (cty.primitiveTypeKind) 83
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             },
+             (string) (len=9) "dnsPolicy": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             },
+             (string) (len=13) "restartPolicy": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             },
+             (string) (len=13) "schedulerName": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             },
+             (string) (len=15) "securityContext": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) {
+               }
+              }
+             },
+             (string) (len=29) "terminationGracePeriodSeconds": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 78
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=23) "progressDeadlineSeconds": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 78
+        }
+       }
+      }
+     }
+    },
+    (string) (len=10) "apiVersion": (cty.Type) {
+     typeImpl: (cty.primitiveType) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      Kind: (cty.primitiveTypeKind) 83
+     }
+    }
+   }
+  }
+ },
+ v: (map[string]interface {}) (len=4) {
+  (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+   (string) (len=8) "strategy": (map[string]interface {}) (len=2) {
+    (string) (len=4) "type": (string) (len=13) "RollingUpdate",
+    (string) (len=13) "rollingUpdate": (map[string]interface {}) (len=2) {
+     (string) (len=14) "maxUnavailable": (string) (len=3) "25%",
+     (string) (len=8) "maxSurge": (string) (len=3) "25%"
+    }
+   },
+   (string) (len=8) "template": (map[string]interface {}) (len=2) {
+    (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+     (string) (len=13) "schedulerName": (string) (len=17) "default-scheduler",
+     (string) (len=15) "securityContext": (map[string]interface {}) {
+     },
+     (string) (len=29) "terminationGracePeriodSeconds": (*big.Float)(0xc0002ca150)(30),
+     (string) (len=10) "containers": ([]interface {}) (len=1 cap=1) {
+      (map[string]interface {}) (len=7) {
+       (string) (len=5) "image": (string) (len=12) "nginx:1.14.2",
+       (string) (len=15) "imagePullPolicy": (string) (len=12) "IfNotPresent",
+       (string) (len=4) "name": (string) (len=5) "nginx",
+       (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+        (map[string]interface {}) (len=2) {
+         (string) (len=13) "containerPort": (*big.Float)(0xc00007fd10)(80),
+         (string) (len=8) "protocol": (string) (len=3) "TCP"
+        }
+       },
+       (string) (len=9) "resources": (map[string]interface {}) {
+       },
+       (string) (len=22) "terminationMessagePath": (string) (len=20) "/dev/termination-log",
+       (string) (len=24) "terminationMessagePolicy": (string) (len=4) "File"
+      }
+     },
+     (string) (len=9) "dnsPolicy": (string) (len=12) "ClusterFirst",
+     (string) (len=13) "restartPolicy": (string) (len=6) "Always"
+    },
+    (string) (len=8) "metadata": (map[string]interface {}) (len=2) {
+     (string) (len=17) "creationTimestamp": (interface {}) <nil>,
+     (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+      (string) (len=3) "app": (string) (len=5) "nginx"
+     }
+    }
+   },
+   (string) (len=23) "progressDeadlineSeconds": (*big.Float)(0xc00007f200)(600),
+   (string) (len=8) "replicas": (*big.Float)(0xc00007f2c0)(3),
+   (string) (len=20) "revisionHistoryLimit": (*big.Float)(0xc00007f320)(10),
+   (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+    (string) (len=11) "matchLabels": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    }
+   }
+  },
+  (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+  (string) (len=4) "kind": (string) (len=10) "Deployment",
+  (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+   (string) (len=4) "name": (string) (len=16) "nginx-deployment",
+   (string) (len=9) "namespace": (string) (len=7) "default",
+   (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+    (string) (len=3) "app": (string) (len=5) "nginx"
+   }
+  }
+ }
+}
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Create] API response:
+(*unstructured.Unstructured)(0xc0007be008)({
+ Object: (map[string]interface {}) (len=5) {
+  (string) (len=4) "kind": (string) (len=7) "Service",
+  (string) (len=10) "apiVersion": (string) (len=2) "v1",
+  (string) (len=8) "metadata": (map[string]interface {}) (len=8) {
+   (string) (len=4) "name": (string) (len=11) "web-service",
+   (string) (len=9) "namespace": (string) (len=7) "default",
+   (string) (len=8) "selfLink": (string) (len=47) "/api/v1/namespaces/default/services/web-service",
+   (string) (len=3) "uid": (string) (len=36) "61727dd4-eb7c-4d79-b922-27e152ee987a",
+   (string) (len=15) "resourceVersion": (string) (len=3) "439",
+   (string) (len=17) "creationTimestamp": (string) (len=20) "2020-05-27T13:10:15Z",
+   (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+    (string) (len=28) "app.kubernetes.io/managed-by": (string) (len=9) "Terraform"
+   },
+   (string) (len=13) "managedFields": ([]interface {}) (len=1 cap=1) {
+    (map[string]interface {}) (len=6) {
+     (string) (len=10) "fieldsType": (string) (len=8) "FieldsV1",
+     (string) (len=8) "fieldsV1": (map[string]interface {}) (len=2) {
+      (string) (len=10) "f:metadata": (map[string]interface {}) (len=1) {
+       (string) (len=8) "f:labels": (map[string]interface {}) (len=1) {
+        (string) (len=30) "f:app.kubernetes.io/managed-by": (map[string]interface {}) {
+        }
+       }
+      },
+      (string) (len=6) "f:spec": (map[string]interface {}) (len=4) {
+       (string) (len=7) "f:ports": (map[string]interface {}) (len=1) {
+        (string) (len=31) "k:{\"port\":443,\"protocol\":\"TCP\"}": (map[string]interface {}) (len=4) {
+         (string) (len=1) ".": (map[string]interface {}) {
+         },
+         (string) (len=6) "f:port": (map[string]interface {}) {
+         },
+         (string) (len=10) "f:protocol": (map[string]interface {}) {
+         },
+         (string) (len=12) "f:targetPort": (map[string]interface {}) {
+         }
+        }
+       },
+       (string) (len=10) "f:selector": (map[string]interface {}) (len=1) {
+        (string) (len=5) "f:app": (map[string]interface {}) {
+        }
+       },
+       (string) (len=17) "f:sessionAffinity": (map[string]interface {}) {
+       },
+       (string) (len=6) "f:type": (map[string]interface {}) {
+       }
+      }
+     },
+     (string) (len=7) "manager": (string) (len=9) "Terraform",
+     (string) (len=9) "operation": (string) (len=5) "Apply",
+     (string) (len=10) "apiVersion": (string) (len=2) "v1",
+     (string) (len=4) "time": (string) (len=20) "2020-05-27T13:10:15Z"
+    }
+   }
+  },
+  (string) (len=4) "spec": (map[string]interface {}) (len=5) {
+   (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+    (string) (len=3) "app": (string) (len=5) "nginx"
+   },
+   (string) (len=9) "clusterIP": (string) (len=12) "10.43.121.56",
+   (string) (len=4) "type": (string) (len=9) "ClusterIP",
+   (string) (len=15) "sessionAffinity": (string) (len=4) "None",
+   (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+    (map[string]interface {}) (len=3) {
+     (string) (len=8) "protocol": (string) (len=3) "TCP",
+     (string) (len=4) "port": (int64) 443,
+     (string) (len=10) "targetPort": (string) (len=4) "http"
+    }
+   }
+  },
+  (string) (len=6) "status": (map[string]interface {}) (len=1) {
+   (string) (len=12) "loadBalancer": (map[string]interface {}) {
+   }
+  }
+ }
+})
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Create] transformed response:
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=4) {
+    (string) (len=8) "metadata": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=3) {
+       (string) (len=6) "labels": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=1) {
+          (string) (len=28) "app.kubernetes.io/managed-by": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       },
+       (string) (len=4) "name": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=9) "namespace": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    },
+    (string) (len=4) "spec": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=5) {
+       (string) (len=9) "clusterIP": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=5) "ports": (cty.Type) {
+        typeImpl: (cty.typeTuple) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         ElemTypes: ([]cty.Type) (len=1 cap=1) {
+          (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=3) {
+             (string) (len=4) "port": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 78
+              }
+             },
+             (string) (len=8) "protocol": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             },
+             (string) (len=10) "targetPort": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=8) "selector": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=1) {
+          (string) (len=3) "app": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       },
+       (string) (len=15) "sessionAffinity": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "type": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    },
+    (string) (len=10) "apiVersion": (cty.Type) {
+     typeImpl: (cty.primitiveType) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      Kind: (cty.primitiveTypeKind) 83
+     }
+    },
+    (string) (len=4) "kind": (cty.Type) {
+     typeImpl: (cty.primitiveType) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      Kind: (cty.primitiveTypeKind) 83
+     }
+    }
+   }
+  }
+ },
+ v: (map[string]interface {}) (len=4) {
+  (string) (len=4) "kind": (string) (len=7) "Service",
+  (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+   (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+    (string) (len=28) "app.kubernetes.io/managed-by": (string) (len=9) "Terraform"
+   },
+   (string) (len=4) "name": (string) (len=11) "web-service",
+   (string) (len=9) "namespace": (string) (len=7) "default"
+  },
+  (string) (len=4) "spec": (map[string]interface {}) (len=5) {
+   (string) (len=9) "clusterIP": (string) (len=12) "10.43.121.56",
+   (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+    (map[string]interface {}) (len=3) {
+     (string) (len=4) "port": (*big.Float)(0xc0005d3b30)(443),
+     (string) (len=8) "protocol": (string) (len=3) "TCP",
+     (string) (len=10) "targetPort": (string) (len=4) "http"
+    }
+   },
+   (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+    (string) (len=3) "app": (string) (len=5) "nginx"
+   },
+   (string) (len=15) "sessionAffinity": (string) (len=4) "None",
+   (string) (len=4) "type": (string) (len=9) "ClusterIP"
+  },
+  (string) (len=10) "apiVersion": (string) (len=2) "v1"
+ }
+}
+
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Create] transformed new state:
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=2) {
+    (string) (len=8) "manifest": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=8) "template": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=4) "spec": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=10) "containers": (cty.Type) {
+                 typeImpl: (cty.typeTuple) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                   (cty.Type) {
+                    typeImpl: (cty.typeObject) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     AttrTypes: (map[string]cty.Type) (len=3) {
+                      (string) (len=5) "image": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=4) "name": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=5) "ports": (cty.Type) {
+                       typeImpl: (cty.typeTuple) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                         (cty.Type) {
+                          typeImpl: (cty.typeObject) {
+                           typeImplSigil: (cty.typeImplSigil) {
+                           },
+                           AttrTypes: (map[string]cty.Type) (len=2) {
+                            (string) (len=8) "protocol": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 83
+                             }
+                            },
+                            (string) (len=13) "containerPort": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 78
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             },
+             (string) (len=8) "metadata": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=6) "labels": (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) (len=1) {
+                   (string) (len=3) "app": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "replicas": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=11) "matchLabels": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=3) "app": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    },
+    (string) (len=6) "object": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=6) {
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=11) "matchLabels": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=1) {
+                (string) (len=3) "app": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "strategy": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=4) "type": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             },
+             (string) (len=13) "rollingUpdate": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=2) {
+                (string) (len=8) "maxSurge": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=14) "maxUnavailable": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "template": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=2) {
+             (string) (len=8) "metadata": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=2) {
+                (string) (len=6) "labels": (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) (len=1) {
+                   (string) (len=3) "app": (cty.Type) {
+                    typeImpl: (cty.primitiveType) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     Kind: (cty.primitiveTypeKind) 83
+                    }
+                   }
+                  }
+                 }
+                },
+                (string) (len=17) "creationTimestamp": (cty.Type) {
+                 typeImpl: (cty.pseudoTypeDynamic) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  }
+                 }
+                }
+               }
+              }
+             },
+             (string) (len=4) "spec": (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=6) {
+                (string) (len=13) "restartPolicy": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=13) "schedulerName": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=15) "securityContext": (cty.Type) {
+                 typeImpl: (cty.typeObject) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  AttrTypes: (map[string]cty.Type) {
+                  }
+                 }
+                },
+                (string) (len=29) "terminationGracePeriodSeconds": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 78
+                 }
+                },
+                (string) (len=10) "containers": (cty.Type) {
+                 typeImpl: (cty.typeTuple) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                   (cty.Type) {
+                    typeImpl: (cty.typeObject) {
+                     typeImplSigil: (cty.typeImplSigil) {
+                     },
+                     AttrTypes: (map[string]cty.Type) (len=7) {
+                      (string) (len=22) "terminationMessagePath": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=24) "terminationMessagePolicy": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=5) "image": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=15) "imagePullPolicy": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=4) "name": (cty.Type) {
+                       typeImpl: (cty.primitiveType) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        Kind: (cty.primitiveTypeKind) 83
+                       }
+                      },
+                      (string) (len=5) "ports": (cty.Type) {
+                       typeImpl: (cty.typeTuple) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        ElemTypes: ([]cty.Type) (len=1 cap=1) {
+                         (cty.Type) {
+                          typeImpl: (cty.typeObject) {
+                           typeImplSigil: (cty.typeImplSigil) {
+                           },
+                           AttrTypes: (map[string]cty.Type) (len=2) {
+                            (string) (len=13) "containerPort": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 78
+                             }
+                            },
+                            (string) (len=8) "protocol": (cty.Type) {
+                             typeImpl: (cty.primitiveType) {
+                              typeImplSigil: (cty.typeImplSigil) {
+                              },
+                              Kind: (cty.primitiveTypeKind) 83
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      },
+                      (string) (len=9) "resources": (cty.Type) {
+                       typeImpl: (cty.typeObject) {
+                        typeImplSigil: (cty.typeImplSigil) {
+                        },
+                        AttrTypes: (map[string]cty.Type) {
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                },
+                (string) (len=9) "dnsPolicy": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=23) "progressDeadlineSeconds": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=8) "replicas": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          },
+          (string) (len=20) "revisionHistoryLimit": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 78
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ v: (map[string]interface {}) (len=2) {
+  (string) (len=8) "manifest": (map[string]interface {}) (len=4) {
+   (string) (len=4) "spec": (map[string]interface {}) (len=3) {
+    (string) (len=8) "replicas": (*big.Float)(0xc0000c2360)(3),
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=11) "matchLabels": (map[string]interface {}) (len=1) {
+      (string) (len=3) "app": (string) (len=5) "nginx"
+     }
+    },
+    (string) (len=8) "template": (map[string]interface {}) (len=2) {
+     (string) (len=4) "spec": (map[string]interface {}) (len=1) {
+      (string) (len=10) "containers": ([]interface {}) (len=1 cap=1) {
+       (map[string]interface {}) (len=3) {
+        (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+         (map[string]interface {}) (len=2) {
+          (string) (len=13) "containerPort": (*big.Float)(0xc0000c2690)(80),
+          (string) (len=8) "protocol": (string) (len=3) "TCP"
+         }
+        },
+        (string) (len=5) "image": (string) (len=12) "nginx:1.14.2",
+        (string) (len=4) "name": (string) (len=5) "nginx"
+       }
+      }
+     },
+     (string) (len=8) "metadata": (map[string]interface {}) (len=1) {
+      (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+       (string) (len=3) "app": (string) (len=5) "nginx"
+      }
+     }
+    }
+   },
+   (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+   (string) (len=4) "kind": (string) (len=10) "Deployment",
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    },
+    (string) (len=4) "name": (string) (len=16) "nginx-deployment",
+    (string) (len=9) "namespace": (string) (len=7) "default"
+   }
+  },
+  (string) (len=6) "object": (map[string]interface {}) (len=4) {
+   (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+    (string) (len=23) "progressDeadlineSeconds": (*big.Float)(0xc00007f200)(600),
+    (string) (len=8) "replicas": (*big.Float)(0xc00007f2c0)(3),
+    (string) (len=20) "revisionHistoryLimit": (*big.Float)(0xc00007f320)(10),
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=11) "matchLabels": (map[string]interface {}) (len=1) {
+      (string) (len=3) "app": (string) (len=5) "nginx"
+     }
+    },
+    (string) (len=8) "strategy": (map[string]interface {}) (len=2) {
+     (string) (len=13) "rollingUpdate": (map[string]interface {}) (len=2) {
+      (string) (len=8) "maxSurge": (string) (len=3) "25%",
+      (string) (len=14) "maxUnavailable": (string) (len=3) "25%"
+     },
+     (string) (len=4) "type": (string) (len=13) "RollingUpdate"
+    },
+    (string) (len=8) "template": (map[string]interface {}) (len=2) {
+     (string) (len=4) "spec": (map[string]interface {}) (len=6) {
+      (string) (len=9) "dnsPolicy": (string) (len=12) "ClusterFirst",
+      (string) (len=13) "restartPolicy": (string) (len=6) "Always",
+      (string) (len=13) "schedulerName": (string) (len=17) "default-scheduler",
+      (string) (len=15) "securityContext": (map[string]interface {}) {
+      },
+      (string) (len=29) "terminationGracePeriodSeconds": (*big.Float)(0xc0002ca150)(30),
+      (string) (len=10) "containers": ([]interface {}) (len=1 cap=1) {
+       (map[string]interface {}) (len=7) {
+        (string) (len=15) "imagePullPolicy": (string) (len=12) "IfNotPresent",
+        (string) (len=4) "name": (string) (len=5) "nginx",
+        (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+         (map[string]interface {}) (len=2) {
+          (string) (len=13) "containerPort": (*big.Float)(0xc00007fd10)(80),
+          (string) (len=8) "protocol": (string) (len=3) "TCP"
+         }
+        },
+        (string) (len=9) "resources": (map[string]interface {}) {
+        },
+        (string) (len=22) "terminationMessagePath": (string) (len=20) "/dev/termination-log",
+        (string) (len=24) "terminationMessagePolicy": (string) (len=4) "File",
+        (string) (len=5) "image": (string) (len=12) "nginx:1.14.2"
+       }
+      }
+     },
+     (string) (len=8) "metadata": (map[string]interface {}) (len=2) {
+      (string) (len=17) "creationTimestamp": (interface {}) <nil>,
+      (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+       (string) (len=3) "app": (string) (len=5) "nginx"
+      }
+     }
+    }
+   },
+   (string) (len=10) "apiVersion": (string) (len=7) "apps/v1",
+   (string) (len=4) "kind": (string) (len=10) "Deployment",
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    },
+    (string) (len=4) "name": (string) (len=16) "nginx-deployment",
+    (string) (len=9) "namespace": (string) (len=7) "default"
+   }
+  }
+ }
+}
+RAW provider 2020/05/27 13:10:15 [ApplyResourceChange][Create] transformed new state:
+(cty.Value) {
+ ty: (cty.Type) {
+  typeImpl: (cty.typeObject) {
+   typeImplSigil: (cty.typeImplSigil) {
+   },
+   AttrTypes: (map[string]cty.Type) (len=2) {
+    (string) (len=8) "manifest": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=28) "app.kubernetes.io/managed-by": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       },
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=2) {
+          (string) (len=5) "ports": (cty.Type) {
+           typeImpl: (cty.typeTuple) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            ElemTypes: ([]cty.Type) (len=1 cap=1) {
+             (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=3) {
+                (string) (len=10) "targetPort": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=4) "port": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 78
+                 }
+                },
+                (string) (len=8) "protocol": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       }
+      }
+     }
+    },
+    (string) (len=6) "object": (cty.Type) {
+     typeImpl: (cty.typeObject) {
+      typeImplSigil: (cty.typeImplSigil) {
+      },
+      AttrTypes: (map[string]cty.Type) (len=4) {
+       (string) (len=4) "spec": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=5) {
+          (string) (len=8) "selector": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=3) "app": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=15) "sessionAffinity": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=4) "type": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "clusterIP": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=5) "ports": (cty.Type) {
+           typeImpl: (cty.typeTuple) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            ElemTypes: ([]cty.Type) (len=1 cap=1) {
+             (cty.Type) {
+              typeImpl: (cty.typeObject) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               AttrTypes: (map[string]cty.Type) (len=3) {
+                (string) (len=4) "port": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 78
+                 }
+                },
+                (string) (len=8) "protocol": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                },
+                (string) (len=10) "targetPort": (cty.Type) {
+                 typeImpl: (cty.primitiveType) {
+                  typeImplSigil: (cty.typeImplSigil) {
+                  },
+                  Kind: (cty.primitiveTypeKind) 83
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       (string) (len=10) "apiVersion": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=4) "kind": (cty.Type) {
+        typeImpl: (cty.primitiveType) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         Kind: (cty.primitiveTypeKind) 83
+        }
+       },
+       (string) (len=8) "metadata": (cty.Type) {
+        typeImpl: (cty.typeObject) {
+         typeImplSigil: (cty.typeImplSigil) {
+         },
+         AttrTypes: (map[string]cty.Type) (len=3) {
+          (string) (len=6) "labels": (cty.Type) {
+           typeImpl: (cty.typeObject) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            AttrTypes: (map[string]cty.Type) (len=1) {
+             (string) (len=28) "app.kubernetes.io/managed-by": (cty.Type) {
+              typeImpl: (cty.primitiveType) {
+               typeImplSigil: (cty.typeImplSigil) {
+               },
+               Kind: (cty.primitiveTypeKind) 83
+              }
+             }
+            }
+           }
+          },
+          (string) (len=4) "name": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          },
+          (string) (len=9) "namespace": (cty.Type) {
+           typeImpl: (cty.primitiveType) {
+            typeImplSigil: (cty.typeImplSigil) {
+            },
+            Kind: (cty.primitiveTypeKind) 83
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ v: (map[string]interface {}) (len=2) {
+  (string) (len=8) "manifest": (map[string]interface {}) (len=4) {
+   (string) (len=4) "kind": (string) (len=7) "Service",
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=4) "name": (string) (len=11) "web-service",
+    (string) (len=9) "namespace": (string) (len=7) "default",
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=28) "app.kubernetes.io/managed-by": (string) (len=9) "Terraform"
+    }
+   },
+   (string) (len=4) "spec": (map[string]interface {}) (len=2) {
+    (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+     (map[string]interface {}) (len=3) {
+      (string) (len=10) "targetPort": (string) (len=4) "http",
+      (string) (len=4) "port": (*big.Float)(0xc000512360)(443),
+      (string) (len=8) "protocol": (string) (len=3) "TCP"
+     }
+    },
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    }
+   },
+   (string) (len=10) "apiVersion": (string) (len=2) "v1"
+  },
+  (string) (len=6) "object": (map[string]interface {}) (len=4) {
+   (string) (len=4) "kind": (string) (len=7) "Service",
+   (string) (len=8) "metadata": (map[string]interface {}) (len=3) {
+    (string) (len=6) "labels": (map[string]interface {}) (len=1) {
+     (string) (len=28) "app.kubernetes.io/managed-by": (string) (len=9) "Terraform"
+    },
+    (string) (len=4) "name": (string) (len=11) "web-service",
+    (string) (len=9) "namespace": (string) (len=7) "default"
+   },
+   (string) (len=4) "spec": (map[string]interface {}) (len=5) {
+    (string) (len=9) "clusterIP": (string) (len=12) "10.43.121.56",
+    (string) (len=5) "ports": ([]interface {}) (len=1 cap=1) {
+     (map[string]interface {}) (len=3) {
+      (string) (len=10) "targetPort": (string) (len=4) "http",
+      (string) (len=4) "port": (*big.Float)(0xc0005d3b30)(443),
+      (string) (len=8) "protocol": (string) (len=3) "TCP"
+     }
+    },
+    (string) (len=8) "selector": (map[string]interface {}) (len=1) {
+     (string) (len=3) "app": (string) (len=5) "nginx"
+    },
+    (string) (len=15) "sessionAffinity": (string) (len=4) "None",
+    (string) (len=4) "type": (string) (len=9) "ClusterIP"
+   },
+   (string) (len=10) "apiVersion": (string) (len=2) "v1"
+  }
+ }
+}
+RAW provider 2020/05/27 13:10:15 Finished
+RAW provider 2020/05/27 13:22:07 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:22:07 Finished
+RAW provider 2020/05/27 13:22:07 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:22:07 Finished
+RAW provider 2020/05/27 13:22:07 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:22:07 Finished
+RAW provider 2020/05/27 13:22:07 Starting up with command line: []string{"/root/.terraform.d/plugins/terraform-provider-kubernetes-alpha"}
+RAW provider 2020/05/27 13:22:07 Finished

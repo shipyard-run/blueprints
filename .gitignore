@@ -1,1 +1,5 @@
 .git
+.terraform.d/
+.terraform.state
+.terraform.backup
+.terraform

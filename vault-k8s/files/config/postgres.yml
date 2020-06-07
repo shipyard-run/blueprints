@@ -32,12 +32,12 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: hashicorpdemoapp/postgres:11.6
+          image: hashicorpdemoapp/product-api-db:v0.0.11
           ports:
             - containerPort: 5432
           env:
             - name: POSTGRES_DB
-              value: wizard
+              value: products
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PASSWORD

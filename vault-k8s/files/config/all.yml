@@ -1,0 +1,81 @@
+---
+# Service to expose web frontend
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web
+  ports:
+    - name: http
+      protocol: TCP
+      port: 9090
+      targetPort: 9090
+
+---
+# Service account to allow pod access to Vault via K8s auth
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: web
+automountServiceAccountToken: true
+
+---
+# Web frontend
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "web"
+        vault.hashicorp.com/agent-inject-token: "true"
+        vault.hashicorp.com/agent-inject-secret-config: "database/creds/db-app"
+        vault.hashicorp.com/agent-inject-template-config: |
+          {
+            "tls_cert_file": "/vault/secrets/tls-cert",
+            "tls_key_file": "/vault/secrets/tls-key",
+            "bind_address": ":9090",
+            "vault_token_file": "/vault/secrets/token",
+          {{ with secret "database/creds/db-app" -}}
+            "db_connection": "host=postgres port=5432 user={{ .Data.username }} password={{ .Data.password }} dbname=postgres sslmode=disable",
+          {{- end }}
+          {{ with secret "secret/data/web" -}}
+            "api_key": "{{ .Data.data.payments_api_key }}"
+          {{- end }}
+          }
+        vault.hashicorp.com/agent-inject-secret-tls-cert: "pki/issue/shipyard.run"
+        vault.hashicorp.com/agent-inject-template-tls-cert: |
+          {{ with secret "pki/issue/shipyard.run" "common_name=web.ingress.shipyard.run" -}}
+            {{ .Data.certificate }}
+          {{- end }}
+        vault.hashicorp.com/agent-inject-secret-tls-key: "pki/issue/shipyard.run"
+        vault.hashicorp.com/agent-inject-template-tls-key: |
+          {{ with secret "pki/issue/shipyard.run" "common_name=web.ingress.shipyard.run" -}}
+            {{ .Data.private_key }}
+          {{- end }}
+    spec:
+      serviceAccountName: web
+      containers:
+        - name: web
+          image: hashicorpdemoapp/product-api:v0.0.4
+          ports:
+            - containerPort: 9090
+          env:
+            - name: "CONFIG_FILE"
+              value: "/vault/secrets/config"

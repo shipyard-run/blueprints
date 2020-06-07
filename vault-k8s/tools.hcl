@@ -14,6 +14,18 @@ container "tools" {
     source      = "./files"
     destination = "/files"
   }
+  
+  volume {
+    source      = "./application"
+    destination = "/app"
+  }
+
+  # Docker sock to be able to to do Docker builds 
+  volume {
+    source      = "/var/run/docker.sock"
+    destination = "/var/run/docker.sock"
+  }
+
 
   # Shipyard config for Kube 
   volume {

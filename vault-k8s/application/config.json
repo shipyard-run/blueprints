@@ -1,0 +1,6 @@
+{
+  "db_connection": "host=localhost port=15432 user=postgres password=password dbname=products sslmode=disable",
+  "bind_address": ":9091",
+  "vault_addr": "http://localhost:18200",
+  "vault_token_file": "./.vault_token"
+}

@@ -56,7 +56,7 @@ path "database/creds/db-app" {
 If you have checked out the example code, this policy can be found at `./config/webpolicy.hcl`. You can write the policy to Vault using the `vault policy write <name> <location>` command. Run the following command which will create a policy named `web` from the example file.
 
 ```shell
-vault policy write web ./config/web-policy.hcl
+vault policy write web ./web-policy.hcl
 ```
 
 <Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" />

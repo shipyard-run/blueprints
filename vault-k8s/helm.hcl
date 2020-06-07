@@ -1,7 +1,7 @@
 helm "vault" {
   cluster = "k8s_cluster.k3s"
-  chart = "./helm/vault-helm-0.3.0"
-  values = "./helm/vault-values.yaml"
+  chart = "github.com/hashicorp/vault-helm?ref=v0.5.0"
+  values = "./vault-values.yaml"
 
   health_check {
     timeout = "120s"
