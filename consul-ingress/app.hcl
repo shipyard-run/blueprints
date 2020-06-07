@@ -10,12 +10,14 @@ container "ingress" {
     "-gateway=ingress", 
     "-register", 
     "-service=ingress-service", 
-    "-address=10.5.0.200:8888"
+    "-address=10.5.0.200:8080"
   ]
   
   network { 
     name = "network.onprem"
     ip_address = "10.5.0.200"
+    // Add network aliases for the container
+    aliases = ["web.ingress.container.shipyard.run", "api.ingress.container.shipyard.run"]
   }
   
   port {
@@ -24,9 +26,9 @@ container "ingress" {
   }
 
   port {
-    local  = 8080
-    remote = 8080
-    host   = 8080
+    local  = 443
+    remote = 443
+    host   = 443
   }
   
   env {
@@ -42,7 +44,7 @@ container "ingress" {
 
 container "api" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.11.1"
+    name = "nicholasjackson/fake-service:vm-v0.11.2"
   }
 
   volume {
@@ -82,7 +84,7 @@ container "api" {
 
 container "web" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.11.1"
+    name = "nicholasjackson/fake-service:vm-v0.11.2"
   }
 
   volume {

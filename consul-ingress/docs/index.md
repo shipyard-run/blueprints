@@ -3,8 +3,45 @@ id: index
 title: Ingress Gateways
 sidebar_label: Ingress
 ---
+# Application infrastructure
 
-# Running Blueprints
+The currently running application has the following components.
+
+![](./images/docs/infra.png)
+
+# Write the config
+
+Before using ingress gateways you need to configure them,  
+
+```javascript
+Kind = "ingress-gateway"
+Name = "ingress-service"
+
+TLS {
+  Enabled = true
+}
+
+Listeners = [
+  {
+    Port = 443
+    Protocol = "http"
+    Services = [
+      {
+        Name = "api"
+        Hosts = ["api.ingress.container.shipyard.run"]
+      },
+      {
+        Name = "web"
+        Hosts = ["web.ingress.container.shipyard.run"]
+      }
+    ]
+  }
+]
+```
+
+```
+consul config write ./ingress.hcl
+```
 
 <p>
   <Terminal target="consul.container.shipyard.run" shell="sh" workdir="/files" user="root" expanded />
@@ -16,35 +53,18 @@ sidebar_label: Ingress
 curl -s http://127.0.0.1:8500/v1/connect/ca/roots | jq -r '.Roots[0].RootCert' > root.cert
 ```
 
+<p>
+  <Terminal target="consul.container.shipyard.run" shell="sh" workdir="/files" user="root" expanded />
+</p>
+
+
 # Show client certificate for gateway
 
+```shell
+echo | openssl s_client -showcerts -servername web.ingress.container.shipyard.run -connect web.ingress.container.shipyard.run 2>/dev/null | openssl x509 -inform pem -noout -text  
 ```
-➜ echo | openssl s_client -showcerts -servername web.ingress.container.shipyard.run -connect https://web.ingress.container.shipyard.run:8080 2>/dev/null | openssl x509 -inform pem -noout -text
-unable to load certificate
-140223965422016:error:0909006C:PEM routines:get_name:no start line:../crypto/pem/pem_lib.c:745:Expecting: TRUSTED CERTIFICATE
 
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ openssl s_client -showcerts -connect web.ingress.container.shipyard.run:8080
-
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ echo | openssl s_client -showcerts -connect https://web.ingress.container.shipyard.run:8080 2>/dev/null | openssl x509 -inform pem -noout -textunable to load certificate
-139840855982528:error:0909006C:PEM routines:get_name:no start line:../crypto/pem/pem_lib.c:745:Expecting: TRUSTED CERTIFICATE
-
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ echo | openssl s_client -showcerts -connect https://web.ingress.container.shipyard.run:8080 2>/dev/null                                        
-
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ openssl s_client -showcerts -connect https://web.ingress.container.shipyard.run:8080 2>/dev/null 
-
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ openssl s_client -showcerts -connect https://web.ingress.container.shipyard.run:8080            
-s_client: -connect argument or target parameter malformed or ambiguous
-
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ 
-
-blueprints/consul-ingress on  master [✘!?] via 🐹 v1.13.8 on 🐳 v19.03.10 () 
-➜ echo | openssl s_client -showcerts -servername web.ingress.container.shipyard.run -connect web.ingress.container.shipyard.run:8080 2>/dev/null | openssl x509 -inform pem -noout -text  
+```shell
 Certificate:
     Data:
         Version: 3 (0x2)
@@ -79,7 +99,7 @@ Certificate:
                 keyid:07:19:20:58:4C:D2:2A:89:5B:00:72:F5:45:2D:6B:56:BB:64:F1:AF:DF:81:6F:81:89:3F:AA:1F:4C:2B:8A:60
 
             X509v3 Subject Alternative Name: 
-                DNS:*.ingress.consul., DNS:*.ingress.dc1.consul., DNS:api.ingress.container.shipyard.run:8080, DNS:web.ingress.container.shipyard.run:8080, URI:spiffe://b1eddb34-f2af-f8ab-bd64-bc44fb9d4392.consul/ns/default/dc/dc1/svc/ingress-service
+                DNS:*.ingress.consul., DNS:*.ingress.dc1.consul., DNS:api.ingress.container.shipyard.run, DNS:web.ingress.container.shipyard.run, URI:spiffe://b1eddb34-f2af-f8ab-bd64-bc44fb9d4392.consul/ns/default/dc/dc1/svc/ingress-service
     Signature Algorithm: ecdsa-with-SHA256
          30:45:02:21:00:fd:22:d1:86:6c:cd:e3:9b:c4:34:d5:ab:4b:
          1f:79:90:3f:be:72:27:96:03:34:06:01:ce:d5:b0:42:e5:7d:
@@ -90,5 +110,9 @@ Certificate:
 # Call gateway using root from consul
 
 ```
-curl -v --cacert ./root.cert  https://web.ingress.container.shipyard.run:8080
+curl -v --cacert ./root.cert  https://web.ingress.container.shipyard.run
 ```
+
+<p>
+  <Terminal target="consul.container.shipyard.run" shell="sh" workdir="/files" user="root" expanded />
+</p>
