@@ -7,7 +7,7 @@ sidebar_label: Ingress
 
 The currently running application has the following components.
 
-![](./images/docs/infra.png)
+![](https://raw.githubusercontent.com/shipyard-run/blueprints/master/consul-ingress/docs/images/infa.png)
 
 # Write the config
 
