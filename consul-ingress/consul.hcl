@@ -1,6 +1,6 @@
 container "consul" {
   image {
-    name = "consul:1.8.0-beta2"
+    name = "consul:1.8.0"
   }
   
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
@@ -17,6 +17,11 @@ container "consul" {
 
   network { 
     name = "network.onprem"
+  }
+  
+  port {
+    local  = 8300
+    remote = 8300
   }
 
   port {
