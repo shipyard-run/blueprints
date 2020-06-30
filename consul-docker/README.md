@@ -2,7 +2,8 @@
 title: "Consul on Docker"
 author: "Nic Jackson"
 slug: "consul-docker"
-browser_windows: "http://localhost:18500,http://localhost:18080"
+env:
+  - CONSUL_HTTP_ADDR=http://localhost:18500
 ---
 
 # Accessing Consul

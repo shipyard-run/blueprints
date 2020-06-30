@@ -1,6 +1,6 @@
 container "consul_1" {
   image {
-    name = "consul:1.7.1"
+    name = "consul:1.8.0"
   }
   
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
@@ -17,7 +17,7 @@ container "consul_1" {
 
 container "consul_2" {
   image {
-    name = "consul:1.7.1"
+    name = "consul:1.8.0"
   }
   
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
@@ -34,7 +34,7 @@ container "consul_2" {
 
 container "consul_3" {
   image {
-    name = "consul:1.7.1"
+    name = "consul:1.8.0"
   }
   
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]

@@ -1,6 +1,6 @@
 container "api_1" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.8.0"
+    name = "nicholasjackson/fake-service:vm-v0.13.1"
   }
 
   volume {
@@ -16,7 +16,7 @@ container "api_1" {
     key = "CONSUL_SERVER"
     value = "consul-1.container.shipyard.run"
   }
-
+  
   env {
     key = "SERVICE_ID"
     value = "api-1"
@@ -45,7 +45,7 @@ container "api_1" {
 
 container "backend" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.8.0"
+    name = "nicholasjackson/fake-service:vm-v0.13.1"
   }
 
   volume {
