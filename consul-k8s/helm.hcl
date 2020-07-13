@@ -1,7 +1,7 @@
 helm "consul" {
   cluster = "k8s_cluster.k3s"
 
-  chart = "./helm/consul-helm-0.16.2"
+  chart = "github.com/hashicorp/consul-helm?ref=v0.23.1"
   values = "./helm/consul-values.yaml"
 
   health_check {
