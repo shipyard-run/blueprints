@@ -1,6 +1,6 @@
 container "ingress" {
   image {
-    name = "nicholasjackson/consul-envoy:v1.8.0-beta2-v0.14.1"
+    name = "nicholasjackson/consul-envoy:v1.8.0-v0.14.1"
   }
   
   command = [
@@ -26,9 +26,9 @@ container "ingress" {
   }
 
   port {
-    local  = 443
-    remote = 443
-    host   = 443
+    local  = 4443
+    remote = 4443
+    host   = 4443
   }
   
   env {
@@ -44,7 +44,7 @@ container "ingress" {
 
 container "api" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.11.2"
+    name = "nicholasjackson/fake-service:vm-v0.12.0"
   }
 
   volume {
@@ -84,7 +84,7 @@ container "api" {
 
 container "web" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.11.2"
+    name = "nicholasjackson/fake-service:vm-v0.12.0"
   }
 
   volume {

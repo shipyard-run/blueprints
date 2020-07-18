@@ -1,3 +1,4 @@
+/*
 docs "docs" {
   path  = "./docs"
   port  = 18080
@@ -35,3 +36,4 @@ container "tools" {
     value = "http://consul-1.container.shipyard.run:8500"
   }
 }
+*/

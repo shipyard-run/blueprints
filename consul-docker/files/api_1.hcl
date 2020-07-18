@@ -1,5 +1,5 @@
 service {
-  name = "api_1"
+  name = "api"
   id = "api-1"
   port = 9090
 
