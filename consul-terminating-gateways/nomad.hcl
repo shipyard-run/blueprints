@@ -23,8 +23,9 @@ nomad_cluster "dev" {
     source = "./consul_config/consul-agent.hcl"
     destination = "/config/consul.hcl"
   }
-
+  
   image {
-    name = "adminer"
+      name = "nicholasjackson/fake-service:vm-v0.14.1"
   }
+  
 }

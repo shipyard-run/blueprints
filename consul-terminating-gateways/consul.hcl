@@ -1,12 +1,12 @@
 container "consul" {
   image   {
-    name = "consul:1.8.0-beta2"
+    name = "consul:1.8.0"
   }
 
   command = ["consul", "agent", "-config-file=/config/consul.hcl"]
 
   volume {
-    source      = "./consul_config"
+    source = "./consul_config"
     destination = "/config"
   }
 
@@ -24,4 +24,16 @@ container "consul" {
     http = "http://consul.container.shipyard.run:8500/v1/status/leader"
     timeout = "10s"
   }
+}
+
+exec_remote "exec_container" {
+  target = "container.consul"
+  cmd = "/bin/sh"
+  args = [
+    "-c",
+    <<EOF
+      sleep 10 && \
+      curl -XPUT -d @/config/mysql_svc.json localhost:8500/v1/catalog/register
+    EOF
+  ]
 }

@@ -1,4 +1,4 @@
-job "adminer" {
+job "api2" {
   datacenters = ["dc1"]
 
   type = "service"
@@ -18,7 +18,7 @@ job "adminer" {
     healthy_deadline = "5m"
   }
 
-  group "adminer" {
+  group "api" {
     count = 1
 
     restart {
@@ -36,7 +36,7 @@ job "adminer" {
     }
 
     service {
-      name = "adminer"
+      name = "api"
       tags = ["global","app"]
       port = "8080"
 
@@ -57,7 +57,7 @@ job "adminer" {
       mbits = 10
 
       port "http" {
-        static = 8080
+        static = 8081
         to = 8080
       }
     }
@@ -66,7 +66,14 @@ job "adminer" {
       driver = "docker"
 
       config {
-        image = "adminer"
+        image = "nicholasjackson/fake-service:v0.14.1"
+      }
+      
+      env {
+        LISTEN_ADDR = ":8080"
+        NAME = "API2"
+        UPSTREAM_URIS = "http://localhost:3306"
+        HTTP_CLIENT_KEEP_ALIVES = "true"
       }
 
       resources {

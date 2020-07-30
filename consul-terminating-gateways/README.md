@@ -2,7 +2,9 @@
 title: "Consul Terminating Gateway with Nomad"
 author: "Nicole Hubbard"
 slug: "consul-nomad"
-browser_windows: "http://adminer-http.ingress.shipyard.run:8080/"
+env:
+  - NOMAD_ADDR="http://localhost:14646"
+  - CONSUL_HTTP_ADDR="http://localhost:18600"
 ---
 
 This blueprint comprises of Mysql, Consul, Consul Terminating Gateway, and Nomad.
