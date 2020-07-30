@@ -5,12 +5,17 @@ container "database" {
     }
 
     image {
-        name = "mariadb:latest"
+        name = "nicholasjackson/fake-service:v0.14.1"
     }
-
+ 
     env {
-      key = "MYSQL_ROOT_PASSWORD"
-      value = "SuperDuperSecureP@$$w0rd"
+      key = "LISTEN_ADDR"
+      value = ":3306"
+    }
+   
+    env {
+      key = "NAME"
+      value = "database"
     }
 }
 
@@ -44,7 +49,7 @@ container "terminating-gateway" {
   ]
 
   image {
-      name = "nicholasjackson/consul-envoy:v1.8.0-beta2-v0.14.1"
+      name = "nicholasjackson/consul-envoy:v1.8.0-v1.12.4"
   }
   env {
     key = "CONSUL_HTTP_ADDR"
@@ -55,17 +60,4 @@ container "terminating-gateway" {
     key = "CONSUL_GRPC_ADDR"
     value = "consul.container.shipyard.run:8502"
   }
-}
-
-exec_remote "exec_container" {
-  target = "container.consul"
-
-  cmd = "curl"
-  args = [
-    "--request",
-    "PUT",
-    "--data",
-    "@/config/mysql_svc.json",
-    "localhost:8500/v1/catalog/register"
-  ]
 }
