@@ -2,7 +2,6 @@
 title: "Consul Ingress Gateways example"
 author: "Nic Jackson"
 slug: "ingress-gateways"
-browser_windows: "http://localhost:8500,http://localhost:18080"
 ---
 
 This example shows how to use the new Consul Ingress gateways to expose services in consul 

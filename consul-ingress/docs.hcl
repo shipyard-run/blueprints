@@ -1,6 +1,7 @@
 docs "docs" {
   path  = "./docs"
   port  = 18080
+  open_in_browser = true
   
   network {
     name = "network.onprem"
