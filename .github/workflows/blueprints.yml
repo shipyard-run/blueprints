@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Test Blueprints
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
@@ -30,6 +30,6 @@ jobs:
       run: curl https://shipyard.run/install | bash
 
     # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Run tests
       run: |
         shipyard test ./${{ matrix.blueprint }}
