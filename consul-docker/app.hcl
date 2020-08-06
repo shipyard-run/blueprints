@@ -1,6 +1,6 @@
 container "api_1" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.13.1"
+    name = "nicholasjackson/fake-service:vm-v0.13.2"
   }
 
   volume {
@@ -29,7 +29,7 @@ container "api_1" {
 
   env {
     key = "NAME"
-    value = "API_1"
+    value = "API"
   }
   
   env {
@@ -43,14 +43,54 @@ container "api_1" {
   }
 }
 
-container "backend" {
+container "backend_1" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.13.1"
+    name = "nicholasjackson/fake-service:vm-v0.13.2"
   }
 
   volume {
-    source      = "./files/backend.hcl"
-    destination = "/config/backend.hcl"
+    source      = "./files/backend_1.hcl"
+    destination = "/config/backend_1.hcl"
+  }
+
+  network { 
+    name = "network.onprem"
+  }
+
+  env {
+    key = "CONSUL_SERVER"
+    value = "consul-1.container.shipyard.run"
+  }
+  
+  env {
+    key = "SERVICE_ID"
+    value = "backend-1"
+  }
+
+  env {
+    key = "LISTEN_ADDR"
+    value = "0.0.0.0:9090"
+  }
+
+  env {
+    key = "NAME"
+    value = "Backend_Service 1"
+  }
+  
+  env {
+    key = "MESSAGE"
+    value = "Hello from Backend_Service 1"
+  }
+}
+
+container "backend_2" {
+  image {
+    name = "nicholasjackson/fake-service:vm-v0.13.2"
+  }
+
+  volume {
+    source      = "./files/backend_2.hcl"
+    destination = "/config/backend_2.hcl"
   }
 
   network { 
@@ -64,7 +104,7 @@ container "backend" {
   
   env {
     key = "SERVICE_ID"
-    value = "backend-1"
+    value = "backend-2"
   }
   
   env {
@@ -74,7 +114,7 @@ container "backend" {
 
   env {
     key = "NAME"
-    value = "Backend_Service"
+    value = "Backend_Service 2"
   }
   
   env {

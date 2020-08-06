@@ -20,17 +20,6 @@ container "ingress" {
     aliases = ["web.ingress.container.shipyard.run", "api.ingress.container.shipyard.run"]
   }
   
-  port {
-    local  = 8888
-    remote = 8888
-  }
-
-  port {
-    local  = 4443
-    remote = 4443
-    host   = 4443
-  }
-  
   env {
     key = "CONSUL_HTTP_ADDR"
     value = "consul.container.shipyard.run:8500"
