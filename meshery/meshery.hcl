@@ -1,7 +1,7 @@
 helm "meshery" {
   cluster = "k8s_cluster.k3s"
 
-  chart = "/home/nicj/go/src/github.com/layer5io/meshery/install/kubernetes/helm//meshery"
+  chart = "github.com/layer5io/meshery/install/kubernetes/helm//meshery"
 
   values_string = {
     "mesheryistio.enabled" = "true"
