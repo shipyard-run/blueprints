@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment-v2
+  labels:
+    app: api-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-v2
+  template:
+    metadata:
+      labels:
+        app: api-v2
+      annotations:
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/service-meta-version": "v2"
+        "consul.hashicorp.com/service-tags": "v2"
+    spec:
+      containers:
+      - name: api
+        image: nicholasjackson/fake-service:v0.9.0
+        ports:
+        - containerPort: 9090
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:9090"
+        - name: "NAME"
+          value: "api-v2"
+        - name: "MESSAGE"
+          value: "Response from API v2"
+        - name: "TRACING_ZIPKIN"
+          value: "http://jaeger-collector:9411"

@@ -4,6 +4,8 @@
 # the Kube cluster.
 global:
   imageK8S: ghcr.io/lkysow/consul-k8s-dev:sep29-crds
+  # image: hashicorpdev/consul
+  # imageK8S: hashicorpdev/consul-k8s:crd-controller-base-latest
   name: consul
 server:
   replicas: 1

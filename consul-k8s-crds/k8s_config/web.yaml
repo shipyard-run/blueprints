@@ -51,11 +51,3 @@ spec:
           value: "false"
         - name: "TRACING_ZIPKIN"
           value: "http://jaeger-collector:9411"
-
----
-apiVersion: consul.hashicorp.com/v1alpha1
-kind: ServiceDefaults
-metadata:
-  name: web
-spec:
-  protocol: "http"
