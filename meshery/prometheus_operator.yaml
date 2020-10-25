@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: applications
+  namespace: default
+  labels:
+    app: applications
+    release: prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: metrics
+  jobLabel: applications
+  endpoints:
+  - port: metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - default

@@ -1,0 +1,11 @@
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-stack-kube-prom-prometheus:9090
+      isDefault: true
+
+admin:
+  existingSecret: "grafana-password"

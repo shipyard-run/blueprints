@@ -1,6 +1,5 @@
 global:
   name: "consul"
-  image: "consul:1.8.0-rc1"
 
   tls:
     enabled: true

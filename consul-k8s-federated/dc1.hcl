@@ -30,7 +30,7 @@ helm "dc1" {
   depends_on = ["k8s_config.dc1"]
   cluster = "k8s_cluster.dc1"
 
-  chart = "github.com/hashicorp/consul-helm?ref=v0.21.0"
+  chart = "github.com/hashicorp/consul-helm?ref=v0.24.1"
   values = "./helm/consul-values.yaml"
 
   values_string = {

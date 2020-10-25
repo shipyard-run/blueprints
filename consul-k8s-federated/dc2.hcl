@@ -34,7 +34,7 @@ helm "dc2" {
   depends_on = ["k8s_config.dc2","exec_remote.configure"]
   cluster = "k8s_cluster.dc2"
 
-  chart = "github.com/hashicorp/consul-helm?ref=v0.21.0"
+  chart = "github.com/hashicorp/consul-helm?ref=v0.24.1"
   values = "./helm/consul-values.yaml"
 
   # We need to set values specifically for federation  
