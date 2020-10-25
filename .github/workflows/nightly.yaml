@@ -15,11 +15,6 @@ jobs:
 
     strategy:
       matrix:
-        blueprint: [
-          'Meshery',
-          'Consul Docker',
-          'Consul Gateways'
-        ]
         folder: [
           'meshery/',
           'consul-docker/',
