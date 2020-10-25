@@ -3,3 +3,4 @@
 .terraform.state
 .terraform.backup
 .terraform
+debug.log

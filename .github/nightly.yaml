@@ -1,0 +1,38 @@
+name: Test Blueprints
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    name: Test Blueprints
+    runs-on: ubuntu-latest
+
+		strategy:
+  	  matrix:
+      	blueprint: ['meshery']
+      	folder: ['meshery/']
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Check for changes
+          id: check_for_changes
+          run: |
+            echo "::set-output change_count=grepValue::$(git diff --name-only  HEAD~1 HEAD | grep '${{ matrix.folder }}' | wc -l)"
+
+      - name: Get dependencies
+        if: (contains(steps.check_for_changes.outputs.change_count, '0')) != 'true' || github.event_name == 'schedule' ) 
+        run: |
+					curl https://shipyard.run/install | bash
+      
+      - name: Run tests - ${{ matrix.blueprint }}
+        if: contains(steps.check_for_changes.outputs.change_count, '0')) != 'true' || github.event_name == 'schedule' )
+        run: |
+          shipyard test ${{ matrix.folder }}
