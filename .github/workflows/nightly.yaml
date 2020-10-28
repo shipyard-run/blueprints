@@ -18,7 +18,8 @@ jobs:
         folder: [
           'meshery/',
           'consul-docker/',
-          'consul-gateways/'
+          'consul-gateways/',
+          'vault-k8s/'
         ]
 
     steps:

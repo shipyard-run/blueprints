@@ -27,3 +27,18 @@ ingress "meshery" {
     name = "network.local"
   }
 }
+
+ingress "public" {
+  target = "k8s_cluster.k3s"
+  service = "svc/public"
+
+  port {
+    local = 9090
+    remote = 9090
+    host = 19090
+  }
+  
+  network {
+    name = "network.local"
+  }
+}

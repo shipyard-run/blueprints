@@ -1,6 +1,6 @@
 helm "vault" {
   cluster = "k8s_cluster.k3s"
-  chart = "github.com/hashicorp/vault-helm?ref=v0.5.0"
+  chart = "github.com/hashicorp/vault-helm?ref=v0.8.0"
   values = "./vault-values.yaml"
 
   health_check {

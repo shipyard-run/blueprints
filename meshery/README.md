@@ -2,7 +2,6 @@
 title: "Meshery on Kubernetes"
 author: "Nic Jackson"
 slug: "meshery-k8s"
-browser_windows: "http://meshery.ingress.shipyard.run:9081"
 env:
   - KUBECONFIG=$HOME/.shipyard/config/k3s/kubeconfig.yaml
 shipyard_version: ">= 0.1.7"

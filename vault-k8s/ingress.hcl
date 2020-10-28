@@ -10,6 +10,7 @@ k8s_ingress "vault-http" {
     local  = 8200
     remote = 8200
     host   = 18200
+    open_in_browser = "/"
   }
 }
 

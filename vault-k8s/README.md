@@ -2,7 +2,6 @@
 title: "HashiCorp Vault and Kubernetes"
 author: "Nic Jackson"
 slug: "vault_k8s"
-browser_windows: "http://k8s-dashboard.ingress.shipyard.run:18443,http://docs.docs.shipyard.run:18080"
 env:
   - KUBECONFIG=$HOME/.shipyard/config/k3s/kubeconfig.yaml
   - VAULT_ADDR=http://localhost:18200
@@ -28,7 +27,6 @@ When prompted press skip to ignore the authentication request
 ## Interactive Documentation
 To view the interactive documentation and walk through of using Vault Dynmamic secrets with PostgresSQL
 please check out the docs at:
-
 
 `http://docs.docs.shipyard.run:18080`
   
