@@ -74,7 +74,7 @@ container "consul_gateway_dc1" {
 }
 
 # Ingress to allow local access to the Consul UI for the DC1 server
-ingress "consul_http_dc1" {
+container_ingress "consul_http_dc1" {
   target = "container.consul_dc1"
     
   network  {
@@ -128,7 +128,7 @@ container "web_dc1" {
 }
 
 # Ingress to allow local access to the Web frontend
-ingress "web_http_dc1" {
+container_ingress "web_http_dc1" {
   target = "container.web_dc1"
     
   network  {
