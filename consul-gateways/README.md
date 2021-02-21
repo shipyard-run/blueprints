@@ -3,7 +3,7 @@ title: "Consul Gateways"
 author: "Nic Jackson"
 slug: "consul-gateways"
 browser_windows: "http://localhost:18500,http://localhost:19090/ui"
-shipyard_version: "<= v0.1.18"
+shipyard_version: ">= v0.2.0"
 ---
 
 This example shows how to federate two Consul clusters and connect
