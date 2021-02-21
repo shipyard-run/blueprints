@@ -19,14 +19,15 @@ jobs:
           'meshery/',
           'consul-docker/',
           'consul-gateways/',
-          'vault-k8s/'
+          'vault-k8s/',
+          'vault-dev/'
         ]
 
     steps:
       - name: Check out code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2
+          fetch-depth: 3
 
       - name: Check for changes
         id: check_for_changes

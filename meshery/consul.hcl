@@ -28,16 +28,23 @@ helm "consul" {
 }
 
 ingress "consul" {
-  target = "k8s_cluster.k3s"
-  service = "svc/consul-consul-server"
 
-  port {
-    local = 8500
-    remote = 8500
-    host = 8500
+  destination {
+    driver = "k8s"
+
+    config { 
+      cluster = "k8s_cluster.k3s"
+      address = "consul-consul-server.default.svc"
+      port = 8500
+    }
   }
   
-  network {
-    name = "network.local"
+  source {
+    driver = "local"
+
+    config {
+      port = 8500
+   }
+
   }
 }

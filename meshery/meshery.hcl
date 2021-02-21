@@ -14,31 +14,45 @@ helm "meshery" {
 }
   
 ingress "meshery" {
-  target = "k8s_cluster.k3s"
-  service = "svc/meshery"
 
-  port {
-    local = 8080
-    remote = 8080
-    host = 9081
+  destination {
+    driver = "k8s"
+
+    config { 
+      cluster = "k8s_cluster.k3s"
+      address = "meshery.default.svc"
+      port = 8080
+    }
   }
   
-  network {
-    name = "network.local"
+  source {
+    driver = "local"
+
+    config {
+      port = 9081
+   }
+
   }
 }
 
 ingress "public" {
-  target = "k8s_cluster.k3s"
-  service = "svc/public"
 
-  port {
-    local = 9090
-    remote = 9090
-    host = 19090
+  destination {
+    driver = "k8s"
+
+    config { 
+      cluster = "k8s_cluster.k3s"
+      address = "public.default.svc"
+      port = 9090
+    }
   }
   
-  network {
-    name = "network.local"
+  source {
+    driver = "local"
+
+    config {
+      port = 19090
+   }
+
   }
 }
