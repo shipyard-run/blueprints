@@ -19,6 +19,7 @@ jobs:
           'consul-docker/',
           'consul-ingress/',
           'docs',
+          'meshery',
           'vault-k8s/',
           'vault-dev/'
         ]
