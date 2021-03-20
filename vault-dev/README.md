@@ -4,7 +4,7 @@ author: Nic Jackson
 slug: simple-vault
 env:
   - VAULT_ADDR=http://localhost:8200
-  - VAULT_TOKEN=devopsrob
+  - VAULT_TOKEN=root
 ---
 
 Simple Vault Dev Server

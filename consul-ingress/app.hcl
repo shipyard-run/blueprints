@@ -29,6 +29,12 @@ container "ingress" {
     key = "CONSUL_GRPC_ADDR"
     value = "consul.container.shipyard.run:8502"
   }
+
+  port {
+    local = "443"
+    remote = "443"
+    host = "443"
+  }
 }
 
 container "api" {
