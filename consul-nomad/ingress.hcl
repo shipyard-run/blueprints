@@ -1,5 +1,5 @@
 nomad_ingress "web" {
-  cluster  = "nomad_cluster.local"
+  cluster = var.cn_nomad_cluster_name
   job = "web"
   group = "web"
   task = "web"

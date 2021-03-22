@@ -12,7 +12,7 @@ module "consul_nomad" {
 }
 
 nomad_job "jobs" {
-  cluster = "nomad_cluster.${var.cn_nomad_cluster_name}"
+  cluster = var.cn_nomad_cluster_name
   paths = [
     "./web.nomad",
     "./api.nomad",
@@ -20,7 +20,7 @@ nomad_job "jobs" {
 }
 
 nomad_ingress "web" {
-  cluster = "nomad_cluster.${var.cn_nomad_cluster_name}"
+  cluster = var.cn_nomad_cluster_name
   job = "web"
   group = "web"
   task = "web"
