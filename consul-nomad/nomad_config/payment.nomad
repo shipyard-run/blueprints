@@ -39,7 +39,6 @@ job "payment" {
       mode = "bridge"
       mbits = 10
       port "http" {
-        static = 9092
         to = 9092
       }
     }
@@ -74,7 +73,7 @@ job "payment" {
       }
 
       config {
-        image = "nicholasjackson/fake-service:v0.9.0"
+        image = "nicholasjackson/fake-service:v0.20.0"
 
         port_map {
         }

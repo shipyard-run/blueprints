@@ -21,7 +21,9 @@ jobs:
           'docs',
           'meshery',
           'vault-k8s/',
-          'vault-dev/'
+          'vault-dev/',
+          'consul-nomad/',
+          'modules/consul-nomad/'
         ]
 
     steps:

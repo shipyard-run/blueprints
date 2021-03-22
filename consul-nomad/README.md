@@ -4,26 +4,16 @@ author: "Anubhav Mishra"
 slug: "consul-nomad"
 ---
 
-This blueprint comprises of Consul and Nomad.  It stands up service mesh endpoints and sends tracing data to Jaeger.   
+This blueprint runs a Consul and Nomad cluster with an example application showing how Consul service mesh metrics
+can be sent to Jaeger.
 
-## Set the following environment variables to interact with this blueprint 
+The Application runs the following chain of upstream calls:
 
 ```
-export NOMAD_ADDR="http://localhost:14646"
-export CONSUL_HTTP_ADDR="http://localhost:18600"
- ``` 
+Ingress 
+        | --> API
+        | --> Payment 
+                      | --> Currency
+```
 
-## Consul UI
-   Open `http://localhost:18600` to access the Consul UI
- 
-## Nomad UI
-   Open `http://localhost:14646` to access the Nomad UI
-
-## Jaeger UI
-   Open `http://localhost:16686` to access the Jaeger UI
-
-## Fake Service UI
-   Open `http://localhost:9090/ui` to access the Fake Service UI
-
-## Cleanup
-   Run `shipyard destroy` to cleanup all resources
+All services run through Consul service mesh and emmit tracing data to the Jaeger instance.

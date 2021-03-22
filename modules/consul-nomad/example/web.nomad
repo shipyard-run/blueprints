@@ -29,10 +29,6 @@ job "web" {
               destination_name = "api"
               local_bind_port = 9091
             }
-            upstreams {
-              destination_name = "payment"
-              local_bind_port = 9092
-            }
           }
         }
       }
@@ -57,7 +53,7 @@ job "web" {
 
       env {
         LISTEN_ADDR = "0.0.0.0:9090"
-        UPSTREAM_URIS = "http://localhost:9091,http://localhost:9092"
+        UPSTREAM_URIS = "http://localhost:9091"
         MESSAGE = "Hello World"
         NAME = "Ingress"
         SERVER_TYPE = "http"

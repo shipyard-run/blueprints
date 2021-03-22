@@ -1,7 +1,6 @@
 nomad_job "jobs" {
-  cluster = "nomad_cluster.dev"
+  cluster = "nomad_cluster.local"
   paths = [
-    "./nomad_config/jaeger.nomad",
     "./nomad_config/web.nomad",
     "./nomad_config/api.nomad",
     "./nomad_config/payment.nomad",

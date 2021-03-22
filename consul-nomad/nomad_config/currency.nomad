@@ -32,14 +32,13 @@ job "currency" {
     }
 
     ephemeral_disk {
-      size = 300
+      size = 30
     }
         
     network {
       mode = "bridge"
       mbits = 10
       port "http" {
-        static = 9093
         to = 9093
       }
     }
@@ -56,6 +55,11 @@ job "currency" {
 
     task "currency" {
       driver = "docker"
+      
+      logs {
+        max_files     = 2
+        max_file_size = 10
+      }
 
       env {
         LISTEN_ADDR = "0.0.0.0:9093"
@@ -66,10 +70,7 @@ job "currency" {
       }
 
       config {
-        image = "nicholasjackson/fake-service:v0.9.0"
-
-        port_map {
-        }
+        image = "nicholasjackson/fake-service:v0.20.0"
       }
 
       resources {

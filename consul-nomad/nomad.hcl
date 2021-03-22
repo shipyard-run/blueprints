@@ -1,26 +1,20 @@
-nomad_cluster "dev" {
-  version = "v0.11.0"
-  depends_on = ["container.consul"]
+variable "cn_network" {
+  default = "dc1"
+}
 
-  nodes = 1 // default
+variable "cn_network" {
+  default = "dc1"
+}
 
-  network {
-    name = "network.cloud"
-    ip_address = "10.15.0.200"
-  }
+variable "cn_consul_server_config" {
+  default = "${file("${file_dir()}/consul_config/consul.hcl")}"
+}
 
-  env {
-    key = "CONSUL_SERVER"
-    value = "consul.container.shipyard.run"
-  }
-  
-  env {
-    key = "CONSUL_DATACENTER"
-    value = "dc1"
-  }
+network "dc1" {
+  subnet = "10.15.0.0/16"
+}
 
-  volume {
-    source = "./consul_config/consul-agent.hcl"
-    destination = "/config/consul.hcl"
-  }
+module "nomad_consul" {
+  #source = "github.com/shipyard-run/blueprints/modules//consul-nomad"
+  source = "../modules/consul-nomad"
 }
