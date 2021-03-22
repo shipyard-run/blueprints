@@ -1,12 +1,12 @@
 nomad_job "jobs" {
-  cluster = "nomad_cluster.dev"
+  cluster = var.cn_nomad_cluster_name
+
   paths = [
     "./nomad_config/api.nomad",
-    "./nomad_config/api2.nomad"
   ]
 
   health_check {
-    nomad_jobs = ["api", "api2"]
+    nomad_jobs = ["api"]
     timeout = "60s"
   }
 }

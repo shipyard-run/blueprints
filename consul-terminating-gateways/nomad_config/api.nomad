@@ -54,7 +54,6 @@ job "api" {
 
     network {
       mode = "bridge"
-      mbits = 10
 
       port "http" {
         static = 8080
@@ -79,10 +78,7 @@ job "api" {
       resources {
         cpu    = 500 # 500 MHz
         memory = 256 # 256MB
-
       }
-
-
     }
   }
 }
