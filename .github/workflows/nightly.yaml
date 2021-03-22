@@ -23,7 +23,12 @@ jobs:
           'vault-k8s/',
           'vault-dev/',
           'consul-nomad/',
-          'modules/consul-nomad/'
+          'modules/consul-nomad/',
+          'modules/kubernetes-consul/',
+          'modules/kubernetes-consul-stack/',
+          'modules/kubernetes-monitoring/',
+          'modules/kubernetes-smi-controller/',
+          'modules/kubernetes-vault/'
         ]
 
     steps:

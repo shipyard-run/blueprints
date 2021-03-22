@@ -1,0 +1,13 @@
+---
+installCRDs: true
+
+image:
+  tag: "v1.1.0"
+
+cainjector:
+  image:
+    tag: "v1.1.0"
+
+webhook:
+  image:
+    tag: "v1.1.0"
