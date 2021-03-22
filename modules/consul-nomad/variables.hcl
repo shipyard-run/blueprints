@@ -29,7 +29,11 @@ variable "cn_nomad_version" {
 # affect the name of the cluster as shipyard does 
 # not yet support this feature
 variable "cn_nomad_cluster_name" {
-  default = "local"
+  default = "nomad_cluster.local"
+}
+
+variable "cn_consul_cluster_name" {
+  default = "container.consul"
 }
 
 # Default Consul config, can be overridden by setting this variable from outside

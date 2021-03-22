@@ -1,4 +1,4 @@
-job "api" {
+job "api2" {
   datacenters = ["dc1"]
 
   type = "service"
@@ -54,10 +54,9 @@ job "api" {
 
     network {
       mode = "bridge"
-      mbits = 10
 
       port "http" {
-        static = 8080
+        static = 8081
         to = 8080
       }
     }
@@ -71,7 +70,7 @@ job "api" {
       
       env {
         LISTEN_ADDR = ":8080"
-        NAME = "API1"
+        NAME = "API2"
         UPSTREAM_URIS = "http://localhost:3306"
         HTTP_CLIENT_KEEP_ALIVES = "true"
       }

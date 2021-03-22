@@ -1,39 +1,14 @@
-container "database" {
-    network {
-        name = "network.database"
-        ip_address = "10.20.0.50"
-    }
-
-    image {
-        name = "nicholasjackson/fake-service:v0.14.1"
-    }
- 
-    env {
-      key = "LISTEN_ADDR"
-      value = ":3306"
-    }
-   
-    env {
-      key = "NAME"
-      value = "database"
-    }
-}
-
 container "terminating-gateway" {
-  depends_on = ["container.consul"]
+  depends_on = ["module.nomad_consul"]
 
   network {
     name = "network.database"
     ip_address = "10.20.0.20"
   }
+  
   network {
-      name = "network.cloud"
+      name = "network.dc1"
       ip_address = "10.15.0.240"
-  }
-
-  volume {
-    source      = "./consul_config/"
-    destination = "/config/"
   }
 
   command = [
@@ -49,8 +24,9 @@ container "terminating-gateway" {
   ]
 
   image {
-      name = "nicholasjackson/consul-envoy:v1.8.0-v1.12.4"
+      name = "nicholasjackson/consul-envoy:v1.8.3-v1.14.4"
   }
+
   env {
     key = "CONSUL_HTTP_ADDR"
     value = "consul.container.shipyard.run:8500"

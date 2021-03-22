@@ -4,7 +4,7 @@ name: Test Blueprints
 on:
   push:
     branches:
-      - main
+      - "*"
   schedule:
     - cron: '0 0 * * *'
 
@@ -23,6 +23,7 @@ jobs:
           'vault-k8s/',
           'vault-dev/',
           'consul-nomad/',
+          'consul-terminating-gateways/',
           'modules/consul-nomad/',
           'modules/kubernetes-consul/',
           'modules/kubernetes-consul-stack/',

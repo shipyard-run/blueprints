@@ -1,5 +1,5 @@
 nomad_job "jobs" {
-  cluster = "nomad_cluster.local"
+  cluster = var.cn_nomad_cluster_name
   paths = [
     "./nomad_config/web.nomad",
     "./nomad_config/api.nomad",
