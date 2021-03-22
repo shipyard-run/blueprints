@@ -27,10 +27,10 @@ network "database" {
 }
 
 module "nomad_consul" {
-  #source = "github.com/shipyard-run/blueprints/modules//consul-nomad"
-  source = "../modules/consul-nomad"
+  source = "github.com/shipyard-run/blueprints/modules//consul-nomad"
+  #source = "../modules/consul-nomad"
 }
 
 variable "cn_consul_version" {
-  default = "1.8.4"
+  default = "1.9.4"
 }

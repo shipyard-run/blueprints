@@ -54,7 +54,6 @@ job "api2" {
 
     network {
       mode = "bridge"
-      mbits = 10
 
       port "http" {
         static = 8081

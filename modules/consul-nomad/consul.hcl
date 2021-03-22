@@ -26,4 +26,5 @@ container "consul" {
     remote = 8500
     host = var.cn_consul_port
   }
+
 }
