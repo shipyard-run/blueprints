@@ -96,7 +96,7 @@ network "dc1" {
 }
 
 module "consul_nomad" {
-  source = "../"
+  source = "github.com/shipyard-run/blueprints/modules//consul-nomad"
 }
 
 nomad_job "jobs" {

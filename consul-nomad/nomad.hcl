@@ -11,10 +11,10 @@ variable "cn_consul_server_config" {
 }
 
 network "dc1" {
-  subnet = "10.15.0.0/16"
+  subnet = "10.5.0.0/16"
 }
 
 module "nomad_consul" {
-  #source = "github.com/shipyard-run/blueprints/modules//consul-nomad"
-  source = "../modules/consul-nomad"
+  source = "github.com/shipyard-run/blueprints/modules//consul-nomad"
+  #source = "../modules/consul-nomad"
 }
