@@ -48,7 +48,6 @@ jobs:
         run: |
           echo "changes: ${{ steps.check_for_changes.outputs.change_count }} event: ${{ github.event_name }}"
           curl https://shipyard.run/install | bash
-          shipyard version
 
       - name: Run tests - ${{ matrix.blueprint }}
         if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' )
