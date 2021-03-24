@@ -26,7 +26,6 @@ container "tools" {
     destination = "/var/run/docker.sock"
   }
 
-
   # Shipyard config for Kube 
   volume {
     source      = "${shipyard()}"
