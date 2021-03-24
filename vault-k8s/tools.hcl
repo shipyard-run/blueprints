@@ -4,7 +4,7 @@ container "tools" {
   }
   
   network {
-    name = "network.cloud"
+    name = "network.dc1"
   }
 
   command = ["tail", "-f", "/dev/null"]
@@ -40,11 +40,11 @@ container "tools" {
   
   env {
     key = "KUBECONFIG"
-    value = "/root/.shipyard/config/k3s/kubeconfig-docker.yaml"
+    value = "/root/.shipyard/config/dc1/kubeconfig-docker.yaml"
   }
   
   env {
     key = "VAULT_ADDR"
-    value = "http://vault-http.ingress.shipyard.run:8200"
+    value = "http://${shipyard_ip()}:8200"
   }
 }

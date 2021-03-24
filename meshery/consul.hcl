@@ -1,50 +1,11 @@
-helm "consul" {
-  cluster = "k8s_cluster.k3s"
-
-  chart = "github.com/hashicorp/consul-helm?ref=v0.24.1"
-
-  health_check {
-    timeout = "90s"
-    pods = ["release=consul"]
-  }
-
-  values_string = {
-    "server.storage" = "128Mi"
-    "server.storageClass" = "local-path"
-    "server.replicas" = "1"
-    "server.bootstrapExpect" = "1"
-    "client.enabled" = "true"
-    "client.grpc" = "true"
-    "ui.enabled" = "true"
-    "connectInject.enabled" = "true"
-    "connectInject.defaultProtocol" = "tcp"
-    "connectInject.centralConfig.enabled" = "true"
-    "connectInject.centralConfig.proxyDefaults" = <<EOF
-      {
-        "envoy_prometheus_bind_addr": "0.0.0.0:9102"
-      }
-    EOF
-  }
+variable "consul_kubernetes_network" {
+  default = "dc1"
 }
 
-ingress "consul" {
+network "dc1" {
+  subnet = "10.5.0.0/16"
+}
 
-  destination {
-    driver = "k8s"
-
-    config { 
-      cluster = "k8s_cluster.k3s"
-      address = "consul-consul-server.default.svc"
-      port = 8500
-    }
-  }
-  
-  source {
-    driver = "local"
-
-    config {
-      port = 8500
-   }
-
-  }
+module "consul_stack" {
+  source = "github.com/shipyard-run/blueprints//modules/kubernetes-consul-stack"
 }

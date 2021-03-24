@@ -1,5 +1,7 @@
 helm "meshery" {
-  cluster = "k8s_cluster.k3s"
+  depends_on = ["module.consul_stack"]
+
+  cluster = "k8s_cluster.dc1"
 
   chart = "github.com/layer5io/meshery/install/kubernetes/helm//meshery"
 
@@ -19,9 +21,9 @@ ingress "meshery" {
     driver = "k8s"
 
     config { 
-      cluster = "k8s_cluster.k3s"
+      cluster = "k8s_cluster.dc1"
       address = "meshery.default.svc"
-      port = 8080
+      port = 9081
     }
   }
   
@@ -41,7 +43,7 @@ ingress "public" {
     driver = "k8s"
 
     config { 
-      cluster = "k8s_cluster.k3s"
+      cluster = "k8s_cluster.dc1"
       address = "public.default.svc"
       port = 9090
     }

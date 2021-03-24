@@ -16,6 +16,6 @@ docs "docs" {
   ]
 
   network {
-    name = "network.cloud"
+    name = "network.dc1"
   }
 }
