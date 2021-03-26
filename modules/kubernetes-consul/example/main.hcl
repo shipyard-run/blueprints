@@ -2,6 +2,10 @@ variable "consul_k8s_cluster" {
   default = "dc1"
 }
 
+variable "consul_k8s_network" {
+  default = "dc1"
+}
+
 k8s_cluster "dc1" {
   driver  = "k3s"
 

@@ -6,6 +6,12 @@ global:
   # image: hashicorpdev/consul
   # imageK8S: hashicorpdev/consul-k8s:crd-controller-base-latest
   name: consul
+
+  acls:
+    manageSystemACLs: #{{ .Vars.acl_enabled }}
+  tls:
+    enabled: #{{ .Vars.tls_enabled }}
+    enableAutoEncrypt: #{{ .Vars.tls_enabled }}
 server:
   replicas: 1
   bootstrapExpect: 1
