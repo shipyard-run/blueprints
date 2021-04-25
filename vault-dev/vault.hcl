@@ -1,6 +1,6 @@
 container "vault" {
   image {
-    name = "hashicorp/vault-enterprise:1.4.2_ent"
+    name = "hashicorp/vault:1.7.0"
   }
 
   command = [
