@@ -26,7 +26,6 @@ jobs:
           'consul-terminating-gateways/',
           'modules/consul-nomad/',
           'modules/kubernetes-consul/',
-          'modules/kubernetes-consul-stack/',
           'modules/kubernetes-monitoring/',
           'modules/kubernetes-smi-controller/',
           'modules/kubernetes-vault/'

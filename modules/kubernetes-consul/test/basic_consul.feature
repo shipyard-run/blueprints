@@ -2,7 +2,8 @@ Feature: Test Blueprint
   In order to ensure that the Blueprint creates the required resources
   I should test the blueprint
 
-Scenario: Standard Blueprint
+  @base
+  Scenario: Standard Blueprint
     Given I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -10,7 +11,8 @@ Scenario: Standard Blueprint
       | dc1                 | k8s_cluster |
     And a HTTP call to "http://localhost:8500/v1/status/leader" should result in status 200
 
-Scenario: Enabled TLS
+  @with_tls
+  Scenario: Enabled TLS
     Given the following shipyard variables are set
       | key                 | value       |
       | consul_enable_tls   | true        |
@@ -25,13 +27,15 @@ Scenario: Enabled TLS
 
       # Check the tls cert has been created
       if [ ! -f "${HOME}/.shipyard/data/helm/tls.crt" ]; then
-        echo "TLS certificate does not exist."
+        echo "TLS certificate does not exist at path: ${HOME}/.shipyard/data/helm/tls.crt"
+        ls -las ${HOME}/.shipyard/data/helm 
         exit 1
       fi
       
       # Check the tls key has been created
       if [ ! -f "${HOME}/.shipyard/data/helm/tls.key" ]; then
-        echo "TLS key does not exist."
+        echo "TLS key does not exist at path: ${HOME}/.shipyard/data/helm/tls.key"
+        ls -las ${HOME}/.shipyard/data/helm 
         exit 1
       fi
       
@@ -40,7 +44,8 @@ Scenario: Enabled TLS
       ```
     And I expect the exit code to be 0
 
-Scenario: Enabled ACLs
+  @with_acls
+  Scenario: Enabled ACLs
     Given the following shipyard variables are set
       | key                 | value       |
       | consul_enable_acls  | true        |
@@ -55,11 +60,13 @@ Scenario: Enabled ACLs
 
       # Check the acl token has been created
       if [ ! -f "${HOME}/.shipyard/data/helm/bootstrap_acl.token" ]; then
-        echo "ACL Root token does not exist."
+        echo "ACL Root token does not exist at path: ${HOME}/.shipyard/data/helm/bootstrap_acl.token"
+        ls -las ${HOME}/.shipyard/data/helm 
         exit 1
       fi
 
       curl --header "X-Consul-Token: $(cat ${HOME}/.shipyard/data/helm/bootstrap_acl.token)" \
-           http://localhost:8500/v1/status/leader --
+           http://localhost:8500/v1/status/leader
       ```
     And I expect the exit code to be 0
+  

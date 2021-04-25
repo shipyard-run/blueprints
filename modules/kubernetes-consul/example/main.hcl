@@ -6,6 +6,19 @@ variable "consul_k8s_network" {
   default = "dc1"
 }
 
+# Optionally you can set the following variables to enable submodules
+# for installing monitoring tools or the SMI controller for Consul.
+# 
+# variable "consul_enable_monitoring" {
+#   description = "Should the monitoring stack, Prometheus, Grafana, Loki be installed"
+#   default = true
+# }
+# 
+# variable "consul_enable_smi_controller" {
+#   description = "Should the SMI controller be installed"
+#   default = true
+# }
+
 k8s_cluster "dc1" {
   driver  = "k3s"
 

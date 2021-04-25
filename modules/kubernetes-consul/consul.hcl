@@ -15,8 +15,7 @@ helm "consul" {
   depends_on = ["template.consul_values"]
   cluster = "k8s_cluster.${var.consul_k8s_cluster}"
 
-  // chart = "github.com/hashicorp/consul-helm?ref=crd-controller-base"
-  chart = "github.com/hashicorp/consul-helm?ref=v0.28.0"
+  chart = "github.com/hashicorp/consul-helm?ref=v0.30.0"
   values = "${data("helm")}/consul_values.hcl"
 
   health_check {
@@ -47,9 +46,11 @@ ingress "consul" {
 
 template "fetch_consul_resources" {
   depends_on = ["helm.consul"]
+
   source = <<EOF
   #!/bin/sh -e
-  
+ 
+  echo "test ${var.consul_enable_acls}"
   echo "Fetching resources from running cluster, acls_enabled: #{{ .Vars.acl_enabled }}, tls_enabled #{{ .Vars.tls_enabled }}"
 
   #{{ if eq .Vars.acl_enabled "true" }}
@@ -73,6 +74,8 @@ template "fetch_consul_resources" {
 
 # fetch acl tokens etc
 exec_remote "fetch_consul_resources" {
+  disabled = (var.consul_enable_acls == false && var.consul_enable_tls == false)
+
   depends_on = ["template.fetch_consul_resources"]
 
   image {

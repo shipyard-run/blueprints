@@ -1,11 +1,33 @@
-variable "consul_kubernetes_network" {
+variable "consul_k8s_network" {
   default = "dc1"
+}
+
+variable "consul_k8s_cluster" {
+  default = "dc1"
+}
+
+variable "consul_enable_monitoring" {
+  default = "true"
+}
+
+variable "consul_enable_smi_controller" {
+  default = "true"
 }
 
 network "dc1" {
   subnet = "10.5.0.0/16"
 }
 
-module "consul_stack" {
-  source = "github.com/shipyard-run/blueprints//modules/kubernetes-consul-stack"
+k8s_cluster "dc1" {
+  driver  = "k3s"
+
+  nodes = 1
+
+  network {
+    name = "network.dc1"
+  }
+}
+
+module "kubernetes_consul" {
+  source = "github.com/shipyard-run/blueprints//modules/kubernetes-consul"
 }

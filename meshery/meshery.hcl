@@ -1,5 +1,5 @@
 helm "meshery" {
-  depends_on = ["module.consul_stack"]
+  depends_on = ["module.kubernetes_consul"]
 
   cluster = "k8s_cluster.dc1"
 

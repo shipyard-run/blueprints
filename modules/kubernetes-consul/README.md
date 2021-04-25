@@ -20,11 +20,17 @@ To use this module the following resources are required:
 Optionally you can set the following variables to change the default
 ingress ports
 
-* consul_api_port    - default 8500
-* consul_rpc_port    - default 8300
-* consul_lan_port    - default 8301
-* consul_enable_acls - default false: Enable ACL system for Consul
-* consul_enable_tls  - default false: Enable TLS for Consul
+* consul_api_port                  - default 8500
+* consul_rpc_port                  - default 8300
+* consul_lan_port                  - default 8301
+* consul_enable_acls               - default false: Enable ACL system for Consul
+* consul_enable_tls                - default false: Enable TLS for Consul
+* consul_enable_monitoring         - default false: Install Prometheus, Grafana, Loki monitoring stack
+* consul_grafana_port              - default: 8080
+* consul_prometheus_port           - default 8080
+* consul_enable_smi_controller     - default false: Install the Consul SMI Controller
+* consul_smi_controller_repository - default nicholasjackson/consul-smi-controller
+* consul_smi_controller_tag        - default latest
 
 # Outputs
 
@@ -33,12 +39,36 @@ ingress ports
 * CONSUL_CA_CERT_FILE - Location of Consuls CA certificate, when consul_enable_tls is true
 * CONSUL_CA_KEY_FILE  - Location of Consuls CA key, when consul_enable_tls is true
 
+When `consul_enable_monitoring` is set to true the following outputs are set:
+* GRAFANA_HTTP_ADDR    - Address of the Grafana server
+* GRAFANA_USER         - Username for Grafana
+* GRAFANA_PASSWORD     - Password for Grafana
+* PROMETHEUS_HTTP_ADDR - Address for the Prometheus server
+
 ## Usage
 
 This module can be consumed by using the module stanza
 
-```
+```javascript
+variable "consul_k8s_cluster" {
+  default = "dc1"
+}
+
+variable "consul_k8s_network" {
+  default = "dc1"
+}
+
+k8s_cluster "dc1" {
+  driver  = "k3s"
+
+  nodes = 1
+
+  network {
+    name = "network.dc1"
+  }
+}
+
 module "consul" {
-  source = "./module_path_or_github"
+  source = "github.com/shipyard-run/blueprints/modules/kubernetes-consul"
 }
 ```
