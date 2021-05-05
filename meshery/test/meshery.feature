@@ -8,5 +8,5 @@ Scenario: Meshery running on Kubernetes
   Then the following resources should be running
     | name                      | type          |
     | dc1                       | k8s_cluster   |
-  And a HTTP call to "http://consul.ingress.shipyard.run:8500/" should result in status 200
-  And a HTTP call to "http://meshery.ingress.shipyard.run:9081/" should result in status 200
+  And a HTTP call to "http://localhost:8500/" should result in status 200
+  And a HTTP call to "http://localhost:9081/" should result in status 200

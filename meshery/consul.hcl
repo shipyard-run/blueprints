@@ -30,4 +30,5 @@ k8s_cluster "dc1" {
 
 module "kubernetes_consul" {
   source = "github.com/shipyard-run/blueprints//modules/kubernetes-consul"
+  //source = "../modules/kubernetes-consul"
 }
