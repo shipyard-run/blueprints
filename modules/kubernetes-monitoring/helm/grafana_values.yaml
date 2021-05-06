@@ -5,7 +5,7 @@ datasources:
     datasources:
     - name: Prometheus
       type: prometheus
-      url: http://prometheus-stack-kube-prom-prometheus:9090
+      url: http://prometheus-kube-prometheus-prometheus:9090
       isDefault: true
 
     - name: Loki
