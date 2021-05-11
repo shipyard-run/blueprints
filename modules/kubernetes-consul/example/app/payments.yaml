@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-v1-deployment
+  labels:
+    app: payments_v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments_v1
+  template:
+    metadata:
+      labels:
+        app: payments_v1
+        metrics: 'true'
+      annotations:
+        consul.hashicorp.com/connect-inject: 'true'
+        consul.hashicorp.com/service-meta-version: v1
+    spec:
+      containers:
+        - name: payments
+          image: nicholasjackson/fake-service:v0.21.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9090
+          env:
+            - name: "NAME"
+              value: "PAYMENTS V1"
+            - name: "LISTEN_ADDR"
+              value: "127.0.0.1:9090"
+            - name: "TIMING_50_PERCENTILE"
+              value: "10ms"
+            - name: "TRACING_ZIPKIN"
+              value: "http://tempo:9411"

@@ -13,3 +13,7 @@ output "GRAFANA_PASSWORD" {
 output "PROMETHEUS_HTTP_ADDR" {
   value = "localhost:${var.monitoring_prometheus_port}"
 }
+
+output "TEMPO_HTTP_ADDR" {
+  value = "localhost:${var.monitoring_tempo_port}"
+}

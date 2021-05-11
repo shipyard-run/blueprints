@@ -5,7 +5,7 @@ metadata:
   namespace: default
   labels:
     app: applications
-    release: prometheus-stack
+    release: prometheus
 spec:
   selector:
     matchLabels:
@@ -25,7 +25,7 @@ metadata:
   name: applications
   labels:
     app: applications
-    release: prometheus-stack
+    release: prometheus
 spec:
   selector:
     matchLabels:

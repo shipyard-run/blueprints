@@ -23,7 +23,7 @@ variable "consul_enable_tls" {
 }
 
 variable "consul_enable_monitoring" {
-  description = "Should the monitoring stack, Prometheus, Grafana, Loki be installed"
+  description = "Should the monitoring stack, Prometheus, Grafana, Loki, and Tempo be installed?"
   default = false
 }
 

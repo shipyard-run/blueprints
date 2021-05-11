@@ -10,7 +10,23 @@ datasources:
 
     - name: Loki
       type: loki
+      uid: loki_uid
       url: http://loki:3100
+      isDefault: false
+      jsonData:
+        maxLines: 1000
+        derivedFields:
+          - datasourceUid: tempo_uid
+            matcherRegex: "trace_id=(\\w+)"
+            name: trace_id
+            # url will be interpreted as query for the datasource
+            url: '$${__value.raw}'
+
+
+    - name: Tempo
+      type: tempo
+      uid: tempo_uid
+      url: http://tempo:3100
       isDefault: false
 
 sidecar:

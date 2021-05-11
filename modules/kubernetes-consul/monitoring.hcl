@@ -2,16 +2,17 @@ module "monitoring" {
   depends_on = ["helm.consul"]
   disabled = var.consul_enable_monitoring ? false : true
   source = "github.com/shipyard-run/blueprints/modules//kubernetes-monitoring"
-  #source = "${file_dir()}/../../../modules/kubernetes/monitoring"
+  //source = "../kubernetes-monitoring"
 }
 
-//k8s_config "prometheus-setup" {
-//  depends_on = ["module.monitoring"]
-//
-//  cluster = "k8s_cluster.dc1"
-//  paths = [
-//    "${file_dir()}/../setup/prometheus-config.yaml",
-//  ]
-//
-//  wait_until_ready = true
-//}
+k8s_config "consul_defaults" {
+  depends_on = ["helm.consul"]
+  disabled = var.consul_enable_monitoring ? false : true
+  
+  cluster = "k8s_cluster.${var.consul_k8s_cluster}"
+  paths = [
+    "${file_dir()}/config/proxy-defaults.yaml",
+  ]
+
+  wait_until_ready = false
+}

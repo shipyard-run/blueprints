@@ -10,7 +10,6 @@ helm "promtail" {
   chart = "github.com/grafana/helm-charts/charts//promtail"
   
   values_string = {
-    "loki.serviceName" = "loki"
-    "grafana.enabled" = "false"
+    "config.lokiAddress" = "http://loki:3100/loki/api/v1/push"
   }
 }

@@ -4,13 +4,16 @@ variable "monitoring_k8s_cluster" {
 
 k8s_cluster "dc1" {
   driver  = "k3s"
-  version = "v1.0.1"
 
   nodes = 1
 
   network {
     name = "network.dc1"
   }
+}
+
+output "KUBECONFIG" {
+  value = k8s_config("dc1") 
 }
 
 network "dc1" {
@@ -20,3 +23,4 @@ network "dc1" {
 module "monitoring" {
   source = "../"
 }
+
