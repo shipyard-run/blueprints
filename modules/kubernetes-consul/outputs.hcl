@@ -1,16 +1,17 @@
 output "CONSUL_HTTP_ADDR" {
-  value = "${var.consul_enable_tls ? "https://" : "http://"}${docker_ip()}:${var.consul_api_port}"
+  value = "${var.consul_tls_enabled ? "https://" : "http://"}${docker_ip()}:${var.consul_ports_api}"
 }
 
 output "CONSUL_TOKEN_FILE" {
-  value = "${var.consul_enable_acls ? "${data("helm")}/bootstrap_acl.token" : ""}"
+  value = "${var.consul_acls_enabled ? "${data("helm")}/bootstrap_acl.token" : ""}"
 }
 
-output "CONSUL_CA_CERT_FILE" {
-  value = "${var.consul_enable_tls ? "${data("helm")}/tls.crt" : ""}"
+output "CONSUL_CAPATH" {
+  disabled = (var.consul_tls_enabled == false)
+
+  value = "${data("helm")}/tls.crt"
 }
 
-output "CONSUL_CA_KEY_FILE" {
-  value = "${var.consul_enable_tls ? "${data("helm")}/tls.key" : ""}"
+output "CONSUL_CAKEY" {
+  value = "${var.consul_tls_enabled ? "${data("helm")}/tls.key" : ""}"
 }
-

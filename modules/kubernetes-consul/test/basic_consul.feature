@@ -15,7 +15,7 @@ Feature: Test Blueprint
   Scenario: Enabled TLS
     Given the following shipyard variables are set
       | key                 | value       |
-      | consul_enable_tls   | true        |
+      | consul_tls_enabled   | true        |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -26,21 +26,21 @@ Feature: Test Blueprint
       #!/bin/bash -e
 
       # Check the tls cert has been created
-      if [ ! -f "${HOME}/.shipyard/data/helm/tls.crt" ]; then
-        echo "TLS certificate does not exist at path: ${HOME}/.shipyard/data/helm/tls.crt"
-        ls -las ${HOME}/.shipyard/data/helm 
+      if [ ! -f "${HOME}/.shipyard/data/consul_kubernetes/tls.crt" ]; then
+        echo "TLS certificate does not exist at path: ${HOME}/.shipyard/data/consul_kubernetes/tls.crt"
+        ls -las ${HOME}/.shipyard/data/consul_kubernetes
         exit 1
       fi
       
       # Check the tls key has been created
-      if [ ! -f "${HOME}/.shipyard/data/helm/tls.key" ]; then
-        echo "TLS key does not exist at path: ${HOME}/.shipyard/data/helm/tls.key"
-        ls -las ${HOME}/.shipyard/data/helm 
+      if [ ! -f "${HOME}/.shipyard/data/consul_kubernetes/tls.key" ]; then
+        echo "TLS key does not exist at path: ${HOME}/.shipyard/data/consul_kubernetes/tls.key"
+        ls -las ${HOME}/.shipyard/data/consul_kubernetes
         exit 1
       fi
       
-      curl --cacert ${HOME}/.shipyard/data/helm/tls.crt \
-           https://localhost:8500/v1/status/leader
+      curl --cacert ${HOME}/.shipyard/data/consul_kubernetes/tls.crt \
+           https://localhost:8501/v1/status/leader
       ```
     And I expect the exit code to be 0
 
@@ -48,7 +48,7 @@ Feature: Test Blueprint
   Scenario: Enabled ACLs
     Given the following shipyard variables are set
       | key                 | value       |
-      | consul_enable_acls  | true        |
+      | consul_acls_enabled | true        |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -59,14 +59,33 @@ Feature: Test Blueprint
       #!/bin/bash -e
 
       # Check the acl token has been created
-      if [ ! -f "${HOME}/.shipyard/data/helm/bootstrap_acl.token" ]; then
-        echo "ACL Root token does not exist at path: ${HOME}/.shipyard/data/helm/bootstrap_acl.token"
-        ls -las ${HOME}/.shipyard/data/helm 
+      if [ ! -f "${HOME}/.shipyard/data/consul_kubernetes/bootstrap_acl.token" ]; then
+        echo "ACL Root token does not exist at path: ${HOME}/.shipyard/data/consul_kubernetes/bootstrap_acl.token"
+        ls -las ${HOME}/.shipyard/data/consul_kubernetes
         exit 1
       fi
 
-      curl --header "X-Consul-Token: $(cat ${HOME}/.shipyard/data/helm/bootstrap_acl.token)" \
+      curl --header "X-Consul-Token: $(cat ${HOME}/.shipyard/data/consul_kubernetes/bootstrap_acl.token)" \
            http://localhost:8500/v1/status/leader
       ```
     And I expect the exit code to be 0
   
+  @with_acls_and_tls
+  Scenario: Enabled ACLs
+    Given the following shipyard variables are set
+      | key                 | value       |
+      | consul_acls_enabled | true        |
+      | consul_tls_enabled  | true        |
+    And I have a running blueprint at path "./example"
+    Then the following resources should be running
+      | name                | type        |
+      | dc1                 | network     |
+      | dc1                 | k8s_cluster |
+    And I run the script
+      ```
+      #!/bin/bash -e
+      curl --cacert ${HOME}/.shipyard/data/consul_kubernetes/tls.crt \
+           --header "X-Consul-Token: $(cat ${HOME}/.shipyard/data/consul_kubernetes/bootstrap_acl.token)" \
+           https://localhost:8501/v1/status/leader
+      ```
+    And I expect the exit code to be 0

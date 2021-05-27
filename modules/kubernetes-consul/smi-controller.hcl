@@ -1,5 +1,5 @@
 module "smi_controller" {
-  disabled = var.consul_enable_smi_controller ? false : true
+  disabled = var.consul_smi_controller_enabled ? false : true
 
   depends_on = ["helm.consul"]
   source = "github.com/shipyard-run/blueprints/modules//kubernetes-smi-controller"

@@ -19,6 +19,16 @@ variable "consul_enable_monitoring" {
 #   default = true
 # }
 
+variable "consul_gateway_enabled" {
+  description = "Should mesh gateways be enabled?"
+  default = true
+}
+
+variable "consul_gateway_create_federation_secret" {
+  description = "Should a federation secret be created?"
+  default = true
+}
+
 k8s_cluster "dc1" {
   driver  = "k3s"
 
@@ -27,6 +37,10 @@ k8s_cluster "dc1" {
   network {
     name = "network.dc1"
   }
+}
+
+output "KUBECONFIG" {
+  value = k8s_config("dc1")
 }
 
 network "dc1" {

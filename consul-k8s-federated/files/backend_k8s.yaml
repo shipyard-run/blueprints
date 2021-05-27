@@ -1,0 +1,42 @@
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceResolver
+metadata:
+  name: backendk8s
+spec:
+  redirect:
+    service: backendk8s
+    datacenter: dc1
+
+---
+# Backend for DC2 Root
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backendk8s
+  labels:
+    app: backendk8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backendk8s
+  template:
+    metadata:
+      labels:
+        app: backendk8s
+      annotations:
+        "consul.hashicorp.com/connect-inject": "true"
+    spec:
+      containers:
+      - name: backendk8s
+        image: nicholasjackson/fake-service:v0.22.5
+        ports:
+        - containerPort: 9090
+        env:
+        - name: "LISTEN_ADDR"
+          value: "127.0.0.1:9090"
+        - name: "NAME"
+          value: "backendk8s"
+        - name: "MESSAGE"
+          value: "Hello World"

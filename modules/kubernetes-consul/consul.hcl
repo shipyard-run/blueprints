@@ -1,10 +1,15 @@
 template "consul_values" {
   source = file(var.consul_helm_values)
-  destination = "${data("helm")}/consul_values.hcl"
+  destination = "${var.consul_data_folder}/consul_values.yaml"
 
   vars = {
-    tls_enabled = var.consul_enable_tls
-    acl_enabled = var.consul_enable_acls
+    datacenter: var.consul_datacenter
+    tls_enabled = var.consul_tls_enabled
+    acl_enabled = var.consul_acls_enabled
+    federation_enabled = var.consul_federation_enabled
+    create_federation_secret = var.consul_federation_create_secret
+    gateway_enabled = var.consul_gateway_enabled
+    gateway_address = var.consul_gateway_address
   }
 } 
 
@@ -16,31 +21,11 @@ helm "consul" {
   cluster = "k8s_cluster.${var.consul_k8s_cluster}"
 
   chart = "github.com/hashicorp/consul-helm?ref=v0.30.0"
-  values = "${data("helm")}/consul_values.hcl"
+  values = "${var.consul_data_folder}/consul_values.yaml"
 
   health_check {
     timeout = "120s"
     pods = ["app=consul"]
-  }
-}
-
-ingress "consul" {
-  source {
-    driver = "local"
-    
-    config {
-      port = var.consul_api_port
-    }
-  }
-  
-  destination {
-    driver = "k8s"
-    
-    config {
-      cluster = "k8s_cluster.${var.consul_k8s_cluster}"
-      address = "consul-server.default.svc"
-      port = var.consul_enable_tls ? 8501 : 8500
-    }
   }
 }
 
@@ -49,8 +34,8 @@ template "fetch_consul_resources" {
 
   source = <<EOF
   #!/bin/sh -e
- 
-  echo "test ${var.consul_enable_acls}"
+
+  echo "Port #{{ .Vars.port }}"
   echo "Fetching resources from running cluster, acls_enabled: #{{ .Vars.acl_enabled }}, tls_enabled #{{ .Vars.tls_enabled }}"
 
   #{{ if eq .Vars.acl_enabled "true" }}
@@ -63,18 +48,18 @@ template "fetch_consul_resources" {
   #{{end}}
   EOF
 
-  destination = "${data("helm")}/fetch.sh"
+  destination = "${var.consul_data_folder}/fetch.sh"
 
   vars = {
-    tls_enabled = var.consul_enable_tls
-    acl_enabled = var.consul_enable_acls
+    port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api
+    tls_enabled = var.consul_tls_enabled
+    acl_enabled = var.consul_acls_enabled
   }
 }
 
-
 # fetch acl tokens etc
 exec_remote "fetch_consul_resources" {
-  disabled = (var.consul_enable_acls == false && var.consul_enable_tls == false)
+  disabled = (var.consul_acls_enabled == false && var.consul_tls_enabled == false)
 
   depends_on = ["template.fetch_consul_resources"]
 
@@ -98,7 +83,7 @@ exec_remote "fetch_consul_resources" {
   }
   
   volume {
-    source = data("helm")
+    source = var.consul_data_folder
     destination = "/data"
   }
 
@@ -108,12 +93,32 @@ exec_remote "fetch_consul_resources" {
   }
 }
 
+ingress "consul" {
+  source {
+    driver = "local"
+    
+    config {
+      port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api
+    }
+  }
+  
+  destination {
+    driver = "k8s"
+    
+    config {
+      cluster = "k8s_cluster.${var.consul_k8s_cluster}"
+      address = "consul-server.default.svc"
+      port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api
+    }
+  }
+}
+
 ingress "consul-rpc" {
   source {
     driver = "local"
     
     config {
-      port = var.consul_rpc_port
+      port = var.consul_ports_rpc
     }
   }
   
@@ -133,7 +138,7 @@ ingress "consul-lan-serf" {
     driver = "local"
     
     config {
-      port = var.consul_lan_port
+      port = var.consul_ports_lan
     }
   }
   
@@ -144,6 +149,28 @@ ingress "consul-lan-serf" {
       cluster = "k8s_cluster.${var.consul_k8s_cluster}"
       address = "consul-server.default.svc"
       port = 8301
+    }
+  }
+}
+
+ingress "consul-gateway" {
+  disabled = (var.consul_gateway_enabled == false)
+
+  source {
+    driver = "local"
+    
+    config {
+      port = var.consul_ports_gateway
+    }
+  }
+  
+  destination {
+    driver = "k8s"
+    
+    config {
+      cluster = "k8s_cluster.${var.consul_k8s_cluster}"
+      address = "consul-mesh-gateway.default.svc"
+      port = 443
     }
   }
 }

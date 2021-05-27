@@ -4,3 +4,4 @@
 .terraform.backup
 .terraform
 debug.log
+telepresence

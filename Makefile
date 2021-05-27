@@ -7,6 +7,7 @@ test:
 	shipyard test vault-dev
 	shipyard test consul-nomad
 	shipyard test consul-terminating-gateways
+	shipyard test consul-k8s-federated --var "consul_k8s_module=./modules/kubernetes-consul" --var "install_example_app=true"
 	shipyard test modules/consul-nomad
 	shipyard test modules/kubernetes-consul
 	shipyard test modules/kubernetes-consul-stack

@@ -20,17 +20,18 @@ To use this module the following resources are required:
 Optionally you can set the following variables to change the default
 ingress ports
 
-* consul_api_port                  - default 8500
-* consul_rpc_port                  - default 8300
-* consul_lan_port                  - default 8301
-* consul_enable_acls               - default false: Enable ACL system for Consul
-* consul_enable_tls                - default false: Enable TLS for Consul
-* consul_enable_monitoring         - default false: Install Prometheus, Grafana, Loki monitoring stack
-* consul_grafana_port              - default: 8080
-* consul_prometheus_port           - default 8080
-* consul_enable_smi_controller     - default false: Install the Consul SMI Controller
-* consul_smi_controller_repository - default nicholasjackson/consul-smi-controller
-* consul_smi_controller_tag        - default latest
+* consul_ports_api                  - default 8500, 8501 when https enabled
+* consul_ports_rpc                  - default 8300
+* consul_ports_lan                  - default 8301
+* consul_ports_gateway              - default 1443
+* consul_acls_enabled               - default false: Enable ACL system for Consul
+* consul_tls_enabled                - default false: Enable TLS for Consul
+* consul_monitoring_enabled         - default false: Install Prometheus, Grafana, Loki monitoring stack
+* consul_monitoring_grafana_port    - default: 8080
+* consul_monitoring_prometheus_port - default 8080
+* consul_enable_smi_controller      - default false: Install the Consul SMI Controller
+* consul_smi_controller_repository  - default nicholasjackson/consul-smi-controller
+* consul_smi_controller_tag         - default latest
 
 # Outputs
 

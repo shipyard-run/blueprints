@@ -6,7 +6,7 @@ Feature: Test Blueprint
 Scenario: With Monitoring
     Given the following shipyard variables are set
       | key                        | value       |
-      | consul_enable_monitoring   | true        |
+      | consul_monitoring_enabled  | true        |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -20,7 +20,7 @@ Scenario: With Monitoring
 Scenario: With SMI Controller
     Given the following shipyard variables are set
       | key                            | value       |
-      | consul_enable_smi_controller   | true        |
+      | consul_smi_controller_enabled  | true        |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |

@@ -7,11 +7,17 @@ global:
   # imageK8S: hashicorpdev/consul-k8s:crd-controller-base-latest
   name: consul
 
+  datacenter: #{{ .Vars.datacenter }}
+
   acls:
     manageSystemACLs: #{{ .Vars.acl_enabled }}
   tls:
     enabled: #{{ .Vars.tls_enabled }}
     enableAutoEncrypt: #{{ .Vars.tls_enabled }}
+
+  federation:
+    enabled: #{{ .Vars.federation_enabled }}
+    createFederationSecret: #{{ .Vars.create_federation_secret }}
 
 server:
   replicas: 1
@@ -38,4 +44,19 @@ connectInject:
 
   # Requires Consul v1.5+ and consul-k8s v0.8.1+
   centralConfig:
-    enabled: "true"
+    enabled: true
+
+
+meshGateway:
+  enabled: #{{ .Vars.gateway_enabled }}
+  replicas: 1
+
+  wanAddress:
+    source: Static
+    static: #{{ .Vars.gateway_address }}
+    port: 30443
+
+  service:
+    enabled: #{{ .Vars.gateway_enabled }}
+    type: NodePort
+    nodePort: 30443
