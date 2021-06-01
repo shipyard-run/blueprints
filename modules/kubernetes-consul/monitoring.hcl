@@ -1,13 +1,13 @@
 module "monitoring" {
   depends_on = ["helm.consul"]
-  disabled = var.consul_monitoring_enabled ? false : true
+  disabled = var.consul_monitoring_enabled == false
   source = "github.com/shipyard-run/blueprints/modules//kubernetes-monitoring"
   //source = "../kubernetes-monitoring"
 }
 
 k8s_config "consul_defaults" {
   depends_on = ["helm.consul"]
-  disabled = var.consul_monitoring_enabled ? false : true
+  disabled = var.consul_monitoring_enabled == false
   
   cluster = "k8s_cluster.${var.consul_k8s_cluster}"
   paths = [

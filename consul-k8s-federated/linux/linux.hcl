@@ -1,31 +1,27 @@
-template "create_dc2_certs" {
-  depends_on = ["module.consul"]
-
+template "create_linux_certs" {
   source = <<EOF
   #!/bin/sh -e
   cd /files
   consul tls cert create \
     -server \
-    -dc dc2 \
+    -dc linux \
     -node "server" \
     -ca /data/tls.crt \
     -key /data/tls.key
   cp /data/tls.crt /files/tls.crt
   EOF
 
-  destination = "${data("dc2")}/generate_dc2_certs.sh"
+  destination = "${data("linux")}/generate_linux_certs.sh"
 }
 
-template "create_dc2_config" {
-  depends_on = ["module.consul"]
-
-  source = file("./files/server_dc2_config.hcl")
-  destination = "${data("dc2")}/consul_config.hcl"
+template "create_linux_config" {
+  source = file("./files/server_linux_config.hcl")
+  destination = "${data("linux")}/consul_config.hcl"
 }
 
 # fetch acl tokens etc
-exec_remote "create_consul_certs" {
-  depends_on = ["template.create_dc2_certs"]
+exec_remote "create_linux_certs" {
+  depends_on = ["template.create_linux_certs"]
 
   image {
     name = "shipyardrun/tools:latest"
@@ -37,22 +33,22 @@ exec_remote "create_consul_certs" {
 
   cmd = "sh"
   args = [
-    "/files/generate_dc2_certs.sh",
+    "/files/generate_linux_certs.sh",
   ]
   
   volume {
-    source = data("helm")
+    source = data("consul_kubernetes") // from Consul module
     destination = "/data"
   }
   
   volume {
-    source = data("dc2")
+    source = data("linux")
     destination = "/files"
   }
 }
 
-container "consul_server" {
-  depends_on = ["exec_remote.create_consul_certs", "template.create_dc2_config"]
+container "linux_server" {
+  depends_on = ["exec_remote.create_linux_certs", "template.create_linux_config"]
   
   image {
     name = "consul:1.9.5"
@@ -61,14 +57,14 @@ container "consul_server" {
   command = ["consul", "agent", "-config-file=/files/consul_config.hcl", "-log-level=debug"]
 
   volume {
-    source      = data("dc2")
+    source      = data("linux")
     destination = "/files"
   }
 
   network { 
     name = "network.local"
     ip_address = "10.5.0.201"
-    aliases = ["server.dc2.container.shipyard.run"]
+    aliases = ["server.linux.container.shipyard.run"]
   }
 
   port {
@@ -83,8 +79,8 @@ container "consul_server" {
   }
 }
 
-container "dc2_gateway" {
-  depends_on = ["container.consul_server"]
+container "linux_gateway" {
+  depends_on = ["container.linux_server"]
   
   image {
     name = "nicholasjackson/consul-envoy:v1.9.5-v1.16.0"
@@ -106,13 +102,13 @@ container "dc2_gateway" {
   }
   
   volume {
-    source      = data("dc2")
+    source      = data("linux")
     destination = "/files"
   }
 
   env_var = {
-    CONSUL_HTTP_ADDR = "consul-server.container.shipyard.run:8500"
-    CONSUL_GRPC_ADDR = "http://consul-server.container.shipyard.run:8502"
+    CONSUL_HTTP_ADDR = "linux-server.container.shipyard.run:8500"
+    CONSUL_GRPC_ADDR = "http://linux-server.container.shipyard.run:8502"
     CONSUL_CACERT = "/files/tls.crt"
   }
 }

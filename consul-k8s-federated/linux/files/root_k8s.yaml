@@ -6,7 +6,7 @@ metadata:
 spec:
   redirect:
     service: backendvm
-    datacenter: dc2
+    datacenter: linux
 
 ---
 apiVersion: consul.hashicorp.com/v1alpha1

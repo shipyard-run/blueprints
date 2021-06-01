@@ -13,12 +13,12 @@ Feature: Test Kubernetes to Linux Connectivity
     Then the following resources should be running
       | name                | type        |
       | local               | network     |
-      | dc1                 | k8s_cluster |
-      | consul_server       | container   |
-      | dc2_gateway         | container   |
-      | root_dc2_app        | container   |
-      | backend_dc2_app     | container   |
-    And a HTTP call to "https://localhost:8500/v1/status/leader" should result in status 200
+      | kubernetes          | k8s_cluster |
+      | linux_server        | container   |
+      | linux_gateway       | container   |
+      | root_linux_app      | container   |
+      | backend_linux_app   | container   |
+    And a HTTP call to "https://localhost:8501/v1/status/leader" should result in status 200
     And a HTTP call to "http://localhost:18500/v1/status/leader" should result in status 200
     And a HTTP call to "http://localhost:19091" should result in status 200
     And a HTTP call to "http://localhost:19092" should result in status 200

@@ -35,6 +35,28 @@ variable "consul_datacenter" {
   default = "dc1"
 }
 
+# Variables for Mesh Gateways
+variable "consul_gateway_enabled" {
+  description = "Enable mesh gateways"
+  default = false
+}
+
+variable "consul_gateway_address" {
+  description = "Wan address for the mesh gateway"
+  default = "${var.consul_k8s_cluster}.k8s-cluster.shipyard.run"
+}
+
+variable "consul_federation_enabled" {
+  description = "Enable federation, required to use mesh gateways"
+  default = false
+}
+
+variable "consul_federation_create_secret" {
+  description = "Create a federation secret?"
+  default = false
+}
+
+
 variable "consul_monitoring_enabled" {
   description = "Should the monitoring stack, Prometheus, Grafana, Loki, and Tempo be installed?"
   default = false
@@ -63,27 +85,6 @@ variable "consul_smi_controller_repository" {
 variable "consul_smi_controller_tag" {
   description = "Tag for the controller image"
   default = "latest"
-}
-
-# Variables for Mesh Gateways
-variable "consul_gateway_enabled" {
-  description = "Enable mesh gateways"
-  default = false
-}
-
-variable "consul_gateway_address" {
-  description = "Wan address for the mesh gateway"
-  default = "${var.consul_k8s_cluster}.k8s-cluster.shipyard.run"
-}
-
-variable "consul_federation_enabled" {
-  description = "Enable federation, required to use mesh gateways"
-  default = false
-}
-
-variable "consul_federation_create_secret" {
-  description = "Create a federation secret?"
-  default = false
 }
 
 # Variables for Monitoring module

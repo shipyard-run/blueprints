@@ -51,7 +51,7 @@ template "fetch_consul_resources" {
   destination = "${var.consul_data_folder}/fetch.sh"
 
   vars = {
-    port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api
+    port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == true ? 8501 : 8500) : var.consul_ports_api
     tls_enabled = var.consul_tls_enabled
     acl_enabled = var.consul_acls_enabled
   }
@@ -98,7 +98,7 @@ ingress "consul" {
     driver = "local"
     
     config {
-      port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api
+      port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == true ? 8501 : 8500) : var.consul_ports_api
     }
   }
   
@@ -108,7 +108,7 @@ ingress "consul" {
     config {
       cluster = "k8s_cluster.${var.consul_k8s_cluster}"
       address = "consul-server.default.svc"
-      port = var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api
+      port = (var.consul_tls_enabled == true ? 8501 : 8500)
     }
   }
 }

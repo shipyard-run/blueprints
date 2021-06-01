@@ -1,11 +1,8 @@
-# consul tls cert create -server -node dc2.server.shipyard.run -ca /home/nicj/.shipyard/data/helm/tls.crt -key /home/nicj/.shipyard/data/helm/tls.key
-#
-# consul agent -bind '{{ GetInterfaceIP "eth0" }}' -config-file ./consul_config.hcl
 node_name = "server"
 data_dir = "/tmp"
 
-datacenter = "dc2"
-primary_datacenter = "dc1"
+datacenter = "linux"
+primary_datacenter = "kubernetes"
 
 server = true
 bootstrap_expect = 1
@@ -36,6 +33,6 @@ ports {
   grpc = 8502
 }
 
-key_file = "/files/dc2-server-consul-0-key.pem"
-cert_file = "/files/dc2-server-consul-0.pem"
+key_file = "/files/linux-server-consul-0-key.pem"
+cert_file = "/files/linux-server-consul-0.pem"
 ca_file = "/files/tls.crt"

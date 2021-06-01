@@ -6,7 +6,7 @@ metadata:
 spec:
   redirect:
     service: backendk8s
-    datacenter: dc1
+    datacenter: kubernetes
 
 ---
 # Backend for DC2 Root

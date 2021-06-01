@@ -71,7 +71,7 @@ Feature: Test Blueprint
     And I expect the exit code to be 0
   
   @with_acls_and_tls
-  Scenario: Enabled ACLs
+  Scenario: Enabled ACLs and TLS
     Given the following shipyard variables are set
       | key                 | value       |
       | consul_acls_enabled | true        |
