@@ -10,6 +10,9 @@ template "consul_values" {
     create_federation_secret = var.consul_federation_create_secret
     gateway_enabled = var.consul_gateway_enabled
     gateway_address = var.consul_gateway_address
+    consul_image = var.consul_image
+    consul_k8s_image = var.consul_k8s_image
+    consul_envoy_image = var.consul_envoy_image
   }
 } 
 
@@ -20,7 +23,7 @@ helm "consul" {
   depends_on = ["template.consul_values"]
   cluster = "k8s_cluster.${var.consul_k8s_cluster}"
 
-  chart = "github.com/hashicorp/consul-helm?ref=v0.30.0"
+  chart = "github.com/hashicorp/consul-helm?ref=${var.consul_helm_version}"
   values = "${var.consul_data_folder}/consul_values.yaml"
 
   health_check {

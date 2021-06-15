@@ -19,6 +19,12 @@ global:
     enabled: #{{ .Vars.federation_enabled }}
     createFederationSecret: #{{ .Vars.create_federation_secret }}
 
+  image: #{{ .Vars.consul_image }}
+  
+  imageK8S: #{{ .Vars.consul_k8s_image }}
+  
+  imageEnvoy: #{{ .Vars.consul_envoy_image }}
+
 server:
   replicas: 1
   bootstrapExpect: 1
