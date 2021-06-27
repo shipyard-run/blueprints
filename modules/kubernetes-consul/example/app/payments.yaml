@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: payments
-          image: nicholasjackson/fake-service:v0.21.1
+          image: nicholasjackson/fake-service:v0.22.4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9090
