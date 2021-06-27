@@ -6,11 +6,11 @@ variable "consul_k8s_cluster" {
   default = "dc1"
 }
 
-variable "consul_enable_monitoring" {
+variable "consul_monitoring_enabled" {
   default = "true"
 }
 
-variable "consul_enable_smi_controller" {
+variable "consul_smi_controller_enabled" {
   default = "true"
 }
 
