@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: currency
-        metrics: 'true'
+        metrics: enabled
       annotations:
         consul.hashicorp.com/connect-inject: 'true'
     spec:

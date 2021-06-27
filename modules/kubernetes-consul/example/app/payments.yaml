@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: payments_v1
-        metrics: 'true'
+        metrics: enabled
       annotations:
         consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/service-meta-version: v1
@@ -51,7 +51,7 @@ spec:
     metadata:
       labels:
         app: payments_v2
-        metrics: 'true'
+        metrics: enabled
       annotations:
         consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/service-meta-version: v2
