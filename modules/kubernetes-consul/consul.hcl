@@ -3,7 +3,7 @@ template "consul_values" {
   destination = "${var.consul_data_folder}/consul_values.yaml"
 
   vars = {
-    datacenter: var.consul_datacenter
+    datacenter = var.consul_datacenter
     tls_enabled = var.consul_tls_enabled
     acl_enabled = var.consul_acls_enabled
     federation_enabled = var.consul_federation_enabled
