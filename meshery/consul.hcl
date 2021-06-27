@@ -33,6 +33,6 @@ output "KUBECONFIG" {
 }
 
 module "kubernetes_consul" {
-  source = "github.com/shipyard-run/blueprints//modules/kubernetes-consul"
+  source = "github.com/shipyard-run/blueprints/modules//kubernetes-consul"
   //source = "../modules/kubernetes-consul"
 }
