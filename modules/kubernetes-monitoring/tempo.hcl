@@ -24,3 +24,23 @@ ingress "tempo" {
     }
   }
 }
+
+ingress "zipkin" {
+  source {
+    driver = "local"
+    
+    config {
+      port = var.monitoring_tempo_port
+    }
+  }
+  
+  destination {
+    driver = "k8s"
+    
+    config {
+      cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
+      address = "tempo.default.svc"
+      port = 9411
+    }
+  }
+}

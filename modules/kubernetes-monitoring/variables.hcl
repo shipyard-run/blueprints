@@ -13,6 +13,10 @@ variable "monitoring_grafana_port" {
 variable "monitoring_tempo_port" {
    default = 3100
 }
+  
+variable "monitoring_zipkin_port" {
+   default = 9411
+}
 
 variable "monitoring_prometheus_port" {
    default = 9090
