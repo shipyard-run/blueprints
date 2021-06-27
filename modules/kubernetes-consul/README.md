@@ -1,3 +1,9 @@
+---
+title: "HashiCorp Consul and Kubernetes"
+author: "Nic Jackson"
+slug: "consul_k8s"
+---
+
 # Module to install Kubernetes and Consul Service Mesh
 
 This module creates a Kubernetes cluster and installs and configures
