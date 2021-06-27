@@ -30,7 +30,7 @@ ingress "zipkin" {
     driver = "local"
     
     config {
-      port = var.monitoring_tempo_port
+      port = var.monitoring_zipkin_port
     }
   }
   
