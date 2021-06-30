@@ -57,7 +57,15 @@ jobs:
 
       - name: Send status to Discord
         uses: sarisia/actions-status-discord@v1
-        if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' || failure() )
+        if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' )
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          tile: ${{ matrix.folder }}
+          description: "Functional tests for ${{ matrix.folder }}"
+      
+      - name: Send failure status to Discord
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           tile: ${{ matrix.folder }}
