@@ -12,6 +12,7 @@ jobs:
   build:
     name: Test Blueprints
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     strategy:
       matrix:
@@ -56,7 +57,7 @@ jobs:
 
       - name: Send status to Discord
         uses: sarisia/actions-status-discord@v1
-        if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' )
+        if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' || failure() )
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           tile: ${{ matrix.folder }}
