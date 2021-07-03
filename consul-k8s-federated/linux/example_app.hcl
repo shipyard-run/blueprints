@@ -32,7 +32,7 @@ container "root_linux_app" {
   depends_on = ["template.create_linux_root_service"]
     
   image {
-    name = "nicholasjackson/fake-service:vm-v0.22.5" 
+    name = "nicholasjackson/fake-service:vm-v0.22.7" 
   }
 
   network { 
@@ -69,7 +69,7 @@ container "backend_linux_app" {
   depends_on = ["template.create_linux_backend_service"]
     
   image {
-    name = "nicholasjackson/fake-service:vm-v0.22.5" 
+    name = "nicholasjackson/fake-service:vm-v0.22.7" 
   }
 
   network { 

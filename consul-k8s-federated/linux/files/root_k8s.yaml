@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: rootk8s
-        image: nicholasjackson/fake-service:v0.22.5
+        image: nicholasjackson/fake-service:v0.22.7
         ports:
         - containerPort: 9090
         env:
