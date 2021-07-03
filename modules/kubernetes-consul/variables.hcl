@@ -33,7 +33,7 @@ variable "consul_k8s_image" {
 }
 
 variable "consul_envoy_image" {
-  default = "envoyproxy/envoy-alpine:v1.16.0"
+  default = "envoyproxy/envoy:v1.16.0"
   //default = "envoyproxy/envoy-alpine:v1.18.3"
 }
 
