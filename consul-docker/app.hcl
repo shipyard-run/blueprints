@@ -1,6 +1,6 @@
 container "api_1" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.13.2"
+    name = "nicholasjackson/fake-service:vm-v0.22.7"
   }
 
   volume {
@@ -45,7 +45,7 @@ container "api_1" {
 
 container "backend_1" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.13.2"
+    name = "nicholasjackson/fake-service:vm-v0.22.7"
   }
 
   volume {
@@ -85,7 +85,7 @@ container "backend_1" {
 
 container "backend_2" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.13.2"
+    name = "nicholasjackson/fake-service:vm-v0.22.7"
   }
 
   volume {
