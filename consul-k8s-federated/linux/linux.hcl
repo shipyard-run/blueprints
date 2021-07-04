@@ -24,7 +24,7 @@ exec_remote "create_linux_certs" {
   depends_on = ["template.create_linux_certs"]
 
   image {
-    name = "shipyardrun/tools:latest"
+    name = "consul:1.9.5"
   }
   
   network {
