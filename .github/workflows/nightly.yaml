@@ -28,6 +28,7 @@ jobs:
           'consul-k8s-federated/',
           'modules/consul-nomad/',
           'modules/kubernetes-consul/',
+          'modules/kubernetes-istio/',
           'modules/kubernetes-monitoring/',
           'modules/kubernetes-smi-controller/',
           'modules/kubernetes-vault/'

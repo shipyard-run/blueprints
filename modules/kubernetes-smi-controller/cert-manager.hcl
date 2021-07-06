@@ -15,7 +15,7 @@ helm "cert-manager" {
   namespace = "smi"
   cluster = "k8s_cluster.${var.smi_controller_k8s_cluster}"
 
-  chart = "github.com/jetstack/cert-manager?ref=v1.1.0/deploy/charts//cert-manager"
+  chart = "github.com/jetstack/cert-manager?ref=v1.2.0/deploy/charts//cert-manager"
 
   values = "${file_dir()}/helm/cert-manager-helm-values.yaml" 
  

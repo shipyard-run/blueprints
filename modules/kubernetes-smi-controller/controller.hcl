@@ -3,26 +3,33 @@ template "smi_controller_config" {
 
   source = <<EOF
 controller:
-  enabled: "true"
+  enabled: ${var.smi_controller_enabled}
 
   image:
     repository: "${var.smi_controller_repository}"
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "${var.smi_controller_tag}"
+
+webhook:  
+  enabled: ${var.smi_controller_webhook_enabled}
+  service: "${var.smi_controller_webhook_service}"
+  port: ${var.smi_controller_webhook_port}
+  additionalDNSNames:
+    - ${var.smi_controller_additional_dns}
 EOF
 
-  destination = "${file_dir()}/helm/smi-controller-values.yaml"
+  destination = "${data("smi_controller")}/smi-controller-values.yaml"
 }
 
-helm "smi-controler" {
+helm "smi-controller" {
   # wait for certmanager to be installed and the template to be processed
   depends_on = ["template.smi_controller_config", "helm.cert-manager"]
 
   cluster = "k8s_cluster.${var.smi_controller_k8s_cluster}"
-  namespace = "smi"
+  namespace = var.smi_controller_namespace
 
-  chart = "github.com/nicholasjackson/smi-controller-sdk/helm//smi-controller"
+  chart = var.smi_controller_helm_chart
 
   values = var.smi_controller_helm_values
 }
