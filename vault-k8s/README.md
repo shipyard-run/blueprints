@@ -32,7 +32,7 @@ please check out the docs at:
   
 ## Cleanup
 
-Run `yard delete` to cleanup all resources
+Run `shipyard destroy` to cleanup all resources
 
 ## Components
 * Kubernetes
