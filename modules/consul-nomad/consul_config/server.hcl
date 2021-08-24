@@ -1,14 +1,14 @@
-data_dir = "/tmp/"
+data_dir  = "/tmp/"
 log_level = "DEBUG"
 
-datacenter = "dc1"
+datacenter = "#{{ .Vars.datacenter }}"
 
 server = true
 
 bootstrap_expect = 1
-ui = true
+ui               = true
 
-bind_addr = "0.0.0.0"
+bind_addr   = "0.0.0.0"
 client_addr = "0.0.0.0"
 
 ports {

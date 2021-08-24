@@ -1,19 +1,23 @@
-template "consul_config" {
-  source = var.cn_consul_server_config
-  destination = "${file_dir()}/consul_config/server.hcl"
+template "consul_server_config" {
+  source      = var.cn_consul_server_config
+  destination = "${data("consul_config")}/server.hcl"
+
+  vars = {
+    datacenter = var.cn_consul_datacenter
+  }
 }
 
 container "consul" {
-  depends_on = ["template.consul_config"]
+  depends_on = ["template.consul_server_config"]
 
-  image   {
+  image {
     name = "${var.cn_consul_image}:${var.cn_consul_version}"
   }
 
   command = ["consul", "agent", "-config-file=/config/server.hcl"]
 
   volume {
-    source      = "./consul_config/server.hcl"
+    source      = "${data("consul_config")}/server.hcl"
     destination = "/config/server.hcl"
   }
 
@@ -22,9 +26,9 @@ container "consul" {
   }
 
   port {
-    local = 8500
+    local  = 8500
     remote = 8500
-    host = var.cn_consul_port
+    host   = var.cn_consul_port
   }
 
 }

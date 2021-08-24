@@ -10,9 +10,8 @@ variable "cn_consul_image" {
   default = "consul"
 }
 
-# Version of Consul for the server
 variable "cn_consul_version" {
-  default = "1.9.4"
+  default = "1.10.1"
 }
 
 # Port to expose the Consul server
@@ -20,9 +19,13 @@ variable "cn_consul_port" {
   default = 18500
 }
 
+variable "cn_consul_datacenter" {
+  default = "dc1"
+}
+
 # Nomad version to use
 variable "cn_nomad_version" {
-  default = "0.11.8"
+  default = "1.1.3"
 }
 
 # Name of the cluster, changing this value does not 
@@ -39,7 +42,11 @@ variable "cn_consul_cluster_name" {
 # Default Consul config, can be overridden by setting this variable from outside
 # the module
 variable "cn_consul_server_config" {
-  default = "${file("${file_dir()}/consul_config/consul.hcl")}"
+  default = "${file("${file_dir()}/consul_config/server.hcl")}"
+}
+
+variable "cn_consul_agent_config" {
+  default = "${file("${file_dir()}/consul_config/agent.hcl")}"
 }
 
 # Address where the nomad client can reach the Nomad server API

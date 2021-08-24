@@ -9,7 +9,7 @@ This module runs a Consul and Nomad cluster configured to with Consul Service Me
 The following resources are created:
 * Consul Server x1
 * Nomad servers x1
-* Nomad clients x3
+* Nomad clients set via variable `cn_nomad_client_nodes`
 
 ## Required Variables
 
@@ -41,7 +41,7 @@ variable "cn_consul_image" {
 
 # Version of Consul for the server
 variable "cn_consul_version" {
-  default = "1.9.4"
+  default = "1.10.1"
 }
 
 # Port to expose the Consul server
@@ -51,7 +51,7 @@ variable "cn_consul_port" {
 
 # Nomad version to use
 variable "cn_nomad_version" {
-  default = "0.11.8"
+  default = "1.1.3"
 }
 
 # Name of the cluster, changing this value does not 
@@ -61,10 +61,16 @@ variable "cn_nomad_cluster_name" {
   default = "local"
 }
 
-# Default Consul config, can be overridden by setting this variable from outside
+# Default Consul server config, can be overridden by setting this variable from outside
 # the module
 variable "cn_consul_server_config" {
   default = "${file("${file_dir()}/consul_config/consul.hcl")}"
+}
+
+# Default Consul agent config, can be overridden by setting this variable from outside
+# the module
+variable "cn_consul_agent_config" {
+  default = "${file("${file_dir()}/consul_config/agent.hcl")}"
 }
 ```
 
@@ -86,6 +92,11 @@ output "CONSUL_HTTP_ADDR" {
 ## Example:
 
 ```javascript
+// Use 3 Nomad client nodes
+variable "cn_nomad_client_nodes" {
+  default = 3
+}
+
 // set the variable for the network
 variable "cn_network" {
   default = "dc1"
