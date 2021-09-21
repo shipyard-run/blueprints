@@ -25,7 +25,7 @@ variable "cn_consul_datacenter" {
 
 # Nomad version to use
 variable "cn_nomad_version" {
-  default = "1.1.3"
+  default = "1.1.4"
 }
 
 # Name of the cluster, changing this value does not 
@@ -47,6 +47,14 @@ variable "cn_consul_server_config" {
 
 variable "cn_consul_agent_config" {
   default = "${file("${file_dir()}/consul_config/agent.hcl")}"
+}
+
+variable "cn_consul_open_browser" {
+  default = false
+}
+
+variable "cn_nomad_open_browser" {
+  default = false
 }
 
 # Address where the nomad client can reach the Nomad server API

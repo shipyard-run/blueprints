@@ -23,7 +23,7 @@ jobs:
           'meshery',
           'vault-k8s/',
           'vault-dev/',
-          'consul-nomad/',
+          'consul-nomad-tracing/',
           'consul-terminating-gateways/',
           'consul-k8s-federated/',
           'modules/consul-nomad/',

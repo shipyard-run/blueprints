@@ -18,6 +18,14 @@ variable "cn_consul_cluster_name" {
   default = "container.consul"
 }
 
+variable "cn_consul_open_browser" {
+  default = true
+}
+
+variable "cn_nomad_open_browser" {
+  default = true
+}
+
 network "dc1" {
   subnet = "10.15.0.0/16"
 }

@@ -2,6 +2,7 @@
 title: "Consul and Nomad"
 author: "Anubhav Mishra"
 slug: "consul-nomad"
+health_check_timeout: 100s
 ---
 
 This blueprint runs a Consul and Nomad cluster with an example application showing how Consul service mesh metrics
@@ -24,9 +25,9 @@ All services run through Consul service mesh the proxies of which also emmit spa
 profile consisting of durations for individual service calls and their individual components. 
 
 ## Application Endpoints:
-* Consul: http://localhost:18500
-* Jaeger: http://localhost:16686
-* Api:    http://localhost:19090
+* Consul:   http://localhost:18500
+* Jaeger:   http://localhost:16686
+* Ingress:  http://localhost:19090
 
 ## Accessing Nomad
 The Nomad cluster is not exposed on port `4646` but a random port, to use the Nomad

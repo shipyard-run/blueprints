@@ -18,5 +18,6 @@ nomad_cluster "local" {
     name = "network.${var.cn_network}"
   }
 
-  consul_config = "${data("consul_config")}/agent.hcl"
+  consul_config   = "${data("consul_config")}/agent.hcl"
+  open_in_browser = var.cn_nomad_open_browser
 }

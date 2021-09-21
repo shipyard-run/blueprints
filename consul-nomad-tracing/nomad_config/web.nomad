@@ -2,24 +2,24 @@ job "web" {
   datacenters = ["dc1"]
 
   type = "service"
-  
+
   group "web" {
     count = 1
-    
+
     restart {
       attempts = 2
       interval = "30m"
-      delay = "15s"
-      mode = "fail"
+      delay    = "15s"
+      mode     = "fail"
     }
 
     ephemeral_disk {
       size = 30
     }
-      
+
     service {
       name = "web"
-      tags = ["global","app"]
+      tags = ["global", "app"]
       port = "9090"
 
       connect {
@@ -27,11 +27,11 @@ job "web" {
           proxy {
             upstreams {
               destination_name = "api"
-              local_bind_port = 9091
+              local_bind_port  = 9091
             }
             upstreams {
               destination_name = "payment"
-              local_bind_port = 9092
+              local_bind_port  = 9092
             }
           }
         }
@@ -40,10 +40,10 @@ job "web" {
 
     network {
       mode = "bridge"
-      
+
       port "http" {
         static = 9090
-        to = 9090
+        to     = 9090
       }
     }
 
@@ -56,11 +56,11 @@ job "web" {
       }
 
       env {
-        LISTEN_ADDR = "0.0.0.0:9090"
-        UPSTREAM_URIS = "http://localhost:9091,http://localhost:9092"
-        MESSAGE = "Hello World"
-        NAME = "Ingress"
-        SERVER_TYPE = "http"
+        LISTEN_ADDR    = "0.0.0.0:9090"
+        UPSTREAM_URIS  = "http://localhost:9091,http://localhost:9092"
+        MESSAGE        = "Hello World ${node.unique.name} ${node.unique.id}"
+        NAME           = "Ingress"
+        SERVER_TYPE    = "http"
         TRACING_ZIPKIN = "http://10.15.0.200:9411"
       }
 

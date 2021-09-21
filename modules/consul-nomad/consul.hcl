@@ -26,9 +26,10 @@ container "consul" {
   }
 
   port {
-    local  = 8500
-    remote = 8500
-    host   = var.cn_consul_port
+    local           = 8500
+    remote          = 8500
+    host            = var.cn_consul_port
+    open_in_browser = var.cn_consul_open_browser ? "/ui" : ""
   }
 
 }
