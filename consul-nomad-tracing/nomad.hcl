@@ -31,6 +31,6 @@ network "dc1" {
 }
 
 module "nomad_consul" {
-  source = "github.com/shipyard-run/blueprints/modules//consul-nomad?ref=816e60488f5d8e5b8b660f0f88513841e197dd1e"
+  source = "github.com/shipyard-run/blueprints//modules/consul-nomad?ref=816e60488f5d8e5b8b660f0f88513841e197dd1e"
   #source = "../modules/consul-nomad"
 }
