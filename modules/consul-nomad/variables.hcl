@@ -25,7 +25,7 @@ variable "cn_consul_datacenter" {
 
 # Nomad version to use
 variable "cn_nomad_version" {
-  default = "1.1.4"
+  default = "1.1.5"
 }
 
 # Name of the cluster, changing this value does not 
