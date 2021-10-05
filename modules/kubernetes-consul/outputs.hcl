@@ -15,5 +15,7 @@ output "CONSUL_CAPATH" {
 }
 
 output "CONSUL_CAKEY" {
-  value = "${var.consul_tls_enabled ? "var.consul_data_folder/tls.key" : ""}"
+  disabled = (var.consul_tls_enabled == false)
+  
+  value = "${var.consul_data_folder}/tls.key"
 }
