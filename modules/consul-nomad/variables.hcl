@@ -1,5 +1,5 @@
 variable "cn_nomad_cluster_name" {
-  default = "local"
+  default = "nomad_cluster.local"
 }
 
 # Number of client nodes for Nomad
