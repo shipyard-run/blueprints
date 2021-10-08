@@ -4,7 +4,7 @@ variable "cn_network" {
 }
 
 variable "cn_nomad_cluster_name" {
-  default = "local"
+  default = "nomad_cluster.local"
 }
 
 network "dc1" {
