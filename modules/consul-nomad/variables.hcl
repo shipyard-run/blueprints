@@ -1,3 +1,7 @@
+variable "cn_nomad_cluster_name" {
+  default = "local"
+}
+
 # Number of client nodes for Nomad
 # setting this value to 0 runs a combined Nomad Client/Server in a single
 # container.
