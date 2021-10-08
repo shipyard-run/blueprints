@@ -3,6 +3,10 @@ variable "cn_network" {
   default = "dc1"
 }
 
+variable "cn_nomad_cluster_name" {
+  default = "local"
+}
+
 network "dc1" {
   subnet = "10.5.0.0/16"
 }
