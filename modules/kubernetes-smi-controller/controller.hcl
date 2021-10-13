@@ -17,6 +17,7 @@ webhook:
   port: ${var.smi_controller_webhook_port}
   additionalDNSNames:
     - ${var.smi_controller_additional_dns}
+  ${var.smi_controller_additional_env}
 EOF
 
   destination = "${data("smi_controller")}/smi-controller-values.yaml"
