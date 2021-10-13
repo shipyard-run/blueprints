@@ -4,6 +4,7 @@ template "smi_controller_config" {
   source = <<EOF
 controller:
   enabled: ${var.smi_controller_enabled}
+  ${var.smi_controller_additional_env}
 
   image:
     repository: "${var.smi_controller_repository}"
@@ -17,7 +18,6 @@ webhook:
   port: ${var.smi_controller_webhook_port}
   additionalDNSNames:
     - ${var.smi_controller_additional_dns}
-  ${var.smi_controller_additional_env}
 EOF
 
   destination = "${data("smi_controller")}/smi-controller-values.yaml"
