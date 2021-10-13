@@ -38,6 +38,10 @@ variable "smi_controller_additional_dns" {
   default = "localhost"
 }
 
+variables "smi_controller_additional_env" {
+  default = ""
+}
+
 # Allows setting of full helm values, overrides previous two varaibles
 variable "smi_controller_helm_values" {
   default = "${data("smi_controller")}/smi-controller-values.yaml"
