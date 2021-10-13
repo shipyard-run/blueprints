@@ -38,7 +38,7 @@ variable "smi_controller_additional_dns" {
   default = "localhost"
 }
 
-variables "smi_controller_additional_env" {
+variable "smi_controller_additional_env" {
   default = ""
 }
 
