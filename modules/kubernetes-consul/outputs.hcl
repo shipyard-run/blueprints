@@ -2,7 +2,7 @@ output "CONSUL_HTTP_ADDR" {
   value = "${var.consul_tls_enabled ? "https://" : "http://"}${docker_ip()}:${var.consul_ports_api == 0 ? (var.consul_tls_enabled ? 8501 : 8500) : var.consul_ports_api}"
 }
 
-output "CONSUL_TOKEN_FILE" {
+output "CONSUL_HTTP_TOKEN_FILE" {
   disabled = (var.consul_acls_enabled == false)
 
   value = "${var.consul_data_folder}/bootstrap_acl.token"
