@@ -1,5 +1,5 @@
 output "CONSUL_HTTP_ADDR" {
-  value = "${var.consul_tls_enabled ? "https://" : "http://"}${docker_ip()}:${var.consul_ports_api == 0 ? (var.consul_tls_enabled == "true" ? 8501 : 8500) : var.consul_ports_api}"
+  value = "${var.consul_tls_enabled ? "https://" : "http://"}${docker_ip()}:${var.consul_ports_api == 0 ? (var.consul_tls_enabled ? 8501 : 8500) : var.consul_ports_api}"
 }
 
 output "CONSUL_TOKEN_FILE" {
