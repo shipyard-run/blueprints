@@ -8,7 +8,7 @@ output "CONSUL_HTTP_TOKEN_FILE" {
   value = "${var.consul_data_folder}/bootstrap_acl.token"
 }
 
-output "CONSUL_CAPATH" {
+output "CONSUL_CACERT" {
   disabled = (var.consul_tls_enabled == false)
 
   value = "${var.consul_data_folder}/tls.crt"
