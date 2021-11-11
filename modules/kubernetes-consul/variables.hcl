@@ -1,6 +1,6 @@
 variable "consul_data_folder" {
   description = "Data folder where output files including TLS certificates will be stored"
-  default = data("consul_kubernetes")
+  default     = data("consul_kubernetes")
 }
 
 variable "consul_helm_values" {
@@ -68,83 +68,88 @@ variable "consul_datacenter" {
 # Variables for Mesh Gateways
 variable "consul_gateway_enabled" {
   description = "Enable mesh gateways"
-  default = false
+  default     = false
 }
 
 variable "consul_gateway_address" {
   description = "Wan address for the mesh gateway"
-  default = "${var.consul_k8s_cluster}.k8s-cluster.shipyard.run"
+  default     = "${var.consul_k8s_cluster}.k8s-cluster.shipyard.run"
 }
 
 variable "consul_federation_enabled" {
   description = "Enable federation, required to use mesh gateways"
-  default = false
+  default     = false
 }
 
 variable "consul_federation_create_secret" {
   description = "Create a federation secret?"
-  default = false
+  default     = false
 }
 
 
 variable "consul_monitoring_enabled" {
   description = "Should the monitoring stack, Prometheus, Grafana, Loki, and Tempo be installed?"
-  default = false
+  default     = false
 }
 
 variable "consul_monitoring_grafana_port" {
   description = "Port for grafana when monitoring enabled"
-  default = 8080
+  default     = 8080
 }
 
 variable "consul_monitoring_prometheus_port" {
   description = "Port for prometheus when monitoring enabled"
-  default = 9090
+  default     = 9090
 }
 
 variable "consul_smi_controller_enabled" {
   description = "Should the SMI controller be installed"
-  default = false
+  default     = false
 }
 
 variable "consul_smi_controller_repository" {
   description = "Repository for the controller image"
-  default = "nicholasjackson/consul-smi-controller"
+  default     = "nicholasjackson/smi-controller-consul"
 }
 
 variable "consul_smi_controller_tag" {
   description = "Tag for the controller image"
-  default = "latest"
+  default     = "dev.01"
+}
+
+variable "consul_flagger_enabled" {
+  description = "Install Weaveworks Flagger, requires SMI and also monitoring to be installed"
+  default     = false
 }
 
 # Variables for Monitoring module
 variable "monitoring_k8s_cluster" {
   description = "Cluster to install monitoring, should be the same as the cluster for installing Consul"
-  default = var.consul_k8s_cluster 
+  default     = var.consul_k8s_cluster
 }
 
 variable "monitoring_grafana_port" {
-   description = "Set the monitoring module grafana port varaible, we do not expose this variable publically to cover interface changes"
-   default = var.consul_monitoring_grafana_port
+  description = "Set the monitoring module grafana port varaible, we do not expose this variable publically to cover interface changes"
+  default     = var.consul_monitoring_grafana_port
 }
 
 variable "monitoring_prometheus_port" {
-   description = "Set the monitoring module grafana port varaible, we do not expose this variable publically to cover interface changes"
-   default = var.consul_monitoring_prometheus_port
+  description = "Set the monitoring module grafana port varaible, we do not expose this variable publically to cover interface changes"
+  default     = var.consul_monitoring_prometheus_port
 }
 
 # Variables for SMI-Controller module
 variable "smi_controller_k8s_cluster" {
   description = "Set the cluster to install the SMI controller to, we do not expose this variable publically to cover interface changes"
-  default = var.consul_k8s_cluster
+  default     = var.consul_k8s_cluster
 }
 
 variable "smi_controller_repository" {
   description = "Repository for the controller image"
-  default = var.consul_smi_controller_repository
+  default     = var.consul_smi_controller_repository
 }
 
 variable "smi_controller_tag" {
   description = "Tag for the controller image"
-  default = var.consul_smi_controller_tag
+  default     = var.consul_smi_controller_tag
 }

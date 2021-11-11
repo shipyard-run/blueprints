@@ -1,3 +1,5 @@
+
+# Mandatory varirables
 variable "consul_k8s_cluster" {
   default = "dc1"
 }
@@ -5,32 +7,49 @@ variable "consul_k8s_cluster" {
 variable "consul_k8s_network" {
   default = "dc1"
 }
+# Mandatory variables
 
 # Optionally you can set the following variables to enable submodules
 # for installing monitoring tools or the SMI controller for Consul.
 # 
-##variable "consul_monitoring_enabled" {
-##  description = "Should the monitoring stack, Prometheus, Grafana, Loki be installed"
-##  default = true
-##}
-# 
-# variable "consul_smi_controller_enabled" {
-#   description = "Should the SMI controller be installed"
-#   default = true
-# }
+variable "consul_monitoring_enabled" {
+  description = "Should the monitoring stack, Prometheus, Grafana, Loki be installed"
+  default     = true
+}
 
-#variable "consul_gateway_enabled" {
-#  description = "Should mesh gateways be enabled?"
-#  default = true
-#}
-#
-#variable "consul_gateway_create_federation_secret" {
-#  description = "Should a federation secret be created?"
-#  default = true
-#}
+variable "consul_smi_controller_enabled" {
+  description = "Should the SMI controller be installed"
+  default     = true
+}
+
+variable "consul_acls_enabled" {
+  description = "Enable ACLs for securing the Consul server"
+  default     = true
+}
+
+variable "consul_tls_enabled" {
+  description = "Enable TLS to secure the Consul server"
+  default     = true
+}
+
+variable "consul_flagger_enabled" {
+  description = "Install Weaveworks Flagger, requires SMI and also monitoring to be installed"
+  default     = true
+}
+
+variable "consul_gateway_enabled" {
+  description = "Should mesh gateways be enabled?"
+  default     = false
+}
+
+variable "consul_gateway_create_federation_secret" {
+  description = "Should a federation secret be created?"
+  default     = false
+}
+# End optional variables
 
 k8s_cluster "dc1" {
-  driver  = "k3s"
+  driver = "k3s"
 
   nodes = 1
 
@@ -66,19 +85,19 @@ k8s_config "app" {
 ingress "public" {
   source {
     driver = "local"
-    
+
     config {
       port = 19090
     }
   }
-  
+
   destination {
     driver = "k8s"
-    
+
     config {
       cluster = "k8s_cluster.dc1"
       address = "public.default.svc"
-      port = 9090
+      port    = 9090
     }
   }
 }

@@ -1,0 +1,78 @@
+controller:
+  enabled: true
+  
+  #{{- if .Vars.tls_enabled }}
+  additional_volumes:
+    - name: consul-server-ca
+      secret:
+        secretName: consul-server-cert
+    - name: consul-auto-encrypt-ca-cert
+      emptyDir:
+        medium: Memory
+  #{{ end }}
+
+  container_config:  
+    env:
+      #{{- if .Vars.tls_enabled }}
+      - name: CONSUL_CACERT
+        value: /consul/tls/client/ca/tls.crt
+      #{{ end }}
+      #{{- if .Vars.acl_enabled }}
+      - name: CONSUL_HTTP_TOKEN
+        valueFrom: 
+          secretKeyRef:
+            name: consul-controller-acl-token
+            key: token
+      #{{ end }}
+      - name: HOST_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
+      - name: CONSUL_HTTP_ADDR
+        value: #{{ if .Vars.tls_enabled }}https://$(HOST_IP):8501#{{ else }}http://$(HOST_IP):8500#{{ end }}
+
+    image:
+      repository: "#{{ .Vars.consul_smi_controller_repository }}"
+      tag: "#{{ .Vars.consul_smi_controller_tag }}"
+      pullPolicy: IfNotPresent
+
+    #{{- if .Vars.tls_enabled }}
+    volumeMounts:
+      - mountPath: /consul/tls/client/ca
+        name: consul-auto-encrypt-ca-cert
+    #{{ end }}
+
+  #{{- if .Vars.tls_enabled }}
+  additional_init_containers:
+    - command:
+      - /bin/sh
+      - -ec
+      - |
+        consul-k8s get-consul-client-ca \
+          -output-file=/consul/tls/client/ca/tls.crt \
+          -server-addr=consul-server \
+          -server-port=8501 \
+          -ca-file=/consul/tls/ca/tls.crt
+      image: hashicorp/consul-k8s:0.25.0
+      imagePullPolicy: IfNotPresent
+      name: get-auto-encrypt-client-ca
+      resources:
+        limits:
+          cpu: 50m
+          memory: 50Mi
+        requests:
+          cpu: 50m
+          memory: 50Mi
+      volumeMounts:
+      - mountPath: /consul/tls/ca
+        name: consul-server-ca
+      - mountPath: /consul/tls/client/ca
+        name: consul-auto-encrypt-ca-cert
+  #{{ end }}
+
+webhook:  
+  enabled: true
+  service: "smi-webhook"
+  port: 443
+  additionalDNSNames:
+    - localhost

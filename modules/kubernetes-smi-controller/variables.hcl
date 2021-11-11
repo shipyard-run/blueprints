@@ -10,7 +10,7 @@ variable "smi_controller_repository" {
 }
 
 variable "smi_controller_helm_chart" {
-  default = "github.com/servicemeshinterface/smi-controller-sdk?ref=refactor/helm//smi-controller"
+  default = "github.com/servicemeshinterface/smi-controller-sdk/helm//smi-controller"
 }
 
 # The tag for the controller
