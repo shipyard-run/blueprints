@@ -25,10 +25,11 @@ EOF
 
 helm "smi-controller" {
   # wait for certmanager to be installed and the template to be processed
-  depends_on = ["template.smi_controller_config", "helm.cert-manager"]
+  depends_on = ["template.smi_controller_config", "k8s_config.cert-manager"]
 
-  cluster = "k8s_cluster.${var.smi_controller_k8s_cluster}"
-  namespace = var.smi_controller_namespace
+  cluster          = "k8s_cluster.${var.smi_controller_k8s_cluster}"
+  namespace        = var.smi_controller_namespace
+  create_namespace = true
 
   chart = var.smi_controller_helm_chart
 
