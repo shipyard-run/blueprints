@@ -1,0 +1,61 @@
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: api
+spec:
+  protocol: http
+
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: payments
+spec:
+  protocol: http
+
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: currency
+spec:
+  protocol: http
+
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: payments
+spec:
+  destination:
+    name: payments
+  sources:
+    - name: api
+      permissions:
+        - action: allow
+
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: api
+spec:
+  destination:
+    name: api
+  sources:
+    - name: ingress-gateway
+      permissions:
+        - action: allow
+
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: IngressGateway
+metadata:
+  name: ingress-gateway
+spec:
+  listeners:
+    - port: 18080
+      protocol: tcp
+      services:
+        - name: api

@@ -1,7 +1,7 @@
 controller:
   enabled: true
   
-  #{{- if .Vars.tls_enabled }}
+  #{{- if eq .Vars.tls_enabled true }}
   additional_volumes:
     - name: consul-server-ca
       secret:
@@ -13,11 +13,11 @@ controller:
 
   container_config:  
     env:
-      #{{- if .Vars.tls_enabled }}
+      #{{- if eq .Vars.tls_enabled true }}
       - name: CONSUL_CACERT
         value: /consul/tls/client/ca/tls.crt
       #{{ end }}
-      #{{- if .Vars.acl_enabled }}
+      #{{- if eq .Vars.acls_enabled true }}
       - name: CONSUL_HTTP_TOKEN
         valueFrom: 
           secretKeyRef:
@@ -29,20 +29,20 @@ controller:
           fieldRef:
             fieldPath: status.hostIP
       - name: CONSUL_HTTP_ADDR
-        value: #{{ if .Vars.tls_enabled }}https://$(HOST_IP):8501#{{ else }}http://$(HOST_IP):8500#{{ end }}
+        value: #{{ if eq .Vars.tls_enabled true }}https://$(HOST_IP):8501#{{ else }}http://$(HOST_IP):8500#{{ end }}
 
     image:
       repository: "#{{ .Vars.consul_smi_controller_repository }}"
       tag: "#{{ .Vars.consul_smi_controller_tag }}"
       pullPolicy: IfNotPresent
 
-    #{{- if .Vars.tls_enabled }}
+    #{{- if eq .Vars.tls_enabled true }}
     volumeMounts:
       - mountPath: /consul/tls/client/ca
         name: consul-auto-encrypt-ca-cert
     #{{ end }}
 
-  #{{- if .Vars.tls_enabled }}
+  #{{- if eq .Vars.tls_enabled true }}
   additional_init_containers:
     - command:
       - /bin/sh

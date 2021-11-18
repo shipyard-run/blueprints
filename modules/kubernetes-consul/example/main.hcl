@@ -37,19 +37,26 @@ variable "consul_flagger_enabled" {
   default     = true
 }
 
-variable "consul_gateway_enabled" {
+variable "consul_ingress_gateway_enabled" {
+  description = "Should ingress gateways be enabled?"
+  default     = true
+}
+
+variable "consul_mesh_gateway_enabled" {
   description = "Should mesh gateways be enabled?"
   default     = false
 }
 
-variable "consul_gateway_create_federation_secret" {
+
+variable "consul_mesh_gateway_create_federation_secret" {
   description = "Should a federation secret be created?"
   default     = false
 }
 # End optional variables
 
 k8s_cluster "dc1" {
-  driver = "k3s"
+  driver  = "k3s"
+  version = "v1.22.2"
 
   nodes = 1
 
@@ -75,8 +82,10 @@ k8s_config "app" {
 
   cluster = "k8s_cluster.dc1"
   paths = [
+    "./app/consul-config.yaml",
     "./app/api.yaml",
     "./app/payments.yaml",
+    "./app/currency.yaml",
   ]
 
   wait_until_ready = true
@@ -96,7 +105,7 @@ ingress "public" {
 
     config {
       cluster = "k8s_cluster.dc1"
-      address = "public.default.svc"
+      address = "api.default.svc"
       port    = 9090
     }
   }

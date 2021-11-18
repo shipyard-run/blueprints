@@ -1,6 +1,8 @@
 helm "flagger" {
-  depends_on = ["helm.consul"]
-  disabled   = var.consul_flagger_enabled == false
+  depends_on       = ["helm.consul"]
+  namespace        = "flagger"
+  create_namespace = true
+  disabled         = var.consul_flagger_enabled == false
 
   cluster = "k8s_cluster.${var.consul_k8s_cluster}"
 

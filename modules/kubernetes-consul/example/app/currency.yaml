@@ -1,4 +1,25 @@
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: currency
+spec:
+  selector:
+    group: currency
+  ports:
+    - name: http
+      protocol: TCP
+      port: 9090
+      targetPort: 9090
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: currency
+automountServiceAccountToken: true
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,10 +35,12 @@ spec:
     metadata:
       labels:
         app: currency
+        group: currency
         metrics: enabled
       annotations:
         consul.hashicorp.com/connect-inject: 'true'
     spec:
+      serviceAccountName: currency
       containers:
         - name: api
           image: nicholasjackson/fake-service:v0.22.4
@@ -29,8 +52,6 @@ spec:
               value: "Currency"
             - name: "LISTEN_ADDR"
               value: "0.0.0.0:9090"
-            - name: "TIMING_50_PERCENTILE"
-              value: "10ms"
             - name: "TIMING_50_PERCENTILE"
               value: "10ms"
             - name: "TRACING_ZIPKIN"

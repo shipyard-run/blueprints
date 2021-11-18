@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: public
+  name: api
 spec:
   selector:
     app: api
@@ -11,6 +11,13 @@ spec:
       protocol: TCP
       port: 9090
       targetPort: 9090
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: api
+automountServiceAccountToken: true
 
 ---
 apiVersion: apps/v1
@@ -33,6 +40,7 @@ spec:
         consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/connect-service-upstreams: 'payments:9091'
     spec:
+      serviceAccountName: api
       containers:
         - name: api
           image: nicholasjackson/fake-service:v0.22.4
@@ -46,8 +54,6 @@ spec:
               value: "0.0.0.0:9090"
             - name: "UPSTREAM_URIS"
               value: "http://localhost:9091"
-            - name: "TIMING_50_PERCENTILE"
-              value: "10ms"
             - name: "TIMING_50_PERCENTILE"
               value: "10ms"
             - name: "TRACING_ZIPKIN"

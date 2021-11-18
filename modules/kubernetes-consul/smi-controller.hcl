@@ -6,7 +6,7 @@ template "custom_smi_controller_config" {
 
   vars = {
     tls_enabled                      = var.consul_tls_enabled
-    acl_enabled                      = var.consul_acls_enabled
+    acls_enabled                     = var.consul_acls_enabled
     consul_smi_controller_repository = var.consul_smi_controller_repository
     consul_smi_controller_tag        = var.consul_smi_controller_tag
   }
@@ -29,6 +29,16 @@ template "smi_setup_script" {
   source = <<EOF
   #!/bin/sh -e
 
+  # create the smi-controller namespace
+  echo "
+  kind: Namespace
+  apiVersion: v1
+  metadata:
+    name: smi
+    labels:
+      name: smi
+  " | kubectl apply -f -
+
   # create a service pointing to the consul server for the smi namespace
   echo "
   kind: Service
@@ -38,26 +48,29 @@ template "smi_setup_script" {
     namespace: smi
   spec:
     type: ExternalName
-    externalName: consul-server.default.svc.cluster.local
+    externalName: consul-server.${var.consul_namespace}.svc.cluster.local
   " | kubectl apply -f -
 
+  #{{ if eq .Vars.tls_enabled true }}
   # add the server ca certificate
-  kubectl get secret consul-server-cert -o json \
+  kubectl get secret consul-server-cert -n ${var.consul_namespace} -o json \
     | jq 'del(.metadata["namespace","creationTimestamp","resourceVersion","selfLink","uid"])' \
     | kubectl apply -n smi -f -
+  #{{ end }}
 
+  #{{ if eq .Vars.acls_enabled true }}
   # add the acl token for the controller
-  kubectl get secret consul-controller-acl-token -o json \
+  kubectl get secret consul-controller-acl-token -n ${var.consul_namespace} -o json \
     | jq 'del(.metadata["namespace","creationTimestamp","resourceVersion","selfLink","uid"])' \
     | kubectl apply -n smi -f -
+  #{{ end }}
   EOF
 
   destination = "${var.consul_data_folder}/smi-secrets.sh"
 
   vars = {
-    port        = var.consul_ports_api == 0 ? (var.consul_tls_enabled == true ? 8501 : 8500) : var.consul_ports_api
-    tls_enabled = var.consul_tls_enabled
-    acl_enabled = var.consul_acls_enabled
+    tls_enabled  = var.consul_tls_enabled
+    acls_enabled = var.consul_acls_enabled
   }
 }
 
@@ -95,12 +108,11 @@ exec_remote "exec_smi_setup" {
   }
 }
 
-
 module "smi_controller" {
   disabled = var.consul_smi_controller_enabled ? false : true
 
   depends_on = ["helm.consul"]
 
-  source = "github.com/shipyard-run/blueprints/modules//kubernetes-smi-controller"
+  source = "github.com/shipyard-run/blueprints?ref=779abd6c524ee656728915db46177d357de5d976/modules//kubernetes-smi-controller"
   #source = "../kubernetes-smi-controller"
 }

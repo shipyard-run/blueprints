@@ -5,8 +5,11 @@ Feature: Test Blueprint
 @with_monitoring
 Scenario: With Monitoring
     Given the following shipyard variables are set
-      | key                        | value       |
-      | consul_monitoring_enabled  | true        |
+      | key                            | value |
+      | consul_monitoring_enabled      | true  |
+      | consul_tls_enabled             | false |
+      | consul_acls_enabled            | false |
+      | consul_ingress_gateway_enabled | false |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -21,9 +24,27 @@ Scenario: With SMI Controller
     Given the following shipyard variables are set
       | key                            | value       |
       | consul_smi_controller_enabled  | true        |
+      | consul_tls_enabled             | false       |
+      | consul_acls_enabled            | false       |
+      | consul_ingress_gateway_enabled | false       |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
       | dc1                 | network     |
       | dc1                 | k8s_cluster |
     And a HTTP call to "http://localhost:8500/v1/status/leader" should result in status 200
+
+@with_ingress_gateway
+Scenario: With Ingress Gateway
+    Given the following shipyard variables are set
+      | key                            | value       |
+      | consul_ingress_gateway_enabled | true        |
+      | consul_tls_enabled             | false       |
+      | consul_acls_enabled            | false       |
+    And I have a running blueprint at path "./example"
+    Then the following resources should be running
+      | name                | type        |
+      | dc1                 | network     |
+      | dc1                 | k8s_cluster |
+    And a HTTP call to "http://localhost:8500/v1/status/leader" should result in status 200
+    And a HTTP call to "http://localhost:18080" should result in status 200

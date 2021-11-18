@@ -1,4 +1,25 @@
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments
+spec:
+  selector:
+    group: payments
+  ports:
+    - name: http
+      protocol: TCP
+      port: 9090
+      targetPort: 9090
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: payments
+automountServiceAccountToken: true
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,11 +35,13 @@ spec:
     metadata:
       labels:
         app: payments_v1
+        group: payments
         metrics: enabled
       annotations:
         consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/service-meta-version: v1
     spec:
+      serviceAccountName: payments
       containers:
         - name: payments
           image: nicholasjackson/fake-service:v0.22.4
@@ -51,11 +74,13 @@ spec:
     metadata:
       labels:
         app: payments_v2
+        group: payments
         metrics: enabled
       annotations:
         consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/service-meta-version: v2
     spec:
+      serviceAccountName: payments
       containers:
         - name: payments
           image: nicholasjackson/fake-service:v0.21.1

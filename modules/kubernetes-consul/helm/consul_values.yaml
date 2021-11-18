@@ -25,9 +25,12 @@ global:
   
   imageEnvoy: #{{ .Vars.consul_envoy_image }}
 
+
 server:
   replicas: 1
   bootstrapExpect: 1
+
+  storage: 128Mi
 
   extraConfig: |
     {
@@ -35,7 +38,7 @@ server:
         "enabled": true,
         "metrics_provider": "prometheus",
         "metrics_proxy": {
-          "base_url": "http://prometheus-kube-prometheus-prometheus.default.svc:9090"
+          "base_url": "http://prometheus-kube-prometheus-prometheus.#{{ .Vars.monitoring_namespace }}.svc:9090"
         }
       }
     }
@@ -47,22 +50,38 @@ ui:
 connectInject:
   enabled: true
   default: false  # true will inject by default, otherwise requires annotation
+  failurePolicy: "Ignore"
+  replicas: 1
+
+  transparentProxy:
+    defaultEnabled: #{{ .Vars.transparent_proxy_enabled }}
 
   # Requires Consul v1.5+ and consul-k8s v0.8.1+
   centralConfig:
     enabled: true
 
+ingressGateways:
+  enabled: #{{ .Vars.ingress_gateway_enabled }}
+  defaults:
+    replicas: 1
+    service:
+      ports:
+      #{{ range .Vars.ingress_gateway_ports }}
+        - port: #{{ . }}
+          nodePort: null
+      #{{ end }}
+
 
 meshGateway:
-  enabled: #{{ .Vars.gateway_enabled }}
+  enabled: #{{ .Vars.mesh_gateway_enabled }}
   replicas: 1
 
   wanAddress:
     source: Static
-    static: #{{ .Vars.gateway_address }}
+    static: #{{ .Vars.mesh_gateway_address }}
     port: 30443
 
   service:
-    enabled: #{{ .Vars.gateway_enabled }}
+    enabled: #{{ .Vars.mesh_gateway_enabled }}
     type: NodePort
     nodePort: 30443

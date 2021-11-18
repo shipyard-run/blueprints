@@ -21,7 +21,7 @@ spec:
                   "endpoint": {
                     "address": {
                       "socket_address": {
-                        "address": "tempo",
+                        "address": "tempo.#{{ .Vars.monitoring_namespace}}.svc",
                         "port_value": 9411
                       }
                     }
