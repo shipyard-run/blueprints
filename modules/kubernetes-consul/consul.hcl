@@ -18,7 +18,7 @@ template "consul_values" {
     transparent_proxy_enabled = var.consul_transparent_proxy_enabled
     monitoring_namespace      = var.monitoring_namespace
     metrics_enabled           = var.consul_monitoring_enabled
-    debug                     = var.consul_debug
+    debug                     = var.consul_debug_enabled
   }
 }
 
