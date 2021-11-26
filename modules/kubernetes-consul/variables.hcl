@@ -104,7 +104,12 @@ variable "consul_federation_create_secret" {
 }
 
 variable "consul_transparent_proxy_enabled" {
-  description = "Enable the transparent proxy feature for consul service mesh"
+  description = "Enable the transparent proxy feature for then entire cluster for consul service mesh"
+  default     = false
+}
+
+variable "consul_debug_enabled" {
+  description = "Enable debug logging"
   default     = false
 }
 

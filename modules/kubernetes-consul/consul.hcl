@@ -15,8 +15,10 @@ template "consul_values" {
     consul_image              = var.consul_image
     consul_k8s_image          = var.consul_k8s_image
     consul_envoy_image        = var.consul_envoy_image
-    transparent_proxy_enabled = var.consul_tranparent_proxy_enabled
+    transparent_proxy_enabled = var.consul_transparent_proxy_enabled
     monitoring_namespace      = var.monitoring_namespace
+    metrics_enabled           = var.consul_monitoring_enabled
+    debug                     = var.consul_debug
   }
 }
 

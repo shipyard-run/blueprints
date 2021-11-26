@@ -14,6 +14,7 @@ global:
   tls:
     enabled: #{{ .Vars.tls_enabled }}
     enableAutoEncrypt: #{{ .Vars.tls_enabled }}
+    httpsOnly: false
 
   federation:
     enabled: #{{ .Vars.federation_enabled }}
@@ -25,6 +26,12 @@ global:
   
   imageEnvoy: #{{ .Vars.consul_envoy_image }}
 
+  metrics:
+    enabled: #{{ .Vars.metrics_enabled }}
+    enableAgentMetrics: #{{ .Vars.metrics_enabled }}
+    enableGatewayMetrics: #{{ .Vars.metrics_enabled }}
+  
+  logLevel: #{{ if eq .Vars.debug true }}"debug"#{{ else }}"info"#{{ end }}
 
 server:
   replicas: 1
@@ -52,6 +59,7 @@ connectInject:
   default: false  # true will inject by default, otherwise requires annotation
   failurePolicy: "Ignore"
   replicas: 1
+  envoyExtraArgs: #{{ if eq .Vars.debug true }}"--log-level debug"#{{ else }}null#{{ end }}
 
   transparentProxy:
     defaultEnabled: #{{ .Vars.transparent_proxy_enabled }}
