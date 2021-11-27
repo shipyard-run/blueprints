@@ -11,6 +11,7 @@ k8s_config "grafana_secret" {
   cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
   depends_on = [
     "template.grafana_secret_template",
+    "k8s_config.monitoring_namespace",
   ]
 
   paths = [
@@ -21,8 +22,9 @@ k8s_config "grafana_secret" {
 }
 
 helm "grafana" {
-  cluster   = "k8s_cluster.${var.monitoring_k8s_cluster}"
-  namespace = var.monitoring_namespace
+  cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
+  namespace        = var.monitoring_namespace
+  create_namespace = true
 
   chart  = "github.com/grafana/helm-charts/charts//grafana"
   values = var.monitoring_helm_values_grafana

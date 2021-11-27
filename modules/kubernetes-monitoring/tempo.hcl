@@ -1,6 +1,7 @@
 helm "tempo" {
-  cluster   = "k8s_cluster.${var.monitoring_k8s_cluster}"
-  namespace = var.monitoring_namespace
+  cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
+  namespace        = var.monitoring_namespace
+  create_namespace = true
 
   chart  = "github.com/grafana/helm-charts/charts//tempo"
   values = var.monitoring_helm_values_tempo
