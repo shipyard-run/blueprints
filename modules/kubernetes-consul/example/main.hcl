@@ -47,7 +47,6 @@ variable "consul_mesh_gateway_enabled" {
   default     = false
 }
 
-
 variable "consul_mesh_gateway_create_federation_secret" {
   description = "Should a federation secret be created?"
   default     = false
