@@ -104,7 +104,7 @@ Feature: Test Blueprint
       ```
     And I expect the exit code to be 0
 
-    @with_ingress_gateway
+  @with_ingress_gateway
   Scenario: With Ingress Gateway
     Given the following shipyard variables are set
       | key                            | value       |

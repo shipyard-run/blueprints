@@ -77,7 +77,7 @@ module "consul" {
 }
 
 k8s_config "app" {
-  depends_on = ["module.monitoring"]
+  depends_on = ["module.consul"]
 
   cluster = "k8s_cluster.dc1"
   paths = [
