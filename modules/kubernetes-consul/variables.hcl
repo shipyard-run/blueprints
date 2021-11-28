@@ -1,3 +1,9 @@
+
+variable "consul_health_check_timeout" {
+  default     = "120s"
+  description = "The default timeout to wait for Consul to start"
+}
+
 variable "consul_data_folder" {
   description = "Data folder where output files including TLS certificates will be stored"
   default     = data("consul_kubernetes")

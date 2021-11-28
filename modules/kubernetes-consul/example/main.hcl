@@ -1,3 +1,7 @@
+variable "consul_health_check_timeout" {
+  default     = "240s"
+  description = "Increase the timeout for when running on CI, Consul startup can take longer due to limited resources"
+}
 
 # Mandatory varirables
 variable "consul_k8s_cluster" {
