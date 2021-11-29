@@ -47,7 +47,8 @@ variable "consul_k8s_image" {
 }
 
 variable "consul_envoy_image" {
-  default = "envoyproxy/envoy-alpine:v1.18.4"
+  default = "envoyproxy/envoy:v1.18.4"
+  description = "Using the debian base images as alpine does not support arm"
   //default = "envoyproxy/envoy-alpine:v1.18.3"
 }
 
