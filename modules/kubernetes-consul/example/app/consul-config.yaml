@@ -56,6 +56,7 @@ metadata:
 spec:
   listeners:
     - port: 18080
-      protocol: tcp
+      protocol: http
       services:
         - name: api
+          hosts: ["api.ingress.shipyard.run"]

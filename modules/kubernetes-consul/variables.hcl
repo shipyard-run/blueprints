@@ -1,3 +1,9 @@
+
+variable "consul_health_check_timeout" {
+  default     = "120s"
+  description = "The default timeout to wait for Consul to start"
+}
+
 variable "consul_data_folder" {
   description = "Data folder where output files including TLS certificates will be stored"
   default     = data("consul_kubernetes")
@@ -41,7 +47,8 @@ variable "consul_k8s_image" {
 }
 
 variable "consul_envoy_image" {
-  default = "envoyproxy/envoy-alpine:v1.18.4"
+  default = "envoyproxy/envoy:v1.18.4"
+  description = "Using the debian base images as alpine does not support arm"
   //default = "envoyproxy/envoy-alpine:v1.18.3"
 }
 

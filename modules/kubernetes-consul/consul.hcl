@@ -34,7 +34,7 @@ helm "consul" {
   values = "${var.consul_data_folder}/consul_values.yaml"
 
   health_check {
-    timeout = "120s"
+    timeout = var.consul_health_check_timeout
     pods    = ["app=consul"]
   }
 }
