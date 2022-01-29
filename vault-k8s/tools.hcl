@@ -1,6 +1,6 @@
 container "tools" {
   image   {
-    name = "shipyardrun/tools:v0.6.0"
+    name = "shipyardrun/hashicorp-tools:v0.5.0"
   }
   
   network {
