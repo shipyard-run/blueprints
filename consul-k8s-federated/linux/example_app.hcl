@@ -80,6 +80,7 @@ container "backend_linux_app" {
     CONSUL_SERVER = "10.5.0.201"
     CONSUL_DATACENTER = "linux"
     SERVICE_ID = "backendvm-1"
+    NAME = "backendvm"
   }
 
   volume {
