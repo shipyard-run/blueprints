@@ -44,6 +44,7 @@ container "root_linux_app" {
     CONSUL_DATACENTER = "linux"
     UPSTREAM_URIS = "http://localhost:9091"
     SERVICE_ID = "rootvm-1"
+    NAME = "rootvm"
   }
 
   port {
