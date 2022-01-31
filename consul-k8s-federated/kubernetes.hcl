@@ -10,12 +10,12 @@ variable "consul_datacenter" {
   default = "kubernetes"
 }
 
-variable "consul_gateway_enabled" {
+variable "consul_mesh_gateway_enabled" {
   description = "Should mesh gateways be enabled?"
   default = true
 }
 
-variable "consul_gateway_address" {
+variable "consul_mesh_gateway_address" {
   default = "10.5.0.200"
 }
 
