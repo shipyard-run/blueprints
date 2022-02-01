@@ -37,7 +37,7 @@ variable "consul_helm_version" {
 }
 
 variable "consul_image" {
-  default = "hashicorp/consul:1.10.4"
+  default = "hashicorp/consul:1.10.7"
   //default = "hashicorp/consul:1.10.0-beta4"
 }
 
