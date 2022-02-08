@@ -30,7 +30,14 @@ helm "consul" {
   namespace  = var.consul_namespace
   cluster    = "k8s_cluster.${var.consul_k8s_cluster}"
 
-  chart  = "github.com/hashicorp/consul-k8s?ref=${var.consul_helm_version}//charts/consul"
+  repository {
+    name = "hashicorp"
+    url  = "https://helm.releases.hashicorp.com"
+  }
+
+  chart   = "hashicorp/consul"
+  version = var.consul_helm_version
+
   values = "${var.consul_data_folder}/consul_values.yaml"
 
   health_check {
