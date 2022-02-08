@@ -1,9 +1,19 @@
 helm "tempo" {
+  depends_on = ["helm.promtail"]
+
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
   namespace        = var.monitoring_namespace
   create_namespace = true
 
-  chart  = "github.com/grafana/helm-charts/charts//tempo"
+
+  repository {
+    url  = "https://grafana.github.io/helm-charts"
+    name = "grafana"
+  }
+
+  chart   = "grafana/tempo"
+  version = var.monitoring_tempo_version
+
   values = var.monitoring_helm_values_tempo
 }
 

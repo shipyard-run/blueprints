@@ -7,18 +7,29 @@ template "prometheus_operator_template" {
   }
 }
 
+#k8s_config "prometheus-crds" {
+#  cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
+#  paths = [
+#    "./helm/crds",
+#  ]
+#
+#  wait_until_ready = true
+#}
+
 helm "prometheus" {
-  cluster   = "k8s_cluster.${var.monitoring_k8s_cluster}"
-  namespace = var.monitoring_namespace
+  cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
+  namespace        = var.monitoring_namespace
+  create_namespace = true
 
-  chart_name = "prometheus"
-
-  chart = "github.com/prometheus-community/helm-charts/charts//kube-prometheus-stack"
-
-  values_string = {
-    "alertmanager.enabled" = "false"
-    "grafana.enabled"      = "false"
+  repository {
+    url  = "https://prometheus-community.github.io/helm-charts"
+    name = "prometheus"
   }
+
+  chart   = "prometheus/kube-prometheus-stack"
+  version = var.monitoring_prometheus_version
+
+  values = "./helm/prometheus_values.yaml"
 
   health_check {
     timeout = "90s"
