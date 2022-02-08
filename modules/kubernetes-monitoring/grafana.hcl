@@ -22,11 +22,20 @@ k8s_config "grafana_secret" {
 }
 
 helm "grafana" {
+  depends_on = ["helm.tempo"]
+
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
   namespace        = var.monitoring_namespace
   create_namespace = true
 
-  chart  = "github.com/grafana/helm-charts/charts//grafana"
+  repository {
+    url  = "https://grafana.github.io/helm-charts"
+    name = "grafana"
+  }
+
+  chart   = "grafana/grafana"
+  version = var.monitoring_grafana_version
+
   values = var.monitoring_helm_values_grafana
 
   values_string = {
