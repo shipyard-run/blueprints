@@ -42,7 +42,12 @@ helm "consul" {
 
   health_check {
     timeout = var.consul_health_check_timeout
-    pods    = ["app=consul"]
+    pods    = [
+      "component=connect-injector",
+      "component=client",
+      "component=controller",
+      "component=server",
+    ]
   }
 }
 
