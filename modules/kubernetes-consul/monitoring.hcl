@@ -30,7 +30,7 @@ template "monitor_ingress_gateway" {
   disabled   = var.consul_monitoring_enabled == false || var.consul_ingress_gateway_enabled == false
   depends_on = ["module.monitoring"]
 
-  source = <<EOF
+  source = <<-EOF
   # ServiceMonitor to configure Prometheus to scrape metrics from applications in the consul namespace
   ---
   apiVersion: monitoring.coreos.com/v1
