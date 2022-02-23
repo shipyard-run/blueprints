@@ -80,7 +80,8 @@ template "monitor_ingress_gateway" {
 }
 
 k8s_config "monitor_ingress_gateway" {
-  depends_on = ["helm.prometheus"]
+  disabled   = var.consul_monitoring_enabled == false || var.consul_ingress_gateway_enabled == false
+  depends_on = ["template.monitor_ingress_gateway"]
 
   cluster = "k8s_cluster.${var.consul_k8s_cluster}"
   paths = [
