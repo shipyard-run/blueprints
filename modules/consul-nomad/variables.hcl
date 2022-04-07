@@ -15,7 +15,7 @@ variable "cn_consul_image" {
 }
 
 variable "cn_consul_version" {
-  default = "1.10.1"
+  default = "1.11.4"
 }
 
 # Port to expose the Consul server
@@ -29,7 +29,7 @@ variable "cn_consul_datacenter" {
 
 # Nomad version to use
 variable "cn_nomad_version" {
-  default = "1.1.6"
+  default = "1.2.6"
 }
 
 # Name of the cluster, changing this value does not 
