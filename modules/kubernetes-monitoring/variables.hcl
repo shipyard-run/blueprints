@@ -2,6 +2,10 @@ variable "monitoring_namespace" {
   default = "monitoring"
 }
 
+variable "monitoring_helm_values_prometheus" {
+  default = "./helm/prometheus_values.yaml"
+}
+
 variable "monitoring_helm_values_grafana" {
   default = "./helm/grafana_values.yaml"
 }
@@ -27,21 +31,21 @@ variable "monitoring_prometheus_port" {
 }
 
 variable "monitoring_grafana_version" {
-  default = "6.21.2"
+  default = "6.26.5"
 }
 
 variable "monitoring_promtail_version" {
-  default = "3.11.0"
+  default = "4.2.0"
 }
 
 variable "monitoring_loki_version" {
-  default = "2.9.1"
+  default = "2.11.1"
 }
 
 variable "monitoring_tempo_version" {
-  default = "0.13.1"
+  default = "0.14.2"
 }
 
 variable "monitoring_prometheus_version" {
-  default = "32.0.0"
+  default = "34.10.0"
 }

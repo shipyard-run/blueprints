@@ -7,16 +7,17 @@ template "prometheus_operator_template" {
   }
 }
 
-#k8s_config "prometheus-crds" {
-#  cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
-#  paths = [
-#    "./helm/crds",
-#  ]
-#
-#  wait_until_ready = true
-#}
+k8s_config "prometheus-crds" {
+  cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
+  paths = [
+    "./helm/crds",
+  ]
+
+  wait_until_ready = true
+}
 
 helm "prometheus" {
+  depends_on       = ["k8s_config.prometheus-crds"]
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
   namespace        = var.monitoring_namespace
   create_namespace = true
@@ -28,12 +29,12 @@ helm "prometheus" {
 
   chart   = "prometheus/kube-prometheus-stack"
   version = var.monitoring_prometheus_version
+  values  = var.monitoring_helm_values_prometheus
 
-  values = "./helm/prometheus_values.yaml"
 
   health_check {
     timeout = "90s"
-    pods    = ["release=prometheus"]
+    pods    = ["app.kubernetes.io/name=prometheus"]
   }
 }
 
