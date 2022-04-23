@@ -38,17 +38,6 @@ helm "prometheus" {
   }
 }
 
-k8s_config "prometheus" {
-  depends_on = ["helm.prometheus"]
-
-  cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
-  paths = [
-    "${data("monitoring")}/prometheus_operator.yaml",
-  ]
-
-  wait_until_ready = true
-}
-
 ingress "prometheus" {
   source {
     driver = "local"
