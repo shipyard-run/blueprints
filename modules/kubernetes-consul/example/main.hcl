@@ -23,7 +23,7 @@ variable "consul_monitoring_enabled" {
 
 variable "consul_smi_controller_enabled" {
   description = "Should the SMI controller be installed"
-  default     = true
+  default     = false
 }
 
 variable "consul_acls_enabled" {
@@ -33,11 +33,6 @@ variable "consul_acls_enabled" {
 
 variable "consul_tls_enabled" {
   description = "Enable TLS to secure the Consul server"
-  default     = true
-}
-
-variable "consul_flagger_enabled" {
-  description = "Install Weaveworks Flagger, requires SMI and also monitoring to be installed"
   default     = true
 }
 

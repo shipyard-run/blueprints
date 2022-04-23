@@ -1,2 +1,0 @@
-meshProvider: "smi:v1alpha3"
-metricsServer: "http://prometheus-kube-prometheus-prometheus.#{{ .Vars.monitoring_namespace }}.svc:9090" 
