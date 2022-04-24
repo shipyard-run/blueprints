@@ -1,16 +1,7 @@
-template "prometheus_operator_template" {
-  source      = file("./k8sconfig/prometheus_operator.yaml")
-  destination = "${data("monitoring")}/prometheus_operator.yaml"
-
-  vars = {
-    monitoring_namespace = var.monitoring_namespace
-  }
-}
-
 k8s_config "prometheus-crds" {
   cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
   paths = [
-    "./helm/crds",
+    "./helm/prometheus-crds",
   ]
 
   wait_until_ready = true
