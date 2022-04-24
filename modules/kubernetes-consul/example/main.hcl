@@ -26,6 +26,11 @@ variable "consul_smi_controller_enabled" {
   default     = false
 }
 
+variable "consul_release_controller_enabled" {
+  description = "Enable the consul release controller?"
+  default     = false
+}
+
 variable "consul_acls_enabled" {
   description = "Enable ACLs for securing the Consul server"
   default     = true
