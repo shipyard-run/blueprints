@@ -18,9 +18,10 @@ helm "prometheus" {
     name = "prometheus"
   }
 
-  chart   = "prometheus/kube-prometheus-stack"
-  version = var.monitoring_prometheus_version
-  values  = var.monitoring_helm_values_prometheus
+  chart     = "prometheus/kube-prometheus-stack"
+  version   = var.monitoring_prometheus_version
+  values    = var.monitoring_helm_values_prometheus
+  skip_crds = true
 
 
   health_check {
