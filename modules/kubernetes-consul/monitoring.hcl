@@ -1,8 +1,8 @@
 module "monitoring" {
   depends_on = ["helm.consul"]
   disabled   = var.consul_monitoring_enabled == false
-  source     = "github.com/shipyard-run/blueprints?ref=f49dd58e3a635cc972424a3e45c302438ba61ffc/modules//kubernetes-monitoring"
-  #source = "../kubernetes-monitoring"
+  #source     = "github.com/shipyard-run/blueprints?ref=d2b2e3af130e9d809ee426c948f9266539025d3e/modules//kubernetes-monitoring"
+  source = "../kubernetes-monitoring"
 }
 
 template "consul_proxy_defaults" {
