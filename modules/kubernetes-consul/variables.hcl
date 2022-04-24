@@ -150,9 +150,14 @@ variable "consul_smi_controller_tag" {
   default     = "dev.01"
 }
 
-variable "consul_flagger_enabled" {
-  description = "Install Weaveworks Flagger, requires SMI and also monitoring to be installed"
-  default     = false
+variable "consul_release_controller_enabled" {
+  description = "Should the Consul release controller be enabled?"
+  default     = true
+}
+
+variable "consul_release_controller_helm_version" {
+  description = "Helm chart version for Consul release controller"
+  default     = "0.0.14"
 }
 
 # Variables for Monitoring module

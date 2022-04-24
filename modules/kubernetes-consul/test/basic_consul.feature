@@ -5,13 +5,13 @@ Feature: Test Blueprint
   @base
   Scenario: Standard Blueprint
     Given the following shipyard variables are set
-      | key                           | value |
-      | consul_tls_enabled            | false |
-      | consul_acls_enabled           | false |
-      | consul_monitoring_enabled     | false |
-      | consul_smi_controller_enabled | false |
-      | consul_flagger_enabled        | false |
-      | consul_ingress_gateway_enabled | false |
+      | key                               | value |
+      | consul_tls_enabled                | false |
+      | consul_acls_enabled               | false |
+      | consul_monitoring_enabled         | false |
+      | consul_smi_controller_enabled     | false |
+      | consul_release_controller_enabled | false |
+      | consul_ingress_gateway_enabled    | false |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -22,9 +22,13 @@ Feature: Test Blueprint
   @with_tls
   Scenario: Enabled TLS
     Given the following shipyard variables are set
-      | key                 | value        |
-      | consul_tls_enabled   | true        |
-      | consul_acls_enabled  | false       |
+      | key                               | value        |
+      | consul_tls_enabled                | true        |
+      | consul_acls_enabled               | false       |
+      | consul_monitoring_enabled         | false |
+      | consul_smi_controller_enabled     | false |
+      | consul_release_controller_enabled | false |
+      | consul_ingress_gateway_enabled    | false |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -56,13 +60,13 @@ Feature: Test Blueprint
   @with_acls
   Scenario: Enabled ACLs
     Given the following shipyard variables are set
-      | key                            | value |
-      | consul_tls_enabled             | false |
-      | consul_acls_enabled            | true  |
-      | consul_monitoring_enabled      | false |
-      | consul_smi_controller_enabled  | false |
-      | consul_ingress_gateway_enabled | false |
-      | consul_flagger_enabled         | false |
+      | key                               | value |
+      | consul_tls_enabled                | false |
+      | consul_acls_enabled               | true  |
+      | consul_monitoring_enabled         | false |
+      | consul_smi_controller_enabled     | false |
+      | consul_ingress_gateway_enabled    | false |
+      | consul_release_controller_enabled | false |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -87,13 +91,13 @@ Feature: Test Blueprint
   @with_acls_and_tls
   Scenario: Enabled ACLs and TLS
     Given the following shipyard variables are set
-      | key                            | value |
-      | consul_acls_enabled            | true  |
-      | consul_tls_enabled             | true  |
-      | consul_monitoring_enabled      | false |
-      | consul_smi_controller_enabled  | false |
-      | consul_ingress_gateway_enabled | false |
-      | consul_flagger_enabled         | false |
+      | key                               | value |
+      | consul_acls_enabled               | true  |
+      | consul_tls_enabled                | true  |
+      | consul_monitoring_enabled         | false |
+      | consul_smi_controller_enabled     | false |
+      | consul_ingress_gateway_enabled    | false |
+      | consul_release_controller_enabled | false |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |
@@ -111,13 +115,13 @@ Feature: Test Blueprint
   @with_ingress_gateway
   Scenario: With Ingress Gateway
     Given the following shipyard variables are set
-      | key                            | value |
-      | consul_ingress_gateway_enabled | true  |
-      | consul_tls_enabled             | false |
-      | consul_acls_enabled            | false |
-      | consul_monitoring_enabled      | false |
-      | consul_smi_controller_enabled  | false |
-      | consul_flagger_enabled         | false |
+      | key                               | value |
+      | consul_ingress_gateway_enabled    | true  |
+      | consul_tls_enabled                | false |
+      | consul_acls_enabled               | false |
+      | consul_monitoring_enabled         | false |
+      | consul_smi_controller_enabled     | false |
+      | consul_release_controller_enabled | false |
     And I have a running blueprint at path "./example"
     Then the following resources should be running
       | name                | type        |

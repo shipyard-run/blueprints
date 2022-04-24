@@ -1,11 +1,2 @@
-alertmanager:
-  enabled: false
-
 grafana:
-  enabled: false
-
-defaultRules: 
-  create: false
-
-serviceMonitor:
   enabled: false

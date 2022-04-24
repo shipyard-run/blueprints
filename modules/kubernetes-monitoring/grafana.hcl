@@ -22,8 +22,6 @@ k8s_config "grafana_secret" {
 }
 
 helm "grafana" {
-  depends_on = ["helm.tempo"]
-
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
   namespace        = var.monitoring_namespace
   create_namespace = true

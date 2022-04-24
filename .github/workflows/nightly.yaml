@@ -51,7 +51,7 @@ jobs:
           echo "changes: ${{ steps.check_for_changes.outputs.change_count }} event: ${{ github.event_name }}"
           curl https://shipyard.run/install | bash
 
-      - name: Run tests - ${{ matrix.blueprint }}
+      - name: Run tests
         if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' )
         run: |
           shipyard test ${{ matrix.folder }}
@@ -61,7 +61,7 @@ jobs:
         if: ( steps.check_for_changes.outputs.change_count != '0' || github.event_name == 'schedule' )
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          tile: ${{ matrix.folder }}
+          title: ${{ matrix.folder }}
           description: "Functional tests for ${{ matrix.folder }}"
       
       - name: Send failure status to Discord
@@ -69,5 +69,5 @@ jobs:
         if: failure()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          tile: ${{ matrix.folder }}
+          title: ${{ matrix.folder }}
           description: "Functional tests for ${{ matrix.folder }}"
