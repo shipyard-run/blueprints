@@ -22,6 +22,7 @@ helm "prometheus" {
   version   = var.monitoring_prometheus_version
   values    = var.monitoring_helm_values_prometheus
   skip_crds = true
+  retry     = 2
 
 
   health_check {
