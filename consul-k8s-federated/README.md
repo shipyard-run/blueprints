@@ -12,8 +12,8 @@ To access the Consul UI for the Linux cluster, open `http://localhost:18500` in 
 
 This application exposes two endpoints:
 
-http://localhost:19091 Source traffic in Kubernetes with an upstream running on Linux
-http://localhost:19092 Source traffic in Linux with an upstream running on Kubernetes
+http://localhost:19091 Source traffic in Kubernetes with an upstream running on Linux  
+http://localhost:19092 Source traffic in Linux with an upstream running on Kubernetes  
 
 # Cleanup
 To clean up run `shipyard destroy`
