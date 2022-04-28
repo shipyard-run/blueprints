@@ -72,6 +72,10 @@ variable "consul_ports_ingress_gateway" {
   default = [18080, 18443]
 }
 
+variable "consul_ports_release_controller" {
+  default = 19443
+}
+
 variable "consul_acls_enabled" {
   default = false
 }
@@ -157,7 +161,7 @@ variable "consul_release_controller_enabled" {
 
 variable "consul_release_controller_helm_version" {
   description = "Helm chart version for Consul release controller"
-  default     = "0.0.14"
+  default     = "0.1.1"
 }
 
 # Variables for Monitoring module

@@ -28,7 +28,7 @@ variable "consul_smi_controller_enabled" {
 
 variable "consul_release_controller_enabled" {
   description = "Enable the consul release controller?"
-  default     = false
+  default     = true
 }
 
 variable "consul_acls_enabled" {

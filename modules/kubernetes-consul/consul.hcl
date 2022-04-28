@@ -42,7 +42,7 @@ helm "consul" {
 
   health_check {
     timeout = var.consul_health_check_timeout
-    pods    = [
+    pods = [
       "component=connect-injector",
       "component=client",
       "component=controller",
@@ -101,8 +101,8 @@ exec_remote "fetch_consul_resources" {
 
   # Mount a volume containing the config
   volume {
-    source      = k8s_config_docker(var.consul_k8s_cluster)
-    destination = "/kubeconfig.yaml"
+    source      = "${shipyard()}/config/${var.consul_k8s_cluster}"
+    destination = "/config"
   }
 
   volume {
@@ -112,7 +112,7 @@ exec_remote "fetch_consul_resources" {
 
   env {
     key   = "KUBECONFIG"
-    value = "/kubeconfig.yaml"
+    value = "/config/kubeconfig-docker.yaml"
   }
 }
 
