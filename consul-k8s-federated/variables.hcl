@@ -4,7 +4,8 @@ variable "consul_k8s_module" {
   local path for testing.
   EOT
 
-  default = "github.com/shipyard-run/blueprints//modules/kubernetes-consul"
+  default = "github.com/shipyard-run/blueprints?ref=2681ce0e63f0951fc8abaa53c029e3f5504896bf/modules//kubernetes-consul"
+  #default = "./modules/kubernetes-consul"
 }
 
 variable "install_example_app" {
@@ -20,10 +21,14 @@ variable "install_example_app" {
   http://localhost:19094 Source traffic in Windows with an upstream running on Kubernetes
   EOF
 
-  default = false
+  default = true
 }
 
 variable "enable_linux_dc" {
   description = "Enables and configures a Linux based (faux VM) datacenter"
-  default = true
+  default     = true
+}
+
+variable "consul_release_controller_enabled" {
+  default = false
 }
