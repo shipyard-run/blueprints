@@ -161,7 +161,7 @@ variable "consul_release_controller_enabled" {
 
 variable "consul_release_controller_helm_version" {
   description = "Helm chart version for Consul release controller"
-  default     = "0.1.2"
+  default     = "0.2.0"
 }
 
 # Variables for Monitoring module
