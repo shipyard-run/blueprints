@@ -56,7 +56,7 @@ ui:
   enabled: true
 connectInject:
   enabled: true
-  default: false  # true will inject by default, otherwise requires annotation
+  default: #{{ .Vars.auto_inject_enabled }}
   failurePolicy: "Ignore"
   replicas: 1
   envoyExtraArgs: #{{ if eq .Vars.debug true }}"--log-level debug"#{{ else }}null#{{ end }}

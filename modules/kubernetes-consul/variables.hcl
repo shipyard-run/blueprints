@@ -119,6 +119,11 @@ variable "consul_transparent_proxy_enabled" {
   default     = false
 }
 
+variable "consul_auto_inject_enabled" {
+  description = "Enable the automatic injection of sidecar proxies for kubernetes pods"
+  default     = false
+}
+
 variable "consul_debug_enabled" {
   description = "Enable debug logging"
   default     = false

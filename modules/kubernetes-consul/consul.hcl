@@ -16,6 +16,7 @@ template "consul_values" {
     consul_k8s_image          = var.consul_k8s_image
     consul_envoy_image        = var.consul_envoy_image
     transparent_proxy_enabled = var.consul_transparent_proxy_enabled
+    auto_inject_enabled       = var.consul_auto_inject_enabled
     monitoring_namespace      = var.monitoring_namespace
     metrics_enabled           = var.consul_monitoring_enabled
     debug                     = var.consul_debug_enabled
