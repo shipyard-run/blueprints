@@ -88,7 +88,7 @@ exec_remote "fetch_consul_resources" {
   depends_on = ["template.fetch_consul_resources"]
 
   image {
-    name = "shipyardrun/tools:v0.5.0"
+    name = "shipyardrun/tools:v0.6.0"
   }
 
   network {
