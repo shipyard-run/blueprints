@@ -2,13 +2,13 @@ container "terminating-gateway" {
   depends_on = ["module.nomad_consul"]
 
   network {
-    name = "network.database"
+    name       = "network.database"
     ip_address = "10.20.0.20"
   }
-  
+
   network {
-      name = "network.dc1"
-      ip_address = "10.15.0.240"
+    name       = "network.dc1"
+    ip_address = "10.15.0.240"
   }
 
   command = [
@@ -24,16 +24,16 @@ container "terminating-gateway" {
   ]
 
   image {
-      name = "nicholasjackson/consul-envoy:v1.8.3-v1.14.4"
+    name = "nicholasjackson/consul-envoy:v1.12.0-v1.22.0"
   }
 
   env {
-    key = "CONSUL_HTTP_ADDR"
+    key   = "CONSUL_HTTP_ADDR"
     value = "consul.container.shipyard.run:8500"
   }
 
   env {
-    key = "CONSUL_GRPC_ADDR"
+    key   = "CONSUL_GRPC_ADDR"
     value = "consul.container.shipyard.run:8502"
   }
 }

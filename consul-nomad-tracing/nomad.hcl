@@ -2,10 +2,6 @@ variable "cn_network" {
   default = "dc1"
 }
 
-variable "cn_network" {
-  default = "dc1"
-}
-
 variable "cn_consul_server_config" {
   default = "${file("${file_dir()}/consul_config/consul.hcl")}"
 }
@@ -31,6 +27,6 @@ network "dc1" {
 }
 
 module "nomad_consul" {
-  source = "github.com/shipyard-run/blueprints//modules/consul-nomad?ref=6a60a5088867742e2a9b58e5ed2c42e2611075ca"
+  source = "github.com/shipyard-run/blueprints//modules/consul-nomad?ref=ffe7265d1cced3573a15b5c9412c7041d18a67fd"
   #source = "../modules/consul-nomad"
 }

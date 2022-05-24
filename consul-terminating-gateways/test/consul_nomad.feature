@@ -7,7 +7,7 @@ Scenario: Nomad cluster
   Given I have a running blueprint
   Then the following resources should be running
     | name                      | type          |
-    | local                     | nomad_cluster |
+    | server.local              | nomad_cluster |
     | consul                    | container     |
   And a HTTP call to "http://consul.container.shipyard.run:18500/" should result in status 200
   And a HTTP call to "http://web.ingress.shipyard.run:8080/" should result in status 200
