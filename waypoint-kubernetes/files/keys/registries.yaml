@@ -1,0 +1,9 @@
+mirrors:
+  "10.10.0.10":
+    endpoint:
+      - "https://10.10.0.10"
+
+configs:
+  "10.10.0.10":
+    tls:
+      insecure_skip_verify: true

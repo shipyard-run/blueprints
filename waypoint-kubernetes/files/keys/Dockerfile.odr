@@ -1,0 +1,21 @@
+FROM hashicorp/waypoint-odr:latest
+SHELL ["/kaniko/bin/sh", "-c"]
+
+ENV HOME /root
+ENV USER root
+ENV PATH="${PATH}:/kaniko"
+ENV SSL_CERT_DIR=/kaniko/ssl/certs
+ENV DOCKER_CONFIG /kaniko/.docker/
+ENV XDG_CONFIG_HOME=/kaniko/.config/
+ENV TMPDIR /kaniko/tmp
+ENV container docker
+
+COPY ./registry.cert  /kaniko/ssl/certs/registry.pem
+RUN cat /kaniko/ssl/certs/registry.pem >> /kaniko/ssl/certs/ca-certificates.crt
+
+COPY ./download_plugin.sh /kaniko/bin/download_plugin.sh
+RUN ls -las /kaniko/bin
+RUN /kaniko/bin/download_plugin.sh
+
+RUN mkdir -p /kaniko/.config/waypoint/plugins/
+RUN cp waypoint-plugin-noop /kaniko/.config/waypoint/plugins/waypoint-plugin-noop
