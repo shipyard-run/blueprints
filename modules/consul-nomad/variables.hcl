@@ -53,6 +53,21 @@ variable "cn_consul_agent_config" {
   default = "${file("${file_dir()}/consul_config/agent.hcl")}"
 }
 
+# Default Consul config for the nomad agents
+variable "cn_nomad_consul_agent_config" {
+  default = "${data("consul_config")}/agent.hcl"
+}
+
+# Path to additional Nomad client config to merge to client nodes
+variable "cn_nomad_client_config" {
+  default = ""
+}
+
+# Path to additional Nomad server config to merge to server nodes
+variable "cn_nomad_server_config" {
+  default = ""
+}
+
 variable "cn_consul_open_browser" {
   default = false
 }
