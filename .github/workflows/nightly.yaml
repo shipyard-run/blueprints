@@ -30,8 +30,8 @@ jobs:
           'modules/kubernetes-istio/',
           'modules/kubernetes-monitoring/',
           'modules/kubernetes-smi-controller/',
-          'modules/kubernetes-vault/'
-          'modules/vault-dev/',
+          'modules/kubernetes-vault/',
+          'modules/vault-dev/'
         ]
 
     steps:
