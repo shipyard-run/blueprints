@@ -68,6 +68,35 @@ variable "cn_nomad_server_config" {
   default = ""
 }
 
+# Host volume to mount to the Nomad client nodes
+variable "cn_nomad_client_host_volume" {
+  default = {
+    name        = ""
+    source      = ""
+    destination = "/data"
+    type        = "tempfs"
+  }
+}
+
+# Add insecure registries to the Docker daemon config
+# allows the use of registries with self signed certificates
+variable "cn_nomad_docker_insecure_registries" {
+  default = []
+}
+
+variable "cn_nomad_client_host_volume_destination" {
+  default = ""
+}
+
+variable "cn_nomad_client_host_volume_source" {
+  default = ""
+}
+
+# Copy a local image to the nomad clusters docker cache
+variable "cn_nomad_load_image" {
+  default = ""
+}
+
 variable "cn_consul_open_browser" {
   default = false
 }
