@@ -4,7 +4,7 @@ Feature: Vault Docker
   and test the resources are created correctly
 
 Scenario: Single Container from Local Blueprint
-  Given I have a running blueprint
+  Given I have a running blueprint at path "./example"
   Then the following resources should be running
     | name                      | type          |
     | vault                     | container     |
