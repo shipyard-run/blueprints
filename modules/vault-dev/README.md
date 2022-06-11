@@ -1,5 +1,5 @@
 ---
-title: Simple Vault Server
+title: Simple Vault Dev Server
 author: Nic Jackson
 slug: simple-vault
 env:

@@ -22,7 +22,6 @@ jobs:
           'docs',
           'meshery',
           'vault-k8s/',
-          'vault-dev/',
           'consul-nomad-tracing/',
           'consul-terminating-gateways/',
           'consul-k8s-federated/',
@@ -31,7 +30,8 @@ jobs:
           'modules/kubernetes-istio/',
           'modules/kubernetes-monitoring/',
           'modules/kubernetes-smi-controller/',
-          'modules/kubernetes-vault/'
+          'modules/kubernetes-vault/',
+          'modules/vault-dev/'
         ]
 
     steps:
