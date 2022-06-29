@@ -31,7 +31,8 @@ jobs:
           'modules/kubernetes-monitoring/',
           'modules/kubernetes-smi-controller/',
           'modules/kubernetes-vault/',
-          'modules/vault-dev/'
+          'modules/vault-dev/',
+          'modules/consul-docker/'
         ]
 
     steps:
