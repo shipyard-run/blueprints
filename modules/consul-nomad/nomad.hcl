@@ -17,16 +17,6 @@ template "nomad_config" {
   destination = "${data("nomad_config")}/client.hcl"
 }
 
-exec_local "set_permissions" {
-  disabled = var.cn_nomad_client_host_volume.source == ""
-
-  cmd = "chmod"
-  args = [
-    "777",
-    var.cn_nomad_client_host_volume.source,
-  ]
-}
-
 template "consul_agent_config" {
   source      = var.cn_consul_agent_config
   destination = "${data("consul_config")}/agent.hcl"
