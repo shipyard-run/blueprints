@@ -42,3 +42,8 @@ variable "cd_consul_additional_volume" {
     type = "tmpfs"
   }
 }
+
+# Must be set or blueprint will not function
+variable "cd_consul_network" {
+  default = ""
+}

@@ -1,35 +1,11 @@
-template "consul_server_config" {
-  source      = var.cn_consul_server_config
-  destination = "${data("consul_config")}/server.hcl"
-
-  vars = {
-    datacenter = var.cn_consul_datacenter
-  }
+variable "cd_consul_server_instances" {
+  default = 1
 }
 
-container "consul" {
-  depends_on = ["template.consul_server_config"]
+variable "cd_consul_network" {
+  default = var.cn_network
+}
 
-  image {
-    name = "${var.cn_consul_image}:${var.cn_consul_version}"
-  }
-
-  command = ["consul", "agent", "-config-file=/config/server.hcl"]
-
-  volume {
-    source      = "${data("consul_config")}/server.hcl"
-    destination = "/config/server.hcl"
-  }
-
-  network {
-    name = "network.${var.cn_network}"
-  }
-
-  port {
-    local           = 8500
-    remote          = 8500
-    host            = var.cn_consul_port
-    open_in_browser = var.cn_consul_open_browser ? "/ui" : ""
-  }
-
+module "consul" {
+  source = "github.com/shipyard-run/blueprints?ref=5635f282cd28bcd2213494e558bf2151d10c7e9c/modules//consul-docker"
 }

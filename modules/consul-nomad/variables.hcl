@@ -29,7 +29,7 @@ variable "cn_consul_datacenter" {
 
 # Nomad version to use
 variable "cn_nomad_version" {
-  default = "1.3.1-1"
+  default = "1.3.1"
 }
 
 # Name of the cluster, changing this value does not 
@@ -40,15 +40,11 @@ variable "cn_nomad_cluster_name" {
 }
 
 variable "cn_consul_cluster_name" {
-  default = "container.consul"
+  default = "1.consul.server.container.shipyard.run"
 }
 
 # Default Consul config, can be overridden by setting this variable from outside
 # the module
-variable "cn_consul_server_config" {
-  default = "${file("${file_dir()}/consul_config/server.hcl")}"
-}
-
 variable "cn_consul_agent_config" {
   default = "${file("${file_dir()}/consul_config/agent.hcl")}"
 }
@@ -84,14 +80,6 @@ variable "cn_nomad_docker_insecure_registries" {
   default = []
 }
 
-variable "cn_nomad_client_host_volume_destination" {
-  default = ""
-}
-
-variable "cn_nomad_client_host_volume_source" {
-  default = ""
-}
-
 # Copy a local image to the nomad clusters docker cache
 variable "cn_nomad_load_image" {
   default = ""
@@ -103,6 +91,11 @@ variable "cn_consul_open_browser" {
 
 variable "cn_nomad_open_browser" {
   default = false
+}
+
+# Must be set 
+variable "cn_network" {
+  default = ""
 }
 
 # Address where the nomad client can reach the Nomad server API
