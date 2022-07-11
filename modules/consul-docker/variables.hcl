@@ -34,6 +34,14 @@ variable "cd_consul_tls_enabled" {
   default = false
 }
 
+variable "cd_consul_tls_protocol" {
+  default = var.cd_consul_tls_enabled ? "https" : "http"
+}
+
+variable "cd_consul_api_port" {
+  default = var.cd_consul_tls_enabled ? 8501 : 8500
+}
+
 # Additional volume to add to the server
 variable "cd_consul_additional_volume" {
   default = {

@@ -141,9 +141,18 @@ template "cd_consul_bootstrap" {
   vars = {
     acls_enabled = var.cd_consul_acls_enabled
     server_instances = [1,2,3]
-    server_protocol = var.cd_consul_tls_enabled ? "https" : "http"
-    server_port = var.cd_consul_tls_enabled ? "8501" : "8500"
+    server_protocol = var.cd_consul_tls_protocol
+    server_port = var.cd_consul_api_port
   }
+}
+
+exec_remote "cd_consul_bootstrap" {
+  target = "container.1.consul.server"
+
+  cmd = "sh"
+  args = [
+    "/config/bootstrap.sh"
+  ]
 }
 
 container "1.consul.server" {
@@ -216,6 +225,21 @@ container "1.consul.server" {
     destination = var.cd_consul_additional_volume.destination
     type        = var.cd_consul_additional_volume.type
   }
+
+  env {
+    key = "CONSUL_HTTP_ADDR"
+    value = "${var.cd_consul_tls_protocol}://localhost:${var.cd_consul_api_port}"
+  }
+  
+  env {
+    key = "CONSUL_HTTP_TOKEN_FILE"
+    value = "/config/bootstrap.token"
+  }
+  
+  env {
+    key = "CONSUL_CACERT"
+    value = "/config/cd_consul_ca.cert"
+  }
 }
 
 container "2.consul.server" {
@@ -269,13 +293,4 @@ container "3.consul.server" {
     destination = var.cd_consul_additional_volume.destination
     type        = var.cd_consul_additional_volume.type
   }
-}
-
-exec_remote "cd_consul_bootstrap" {
-  target = "container.1.consul.server"
-
-  cmd = "sh"
-  args = [
-    "/config/bootstrap.sh"
-  ]
 }
