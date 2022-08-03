@@ -59,7 +59,6 @@ variable "consul_mesh_gateway_create_federation_secret" {
 
 k8s_cluster "dc1" {
   driver  = "k3s"
-  version = "v1.22.2"
 
   nodes = 1
 

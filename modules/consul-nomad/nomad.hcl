@@ -23,7 +23,7 @@ template "consul_agent_config" {
 
   vars = {
     datacenter    = var.cn_consul_datacenter
-    consul_server = "consul.container.shipyard.run"
+    consul_server = var.cn_consul_cluster_name
   }
 }
 
@@ -47,7 +47,7 @@ template "docker_registries" {
 }
 
 nomad_cluster "local" {
-  depends_on = ["container.consul", "template.consul_agent_config", "template.nomad_config"]
+  depends_on = ["module.consul", "template.consul_agent_config", "template.nomad_config"]
 
   version      = "${var.cn_nomad_version}"
   client_nodes = var.cn_nomad_client_nodes
