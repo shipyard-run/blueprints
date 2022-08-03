@@ -5,3 +5,4 @@
 .terraform
 debug.log
 telepresence
+.vscode

@@ -22,7 +22,12 @@ variable "vault_ip_address" {
 
 # Path to a folder that is mounted into the Vault container at path /data
 variable "vault_data" {
-  default = "${data("vault_data")}"
+  default = data("vault_data")
+}
+
+variable "vault_plugin_folder" {
+  default     = data("vault_plugins")
+  description = "Folder where vault will load custom plugins"
 }
 
 # Bootstrap script that is executed after Vault starts
