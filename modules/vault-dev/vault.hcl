@@ -66,3 +66,11 @@ exec_remote "vault_bootstrap" {
   args              = ["/data/bootstrap.sh"]
   working_directory = "/data"
 }
+
+output "VAULT_ADDR" {
+  value = "http://localhost:8200"
+}
+
+output "VAULT_TOKEN" {
+  value = var.vault_root_token
+}
