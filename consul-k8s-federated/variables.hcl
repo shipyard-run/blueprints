@@ -4,8 +4,19 @@ variable "consul_k8s_module" {
   local path for testing.
   EOT
 
-  default = "github.com/shipyard-run/blueprints?ref=2681ce0e63f0951fc8abaa53c029e3f5504896bf/modules//kubernetes-consul"
-  #default = "./modules/kubernetes-consul"
+  default = "github.com/shipyard-run/blueprints?ref=891c937844bdbec673f5428b1a3c8bff4e207727/modules//kubernetes-consul"
+  #default = "../modules/kubernetes-consul"
+}
+
+variable "consul_docker_module" {
+  description = <<EOT
+  Location and version of the module for Consul Docker, can be set to a
+  local path for testing.
+  EOT
+
+  default = "github.com/shipyard-run/blueprints?ref=891c937844bdbec673f5428b1a3c8bff4e207727/modules//kubernetes-consul"
+
+  #default = "../modules/consul-docker"
 }
 
 variable "install_example_app" {
@@ -21,11 +32,5 @@ variable "install_example_app" {
   default = true
 }
 
-variable "enable_linux_dc" {
-  description = "Enables and configures a Linux based (faux VM) datacenter"
-  default     = true
-}
 
-variable "consul_release_controller_enabled" {
-  default = false
-}
+# Enable server security

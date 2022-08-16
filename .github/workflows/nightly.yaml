@@ -63,7 +63,7 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           title: ${{ matrix.folder }}
           description: "Functional tests for ${{ matrix.folder }}"
-      
+
       - name: Send failure status to Discord
         uses: sarisia/actions-status-discord@v1
         if: failure()

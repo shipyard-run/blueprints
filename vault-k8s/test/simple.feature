@@ -7,9 +7,6 @@ Scenario: Kubernetes Cluster with Vault Helm Chart
   Given I have a running blueprint
   Then the following resources should be running
     | name                      | type          |
-    | k3s                       | k8s_cluster   |
-    | web                       | ingress       |
-    | postgres                  | ingress       |
-    | vault-http                | ingress       |
+    | dc1                       | k8s_cluster   |
     | docs                      | docs          |
     | tools                     | container     |
