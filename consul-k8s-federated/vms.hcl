@@ -1,5 +1,5 @@
 variable "cd_consul_acls_enabled" {
-  default = false
+  default = true
 }
 
 variable "cd_consul_tls_enabled" {

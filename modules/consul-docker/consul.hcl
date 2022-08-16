@@ -131,6 +131,12 @@ template "cd_consul_bootstrap" {
   
   consul acl policy create -name "agent-token" -description "Agent Token Policy" -rules @/config/agent-policy.hcl
 
+  #{{ if eq .Vars.gateway_enabled true }}
+  # If we are using federation we need to enable read for services or cross dc health
+  # checks will not be possible if using local token, add the agent_token policy
+  consul acl token update -id "00000000-0000-0000-0000-000000000002" -policy-name="agent-token" 
+  #{{ end }}
+
   # Create the Agent token
   consul acl token create -description "Agent Token" -policy-name "agent-token" -format json | jq -r '.SecretID' > /config/agent.token
 
@@ -172,6 +178,7 @@ template "cd_consul_bootstrap" {
 
   vars = {
     acls_enabled     = var.cd_consul_acls_enabled
+    gateway_enabled  = var.cd_gateway_enabled
     server_instances = [1, 2, 3]
     server_protocol  = var.cd_consul_tls_protocol
     server_port      = var.cd_consul_api_port
@@ -258,19 +265,11 @@ container "1-consul-server" {
     type        = var.cd_consul_additional_volume.type
   }
 
-  env {
-    key   = "CONSUL_HTTP_ADDR"
-    value = "${var.cd_consul_tls_protocol}://localhost:${var.cd_consul_api_port}"
-  }
-
-  env {
-    key   = "CONSUL_HTTP_TOKEN_FILE"
-    value = "/config/bootstrap.token"
-  }
-
-  env {
-    key   = "CONSUL_CACERT"
-    value = "/config/cd_consul_ca.cert"
+  env_var = {
+    CONSUL_HTTP_ADDR       = "${var.cd_consul_tls_protocol}://localhost:${var.cd_consul_api_port}"
+    CONSUL_GRPC_ADDR       = "${var.cd_consul_tls_protocol}://localhost:8502"
+    CONSUL_CACERT          = var.cd_consul_tls_enabled ? "/config/cd_consul_ca.cert" : ""
+    CONSUL_HTTP_TOKEN_FILE = var.cd_consul_acls_enabled ? "/config/bootstrap.token" : ""
   }
 }
 

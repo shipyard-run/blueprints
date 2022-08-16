@@ -41,7 +41,7 @@ variable "consul_tls_enabled" {
 }
 
 variable "consul_acls_enabled" {
-  default = false
+  default = true
 }
 
 variable "consul_ports_gateway" {

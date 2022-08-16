@@ -14,9 +14,9 @@ variable "consul_docker_module" {
   local path for testing.
   EOT
 
-  default = "github.com/shipyard-run/blueprints?ref=891c937844bdbec673f5428b1a3c8bff4e207727/modules//kubernetes-consul"
+  #default = "github.com/shipyard-run/blueprints?ref=891c937844bdbec673f5428b1a3c8bff4e207727/modules//consul-docker"
 
-  #default = "../modules/consul-docker"
+  default = "../modules/consul-docker"
 }
 
 variable "install_example_app" {
