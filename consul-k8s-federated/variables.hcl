@@ -14,9 +14,9 @@ variable "consul_docker_module" {
   local path for testing.
   EOT
 
-  #default = "github.com/shipyard-run/blueprints?ref=891c937844bdbec673f5428b1a3c8bff4e207727/modules//consul-docker"
+  default = "github.com/shipyard-run/blueprints?ref=e51d3ce48455b56edaf2a04e67182b846789daef/modules//consul-docker"
 
-  default = "../modules/consul-docker"
+  #default = "../modules/consul-docker"
 }
 
 variable "install_example_app" {
