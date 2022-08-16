@@ -44,6 +44,11 @@ variable "consul_acls_enabled" {
   default = true
 }
 
+variable "consul_transparent_proxy_enabled" {
+  description = "Enable the transparent proxy feature for then entire cluster for consul service mesh"
+  default     = true
+}
+
 variable "consul_ports_gateway" {
   default = 30443
 }

@@ -122,7 +122,6 @@ spec:
       annotations:
         "consul.hashicorp.com/connect-inject": "true"
         "consul.hashicorp.com/connect-service-upstreams": "currency:9091"
-        "consul.hashicorp.com/transparent-proxy": "false"
     spec:
       serviceAccountName: payments
       containers:
