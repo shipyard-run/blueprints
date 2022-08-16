@@ -3,19 +3,19 @@ output "CONSUL_HTTP_ADDR" {
 }
 
 output "CONSUL_CACERT" {
-  disabled = !var.cd_consul_tls_enabled
+  disabled = var.cd_consul_tls_enabled == false
 
   value = "${var.cd_consul_data}/cd_consul_ca.cert"
 }
 
 output "CONSUL_HTTP_SSL_VERIFY" {
-  disabled = !var.cd_consul_tls_enabled
+  disabled = var.cd_consul_tls_enabled == false
 
-  value ="false"
+  value = "false"
 }
 
 output "CONSUL_HTTP_TOKEN" {
-  disabled = !var.cd_consul_acls_enabled
+  disabled = var.cd_consul_acls_enabled == false
 
   value = "$(cat ${var.cd_consul_data}/bootstrap.token)"
 }

@@ -1,3 +1,73 @@
+template "bootstrap_certs_acls" {
+  disabled = var.consul_ca_cert_file == "" && var.consul_acl_token_file == ""
+
+  source = <<-EOF
+  #{{ if eq .Vars.bootstrap_cert true }}
+  kubectl create secret generic consul-ca-cert \
+    --from-literal='tls_cert=#{{ file .Vars.ca_cert_file | trim }}' \
+    -n ${var.consul_namespace}
+
+
+  kubectl create secret generic consul-ca-key \
+    --from-literal='tls_key=#{{ file .Vars.ca_key_file | trim }}' \
+    -n ${var.consul_namespace}
+  #{{ end }}
+  
+  #{{ if eq .Vars.bootstrap_acls true }}
+  kubectl create secret generic consul-replication-token \
+    --from-literal='replication.token=#{{ file .Vars.token_file | trim }}' \
+    -n ${var.consul_namespace}
+  #{{ end }}
+  EOF
+
+
+  destination = "${var.consul_data_folder}/bootstrap_certs_acls.sh"
+
+  vars = {
+    consul_namespace = var.consul_namespace
+    bootstrap_cert   = var.consul_ca_cert_file == "" ? false : true
+    bootstrap_acls   = var.consul_acl_token_file == "" || var.consul_acls_enabled == false ? false : true
+    ca_cert_file     = var.consul_ca_cert_file
+    ca_key_file      = var.consul_ca_key_file
+    token_file       = var.consul_acl_token_file
+  }
+}
+
+exec_remote "bootstrap_certs_acls" {
+  disabled = var.consul_ca_cert_file == "" && var.consul_acl_token_file == ""
+
+  depends_on = ["template.bootstrap_certs_acls", "k8s_cluster.${var.consul_k8s_cluster}"]
+
+  image {
+    name = "shipyardrun/tools:v0.6.0"
+  }
+
+  network {
+    name = "network.${var.consul_k8s_network}"
+  }
+
+  cmd = "sh"
+  args = [
+    "/data/bootstrap_certs_acls.sh",
+  ]
+
+  # Mount a volume containing the config for the kube cluster
+  volume {
+    source      = "${shipyard()}/config/${var.consul_k8s_cluster}"
+    destination = "/config"
+  }
+
+  volume {
+    source      = var.consul_data_folder
+    destination = "/data"
+  }
+
+  env {
+    key   = "KUBECONFIG"
+    value = "/config/kubeconfig-docker.yaml"
+  }
+}
+
 template "consul_values" {
   source      = file(var.consul_helm_values)
   destination = "${var.consul_data_folder}/consul_values.yaml"
@@ -20,6 +90,16 @@ template "consul_values" {
     monitoring_namespace      = var.monitoring_namespace
     metrics_enabled           = var.consul_monitoring_enabled
     debug                     = var.consul_debug_enabled
+    cert_secret_name          = var.consul_ca_cert_file != "" ? "consul-ca-cert" : ""
+    cert_secret_key           = var.consul_ca_cert_file != "" ? "tls_cert" : ""
+    key_secret_name           = var.consul_ca_cert_file != "" ? "consul-ca-key" : ""
+    key_secret_key            = var.consul_ca_cert_file != "" ? "tls_key" : ""
+    replication_token_name    = var.consul_acl_token_file != "" ? "consul-replication-token" : ""
+    replication_token_key     = var.consul_acl_token_file != "" ? "replication.token" : ""
+    primary_datacenter        = var.consul_primary_datacenter
+    primary_gateway           = var.consul_primary_gateway
+    k8s_api_server            = var.consul_primary_gateway != "" ? "https://${var.consul_mesh_gateway_address}:${cluster_port("k8s_cluster.${var.consul_k8s_cluster}")}" : ""
+    debug                     = var.consul_debug_enabled
   }
 }
 
@@ -27,7 +107,7 @@ template "consul_values" {
 // Install Consul using the helm chart.
 //
 helm "consul" {
-  depends_on = ["template.consul_values", "k8s_config.consul_namespace"]
+  depends_on = ["template.consul_values", "k8s_config.consul_namespace", "exec_remote.bootstrap_certs_acls"]
   namespace  = var.consul_namespace
   cluster    = "k8s_cluster.${var.consul_k8s_cluster}"
 

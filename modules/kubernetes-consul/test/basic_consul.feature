@@ -22,9 +22,9 @@ Feature: Test Blueprint
   @with_tls
   Scenario: Enabled TLS
     Given the following shipyard variables are set
-      | key                               | value        |
-      | consul_tls_enabled                | true        |
-      | consul_acls_enabled               | false       |
+      | key                               | value |
+      | consul_tls_enabled                | true  |
+      | consul_acls_enabled               | false |
       | consul_monitoring_enabled         | false |
       | consul_smi_controller_enabled     | false |
       | consul_release_controller_enabled | false |
@@ -44,14 +44,14 @@ Feature: Test Blueprint
         ls -las ${HOME}/.shipyard/data/consul_kubernetes
         exit 1
       fi
-      
+
       # Check the tls key has been created
       if [ ! -f "${HOME}/.shipyard/data/consul_kubernetes/tls.key" ]; then
         echo "TLS key does not exist at path: ${HOME}/.shipyard/data/consul_kubernetes/tls.key"
         ls -las ${HOME}/.shipyard/data/consul_kubernetes
         exit 1
       fi
-      
+
       curl --cacert ${HOME}/.shipyard/data/consul_kubernetes/tls.crt \
            https://localhost:8501/v1/status/leader
       ```
@@ -87,7 +87,7 @@ Feature: Test Blueprint
            http://localhost:8500/v1/status/leader
       ```
     And I expect the exit code to be 0
-  
+
   @with_acls_and_tls
   Scenario: Enabled ACLs and TLS
     Given the following shipyard variables are set

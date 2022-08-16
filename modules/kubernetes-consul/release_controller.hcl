@@ -1,5 +1,5 @@
 template "release_controller_values" {
-  disabled = !var.consul_release_controller_enabled
+  disabled = var.consul_release_controller_enabled == false
 
   source = <<EOF
 fullnameOverride: "consul-release-controller"
@@ -20,7 +20,7 @@ EOF
 }
 
 helm "cert_manager" {
-  disabled = !var.consul_release_controller_enabled
+  disabled = var.consul_release_controller_enabled == false
 
   depends_on       = ["helm.consul"]
   cluster          = "k8s_cluster.${var.consul_k8s_cluster}"
@@ -48,7 +48,7 @@ helm "cert_manager" {
 }
 
 helm "release_controller" {
-  disabled = !var.consul_release_controller_enabled
+  disabled = var.consul_release_controller_enabled == false
 
   depends_on = ["template.release_controller_values", "helm.cert_manager"]
   namespace  = var.consul_namespace
@@ -73,7 +73,7 @@ helm "release_controller" {
 }
 
 ingress "consul_release_controller" {
-  disabled = !var.consul_release_controller_enabled
+  disabled = var.consul_release_controller_enabled == false
 
   source {
     driver = "local"

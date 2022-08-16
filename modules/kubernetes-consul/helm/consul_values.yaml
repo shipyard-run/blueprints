@@ -1,3 +1,4 @@
+---
 # Available parameters and their default values for the Consul chart.
 # Server, when enabled, configures a server cluster to run. This should
 # be disabled if you plan on connecting to a Consul cluster external to
@@ -11,26 +12,45 @@ global:
 
   acls:
     manageSystemACLs: #{{ .Vars.acl_enabled }}
+
+    #{{ if eq .Vars.acl_enabled true }}
+    replicationToken:
+      secretName: #{{ if eq .Vars.replication_token_name "" }}null#{{ else }}#{{ .Vars.replication_token_name }}#{{ end }}
+      secretKey: #{{ if eq .Vars.replication_token_key "" }}null#{{ else }}#{{ .Vars.replication_token_key }}#{{ end }}
+    #{{ end }}
+
   tls:
     enabled: #{{ .Vars.tls_enabled }}
     enableAutoEncrypt: #{{ .Vars.tls_enabled }}
     httpsOnly: false
 
+    # Configure an external CA Cert and key for the cluster
+    caCert:
+      secretName: #{{ if eq .Vars.cert_secret_name ""}}null#{{ else }}#{{ .Vars.cert_secret_name }}#{{ end }}
+      secretKey: #{{ if eq .Vars.cert_secret_key ""}}null#{{ else }}#{{ .Vars.cert_secret_key }}#{{ end }}
+
+    caKey:
+      secretName: #{{ if eq .Vars.key_secret_name ""}}null#{{ else }}#{{ .Vars.key_secret_name }}#{{ end }}
+      secretKey: #{{ if eq .Vars.key_secret_key ""}}null#{{ else }}#{{ .Vars.key_secret_key }}#{{ end }}
+
   federation:
     enabled: #{{ .Vars.federation_enabled }}
     createFederationSecret: #{{ .Vars.create_federation_secret }}
+    primaryDatacenter: #{{ .Vars.primary_datacenter }}
+    primaryGateways: #{{ if eq .Vars.primary_gateway "" }}[]#{{ else }}["#{{ .Vars.primary_gateway }}"]#{{ end }}
+    k8sAuthMethodHost: #{{ if eq .Vars.k8s_api_server "" }}null#{{ else }}"#{{ .Vars.k8s_api_server }}"#{{ end }}
 
   image: #{{ .Vars.consul_image }}
-  
+
   imageK8S: #{{ .Vars.consul_k8s_image }}
-  
+
   imageEnvoy: #{{ .Vars.consul_envoy_image }}
 
   metrics:
     enabled: #{{ .Vars.metrics_enabled }}
     enableAgentMetrics: #{{ .Vars.metrics_enabled }}
     enableGatewayMetrics: #{{ .Vars.metrics_enabled }}
-  
+
   logLevel: #{{ if eq .Vars.debug true }}"debug"#{{ else }}"info"#{{ end }}
 
 server:

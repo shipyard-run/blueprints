@@ -28,7 +28,7 @@ variable "consul_smi_controller_enabled" {
 
 variable "consul_release_controller_enabled" {
   description = "Enable the consul release controller?"
-  default     = true
+  default     = false
 }
 
 variable "consul_acls_enabled" {
@@ -58,7 +58,7 @@ variable "consul_mesh_gateway_create_federation_secret" {
 # End optional variables
 
 k8s_cluster "dc1" {
-  driver  = "k3s"
+  driver = "k3s"
 
   nodes = 1
 

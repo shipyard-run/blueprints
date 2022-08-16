@@ -4,6 +4,8 @@ kind: ProxyDefaults
 metadata:
   name: global
 spec:
+  meshGateway:
+    mode: local
   config:
     envoy_prometheus_bind_addr: '0.0.0.0:9102'
     envoy_extra_static_clusters_json: >

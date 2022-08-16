@@ -1,3 +1,7 @@
+variable "consul_set_outputs" {
+  default     = true
+  description = "Should outputs be enabled for this module"
+}
 
 variable "consul_health_check_timeout" {
   default     = "120s"
@@ -33,16 +37,16 @@ variable "consul_helm_values" {
 }
 
 variable "consul_helm_version" {
-  default = "v0.40.0"
+  default = "v0.47.1"
 }
 
 variable "consul_image" {
-  default = "hashicorp/consul:1.11.3"
+  default = "hashicorp/consul:1.12.2"
   //default = "hashicorp/consul:1.10.4"
 }
 
 variable "consul_k8s_image" {
-  default = "hashicorp/consul-k8s-control-plane:0.40.0"
+  default = "hashicorp/consul-k8s-control-plane:0.47.1"
   //default = "hashicorp/consul-k8s:0.26.0-beta3"
 }
 
@@ -101,7 +105,7 @@ variable "consul_mesh_gateway_enabled" {
 
 variable "consul_mesh_gateway_address" {
   description = "Wan address for the mesh gateway"
-  default     = "${var.consul_k8s_cluster}.k8s-cluster.shipyard.run"
+  default     = ""
 }
 
 variable "consul_federation_enabled" {
@@ -112,6 +116,16 @@ variable "consul_federation_enabled" {
 variable "consul_federation_create_secret" {
   description = "Create a federation secret?"
   default     = false
+}
+
+variable "consul_primary_datacenter" {
+  description = "name of the primary datacenter when federation is enabled"
+  default     = ""
+}
+
+variable "consul_primary_gateway" {
+  description = "name of the primary gateway when federation is enabled"
+  default     = ""
 }
 
 variable "consul_transparent_proxy_enabled" {
@@ -161,7 +175,7 @@ variable "consul_smi_controller_tag" {
 
 variable "consul_release_controller_enabled" {
   description = "Should the Consul release controller be enabled?"
-  default     = true
+  default     = false
 }
 
 variable "consul_release_controller_helm_version" {
@@ -199,4 +213,19 @@ variable "smi_controller_repository" {
 variable "smi_controller_tag" {
   description = "Tag for the controller image"
   default     = var.consul_smi_controller_tag
+}
+
+variable "consul_ca_cert_file" {
+  description = "location of an PEM encoded CA certificate to use for server certificate generation"
+  default     = ""
+}
+
+variable "consul_ca_key_file" {
+  description = "location of an PEM encoded CA certificate to use for server certificate generation"
+  default     = ""
+}
+
+variable "consul_acl_token_file" {
+  description = "location of the Consul replication ACL token to use for joining other servers"
+  default     = ""
 }
