@@ -30,6 +30,10 @@ network "local" {
   subnet = "10.10.0.0/16"
 }
 
+variable "cd_consul_server_instances" {
+  default = 1
+}
+
 variable "cd_consul_additional_volume" {
   default = {
     source      = data("agent_config")

@@ -9,39 +9,6 @@ spec:
 
 ---
 apiVersion: consul.hashicorp.com/v1alpha1
-kind: ServiceDefaults
-metadata:
-  name: payments
-spec:
-  upstreamConfig:
-    defaults:
-      meshGateway:
-        mode: local
-
----
-apiVersion: consul.hashicorp.com/v1alpha1
-kind: ServiceDefaults
-metadata:
-  name: web
-spec:
-  upstreamConfig:
-    defaults:
-      meshGateway:
-        mode: local
-
----
-apiVersion: consul.hashicorp.com/v1alpha1
-kind: ServiceDefaults
-metadata:
-  name: currency
-spec:
-  upstreamConfig:
-    defaults:
-      meshGateway:
-        mode: local
-
----
-apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceIntentions
 metadata:
   name: payments
@@ -122,6 +89,8 @@ spec:
       annotations:
         "consul.hashicorp.com/connect-inject": "true"
         "consul.hashicorp.com/connect-service-upstreams": "currency:9091"
+        # must disable t-proxy for cross dc calls
+        "consul.hashicorp.com/transparent-proxy": "false"
     spec:
       serviceAccountName: payments
       containers:

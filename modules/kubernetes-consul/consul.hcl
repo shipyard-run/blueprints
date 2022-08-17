@@ -1,3 +1,5 @@
+# If this is a secondary datacenter in a federated cluster we need to add the CA and ACL 
+# from the primary
 template "bootstrap_certs_acls" {
   disabled = var.consul_ca_cert_file == "" && var.consul_acl_token_file == ""
 
