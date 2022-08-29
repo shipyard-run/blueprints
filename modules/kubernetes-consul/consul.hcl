@@ -281,7 +281,7 @@ ingress "consul-gateway" {
   }
 }
 
-ingress "consul-ingeress-gateway-1" {
+ingress "consul-ingress-gateway-1" {
   disabled = (var.consul_ingress_gateway_enabled == false || len(var.consul_ports_ingress_gateway) == 0)
 
   source {
@@ -303,7 +303,7 @@ ingress "consul-ingeress-gateway-1" {
   }
 }
 
-ingress "consul-ingeress-gateway-2" {
+ingress "consul-ingress-gateway-2" {
   disabled = (var.consul_ingress_gateway_enabled == false || len(var.consul_ports_ingress_gateway) < 2)
 
   source {
