@@ -41,7 +41,7 @@ variable "consul_helm_version" {
 }
 
 variable "consul_image" {
-  default = "hashicorp/consul:1.12.2"
+  default = "hashicorp/consul:1.12.4"
   //default = "hashicorp/consul:1.10.4"
 }
 
@@ -51,7 +51,7 @@ variable "consul_k8s_image" {
 }
 
 variable "consul_envoy_image" {
-  default     = "envoyproxy/envoy:v1.20.1"
+  default     = "envoyproxy/envoy:v1.20.6"
   description = "Using the debian base images as alpine does not support arm"
   //default = "envoyproxy/envoy-alpine:v1.18.3"
 }
