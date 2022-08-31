@@ -28,7 +28,7 @@ variable "consul_smi_controller_enabled" {
 
 variable "consul_release_controller_enabled" {
   description = "Enable the consul release controller?"
-  default     = false
+  default     = true
 }
 
 variable "consul_acls_enabled" {
@@ -54,6 +54,16 @@ variable "consul_mesh_gateway_enabled" {
 variable "consul_mesh_gateway_create_federation_secret" {
   description = "Should a federation secret be created?"
   default     = false
+}
+
+variable "consul_transparent_proxy_enabled" {
+  description = "Enable the transparent proxy feature for then entire cluster for consul service mesh"
+  default     = true
+}
+
+variable "consul_auto_inject_enabled" {
+  description = "Enable the automatic injection of sidecar proxies for kubernetes pods"
+  default     = true
 }
 # End optional variables
 

@@ -19,10 +19,36 @@ EOF
   }
 }
 
-helm "cert_manager" {
+template "cert_manager_values" {
   disabled = var.consul_release_controller_enabled == false
 
-  depends_on       = ["helm.consul"]
+  source = <<-EOF
+  installCRDs: 'true'
+  # Disable Transparent proxy and Consul injection
+  startupapicheck:
+    podAnnotations:
+      'consul.hashicorp.com/connect-inject': 'false'
+      'consul.hashicorp.com/transparent-proxy': 'false'
+  cainjector:
+    podAnnotations:
+      'consul.hashicorp.com/connect-inject': 'false'
+      'consul.hashicorp.com/transparent-proxy': 'false'
+  webhook:
+    podAnnotations:
+      'consul.hashicorp.com/connect-inject': 'false'
+      'consul.hashicorp.com/transparent-proxy': 'false'
+  podAnnotations:
+    'consul.hashicorp.com/connect-inject': 'false'
+    'consul.hashicorp.com/transparent-proxy': 'false'
+  EOF
+
+  destination = "${var.consul_data_folder}/cert_manager_values.yaml"
+}
+
+helm "cert_manager" {
+  disabled   = var.consul_release_controller_enabled == false
+  depends_on = ["template.cert_manager_values", "helm.consul"]
+
   cluster          = "k8s_cluster.${var.consul_k8s_cluster}"
   namespace        = "cert-manager"
   create_namespace = true
@@ -42,9 +68,7 @@ helm "cert_manager" {
     ]
   }
 
-  values_string = {
-    "installCRDs" = true
-  }
+  values = "${var.consul_data_folder}/cert_manager_values.yaml"
 }
 
 helm "release_controller" {

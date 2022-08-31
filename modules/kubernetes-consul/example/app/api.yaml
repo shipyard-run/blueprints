@@ -36,9 +36,6 @@ spec:
       labels:
         app: api
         metrics: enabled
-      annotations:
-        consul.hashicorp.com/connect-inject: 'true'
-        consul.hashicorp.com/connect-service-upstreams: 'payments:9091'
     spec:
       serviceAccountName: api
       containers:
@@ -53,7 +50,7 @@ spec:
             - name: "LISTEN_ADDR"
               value: "0.0.0.0:9090"
             - name: "UPSTREAM_URIS"
-              value: "http://localhost:9091"
+              value: "http://payments.default.svc"
             - name: "TIMING_50_PERCENTILE"
               value: "10ms"
             - name: "TRACING_ZIPKIN"

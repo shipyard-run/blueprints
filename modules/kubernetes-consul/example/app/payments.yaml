@@ -38,7 +38,6 @@ spec:
         group: payments
         metrics: enabled
       annotations:
-        consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/service-meta-version: v1
     spec:
       serviceAccountName: payments
@@ -77,7 +76,6 @@ spec:
         group: payments
         metrics: enabled
       annotations:
-        consul.hashicorp.com/connect-inject: 'true'
         consul.hashicorp.com/service-meta-version: v2
     spec:
       serviceAccountName: payments

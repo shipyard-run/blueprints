@@ -37,8 +37,6 @@ spec:
         app: currency
         group: currency
         metrics: enabled
-      annotations:
-        consul.hashicorp.com/connect-inject: 'true'
     spec:
       serviceAccountName: currency
       containers:

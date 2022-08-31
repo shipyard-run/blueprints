@@ -46,7 +46,7 @@ variable "cn_consul_cluster_name" {
 # Default Consul config, can be overridden by setting this variable from outside
 # the module
 variable "cn_consul_agent_config" {
-  default = "${file("${file_dir()}/consul_config/agent.hcl")}"
+  default = file("${file_dir()}/consul_config/agent.hcl")
 }
 
 # Default Consul config for the nomad agents
@@ -105,4 +105,10 @@ output "NOMAD_ADDR" {
 
 output "CONSUL_HTTP_ADDR" {
   value = "http://localhost:18500"
+}
+
+# Enable setting a custom server ip address
+# currently only works when not using client nodes
+variable "cn_nomad_server_ip" {
+  default = ""
 }
