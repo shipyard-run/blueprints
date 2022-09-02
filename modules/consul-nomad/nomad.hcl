@@ -49,11 +49,12 @@ template "docker_registries" {
 nomad_cluster "local" {
   depends_on = ["module.consul", "template.consul_agent_config", "template.nomad_config"]
 
-  version      = "${var.cn_nomad_version}"
+  version      = var.cn_nomad_version
   client_nodes = var.cn_nomad_client_nodes
 
   network {
-    name = "network.${var.cn_network}"
+    name       = "network.${var.cn_network}"
+    ip_address = var.cn_nomad_client_nodes == 0 ? var.cn_nomad_server_ip : ""
   }
 
   consul_config = var.cn_nomad_consul_agent_config

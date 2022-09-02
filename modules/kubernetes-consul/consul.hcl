@@ -75,33 +75,34 @@ template "consul_values" {
   destination = "${var.consul_data_folder}/consul_values.yaml"
 
   vars = {
-    datacenter                = var.consul_datacenter
-    tls_enabled               = var.consul_tls_enabled
-    acl_enabled               = var.consul_acls_enabled
-    federation_enabled        = var.consul_federation_enabled
-    create_federation_secret  = var.consul_federation_create_secret
-    ingress_gateway_enabled   = var.consul_ingress_gateway_enabled
-    ingress_gateway_ports     = var.consul_ports_ingress_gateway
-    mesh_gateway_enabled      = var.consul_mesh_gateway_enabled
-    mesh_gateway_address      = var.consul_mesh_gateway_address
-    consul_image              = var.consul_image
-    consul_k8s_image          = var.consul_k8s_image
-    consul_envoy_image        = var.consul_envoy_image
-    transparent_proxy_enabled = var.consul_transparent_proxy_enabled
-    auto_inject_enabled       = var.consul_auto_inject_enabled
-    monitoring_namespace      = var.monitoring_namespace
-    metrics_enabled           = var.consul_monitoring_enabled
-    debug                     = var.consul_debug_enabled
-    cert_secret_name          = var.consul_ca_cert_file != "" ? "consul-ca-cert" : ""
-    cert_secret_key           = var.consul_ca_cert_file != "" ? "tls_cert" : ""
-    key_secret_name           = var.consul_ca_cert_file != "" ? "consul-ca-key" : ""
-    key_secret_key            = var.consul_ca_cert_file != "" ? "tls_key" : ""
-    replication_token_name    = var.consul_acl_token_file != "" ? "consul-replication-token" : ""
-    replication_token_key     = var.consul_acl_token_file != "" ? "replication.token" : ""
-    primary_datacenter        = var.consul_primary_datacenter
-    primary_gateway           = var.consul_primary_gateway
-    k8s_api_server            = var.consul_primary_gateway != "" ? "https://${var.consul_mesh_gateway_address}:${cluster_port("k8s_cluster.${var.consul_k8s_cluster}")}" : ""
-    debug                     = var.consul_debug_enabled
+    datacenter                  = var.consul_datacenter
+    tls_enabled                 = var.consul_tls_enabled
+    acl_enabled                 = var.consul_acls_enabled
+    federation_enabled          = var.consul_federation_enabled
+    create_federation_secret    = var.consul_federation_create_secret
+    ingress_gateway_enabled     = var.consul_ingress_gateway_enabled
+    ingress_gateway_ports       = var.consul_ports_ingress_gateway
+    mesh_gateway_enabled        = var.consul_mesh_gateway_enabled
+    mesh_gateway_address        = var.consul_mesh_gateway_address
+    consul_image                = var.consul_image
+    consul_k8s_image            = var.consul_k8s_image
+    consul_envoy_image          = var.consul_envoy_image
+    transparent_proxy_enabled   = var.consul_transparent_proxy_enabled
+    auto_inject_enabled         = var.consul_auto_inject_enabled
+    auto_inject_deny_namespaces = var.consul_auto_inject_deny_namespaces
+    monitoring_namespace        = var.monitoring_namespace
+    metrics_enabled             = var.consul_monitoring_enabled
+    debug                       = var.consul_debug_enabled
+    cert_secret_name            = var.consul_ca_cert_file != "" ? "consul-ca-cert" : ""
+    cert_secret_key             = var.consul_ca_cert_file != "" ? "tls_cert" : ""
+    key_secret_name             = var.consul_ca_cert_file != "" ? "consul-ca-key" : ""
+    key_secret_key              = var.consul_ca_cert_file != "" ? "tls_key" : ""
+    replication_token_name      = var.consul_acl_token_file != "" ? "consul-replication-token" : ""
+    replication_token_key       = var.consul_acl_token_file != "" ? "replication.token" : ""
+    primary_datacenter          = var.consul_primary_datacenter
+    primary_gateway             = var.consul_primary_gateway
+    k8s_api_server              = var.consul_primary_gateway != "" ? "https://${var.consul_mesh_gateway_address}:${cluster_port("k8s_cluster.${var.consul_k8s_cluster}")}" : ""
+    debug                       = var.consul_debug_enabled
   }
 }
 
