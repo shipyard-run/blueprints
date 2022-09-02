@@ -138,6 +138,11 @@ variable "consul_auto_inject_enabled" {
   default     = false
 }
 
+variable "consul_auto_inject_deny_namespaces" {
+  description = "List of Kubernetes namespaces where auto inject is ignored"
+  default     = []
+}
+
 variable "consul_debug_enabled" {
   description = "Enable debug logging"
   default     = false
@@ -180,7 +185,7 @@ variable "consul_release_controller_enabled" {
 
 variable "consul_release_controller_helm_version" {
   description = "Helm chart version for Consul release controller"
-  default     = "0.2.1"
+  default     = "0.2.2"
 }
 
 # Variables for Monitoring module
@@ -227,5 +232,11 @@ variable "consul_ca_key_file" {
 
 variable "consul_acl_token_file" {
   description = "location of the Consul replication ACL token to use for joining other servers"
-  default     = ""
+
+  default = ""
+}
+
+variable "consul_releaser_acl_token_file" {
+  description = "location of the ACL token that can be used by Consul Release Controller"
+  default     = var.consul_acls_enabled ? "${var.consul_data_folder}/bootstrap_acl.token" : ""
 }

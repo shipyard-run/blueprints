@@ -88,6 +88,11 @@ connectInject:
   centralConfig:
     enabled: true
 
+  k8sDenyNamespaces:
+  #{{ range .Vars.auto_inject_deny_namespaces }}
+    - #{{ . }}
+  #{{ end }}
+
 ingressGateways:
   enabled: #{{ .Vars.ingress_gateway_enabled }}
   defaults:

@@ -65,6 +65,11 @@ variable "consul_auto_inject_enabled" {
   description = "Enable the automatic injection of sidecar proxies for kubernetes pods"
   default     = true
 }
+
+variable "consul_auto_inject_deny_namespaces" {
+  description = "List of Kubernetes namespaces where auto inject is ignored"
+  default     = ["monitoring"]
+}
 # End optional variables
 
 k8s_cluster "dc1" {

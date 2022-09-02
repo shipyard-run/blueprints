@@ -1,3 +1,56 @@
+template "bootstrap_releaser_acls" {
+  disabled   = var.consul_releaser_acl_token_file == ""
+  depends_on = ["exec_remote.fetch_consul_resources"]
+
+  source = <<-EOF
+  kubectl create secret generic consul-releaser-token \
+    --from-literal='token=#{{ file .Vars.token_file | trim }}' \
+    -n #{{ .Vars.consul_namespace }}
+  EOF
+
+  destination = "${var.consul_data_folder}/bootstrap_releaser_acls.sh"
+
+  vars = {
+    consul_namespace = var.consul_namespace
+    token_file       = var.consul_releaser_acl_token_file
+  }
+}
+
+exec_remote "bootstrap_releaser_acls" {
+  disabled = var.consul_releaser_acl_token_file == ""
+
+  depends_on = ["template.bootstrap_releaser_acls", "exec_remote.fetch_consul_resources"]
+
+  image {
+    name = "shipyardrun/tools:v0.6.0"
+  }
+
+  network {
+    name = "network.${var.consul_k8s_network}"
+  }
+
+  cmd = "sh"
+  args = [
+    "/data/bootstrap_releaser_acls.sh",
+  ]
+
+  # Mount a volume containing the config for the kube cluster
+  volume {
+    source      = "${shipyard()}/config/${var.consul_k8s_cluster}"
+    destination = "/config"
+  }
+
+  volume {
+    source      = var.consul_data_folder
+    destination = "/data"
+  }
+
+  env {
+    key   = "KUBECONFIG"
+    value = "/config/kubeconfig-docker.yaml"
+  }
+}
+
 template "release_controller_values" {
   disabled = var.consul_release_controller_enabled == false
 
@@ -6,7 +59,11 @@ fullnameOverride: "consul-release-controller"
 autoencrypt:
   enabled: #{{ .Vars.tls_enabled }}
 acls:
-  enabled: #{{ .Vars.acls_enabled }}
+  enabled: "false"
+  #{{ if eq .Vars.bootstrap_acls true }}
+  secretName: "consul-releaser-token"
+  secretKey: "token"
+  #{{ end }}
 webhook:
   failurePolicy: Ignore
 EOF
@@ -14,8 +71,8 @@ EOF
   destination = "${var.consul_data_folder}/consul_release_values.yaml"
 
   vars = {
-    acls_enabled = var.consul_acls_enabled
-    tls_enabled  = var.consul_tls_enabled
+    bootstrap_acls = var.consul_releaser_acl_token_file != ""
+    tls_enabled    = var.consul_tls_enabled
   }
 }
 
