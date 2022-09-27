@@ -35,9 +35,9 @@ variable "vault_additional_volume" {
 
   default = {
     name        = ""
-    source      = ""
-    destination = "/data"
-    type        = "tempfs"
+    source      = data("vault_additional_data")
+    destination = "/additional_data"
+    type        = "bind"
   }
 }
 

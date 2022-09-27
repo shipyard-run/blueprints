@@ -1,4 +1,3 @@
-
 container "vault" {
   image {
     name = "hashicorp/vault:${var.vault_version}"
@@ -56,6 +55,7 @@ container "vault" {
   volume {
     source      = var.vault_additional_volume.source
     destination = var.vault_additional_volume.destination
+    type        = var.vault_additional_volume.type
   }
 }
 
