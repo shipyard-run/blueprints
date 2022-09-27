@@ -52,6 +52,11 @@ container "vault" {
     source      = var.vault_plugin_folder
     destination = "/plugins"
   }
+  
+  volume {
+    source      = var.vault_additional_volume.source
+    destination = var.vault_additional_volume.destination
+  }
 }
 
 template "vault_bootstrap" {

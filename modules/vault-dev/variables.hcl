@@ -3,7 +3,7 @@ variable "vault_network" {
 }
 
 variable "vault_version" {
-  default = "1.10.3"
+  default = "1.11.3"
 }
 
 variable "vault_root_token" {
@@ -28,6 +28,17 @@ variable "vault_data" {
 variable "vault_plugin_folder" {
   default     = data("vault_plugins")
   description = "Folder where vault will load custom plugins"
+}
+
+variable "vault_additional_volume" {
+  description = "Additional volume to mount to the vault server"
+
+  default = {
+    name        = ""
+    source      = ""
+    destination = "/data"
+    type        = "tempfs"
+  }
 }
 
 # Bootstrap script that is executed after Vault starts
