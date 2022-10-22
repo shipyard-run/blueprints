@@ -41,7 +41,7 @@ exec_remote "bootstrap_certs_acls" {
   depends_on = ["template.bootstrap_certs_acls", "k8s_cluster.${var.consul_k8s_cluster}"]
 
   image {
-    name = "shipyardrun/tools:v0.6.0"
+    name = "shipyardrun/tools:v0.7.0"
   }
 
   network {
@@ -127,9 +127,10 @@ helm "consul" {
   health_check {
     timeout = var.consul_health_check_timeout
     pods = [
+      "component=webhook-cert-manager",
       "component=connect-injector",
-      "component=client",
       "component=controller",
+      "component=client",
       "component=server",
     ]
   }
@@ -171,7 +172,7 @@ exec_remote "fetch_consul_resources" {
   depends_on = ["template.fetch_consul_resources"]
 
   image {
-    name = "shipyardrun/tools:v0.6.0"
+    name = "shipyardrun/tools:v0.7.0"
   }
 
   network {
