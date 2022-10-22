@@ -19,7 +19,6 @@ jobs:
         folder: [
           'consul-ingress/',
           'docs',
-          'meshery',
           'vault-k8s/',
           'consul-nomad-tracing/',
           'consul-terminating-gateways/',
@@ -28,7 +27,6 @@ jobs:
           'modules/kubernetes-consul/',
           'modules/kubernetes-istio/',
           'modules/kubernetes-monitoring/',
-          'modules/kubernetes-smi-controller/',
           'modules/kubernetes-vault/',
           'modules/vault-dev/',
           'modules/consul-docker/'
