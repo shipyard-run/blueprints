@@ -163,21 +163,6 @@ variable "consul_monitoring_prometheus_port" {
   default     = 9090
 }
 
-variable "consul_smi_controller_enabled" {
-  description = "Should the SMI controller be installed"
-  default     = false
-}
-
-variable "consul_smi_controller_repository" {
-  description = "Repository for the controller image"
-  default     = "nicholasjackson/smi-controller-consul"
-}
-
-variable "consul_smi_controller_tag" {
-  description = "Tag for the controller image"
-  default     = "dev.01"
-}
-
 variable "consul_release_controller_enabled" {
   description = "Should the Consul release controller be enabled?"
   default     = false
