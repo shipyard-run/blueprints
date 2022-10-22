@@ -1,4 +1,6 @@
 helm "tempo" {
+  disabled = !var.monitoring_tempo_enabled
+
   depends_on = ["helm.promtail"]
 
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
@@ -18,6 +20,8 @@ helm "tempo" {
 }
 
 ingress "tempo" {
+  disabled = !var.monitoring_tempo_enabled
+
   source {
     driver = "local"
 
@@ -38,6 +42,8 @@ ingress "tempo" {
 }
 
 ingress "zipkin" {
+  disabled = !var.monitoring_tempo_enabled
+
   source {
     driver = "local"
 

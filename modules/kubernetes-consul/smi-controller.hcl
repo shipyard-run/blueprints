@@ -81,7 +81,7 @@ exec_remote "exec_smi_setup" {
   depends_on = ["helm.consul"]
 
   image {
-    name = "shipyardrun/tools:v0.5.0"
+    name = "shipyardrun/tools:v0.7.0"
   }
 
   network {

@@ -1,4 +1,6 @@
 helm "loki" {
+  disabled = !var.monitoring_loki_enabled
+
   depends_on = ["helm.prometheus"]
 
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
@@ -15,6 +17,7 @@ helm "loki" {
 }
 
 helm "promtail" {
+  disabled = !var.monitoring_loki_enabled
   depends_on = ["helm.loki"]
 
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"

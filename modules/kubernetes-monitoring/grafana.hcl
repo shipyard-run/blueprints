@@ -1,4 +1,6 @@
 template "grafana_secret_template" {
+  disabled = !var.monitoring_grafana_enabled
+
   source      = file("./k8sconfig/grafana_secret.yaml")
   destination = "${data("monitoring")}/grafana_secret.yaml"
 
@@ -8,6 +10,8 @@ template "grafana_secret_template" {
 }
 
 k8s_config "grafana_secret" {
+  disabled = !var.monitoring_grafana_enabled
+
   cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
   depends_on = [
     "template.grafana_secret_template",
@@ -22,6 +26,8 @@ k8s_config "grafana_secret" {
 }
 
 helm "grafana" {
+  disabled = !var.monitoring_grafana_enabled
+
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
   namespace        = var.monitoring_namespace
   create_namespace = true
@@ -42,6 +48,8 @@ helm "grafana" {
 }
 
 ingress "grafana" {
+  disabled = !var.monitoring_grafana_enabled
+
   source {
     driver = "local"
 

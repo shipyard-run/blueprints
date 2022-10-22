@@ -22,7 +22,7 @@ exec_remote "bootstrap_releaser_acls" {
   depends_on = ["template.bootstrap_releaser_acls", "exec_remote.fetch_consul_resources"]
 
   image {
-    name = "shipyardrun/tools:v0.6.0"
+    name = "shipyardrun/tools:v0.7.0"
   }
 
   network {

@@ -49,3 +49,19 @@ variable "monitoring_tempo_version" {
 variable "monitoring_prometheus_version" {
   default = "34.10.0"
 }
+
+variable "monitoring_grafana_enabled" {
+  default = true
+}
+
+variable "monitoring_prometheus_enabled" {
+  default = true
+}
+
+variable "monitoring_loki_enabled" {
+  default = true
+}
+
+variable "monitoring_tempo_enabled" {
+  default = true
+}

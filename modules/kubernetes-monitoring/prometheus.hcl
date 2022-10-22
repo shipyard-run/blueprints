@@ -1,4 +1,6 @@
 k8s_config "prometheus-crds" {
+  disabled = !var.monitoring_prometheus_enabled
+
   cluster = "k8s_cluster.${var.monitoring_k8s_cluster}"
   paths = [
     "./helm/prometheus-crds",
@@ -8,6 +10,8 @@ k8s_config "prometheus-crds" {
 }
 
 helm "prometheus" {
+  disabled = !var.monitoring_prometheus_enabled
+
   depends_on       = ["k8s_config.prometheus-crds"]
   cluster          = "k8s_cluster.${var.monitoring_k8s_cluster}"
   namespace        = var.monitoring_namespace
@@ -32,6 +36,8 @@ helm "prometheus" {
 }
 
 ingress "prometheus" {
+  disabled = !var.monitoring_prometheus_enabled
+
   source {
     driver = "local"
 
