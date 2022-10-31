@@ -7,13 +7,13 @@ helm "vault" {
   }
   
   chart = "hashicorp/vault"
-  version = "0.19.0"
+  version = "0.22.0"
   
   values = "./helm/vault-values.yaml"
 
   health_check {
     timeout = "120s"
-    pods = ["app.kubernetes.io/name=vault"]
+    pods = ["app.kubernetes.io/name=vault", "app.kubernetes.io/name=vault-agent-injector"]
   }
 }
 

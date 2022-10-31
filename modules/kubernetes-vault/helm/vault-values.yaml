@@ -8,7 +8,5 @@ server:
     enabled: true
   authDelegator:
     enabled: true
-  image:
-    tag: "1.10.0"
 ui:
   enabled: true
