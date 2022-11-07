@@ -28,7 +28,7 @@ nomad_cluster "onprem" {
   }
 
   image {
-      name = "nicholasjackson/fake-service:v0.9.0"
+      name = "nicholasjackson/fake-service:v0.24.2"
   }
 
   image {
@@ -75,7 +75,7 @@ nomad_cluster "cloud" {
   }
 
   image {
-      name = "nicholasjackson/fake-service:v0.9.0"
+      name = "nicholasjackson/fake-service:v0.24.2"
   }
 
   image {

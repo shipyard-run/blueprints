@@ -67,7 +67,7 @@ job "api" {
       }
 
       config {
-        image = "nicholasjackson/fake-service:v0.20.0"
+        image = "nicholasjackson/fake-service:v0.24.2"
       }
 
       resources {

@@ -39,7 +39,7 @@ container "ingress" {
 
 container "api" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.12.0"
+    name = "nicholasjackson/fake-service:vm-v0.24.2"
   }
 
   volume {
@@ -79,7 +79,7 @@ container "api" {
 
 container "web" {
   image {
-    name = "nicholasjackson/fake-service:vm-v0.12.0"
+    name = "nicholasjackson/fake-service:vm-v0.24.2"
   }
 
   volume {

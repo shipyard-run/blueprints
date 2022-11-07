@@ -91,7 +91,7 @@ container_ingress "consul_http_dc2" {
 # Web application in DC1
 container "api_dc2" {
   image   {
-    name = "nicholasjackson/fake-service:vm-v0.7.11"
+    name = "nicholasjackson/fake-service:vm-v0.24.2"
   }
 
   # Mount the service config for consul agent 
