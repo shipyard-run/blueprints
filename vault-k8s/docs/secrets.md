@@ -88,8 +88,8 @@ spec:
         app: web
       annotations:
         vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-secret-db-creds: "database/creds/db-app"
-        vault.hashicorp.com/agent-inject-template-db-creds: |
+        vault.hashicorp.com/agent-inject-secret-db-config: "database/creds/db-app"
+        vault.hashicorp.com/agent-inject-template-db-config: |
           {
           {{- with secret "database/creds/db-app" -}}
           "db_connection": "postgresql://{{ .Data.username }}:{{ .Data.password }}@postgres:5432/wizard"
@@ -118,7 +118,7 @@ You can see this in action by running the following command; you will see the se
 ```
 kubectl exec -it \
   $(kubectl get pods --selector "app=web" -o jsonpath="{.items[0].metadata.name}") \
-  -c web cat /vault/secrets/db-creds
+  -c web cat /vault/secrets/config
 ```
 
 <Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" />
@@ -128,7 +128,7 @@ Since the deployment contains two pods, you can also run the following command t
 ```
 kubectl exec -it \
 $(kubectl get pods --selector "app=web" -o jsonpath="{.items[1].metadata.name}") \
--c web cat /vault/secrets/db-creds
+-c web cat /vault/secrets/config
 ```
 
 <Terminal target="tools.container.shipyard.run" shell="/bin/bash" workdir="/files" user="root" />

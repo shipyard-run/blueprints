@@ -110,7 +110,7 @@ You apply this configuration with a `vault write` command. The path this time is
 vault write database/config/wizard \
     plugin_name=postgresql-database-plugin \
     allowed_roles="*" \
-    connection_url="postgresql://{{username}}:{{password}}@postgres:5432/wizard?sslmode=disable" \
+    connection_url="postgresql://{{username}}:{{password}}@postgres.default.svc:5432/wizard?sslmode=disable" \
     username="postgres" \
     password="password"
 ```
