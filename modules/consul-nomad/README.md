@@ -17,7 +17,7 @@ To use this blueprint you need to set the following variables:
 
 ```
 # Name of the network the cluster will be attached to (not created)
-variable "cn_networkd" {
+variable "cn_network" {
   default = "dc1"
 }
 ```

@@ -1,7 +1,7 @@
 module "monitoring" {
   depends_on = ["helm.consul"]
   disabled   = var.consul_monitoring_enabled == false
-  source     = "github.com/shipyard-run/blueprints?ref=1c46f1127d5c60af738d8af5c65d8bca0e9f00ff/modules//kubernetes-monitoring"
+  source     = "github.com/shipyard-run/blueprints/modules//kubernetes-monitoring"
   #source = "../kubernetes-monitoring"
 }
 
