@@ -17,7 +17,7 @@ Ingress
                       | --> Currency
 ```
 
-The Api service that is accessbile at the url `http://localhost:19090` and all the other servies in the application
+The Api service that is accessible at the url `http://localhost:19090` and all the other servies in the application
 create a span for the individual units of work. These spans are sent to Jaeger `http://localhost:16686`, where they can be visualised as a
 trace timeline.
 
