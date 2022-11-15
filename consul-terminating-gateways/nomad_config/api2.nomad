@@ -65,7 +65,7 @@ job "api2" {
       driver = "docker"
 
       config {
-        image = "nicholasjackson/fake-service:v0.14.1"
+        image = "nicholasjackson/fake-service:v0.24.2"
       }
       
       env {

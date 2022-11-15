@@ -61,7 +61,7 @@ job "web" {
       }
 
       config {
-        image = "nicholasjackson/fake-service:v0.22.9"
+        image = "nicholasjackson/fake-service:v0.24.2"
       }
 
       resources {

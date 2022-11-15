@@ -45,7 +45,7 @@ container "database" {
   }
 
   image {
-    name = "nicholasjackson/fake-service:v0.14.1"
+    name = "nicholasjackson/fake-service:v0.24.2"
   }
 
   env {

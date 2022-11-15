@@ -94,7 +94,7 @@ EOH
             driver = "docker"
 
             config {
-                image = "nicholasjackson/fake-service:v0.9.0"
+                image = "nicholasjackson/fake-service:v0.24.2"
             }
 
             env {
