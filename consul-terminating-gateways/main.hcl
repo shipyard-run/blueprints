@@ -23,7 +23,7 @@ network "database" {
 }
 
 module "nomad_consul" {
-  source = "github.com/shipyard-run/blueprints//modules/consul-nomad?ref=ffe7265d1cced3573a15b5c9412c7041d18a67fd"
+  source = "github.com/shipyard-run/blueprints//modules/consul-nomad"
   #source = "../modules/consul-nomad"
 }
 
