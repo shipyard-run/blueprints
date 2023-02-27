@@ -7,5 +7,5 @@ variable "cd_consul_network" {
 }
 
 module "consul" {
-  source = "github.com/shipyard-run/blueprints/modules//consul-docker"
+  source = "github.com/shipyard-run/blueprints?ref=62a250e3af082e721e7b45dc8f87b31634579329/modules//consul-docker"
 }

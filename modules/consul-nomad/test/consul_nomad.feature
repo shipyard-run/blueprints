@@ -13,7 +13,7 @@ Scenario: Single Node Nomad cluster
     | server.local              | nomad_cluster |
     | web                       | nomad_ingress |
     | 1.consul.server           | container     |
-  And a HTTP call to "http://1.consul.server.container.shipyard.run:8500/v1/status/leader" should result in status 200
+  And a HTTP call to "http://1-consul-server.container.shipyard.run:8500/v1/status/leader" should result in status 200
   And a HTTP call to "http://web.ingress.shipyard.run:19090/" should result in status 200
 
 Scenario: Multi-Node Nomad cluster
@@ -29,5 +29,5 @@ Scenario: Multi-Node Nomad cluster
     | 3.client.local            | nomad_cluster |
     | web                       | nomad_ingress |
     | 1.consul.server           | container     |
-  And a HTTP call to "http://1.consul.server.container.shipyard.run:8500/v1/status/leader" should result in status 200
+  And a HTTP call to "http://1-consul-server.container.shipyard.run:8500/v1/status/leader" should result in status 200
   And a HTTP call to "http://web.ingress.shipyard.run:19090/" should result in status 200

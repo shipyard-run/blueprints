@@ -40,7 +40,7 @@ variable "cn_nomad_cluster_name" {
 }
 
 variable "cn_consul_cluster_name" {
-  default = "1.consul.server.container.shipyard.run"
+  default = "1-consul-server.container.shipyard.run"
 }
 
 # Default Consul config, can be overridden by setting this variable from outside
