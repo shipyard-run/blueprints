@@ -33,7 +33,9 @@ spec:
   sources:
     - name: api
       permissions:
-        - action: allow
+      - action: allow
+        http:
+          pathRegex: '*'
 
 ---
 apiVersion: consul.hashicorp.com/v1alpha1
@@ -46,7 +48,9 @@ spec:
   sources:
     - name: ingress-gateway
       permissions:
-        - action: allow
+      - action: allow
+        http:
+          pathRegex: '*'
 
 ---
 apiVersion: consul.hashicorp.com/v1alpha1

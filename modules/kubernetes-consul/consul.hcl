@@ -129,8 +129,6 @@ helm "consul" {
     pods = [
       "component=webhook-cert-manager",
       "component=connect-injector",
-      "component=controller",
-      "component=client",
       "component=server",
     ]
   }

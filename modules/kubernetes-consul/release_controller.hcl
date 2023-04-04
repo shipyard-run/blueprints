@@ -54,19 +54,38 @@ exec_remote "bootstrap_releaser_acls" {
 template "release_controller_values" {
   disabled = var.consul_release_controller_enabled == false
 
-  source = <<EOF
-fullnameOverride: "consul-release-controller"
-autoencrypt:
-  enabled: #{{ .Vars.tls_enabled }}
-acls:
-  enabled: "false"
-  #{{ if eq .Vars.bootstrap_acls true }}
-  secretName: "consul-releaser-token"
-  secretKey: "token"
+  source = <<-EOF
+  fullnameOverride: "consul-release-controller"
+  autoEncrypt:
+    enabled: #{{ .Vars.tls_enabled }}
+    #{{ if eq .Vars.tls_enabled true }}
+    env:
+      - name: CONSUL_CACERT
+        value: /consul/tls/client/ca/tls.crt
+      - name: CONSUL_HTTP_SSL_VERIFY
+        value: "false"
+      - name: HOST_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
+      - name: CONSUL_HTTP_ADDR
+        value: https://consul-server.consul.svc:8501
+    #{{ end }}
+  #{{ if eq .Vars.tls_enabled false }}
+  controller:
+    container_config:
+      hostEnv
+        - name: CONSUL_HTTP_ADDR
+          value: http://consul-server.consul.svc:8500
   #{{ end }}
-webhook:
-  failurePolicy: Ignore
-EOF
+  acls:
+    #{{ if eq .Vars.bootstrap_acls true }}
+    secretName: "consul-releaser-token"
+    secretKey: "token"
+    #{{ end }}
+  webhook:
+    failurePolicy: Ignore
+  EOF
 
   destination = "${var.consul_data_folder}/consul_release_values.yaml"
 
