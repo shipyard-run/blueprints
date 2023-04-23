@@ -1,12 +1,29 @@
-exec_local "clone_efk" {
-  cmd = "./modules/kubernetes-efk-stack/run.sh"
-  timeout = "420s"
+exec_remote "clone_efk" {
+
+  image {
+    name = "shipyardrun/tools"
+  } 
+  cmd = "sleep"
+  args = ["inf"]
+
+  volume {
+    source = k8s_config_docker(var.efk_k8s_cluster)
+    destination = "/.kube/config"
+  }
+
+  volume {
+    source      = var.efk_folder
+    destination = "/efk/run.sh"
+  }
+
+  network {
+    name = "network.${var.efk_k8s_network}"
+  }
+
   env {
     key = "KUBECONFIG"
-    value = k8s_config("dc1")
+    value = "/.kube/config"
   }
-  daemon = true 
-  #Preferred not to be in daemon but couldn't stop the shell script run
 }
 
 ingress "efk" {

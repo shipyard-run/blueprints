@@ -9,3 +9,13 @@ variable "kibana_port" {
 variable "namespace" {
   default = "logging"
 }
+
+variable "efk_folder" {
+  description = ""
+  default     = "run.sh"
+}
+
+variable "efk_k8s_network" {
+  description = ""
+  default     = "dc1"
+}
