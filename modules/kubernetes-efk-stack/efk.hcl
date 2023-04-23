@@ -3,8 +3,7 @@ exec_remote "clone_efk" {
   image {
     name = "shipyardrun/tools"
   } 
-  cmd = "sleep"
-  args = ["inf"]
+  cmd = "./efk/run.sh"
 
   volume {
     source = k8s_config_docker(var.efk_k8s_cluster)
