@@ -63,13 +63,18 @@ job "payment" {
     task "payment" {
       driver = "docker"
 
-      env {
-        LISTEN_ADDR = "0.0.0.0:9092"
-        UPSTREAM_URIS = "http://localhost:9093"
-        MESSAGE = "Hello World"
-        NAME = "Payment"
-        SERVER_TYPE = "http"
-        TRACING_ZIPKIN = "http://10.15.0.200:9411"
+      template {
+        destination = "secrets/file.env"
+        env         = true
+        data        = <<EOF
+LISTEN_ADDR = "0.0.0.0:9092"
+UPSTREAM_URIS = "http://localhost:9093"
+MESSAGE = "Hello World"
+NAME = "Payment"
+SERVER_TYPE = "http"
+TRACING_ZIPKIN = "http://10.15.0.200:9411"
+VAULT_SECRET={{with secret "secret/hello"}}{{.Data.foo}}{{end}}
+EOF
       }
 
       config {
@@ -80,7 +85,7 @@ job "payment" {
       }
 
       resources {
-        cpu    = 500 # 500 MHz
+        cpu    = 100
         memory = 256 # 256MB
 
       }

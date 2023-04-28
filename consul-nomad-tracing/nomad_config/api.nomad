@@ -71,7 +71,7 @@ job "api" {
       }
 
       resources {
-        cpu    = 500 # 500 MHz
+        cpu    = 100
         memory = 256 # 256MB
       }
     }
